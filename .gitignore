@@ -1,0 +1,6 @@
+*.o
+*.d
+./deps/
+./obj/
+libft/libft.a
+cub3D
