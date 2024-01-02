@@ -77,5 +77,6 @@ void	remove_white_space(char *argv);
 int		get_sign(char *argv);
 void	*free_2d_array(char **array);
 void	free_3d_array(char ***array);
+int		check_2d_array_size(char *array[]);
 
 #endif

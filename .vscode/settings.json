@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "error_messages.h": "c",
+        "ft_printf.h": "c"
+    }
+}

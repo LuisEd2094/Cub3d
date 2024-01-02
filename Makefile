@@ -1,6 +1,8 @@
 NAME        = cub3D
-CFLAGS      = -g  -Wall -Wextra  -Werror -fsanitize=address
+CFLAGS      = -g  -Wall -Wextra  -Werror #-fsanitize=address
 RM          = rm -f
+CK_FD_PATH		= check_file/
+AUX_PATH		= aux/
 SRCS_PATH           = src/
 OBJS_PATH           = obj/
 CC = cc
@@ -9,7 +11,10 @@ CC = cc
 
 
 ## Add new path, just need name/
-MAKE_OBJ_DIR		= $(OBJS_PATH)
+MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
+									$(CK_FD_PATH), \
+									$(AUX_PATH), \
+									)
 										
 #Add new path to objects
 
@@ -37,13 +42,23 @@ LIGHT_GREEN = \033[1;92m
 
 SRC         =	main.c 
 
-DEPS		= 	$(addprefix $(DEPS_PATH), $(SRC:.c=.d)) 
+CHECK		=	check_file.c 
+
+CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
+
+AUX 		=	print_error.c exit_error.c
+
+AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
+
+DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \
+											$(CHECK:.c=.d)\
+											$(AUX:.c=.d)) 
 										
 										
 
 #add .d files to deps
 
-#SRC			+=	
+SRC			+= $(CK_FILES) $(AUX_FILES)
 ## add to sercs
 
 OBJS        =	$(addprefix $(OBJS_PATH), $(SRC:.c=.o)) 
