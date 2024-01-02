@@ -63,7 +63,7 @@ char	**ft_split(char const *s, char c)
 	tab = (char **)malloc(sizeof(char *) * (ft_count_word(s, c) + 1));
 	if (!tab)
 		return (NULL);
-	while (++j < ft_count_word(s, c))
+	while (++j < ft_count_word(s, c) && ft_count_word(s, c) != 0)
 	{
 		while (s[i] == c)
 			i++;
@@ -76,6 +76,6 @@ char	**ft_split(char const *s, char c)
 		}
 		i += len;
 	}
-	tab[j] = 0;
+	tab[j] = NULL;
 	return (tab);
 }

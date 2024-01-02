@@ -1,5 +1,5 @@
 NAME        = cub3D
-CFLAGS      = -g  -Wall -Wextra  -Werror #-fsanitize=address
+CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 AUX_PATH		= aux/
@@ -42,7 +42,7 @@ LIGHT_GREEN = \033[1;92m
 
 SRC         =	main.c 
 
-CHECK		=	check_file.c 
+CHECK		=	check_file.c parse_file.c
 
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 

@@ -10,4 +10,8 @@
 extension and permissions\n"
 # endif
 
+# ifndef MISCONFIG
+# define MISCONFIG "Error\nFile doesn't follow subject configuration\n"
+# endif
+
 #endif

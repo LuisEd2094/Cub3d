@@ -1,9 +1,10 @@
-#include <stdio.h>
-#include <errno.h>
-#include <stdlib.h>
+#include <cub3d.h>
 
-void    exit_error(void)
+void exit_error(char *error)
 {
-    perror("Error");
-    exit(errno);
+    print_error(error);
+    if (!error)
+        exit(errno);
+    else
+        exit(EXIT_FAILURE);
 }
