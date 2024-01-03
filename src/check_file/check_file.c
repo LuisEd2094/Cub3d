@@ -23,7 +23,7 @@ int    check_file_name(char *file_name)
 }
 
 
-void    validate_map(char *file_name)
+void    validate_map(char *file_name, t_prg *prg)
 {
     int fd;
 
@@ -32,7 +32,7 @@ void    validate_map(char *file_name)
     fd = open(file_name, O_RDONLY);
     if (fd < 0)
         exit_error(NULL);
-    if(!parse_file(fd))
+    if(!parse_file(fd, prg))
     {
         close(fd);
         exit_error(MISCONFIG);

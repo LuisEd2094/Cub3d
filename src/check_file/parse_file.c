@@ -15,12 +15,8 @@ void    set_valid_identifiers(t_parseer *p)
 }
 void    set_booleans(t_parseer* parse)
 {
-    parse->north = 0;
-    parse->south = 0;
-    parse->east = 0;
-    parse->west = 0;
-    parse->floor = 0;
-    parse->ceiling = 0;
+    init_int_array(parse->identifiers, ID_ARRAY_SIZE);
+    parse->ids_found = 0;
     parse->found_all = 0;
     parse->error = 0;
 }
@@ -46,24 +42,36 @@ bool is_new_line(char *element)
     return (true);
 }
 
-int check_for_identifiers(t_parseer *parse, char **elements)
+int save_elem_to_prg(t_parseer *parse, char **elemts, t_prg *prg, int i)
+{
+    if (parse->identifiers[i])
+        return (1);
+    else
+    {
+        parse->identifiers[i] = 1;
+        parse->ids_found += 1;
+    }
+    return (0);
+}
+
+int check_for_identifiers(t_parseer *parse, char **elements, t_prg *prg)
 {
     int i;
     int result;
 
     i = 0;
-    while (i < MAX_IDENTIFIERS && !parse->error)
+    while (i < ID_ARRAY_SIZE && !parse->error)
     {
         result = ft_strcmp(parse->valid_identifier[i], elements[0]);
-        if (!result)
-            break ;
+        if (!result) // Found a match
+            return (save_elem_to_prg(parse, elements, prg, i));
         i++;
     }
-    return (result);
-}
+    return (result); // Went through everything with no match
+} 
 
 
-void check_elemets(t_parseer *parse, char *line)
+void check_elemets(t_parseer *parse, char *line, t_prg *prg)
 {
     char    **elements;
     int     i;
@@ -77,7 +85,7 @@ void check_elemets(t_parseer *parse, char *line)
         free_2d_array(elements);
         return ;
     }
-    result = check_for_identifiers(parse, elements);
+    result = check_for_identifiers(parse, elements, prg);
     if (result)
         parse->error = 1;
     free_2d_array(elements);
@@ -85,12 +93,12 @@ void check_elemets(t_parseer *parse, char *line)
 
 void check_if_found_all(t_parseer *p)
 {
-    if (p->north && p->south && p->east && \
-    p->west && p->floor && p->ceiling)
+    if (p->ids_found == ID_ARRAY_SIZE - 1)
         p->found_all = 1;
+    ft_printf(1, "<%i> ids found\n", p->ids_found);
 }
 
-bool parse_file(int fd)
+bool parse_file(int fd, t_prg *prg)
 {
     t_parseer   parse;
     char        *line;
@@ -102,7 +110,7 @@ bool parse_file(int fd)
         line = get_next_line(fd);
         if (!line)
             break;
-        check_elemets(&parse, line);
+        check_elemets(&parse, line, prg);
         free(line);
         if (parse.error)
             return (false);

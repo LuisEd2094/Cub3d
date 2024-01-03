@@ -2,7 +2,10 @@
 
 int main(int argc, char *argv[])
 {
+    t_prg prg;
+
     if (argc != 2)
         exit_error(INCORRECT_USE);
-    validate_map(argv[1]);
+    init_prg(&prg);
+    validate_map(argv[1], &prg);
 }

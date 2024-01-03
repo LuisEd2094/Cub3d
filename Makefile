@@ -46,7 +46,7 @@ CHECK		=	check_file.c parse_file.c
 
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
-AUX 		=	print_error.c exit_error.c
+AUX 		=	print_error.c exit_error.c init_prg.c init_int_array.c
 
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 

@@ -2,12 +2,14 @@
 # define PARSE_FILE_H
 
 # include <stdbool.h>
-# ifndef MAX_IDENTIFIERS
-# define MAX_IDENTIFIERS 7
+# ifndef ID_ARRAY_SIZE
+#  define ID_ARRAY_SIZE 7
 # endif
 
 typedef struct s_parseer
 {
+    int     identifiers[ID_ARRAY_SIZE];
+    int     ids_found;
     bool    north;
     bool    south;
     bool    east;
@@ -16,7 +18,7 @@ typedef struct s_parseer
     bool    ceiling;
     bool    found_all;
     bool    error;
-    char    *valid_identifier[MAX_IDENTIFIERS];
+    char    *valid_identifier[ID_ARRAY_SIZE];
 } t_parseer;
 
 
