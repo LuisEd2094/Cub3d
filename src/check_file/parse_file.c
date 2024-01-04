@@ -18,7 +18,6 @@ void    set_booleans(t_parseer* parse)
     init_int_array(parse->identifiers, ID_ARRAY_SIZE);
     parse->ids_found = 0;
     parse->found_all = 0;
-    parse->error = 0;
 }
 
 
@@ -42,76 +41,88 @@ bool is_new_line(char *element)
     return (true);
 }
 
-int save_elem_to_prg(t_parseer *parse, char **elemts, t_prg *prg, int i)
+char *check_img_file(char *img_file)
+{
+    // should check if it can open or something, not sure still but at the momment it just creates a new char*
+    return (ft_strdup(img_file));
+}
+
+void save_elem_to_prg(t_parseer *parse, char **elemts, t_prg *prg, int i)
 {
     if (parse->identifiers[i])
-        return (1);
+        prg->error_msg = REPEATED;
     else
     {
         parse->identifiers[i] = 1;
         parse->ids_found += 1;
+        if (i < 4) // IS N/S/E/W
+        {
+            prg->imgs[i] = check_img_file(elemts[1]);
+            //ft_printf(1, "I just saved an addres <%s><%i>\n", prg->imgs[i], i);
+        }
     }
-    return (0); //return 0 for valid maps
 }
 
-int check_for_identifiers(t_parseer *parse, char **elements, t_prg *prg)
+void check_for_identifiers(t_parseer *parse, char **elements, t_prg *prg)
 {
     int i;
-    int result;
 
     i = 0;
-    while (i < ID_ARRAY_SIZE - 1 && !parse->error)
+    while (i < ID_ARRAY_SIZE - 1 && !prg->error_msg)
     {
-        result = ft_strcmp(parse->valid_identifier[i], elements[0]);
-        if (!result) // Found a match
+        if (ft_strcmp(parse->valid_identifier[i], elements[0]) == 0) // Found a match
             return (save_elem_to_prg(parse, elements, prg, i));
         i++;
     }
-    return (result); // Went through everything with no match
+    prg->error_msg = MISCONFIG;
+    return; // Went through everything with no match
 } 
 
-void check_valid_line(char *line)
+bool check_valid_line(char *line, t_prg *p)
 {
     int i;
 
     i = ft_strlen(line);
     if (i == 1)
-        return ;
+        return (1);
     if (!ft_isalnum(line[i - 2]))
-        exit_error(MISCONFIG);
+    {
+        p->error_msg = MISCONFIG;
+        return (0);
+    }
+    return (1);
 }
 
-bool check_elem_sizes_and_new_line(char **elements)
+bool check_elem_sizes_and_new_line(char **elements, t_prg *p)
 {
     if (check_2d_array_size(elements) > 2)
     {
         free_2d_array(elements);
-        exit_error(MISCONFIG);
+        p->error_msg = MISCONFIG;
+        return (1);
     }
     if (is_new_line(elements[0]))
     {
         free_2d_array(elements);
         return (1);
     }
-    return (0);
+    return (0); // return 0 only if we shuld check the elemts, such as it has less than 3 values or it's not just a new line
 }
 
 void check_elemets(t_parseer *parse, char *line, t_prg *prg)
 {
     char    **elements;
-    int     result;
 
-    check_valid_line(line);
+    if (!check_valid_line(line, prg))
+        return ;
     elements = ft_split(line, ' ');
     if (!elements)
-        exit_error(NULL);
-    if (check_elem_sizes_and_new_line(elements))
+        return; 
+    if (check_elem_sizes_and_new_line(elements, prg))
         return ;
     //for (int i = 0; elements[i]; ++i)
       //  ft_printf(1, "<%s> string\n", elements[i]);
-    result = check_for_identifiers(parse, elements, prg);
-    if (result)
-        parse->error = 1;
+    check_for_identifiers(parse, elements, prg);
     free_2d_array(elements);
 }
 
@@ -135,7 +146,7 @@ bool parse_file(int fd, t_prg *prg)
             break;
         check_elemets(&parse, line, prg);
         free(line);
-        if (parse.error)
+        if (prg->error_msg || errno)
             return (false);
         check_if_found_all(&parse);
     }

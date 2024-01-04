@@ -1,5 +1,5 @@
 NAME        = cub3D
-CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 AUX_PATH		= aux/
@@ -46,7 +46,7 @@ CHECK		=	check_file.c parse_file.c
 
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
-AUX 		=	print_error.c exit_error.c init_prg.c init_int_array.c
+AUX 		=	exit_error.c exit_success.c init_prg.c init_int_array.c
 
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 

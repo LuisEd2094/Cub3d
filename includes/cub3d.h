@@ -18,21 +18,19 @@
 
 typedef struct s_prg
 {
-    char    *north_img;
-    char    *south_img;
-    char    *east_img;
-    char    *west_img;
+    char    *imgs[5];
     int     floor_vals[4];
     int     ceiling_vals[4];
-
+    char    *error_msg;
 } t_prg;
 
 
 
 // AUX FUNCTIONS 
 bool    print_error(char *error);
-void    exit_error(char *error);
+void    exit_error(char * error, t_prg *prg);
 void    init_int_array(int *array, int size);
+void    exit_success(t_prg *p);
 
 // CHECK FILE FUNCTIONS
 void    validate_map(char *file_name, t_prg *prg);

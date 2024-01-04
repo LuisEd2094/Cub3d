@@ -14,4 +14,8 @@ extension and permissions\n"
 # define MISCONFIG "Error\nFile doesn't follow subject configuration\n"
 # endif
 
+# ifndef REPEATED
+# define REPEATED "Error\nOne or more of the identifiers are repeated\n"
+# endif
+
 #endif

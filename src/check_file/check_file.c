@@ -9,7 +9,7 @@ int    check_file_name(char *file_name)
 
     split = ft_split(file_name, '/');
     if (!split)
-        exit_error(NULL);
+        return (0);
     file = split[check_2d_array_size(split) - 1];
     file_name_len = ft_strlen(file);
     if (file_name_len < 5)
@@ -28,14 +28,16 @@ void    validate_map(char *file_name, t_prg *prg)
     int fd;
 
     if (check_file_name(file_name))
-        exit_error(INCORRECT_FILE);
+        exit_error(INCORRECT_FILE, NULL);
+    if (errno)
+        return ;
     fd = open(file_name, O_RDONLY);
     if (fd < 0)
-        exit_error(NULL);
-    if(!parse_file(fd, prg))
+        exit_error(NULL, NULL);
+    if(!parse_file(fd, prg) || errno)
     {
         close(fd);
-        exit_error(MISCONFIG);
+        exit_error(NULL, prg);
     }
     ft_printf(1, "VALID MAP\n");
     close(fd);
