@@ -8,4 +8,5 @@ int main(int argc, char *argv[])
         exit_error(INCORRECT_USE);
     init_prg(&prg);
     validate_map(argv[1], &prg);
+    exit(EXIT_SUCCESS);
 }

@@ -1,0 +1,1 @@
+cc ./main.c ./unity.c ../*.c ../../aux/*.c  ../../../libft/libft.a  -I../../../includes -I./ -I../ && ./a.out
