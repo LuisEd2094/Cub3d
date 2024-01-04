@@ -12,6 +12,7 @@ void exit_error(char *error, t_prg *prg)
         if (errno)
         {
             perror("Error");
+            //should checkk mallocs tofree them
             exit(errno);
         }
         else
