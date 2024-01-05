@@ -18,4 +18,8 @@ extension and permissions\n"
 # define REPEATED "Error\nOne or more of the identifiers are repeated\n"
 # endif
 
+# ifndef RGB_ERROR
+# define RGB_ERROR "Error\nIncorrect ceiling/floor configuration\n"
+# endif
+
 #endif

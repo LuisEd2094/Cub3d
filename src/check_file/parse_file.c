@@ -41,10 +41,59 @@ bool is_new_line(char *element)
     return (true);
 }
 
-char *check_img_file(char *img_file)
+void check_img_file(char **elemts, t_prg *p)
 {
     // should check if it can open or something, not sure still but at the momment it just creates a new char*
-    return (ft_strdup(img_file));
+    if (check_2d_array_size(elemts) > 2)
+        p->error_msg = MISCONFIG;
+    else
+    {
+        if (ft_strcmp(elemts[0], "NO") == 0)
+            p->north_img = ft_strdup(elemts[1]);
+        else if (ft_strcmp(elemts[0], "SO") == 0)
+            p->south_img = ft_strdup(elemts[1]);
+        else if (ft_strcmp(elemts[0], "WE") == 0)
+            p->west_img = ft_strdup(elemts[1]);
+        else
+            p->east_img = ft_strdup(elemts[1]);
+    }
+}
+
+bool check_rgb(char **elem)
+{
+    if (elem)
+        return 1;
+}
+
+void get_rgb_vals(char **elem, int array[4])
+{
+    int i;
+    int j;
+
+    i = 1;
+    j = 0;
+    while (elem[i] && j < 3)
+    {
+        if (ft_isdigit(elem[i][0]))
+        {
+            array[j] = ft_atoi(elem[i]);
+            j++;
+        }
+        i++;
+    }
+}
+
+void check_ceil_floor_vals(t_prg *p, char **elem)
+{
+    if (!check_rgb(elem))
+        p->error_msg = RGB_ERROR;
+    else
+    {
+        if (ft_strcmp(elem[0], "F") == 0)
+            get_rgb_vals(elem, p->floor_vals);
+        else
+            get_rgb_vals(elem, p->ceiling_vals);
+    }
 }
 
 void save_elem_to_prg(t_parseer *parse, char **elemts, t_prg *prg, int i)
@@ -57,8 +106,12 @@ void save_elem_to_prg(t_parseer *parse, char **elemts, t_prg *prg, int i)
         parse->ids_found += 1;
         if (i < 4) // IS N/S/E/W
         {
-            prg->imgs[i] = check_img_file(elemts[1]);
+            check_img_file(elemts, prg);
             //ft_printf(1, "I just saved an addres <%s><%i>\n", prg->imgs[i], i);
+        }
+        else
+        {
+            check_ceil_floor_vals(prg, elemts);
         }
     }
 }
@@ -82,10 +135,9 @@ bool check_valid_line(char *line, t_prg *p)
 {
     int i;
 
-    i = ft_strlen(line);
-    if (i == 1)
-        return (1);
-    if (!ft_isalnum(line[i - 2]))
+    if (!line[0])
+        return (0);
+    if (!ft_isalnum(line[ft_strlen(line) - 1]))
     {
         p->error_msg = MISCONFIG;
         return (0);
@@ -93,23 +145,8 @@ bool check_valid_line(char *line, t_prg *p)
     return (1);
 }
 
-bool check_elem_sizes_and_new_line(char **elements, t_prg *p)
-{
-    if (check_2d_array_size(elements) > 2)
-    {
-        free_2d_array(elements);
-        p->error_msg = MISCONFIG;
-        return (1);
-    }
-    if (is_new_line(elements[0]))
-    {
-        free_2d_array(elements);
-        return (1);
-    }
-    return (0); // return 0 only if we shuld check the elemts, such as it has less than 3 values or it's not just a new line
-}
 
-void check_elemets(t_parseer *parse, char *line, t_prg *prg)
+void check_elements(t_parseer *parse, char *line, t_prg *prg)
 {
     char    **elements;
 
@@ -118,8 +155,6 @@ void check_elemets(t_parseer *parse, char *line, t_prg *prg)
     elements = ft_split(line, ' ');
     if (!elements)
         return; 
-    if (check_elem_sizes_and_new_line(elements, prg))
-        return ;
     //for (int i = 0; elements[i]; ++i)
       //  ft_printf(1, "<%s> string\n", elements[i]);
     check_for_identifiers(parse, elements, prg);
@@ -144,7 +179,9 @@ bool parse_file(int fd, t_prg *prg)
         line = get_next_line(fd);
         if (!line)
             break;
-        check_elemets(&parse, line, prg);
+        if (line[ft_strlen(line) - 1] == '\n')
+            line[ft_strlen(line) - 1] = '\0';
+        check_elements(&parse, line, prg);
         free(line);
         if (prg->error_msg || errno)
             return (false);

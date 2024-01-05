@@ -19,6 +19,9 @@ void test_error_val()
 
     exit_value = system("../../../cub3D ../../../another_valid.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../valid_f_c_spaces.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
    
     exit_value = system("../../../cub3D ../../../invalid_multiple_ids.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
@@ -26,13 +29,11 @@ void test_error_val()
     exit_value = system("../../../cub3D ../../../invalid_order.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
-    exit_value = system("../../../cub3D ../../../invalid_spaces.cub");
-    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
     exit_value = system("../../../cub3D ../../../invalid_tabs.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
-    exit_value = system("../../../cub3D ../../../touch invalid_extension.cu");
+    exit_value = system("../../../cub3D ../../../invalid_extension.cu");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
 }

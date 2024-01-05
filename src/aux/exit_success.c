@@ -2,10 +2,6 @@
 
 void exit_success(t_prg *p)
 {
-    /*int i;
-
-    i = 0;
-    while (p->imgs[i])
-        free(p->imgs[i]);*/
+    free_prg_mallocs(p);
     exit(EXIT_SUCCESS);
 }

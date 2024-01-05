@@ -11,7 +11,10 @@ void    init_str_array(char **array, int size)
 
 void    init_prg(t_prg *prg)
 {
-    init_str_array(prg->imgs, 5);
+    prg->north_img = NULL;
+    prg->south_img = NULL;
+    prg->west_img  = NULL;
+    prg->east_img = NULL;
     init_int_array(prg->floor_vals, RGB_ARRAY);
     init_int_array(prg->ceiling_vals, RGB_ARRAY);
     prg->error_msg = NULL;

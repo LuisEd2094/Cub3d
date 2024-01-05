@@ -2,6 +2,7 @@
 
 void exit_error(char *error, t_prg *prg)
 {
+    free_prg_mallocs(prg);
     if (error)
     {
         ft_printf(STDERR_FILENO, error);
@@ -12,7 +13,6 @@ void exit_error(char *error, t_prg *prg)
         if (errno)
         {
             perror("Error");
-            //should checkk mallocs tofree them
             exit(errno);
         }
         else

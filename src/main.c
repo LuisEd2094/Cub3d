@@ -4,12 +4,17 @@ int main(int argc, char *argv[])
 {
     t_prg prg;
 
+    init_prg(&prg);
     if (argc != 2)
         exit_error(INCORRECT_USE, NULL);
-    init_prg(&prg);
     validate_map(argv[1], &prg);
-    //for (int i = 0; prg.imgs[i]; i++)
-        //ft_printf(1, "I have the address  <%s>\n", prg.imgs[i]);
-
+    ft_printf(1, ">%s<\n", prg.north_img);
+    ft_printf(1, ">%s<\n", prg.south_img);
+    ft_printf(1, ">%s<\n", prg.west_img);
+    ft_printf(1, ">%s<\n", prg.east_img);
+    for (int i = 0; i < 3; i++)
+        ft_printf(1, "RGB >%i<\n", prg.floor_vals[i]);
+    for (int i = 0; i < 3; i++)
+        ft_printf(1, "RGB >%i<\n", prg.ceiling_vals[i]);
     exit_success(&prg);
 }
