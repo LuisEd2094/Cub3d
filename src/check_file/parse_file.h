@@ -12,6 +12,7 @@ typedef struct s_parseer
     int     ids_found;
     bool    found_all;
     char    *valid_identifier[ID_ARRAY_SIZE];
+    char    *rgb_str[4];
 } t_parseer;
 
 

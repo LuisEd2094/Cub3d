@@ -21,6 +21,7 @@ void    set_booleans(t_parseer* parse)
 }
 
 
+
 void    init_parseer(t_parseer *parse)
 {
     set_booleans(parse);
@@ -59,40 +60,87 @@ void check_img_file(char **elemts, t_prg *p)
     }
 }
 
-bool check_rgb(char **elem)
+bool check_rgb(char **elem, t_parseer *p)
 {
+    int     i;
+    int     j;
+    int     k;
+    int     l;
+    char    **values;
+    bool    error;
+
+    i = -1;
+    error =  0;
+    l = -1;
+    while (elem[++i])
+    {
+        values = ft_split(elem[i], ','); // cgecj what this prints
+        if (!values)
+            return (0);
+        j = -1;
+        while(values[++j] )
+        {
+            k = -1;
+            while(ft_isdigit(values[j][k]))
+                k++;
+            if (values[j][k])
+                error = 1;
+            if (!check_if_int(values[j]))
+                error = 1;
+            else
+            {
+                l++;
+                if (l > 3)
+                    error = 1;
+                else 
+                    p->rgb_str[l] = ft_strdup(values[j]);
+            }
+        }
+        free_2d_array(values);
+        if (error)
+            return (0);
+
+    }
+    return (1);
+    
+
+    for (int i = 0; elem[i]; ++i)
+        ft_printf(1, "%s\n", elem[i]);
     if (elem)
         return 1;
 }
 
-void get_rgb_vals(char **elem, int array[4])
+void get_rgb_vals(char **elem, int array[4], t_prg *p)
 {
     int i;
     int j;
 
     i = 1;
     j = 0;
-    while (elem[i] && j < 3)
+    while (i < 3 && j < 3)
     {
-        if (ft_isdigit(elem[i][0]))
+        array[j] = ft_atoi(elem[i]);
+        if (array[j] < 0 || array[j] > 255)
         {
-            array[j] = ft_atoi(elem[i]);
-            j++;
+            p->error_msg = RGB_ERROR;
+            return;
         }
+        j++;
         i++;
     }
 }
 
-void check_ceil_floor_vals(t_prg *p, char **elem)
+void check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse)
 {
-    if (!check_rgb(elem))
+    if (!check_rgb(elem, parse))
         p->error_msg = RGB_ERROR;
     else
     {
         if (ft_strcmp(elem[0], "F") == 0)
-            get_rgb_vals(elem, p->floor_vals);
+            get_rgb_vals(parse->rgb_str, p->floor_vals, p);
         else
-            get_rgb_vals(elem, p->ceiling_vals);
+            get_rgb_vals(parse->rgb_str, p->ceiling_vals, p);
+        free_2d_array(parse->rgb_str);
     }
 }
 
@@ -111,7 +159,7 @@ void save_elem_to_prg(t_parseer *parse, char **elemts, t_prg *prg, int i)
         }
         else
         {
-            check_ceil_floor_vals(prg, elemts);
+            check_ceil_floor_vals(prg, elemts, parse);
         }
     }
 }
