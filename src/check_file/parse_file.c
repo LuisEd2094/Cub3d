@@ -6,7 +6,7 @@ bool parse_file(int fd, t_prg *prg)
     t_parseer   parse;
 
     init_parseer(&parse);
-    if (!parse_for_ids(fd, prg, &parse))
+    if (!parse_for_ids(fd, prg, &parse) || errno)
         return (false);
     return (true);
 }

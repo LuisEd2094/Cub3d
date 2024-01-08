@@ -20,5 +20,6 @@ void    init_parseer(t_parseer *parse);
 bool    parse_for_ids(int fd, t_prg *prg, t_parseer *parse);
 void    check_img_file(char **elemts, t_prg *p);
 void    check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse);
+void    check_elements(t_parseer *parse, char *line, t_prg *prg);
 
 #endif
