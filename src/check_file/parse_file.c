@@ -16,6 +16,10 @@ void    set_valid_identifiers(t_parseer *p)
 void    set_booleans(t_parseer* parse)
 {
     init_int_array(parse->identifiers, ID_ARRAY_SIZE);
+    parse->rgb_str[0] = NULL;
+    parse->rgb_str[1] = NULL;
+    parse->rgb_str[2] = NULL;
+    parse->rgb_str[3] = NULL;
     parse->ids_found = 0;
     parse->found_all = 0;
 }
@@ -69,18 +73,22 @@ bool check_rgb(char **elem, t_parseer *p)
     char    **values;
     bool    error;
 
-    i = -1;
+
+
+    i = 0;
     error =  0;
     l = -1;
     while (elem[++i])
     {
-        values = ft_split(elem[i], ','); // cgecj what this prints
+        values = ft_split(elem[i], ','); // cgecj what this prints if fails
+        for (int i = 0; values[i]; ++i)
+            ft_printf(1, ">%s<\n", values[i]);
         if (!values)
             return (0);
         j = -1;
         while(values[++j] )
         {
-            k = -1;
+            k = 0;
             while(ft_isdigit(values[j][k]))
                 k++;
             if (values[j][k])
@@ -89,7 +97,7 @@ bool check_rgb(char **elem, t_parseer *p)
                 error = 1;
             else
             {
-                l++;
+                ++l;
                 if (l > 3)
                     error = 1;
                 else 
@@ -110,16 +118,16 @@ bool check_rgb(char **elem, t_parseer *p)
         return 1;
 }
 
-void get_rgb_vals(char **elem, int array[4], t_prg *p)
+void get_rgb_vals(char **rgb_array, int array[4], t_prg *p)
 {
     int i;
     int j;
 
-    i = 1;
+    i = 0;
     j = 0;
-    while (i < 3 && j < 3)
+    while (i < 3)
     {
-        array[j] = ft_atoi(elem[i]);
+        array[j] = ft_atoi(rgb_array[i]);
         if (array[j] < 0 || array[j] > 255)
         {
             p->error_msg = RGB_ERROR;
@@ -128,6 +136,15 @@ void get_rgb_vals(char **elem, int array[4], t_prg *p)
         j++;
         i++;
     }
+}
+
+void free_2d_array_content(char **array)
+{
+    int i;
+
+    i = -1;
+    while (array[++i])
+        free(array[i]);
 }
 
 void check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse)
@@ -140,7 +157,7 @@ void check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse)
             get_rgb_vals(parse->rgb_str, p->floor_vals, p);
         else
             get_rgb_vals(parse->rgb_str, p->ceiling_vals, p);
-        free_2d_array(parse->rgb_str);
+        free_2d_array_content(parse->rgb_str);
     }
 }
 
@@ -155,7 +172,6 @@ void save_elem_to_prg(t_parseer *parse, char **elemts, t_prg *prg, int i)
         if (i < 4) // IS N/S/E/W
         {
             check_img_file(elemts, prg);
-            //ft_printf(1, "I just saved an addres <%s><%i>\n", prg->imgs[i], i);
         }
         else
         {

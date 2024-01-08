@@ -17,7 +17,7 @@ PRINT_DIR		=	ftprintf/
 NEXT_LINE_DIR	=	get_next_line/
 OBJS_DIR		=	obj/
 DEPS_DIR		=	deps/
-CFLAGS			=	-Wall -Werror -Wextra
+CFLAGS			=	-Wall -Werror -Wextra -g
 RM				=	rm -f
 AR				=	ar rcs
 

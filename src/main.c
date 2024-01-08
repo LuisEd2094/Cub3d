@@ -16,5 +16,7 @@ int main(int argc, char *argv[])
         ft_printf(1, "RGB >%i<\n", prg.floor_vals[i]);
     for (int i = 0; i < 3; i++)
         ft_printf(1, "RGB >%i<\n", prg.ceiling_vals[i]);
+    ft_printf(1, "VALID MAP\n");
+
     exit_success(&prg);
 }

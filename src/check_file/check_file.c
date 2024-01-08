@@ -39,6 +39,5 @@ void    validate_map(char *file_name, t_prg *prg)
         close(fd);
         exit_error(NULL, prg);
     }
-    ft_printf(1, "VALID MAP\n");
     close(fd);
 }
