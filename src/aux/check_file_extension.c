@@ -1,6 +1,6 @@
 #include <libft.h>
 
-int    check_file_name(char *file_name, char *extension, int extension_len)
+int    check_if_invalid_ext(char *file_name, char *extension, int extension_len)
 {
     int     file_name_len;
     char    **split;

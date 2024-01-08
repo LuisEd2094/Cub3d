@@ -6,7 +6,7 @@ void    validate_map(char *file_name, t_prg *prg)
 {
     int fd;
 
-    if (check_file_name(file_name, ".cub", ft_strlen(".cub")))
+    if (check_if_invalid_ext(file_name, ".cub", ft_strlen(".cub")))
         exit_error(INCORRECT_FILE, prg);
     if (errno)
         return ;

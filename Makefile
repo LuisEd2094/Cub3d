@@ -46,7 +46,7 @@ CHECK		=	check_file.c parse_file.c
 
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
-AUX 		=	free_prg_mallocs.c exit_error.c exit_success.c init_prg.c init_int_array.c check_file_extension.c
+AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c init_int_array.c check_file_extension.c
 
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 

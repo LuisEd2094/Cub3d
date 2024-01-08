@@ -2,6 +2,6 @@
 
 void exit_success(t_prg *p)
 {
-    free_prg_mallocs(p);
+    close_imgs_fd(p);
     exit(EXIT_SUCCESS);
 }

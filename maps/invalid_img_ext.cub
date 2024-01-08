@@ -1,8 +1,8 @@
 
-NO ./a.xml
-SO ./b.xml
-WE ./c.xml
-EA ./wrongext.xm
+NO /Users/lsoto-do/core04/Cub3d/imgs/a.xml
+SO /Users/lsoto-do/core04/Cub3d/imgs/b.xml
+WE /Users/lsoto-do/core04/Cub3d/imgs/c.xml
+EA /Users/lsoto-do/core04/Cub3d/imgs/wrongext.xm
 F 220,100,0
 C 225,30,0
 

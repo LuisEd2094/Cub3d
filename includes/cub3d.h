@@ -18,10 +18,10 @@
 
 typedef struct s_prg
 {
-    char    *north_img; //0
-    char    *south_img; // 1
-    char    *west_img; //2
-    char    *east_img; //3
+    int     north_img; //0
+    int     south_img; // 1
+    int     west_img; //2
+    int     east_img; //3
     int     floor_vals[4];
     int     ceiling_vals[4];
     char    *error_msg;
@@ -34,8 +34,8 @@ bool    print_error(char *error);
 void    init_int_array(int *array, int size);
 void    exit_success(t_prg *p);
 void    exit_error(char * error, t_prg *prg);
-void    free_prg_mallocs(t_prg *prg);
-int     check_file_name(char *file_name, char *extension, int extension_len);
+void    close_imgs_fd(t_prg *prg);
+int     check_if_invalid_ext(char *file_name, char *extension, int extension_len);
 
 
 // CHECK FILE FUNCTIONS
