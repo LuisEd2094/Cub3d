@@ -1,7 +1,5 @@
 #include <cub3d.h>
 
-
-
 void    validate_map(char *file_name, t_prg *prg)
 {
     int fd;

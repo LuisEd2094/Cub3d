@@ -1,5 +1,5 @@
 NAME        = cub3D
-CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 AUX_PATH		= aux/
@@ -42,11 +42,13 @@ LIGHT_GREEN = \033[1;92m
 
 SRC         =	main.c 
 
-CHECK		=	check_file.c parse_file.c
+CHECK		=	check_file.c parse_file.c init_parseer.c parse_for_ids.c \
+				check_img_file.c check_ceil_floor_vals.c
 
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
-AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c init_int_array.c check_file_extension.c
+AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
+				init_int_array.c check_file_extension.c is_new_line.c \
 
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 

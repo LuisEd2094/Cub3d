@@ -2,6 +2,7 @@
     "files.associations": {
         "error_messages.h": "c",
         "ft_printf.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "parse_file.h": "c"
     }
 }

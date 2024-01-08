@@ -36,6 +36,7 @@ void    exit_success(t_prg *p);
 void    exit_error(char * error, t_prg *prg);
 void    close_imgs_fd(t_prg *prg);
 int     check_if_invalid_ext(char *file_name, char *extension, int extension_len);
+bool    is_new_line(char *element);
 
 
 // CHECK FILE FUNCTIONS
