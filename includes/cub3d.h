@@ -35,6 +35,7 @@ void    init_int_array(int *array, int size);
 void    exit_success(t_prg *p);
 void    exit_error(char * error, t_prg *prg);
 void    free_prg_mallocs(t_prg *prg);
+int     check_file_name(char *file_name, char *extension, int extension_len);
 
 
 // CHECK FILE FUNCTIONS

@@ -11,39 +11,54 @@ void tearDown(void) {
     // clean stuff up here
 }
 
+
+
 void test_error_val()
 {
 
-    int exit_value = system("../../../cub3D ../../../valid.cub");
+    int exit_value = system("../../../cub3D ../../../maps/valid.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
 
-    exit_value = system("../../../cub3D ../../../another_valid.cub");
+    exit_value = system("../../../cub3D ../../../maps/another_valid.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
 
-    exit_value = system("../../../cub3D ../../../valid_spaces.cub");
+    exit_value = system("../../../cub3D ../../../maps/valid_spaces.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
 
-    exit_value = system("../../../cub3D ../../../valid_f_c_spaces.cub");
+    exit_value = system("../../../cub3D ../../../maps/valid_f_c_spaces.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
    
-    exit_value = system("../../../cub3D ../../../invalid_multiple_ids.cub");
+    exit_value = system("../../../cub3D ../../../maps/invalid_multiple_ids.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
-    exit_value = system("../../../cub3D ../../../invalid_order.cub");
+    exit_value = system("../../../cub3D ../../../maps/invalid_order.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
     
-    exit_value = system("../../../cub3D ../../../invalid_tabs.cub");
+    exit_value = system("../../../cub3D ../../../maps/invalid_tabs.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
-    exit_value = system("../../../cub3D ../../../invalid_extension.cu");
+    exit_value = system("../../../cub3D ../../../maps/invalid_extension.cu");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
-    exit_value = system("../../../cub3D ../../../invalid_spaces.cub");
+    exit_value = system("../../../cub3D ../../../maps/invalid_spaces.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
-    exit_value = system("../../../cub3D ../../../another_invalid_space.cub");
+    exit_value = system("../../../cub3D ../../../maps/another_invalid_space.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+
+
+
+    exit_value = system("../../../cub3D ../../../maps/another_invalid_extension_img.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/invalid_access_img.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/invalid_img_ext.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
 
 }
 

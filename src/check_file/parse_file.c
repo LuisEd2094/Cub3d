@@ -81,8 +81,6 @@ bool check_rgb(char **elem, t_parseer *p)
     while (elem[++i])
     {
         values = ft_split(elem[i], ','); // cgecj what this prints if fails
-        for (int i = 0; values[i]; ++i)
-            ft_printf(1, ">%s<\n", values[i]);
         if (!values)
             return (0);
         j = -1;
@@ -110,12 +108,6 @@ bool check_rgb(char **elem, t_parseer *p)
 
     }
     return (1);
-    
-
-    for (int i = 0; elem[i]; ++i)
-        ft_printf(1, "%s\n", elem[i]);
-    if (elem)
-        return 1;
 }
 
 void get_rgb_vals(char **rgb_array, int array[4], t_prg *p)

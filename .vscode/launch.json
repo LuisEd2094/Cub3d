@@ -19,7 +19,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "/Users/lsoto-do/core04/Cub3d/cub3D",
-      "args": ["/Users/lsoto-do/core04/Cub3d/valid.cub"],
+      "args": ["/Users/lsoto-do/core04/Cub3d/maps/valid.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
