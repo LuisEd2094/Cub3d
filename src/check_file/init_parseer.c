@@ -18,6 +18,7 @@ void    set_booleans(t_parseer* parse)
     parse->rgb_str[1] = NULL;
     parse->rgb_str[2] = NULL;
     parse->rgb_str[3] = NULL;
+    parse->found_player = 0;
     parse->ids_found = 0;
     parse->found_all = 0;
     parse->found_new_line_btwn_maps = 0;

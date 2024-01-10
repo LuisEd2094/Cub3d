@@ -13,6 +13,7 @@ typedef struct s_parseer
     bool    found_all;
     bool    found_map;
     bool    found_new_line_btwn_maps;
+    bool    found_player;
     char    valid_map_chars[8];
     char    *valid_identifier[ID_ARRAY_SIZE];
     char    *rgb_str[4];

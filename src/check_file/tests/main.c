@@ -101,16 +101,16 @@ void test_maps(void)
     exit_value = system("../../../cub3D ../../../maps/invalid_new_line_map.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
-    exit_value = system("../../../cub3D ../../../maps/invalid_long_open_down.cub");
-    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
-
-    exit_value = system("../../../cub3D ../../../maps/invalid_long_open.cub");
-    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
-
     exit_value = system("../../../cub3D ../../../maps/invalid_multiple_players.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
     exit_value = system("../../../cub3D ../../../maps/invalid_no_player.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/invalid_long_open_down.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/invalid_long_open.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
     exit_value = system("../../../cub3D ../../../maps/invalid_open_complex.cub");
