@@ -20,6 +20,20 @@ void    set_booleans(t_parseer* parse)
     parse->rgb_str[3] = NULL;
     parse->ids_found = 0;
     parse->found_all = 0;
+    parse->found_new_line_btwn_maps = 0;
+    parse->list = NULL;
+}
+
+void    set_valid_char_map(t_parseer *p)
+{
+    p->valid_map_chars[0] = '0';
+    p->valid_map_chars[1] = '1';
+    p->valid_map_chars[2] = ' ';
+    p->valid_map_chars[3] = 'N';
+    p->valid_map_chars[4] = 'S';
+    p->valid_map_chars[5] = 'E';
+    p->valid_map_chars[6] = 'W';
+    p->valid_map_chars[7] = '\0';
 }
 
 
@@ -28,4 +42,5 @@ void    init_parseer(t_parseer *parse)
 {
     set_booleans(parse);
     set_valid_identifiers(parse);
+    set_valid_char_map(parse);
 }

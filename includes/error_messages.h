@@ -22,4 +22,12 @@ extension and permissions\n"
 # define RGB_ERROR "Error\nIncorrect ceiling/floor configuration\n"
 # endif
 
+# ifndef NO_MAP
+# define NO_MAP "Error\nFile does't have a map\n"
+# endif
+
+# ifndef WRONG_MAP
+# define WRONG_MAP "Error\nCheck subject specifications for the map\n"
+# endif
+
 #endif

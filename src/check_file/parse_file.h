@@ -12,8 +12,11 @@ typedef struct s_parseer
     int     ids_found;
     bool    found_all;
     bool    found_map;
+    bool    found_new_line_btwn_maps;
+    char    valid_map_chars[8];
     char    *valid_identifier[ID_ARRAY_SIZE];
     char    *rgb_str[4];
+    t_list  *list;
 } t_parseer;
 
 void    init_parseer(t_parseer *parse);
