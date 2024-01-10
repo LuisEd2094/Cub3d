@@ -1,7 +1,6 @@
-#include <cub3d.h>
 #include "unity.h"
 #include "unity_internals.h"
-#include "../parse_file.h"
+#include <stdlib.h>
 
 void setUp(void) {
     // set stuff up here
@@ -94,7 +93,7 @@ void test_maps(void)
 
     exit_value = system("../../../cub3D ../../../maps/invalid_no_map.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
-
+    
     exit_value = system("../../../cub3D ../../../maps/invalid_spaces_btwn_lines.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
@@ -105,6 +104,9 @@ void test_maps(void)
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
     exit_value = system("../../../cub3D ../../../maps/invalid_no_player.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/invalid_chars_map.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
     exit_value = system("../../../cub3D ../../../maps/invalid_long_open_down.cub");

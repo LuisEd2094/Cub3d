@@ -1,4 +1,4 @@
-cc ./main.c ./unity.c ../*.c ../../aux/*.c  ../../../libft/libft.a  -I../../../includes -I./ -I../ && ./a.out
+make -C /Users/lsoto-do/core04/Cub3d/ &&  cc ./main.c ./unity.c  && ./a.out
 
 #With leaks
 
