@@ -19,6 +19,24 @@ char *get_start_map(int fd, t_prg *prg)
 
 bool get_map_to_prg(t_prg *prg, t_parseer *parse)
 {
+    int i; 
+    int size;
+    t_list *node;
+
+    size = ft_lstsize(parse->list);
+    prg->map =(char **)malloc(sizeof(char *) * (size + 1));
+    if (!prg->map)
+        return (free_list(parse, false));
+    i = -1;
+    node = parse->list;
+    while (++i < size)
+    {
+        prg->map[i] = ft_strdup(node->content);
+        if (!prg->map[i])
+            return (free_list(parse, false));
+        node = node->next;
+    }
+    prg->map[i] = NULL;
     return (true);
 }
 

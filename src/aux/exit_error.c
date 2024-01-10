@@ -3,6 +3,7 @@
 void exit_error(char *error, t_prg *prg)
 {
     close_imgs_fd(prg);
+    free_mallocs(prg);
     if (error)
     {
         ft_printf(STDERR_FILENO, error);

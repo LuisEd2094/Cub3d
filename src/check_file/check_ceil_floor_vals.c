@@ -44,7 +44,7 @@ bool check_rgb(char **elem, t_parseer *p)
         if (!values)
             return (0);
         error = validate_value(values, p, &l);
-        free_2d_array(values);
+        free_2d_array((void **)values);
         if (error)
             return (0);
     }

@@ -24,6 +24,7 @@ typedef struct s_prg
     int     east_img; //3
     int     floor_vals[4];
     int     ceiling_vals[4];
+    char     **map;
     char    *error_msg;
 } t_prg;
 
@@ -37,7 +38,7 @@ void    exit_error(char * error, t_prg *prg);
 void    close_imgs_fd(t_prg *prg);
 int     check_if_invalid_ext(char *file_name, char *extension, int extension_len);
 bool    is_new_line(char *element);
-
+void    free_mallocs(t_prg *p);
 
 // CHECK FILE FUNCTIONS
 void    validate_map(char *file_name, t_prg *prg);

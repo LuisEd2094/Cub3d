@@ -51,7 +51,8 @@ CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
 AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				init_int_array.c check_file_extension.c is_new_line.c \
-
+				free_mallocs.c
+				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
 DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \

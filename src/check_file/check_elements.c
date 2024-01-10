@@ -58,5 +58,5 @@ void check_elements(t_parseer *parse, char *line, t_prg *prg)
     if (!elements)
         return; 
     check_for_identifiers(parse, elements, prg);
-    free_2d_array(elements);
+    free_2d_array((void **)elements);
 }

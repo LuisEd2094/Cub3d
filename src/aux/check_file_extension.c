@@ -14,10 +14,10 @@ int    check_if_invalid_ext(char *file_name, char *extension, int extension_len)
     file_name_len = ft_strlen(file);
     if (file_name_len < 5)
     {
-        free_2d_array(split);
+        free_2d_array((void **)split);
         return (1);
     }
     compare = ft_strcmp(extension, &file[file_name_len - extension_len]);
-    free_2d_array(split);
+    free_2d_array((void **)split);
     return (compare);
 }

@@ -23,6 +23,7 @@ void    set_booleans(t_parseer* parse)
     parse->found_all = 0;
     parse->found_new_line_btwn_maps = 0;
     parse->list = NULL;
+    parse->found_map = 0;
 }
 
 void    set_valid_char_map(t_parseer *p)
