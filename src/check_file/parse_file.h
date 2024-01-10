@@ -27,5 +27,7 @@ void    check_img_file(char **elemts, t_prg *p);
 void    check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse);
 void    check_elements(t_parseer *parse, char *line, t_prg *prg);
 bool    parse_map(int fd, t_prg *prg, t_parseer *parse);
-
+bool    get_map_to_list(int fd, t_prg *prg, t_parseer *parse, char *line);
+bool    free_list(t_parseer *parse, bool return_val);
+bool    valid_map_line(char * line, t_parseer *p);
 #endif

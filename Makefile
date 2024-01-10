@@ -44,7 +44,8 @@ SRC         =	main.c
 
 CHECK		=	check_file.c parse_file.c init_parseer.c parse_for_ids.c \
 				check_img_file.c check_ceil_floor_vals.c check_elements.c \
-				parse_map.c
+				parse_map.c get_map_to_list.c free_list.c valid_map_line.c \
+				
 
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
