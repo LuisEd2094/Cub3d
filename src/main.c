@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 
     init_prg(&prg);
     if (argc != 2)
-        exit_error(INCORRECT_USE, NULL);
+        exit_error(INCORRECT_USE, &prg);
     validate_map(argv[1], &prg);
     for (int i = 0; i < 3; i++)
         ft_printf(1, "RGB >%i<\n", prg.floor_vals[i]);

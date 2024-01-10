@@ -11,6 +11,7 @@ typedef struct s_parseer
     int     identifiers[ID_ARRAY_SIZE];
     int     ids_found;
     bool    found_all;
+    bool    found_map;
     char    *valid_identifier[ID_ARRAY_SIZE];
     char    *rgb_str[4];
 } t_parseer;
@@ -21,5 +22,6 @@ bool    parse_for_ids(int fd, t_prg *prg, t_parseer *parse);
 void    check_img_file(char **elemts, t_prg *p);
 void    check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse);
 void    check_elements(t_parseer *parse, char *line, t_prg *prg);
+bool    parse_map(int fd, t_prg *prg, t_parseer *parse);
 
 #endif

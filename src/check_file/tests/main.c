@@ -34,6 +34,9 @@ void test_ids()
     exit_value = system("../../../cub3D ../../../maps/invalid_multiple_ids.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
+    exit_value = system("../../../cub3D");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
     exit_value = system("../../../cub3D ../../../maps/invalid_order.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
@@ -60,6 +63,13 @@ void test_ids()
    //TEST_ASSERT_EQUAL_INT(EBADF, WEXITSTATUS(exit_value));
 
     exit_value = system("../../../cub3D ../../../maps/invalid_img_ext.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/invalid_no_full_rgb.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+
+    exit_value = system("../../../cub3D ../../../maps/invalid_not_all_imgs.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
 
@@ -108,6 +118,8 @@ void test_maps(void)
     exit_value = system("../../../cub3D ../../../maps/invalid_open_pitfall_down.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
+    exit_value = system("../../../cub3D ../../../maps/invalid_new_line_map.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
 }
 

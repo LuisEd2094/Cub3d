@@ -1,4 +1,3 @@
-#include <cub3d.h>
 #include "parse_file.h"
 
 bool validate_value(char ** values, t_parseer *p, int *out_l)
@@ -91,6 +90,7 @@ void check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse)
             get_rgb_vals(parse->rgb_str, p->floor_vals, p);
         else
             get_rgb_vals(parse->rgb_str, p->ceiling_vals, p);
-        free_2d_array_content(parse->rgb_str);
     }
+    free_2d_array_content(parse->rgb_str);
+
 }

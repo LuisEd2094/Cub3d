@@ -8,5 +8,7 @@ bool parse_file(int fd, t_prg *prg)
     init_parseer(&parse);
     if (!parse_for_ids(fd, prg, &parse) || errno)
         return (false);
+    if (!parse_map(fd, prg, &parse) || errno)
+        return (false);
     return (true);
 }
