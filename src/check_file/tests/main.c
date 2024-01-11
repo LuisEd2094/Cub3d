@@ -45,7 +45,7 @@ void test_ids()
     exit_value = system("../../../cub3D ../../../maps/invalid_extension.cu");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
-    exit_value = system("../../../cub3D ../../../maps/invalid_spaces.cub");
+    exit_value = system("../../../cub3D ../../../maps/invalid_spaces_c_f.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
     
     exit_value = system("../../../cub3D ../../../maps/another_invalid_space.cub");

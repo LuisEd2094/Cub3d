@@ -1,5 +1,5 @@
 NAME        = cub3D
-CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 AUX_PATH		= aux/
