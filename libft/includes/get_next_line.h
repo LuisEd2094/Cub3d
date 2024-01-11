@@ -6,7 +6,7 @@
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:24:49 by lsoto-do          #+#    #+#             */
-/*   Updated: 2023/07/05 10:01:14 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:09:40 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 500
+#  define BUFFER_SIZE 500
 # endif
 
 void	*ft_free_strs_line(char **str, char **str2);

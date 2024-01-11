@@ -1,9 +1,21 @@
-int check_2d_array_size(char *array[])
-{
-    int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_2d_array_size.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/11 10:09:13 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/01/11 10:09:34 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 0;
-    while (array[i])
-        i++;
-    return (i);
+int	check_2d_array_size(char *array[])
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
 }
