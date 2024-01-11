@@ -34,4 +34,6 @@ bool    parse_map(int fd, t_prg *prg, t_parseer *parse);
 bool    get_map_to_list(int fd, t_prg *prg, t_parseer *parse, char *line);
 bool    free_list(t_parseer *parse, bool return_val);
 bool    valid_map_line(char * line, t_parseer *p);
+bool    get_map_to_prg(t_prg *prg, t_parseer *parse);
+bool    check_map_borders(t_prg *prg, t_parseer *parse);
 #endif
