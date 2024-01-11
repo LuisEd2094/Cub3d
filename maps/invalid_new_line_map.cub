@@ -1,7 +1,7 @@
-NO /Users/lsoto-do/core04/Cub3d/imgs/a.xml
-SO /Users/lsoto-do/core04/Cub3d/imgs/b.xml
-WE /Users/lsoto-do/core04/Cub3d/imgs/c.xml
-EA /Users/lsoto-do/core04/Cub3d/imgs/d.xml
+NO ./imgs/a.xml
+SO ./imgs/b.xml
+WE ./imgs/c.xml
+EA ./imgs/d.xml
 F 220,100,0
 C 225,30,0
 
