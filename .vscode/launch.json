@@ -1,15 +1,4 @@
 {
-    "name": "C++ Launch (Windows)",
-    "type": "cppdbg",
-    "request": "launch",
-    "program": "/home/luised94/Cub3d/cub3D",
-    "args" : ["valid.cub"],
-    "stopAtEntry": false,
-    "externalConsole": true,
-    "logging": {
-        "moduleLoad": false,
-        "trace": true
-    },
     "preLaunchTask": "Buils Cub3d",
     "configurations": [
     {
@@ -18,13 +7,13 @@
       "name": "(lldb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/home/luised94/Cub3d/cub3D",
-      "args": ["/home/luised94/Cub3d/maps/invalid_multiple_ids.cub "],
+      "program": "/Users/lsoto-do/core04/Cub3d/cub3D",
+      "args": ["/Users/lsoto-do/core04/Cub3d/maps/invalid_open_complex.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "gdb"
+      "MIMode": "lldb"
     }
     ],
 

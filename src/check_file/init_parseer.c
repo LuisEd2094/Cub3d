@@ -23,6 +23,7 @@ void    set_booleans(t_parseer* parse)
     parse->found_all = 0;
     parse->found_new_line_btwn_maps = 0;
     parse->list = NULL;
+    parse->list_size = 0;
     parse->found_map = 0;
 }
 
@@ -45,4 +46,7 @@ void    init_parseer(t_parseer *parse)
     set_booleans(parse);
     set_valid_identifiers(parse);
     set_valid_char_map(parse);
+    parse->prev_len = 0;
+    parse->next_len = 0;
+    parse->next_line = NULL;
 }

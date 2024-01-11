@@ -43,5 +43,7 @@ bool get_map_to_list(int fd, t_prg *prg, t_parseer *parse, char *line)
             return (false);
         line = get_next_line(fd);
     }
+    if (!parse->found_player)
+        prg->error_msg = NO_PLAYER;
     return (true);
 }

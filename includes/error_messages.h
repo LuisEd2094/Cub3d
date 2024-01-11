@@ -26,8 +26,16 @@ extension and permissions\n"
 # define NO_MAP "Error\nFile does't have a map\n"
 # endif
 
+# ifndef NO_PLAYER
+# define NO_PLAYER "Error\nFile does't have a player\n"
+# endif
+
 # ifndef WRONG_MAP
 # define WRONG_MAP "Error\nCheck subject specifications for the map\n"
+# endif
+
+# ifndef OPEN_MAP
+# define OPEN_MAP "Error\nCheck map! There is an open wall\n"
 # endif
 
 #endif

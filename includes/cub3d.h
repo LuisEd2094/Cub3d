@@ -24,6 +24,7 @@ typedef struct s_prg
     int     east_img; //3
     int     floor_vals[4];
     int     ceiling_vals[4];
+    int     player_pos[3];
     char     **map;
     char    *error_msg;
 } t_prg;

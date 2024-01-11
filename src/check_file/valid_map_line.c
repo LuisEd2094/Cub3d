@@ -4,8 +4,8 @@ bool check_valid_char(char c, t_parseer *p)
 {
     int i;
 
-    i = 0;
-    while (p->valid_map_chars[i])
+    i = -1;
+    while (p->valid_map_chars[++i])
     {
         if (p->valid_map_chars[i] == c)
         {
@@ -18,7 +18,6 @@ bool check_valid_char(char c, t_parseer *p)
             }
             return (true);
         }
-        i++;
     }
     return (false);
 }

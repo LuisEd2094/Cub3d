@@ -17,6 +17,10 @@ typedef struct s_parseer
     char    valid_map_chars[8];
     char    *valid_identifier[ID_ARRAY_SIZE];
     char    *rgb_str[4];
+    int     prev_len;
+    int     next_len;
+    int     list_size;
+    char    *next_line;
     t_list  *list;
 } t_parseer;
 
