@@ -1,5 +1,5 @@
 NAME        = cub3D
-CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 AUX_PATH		= aux/
@@ -20,7 +20,7 @@ MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
 
 DEPS_PATH	= deps/
 LIB_PATH	= 	./libft
-LIB			=	$(LIB_PATH)/libft.a 
+LIB			=	$(LIB_PATH)/libft.a /home/luised94/Cub3d/libmlx.a  -lm -lXext -lX11
 LDFLAGS		= 	-L$(LIB_PATH) -lft 
 
 INCS        = -I./includes/
@@ -79,7 +79,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
 
 
 $(NAME): $(OBJS) $(LIB) Makefile
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LINEFLAGS) $(LIB)-o $(NAME) $(LDFLAGS)
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LINEFLAGS) $(LIB)  -o $(NAME) $(LDFLAGS)
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
 
 make_lib:

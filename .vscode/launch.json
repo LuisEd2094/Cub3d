@@ -1,15 +1,4 @@
 {
-    "name": "C++ Launch (Windows)",
-    "type": "cppdbg",
-    "request": "launch",
-    "program": "/home/luised94/Cub3d/cub3D",
-    "args" : ["valid.cub"],
-    "stopAtEntry": false,
-    "externalConsole": true,
-    "logging": {
-        "moduleLoad": false,
-        "trace": true
-    },
     "preLaunchTask": "Buils Cub3d",
     "configurations": [
     {
@@ -19,7 +8,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "/home/luised94/Cub3d/cub3D",
-      "args": ["/home/luised94/Cub3d/maps/invalid_multiple_ids.cub "],
+      "args": ["/home/luised94/Cub3d/maps/valid.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],

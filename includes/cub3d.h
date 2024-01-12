@@ -11,10 +11,19 @@
 # include "ft_printf.h"
 # include "libft.h"
 # include "error_messages.h"
+# include "mlx.h"
+# include <math.h>
+
 
 # ifndef RGB_ARRAY
 #  define RGB_ARRAY 3
 # endif
+
+typedef struct  t_s_mlx
+{
+    void    *ptr;
+    void    *window;
+}   t_mlx;
 
 typedef struct s_prg
 {
@@ -26,6 +35,7 @@ typedef struct s_prg
     int     ceiling_vals[4];
     char     **map;
     char    *error_msg;
+    t_mlx   *mlx;
 } t_prg;
 
 

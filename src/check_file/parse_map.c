@@ -51,6 +51,5 @@ bool parse_map(int fd, t_prg *prg, t_parseer *parse)
         return (free_list(parse, false));
     if (!get_map_to_prg(prg, parse))
         return(free_list(parse, false));
-    ft_lstiter(parse->list, (void *)(printf));
     return (free_list(parse, true));
 }
