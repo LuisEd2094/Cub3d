@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME        = cub3D
-CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 AUX_PATH		= aux/
@@ -35,7 +35,7 @@ LIB_PATH	= 	./libft
 LIB			=	$(LIB_PATH)/libft.a 
 LDFLAGS		= 	-L$(LIB_PATH) -lft 
 
-INCS        = -I./includes/
+INCS        = -I./includes/ -I$(LIB_PATH)/includes
 #Colors
 
 

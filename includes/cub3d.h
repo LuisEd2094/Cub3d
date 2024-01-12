@@ -19,9 +19,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <errno.h>
-# include "get_next_line.h"
-# include "ft_printf.h"
-# include "libft.h"
+# include <get_next_line.h>
+# include <ft_printf.h>
+# include <libft.h>
 # include "error_messages.h"
 
 # ifndef RGB_ARRAY
@@ -36,7 +36,10 @@ typedef struct s_prg
 	int		east_img; //3
 	int		floor_vals[4];
 	int		ceiling_vals[4];
-	int		player_pos[3];
+	double	player_x;
+	double	player_y;
+	double	camara_x;
+	double	camara_y;
 	char	**map;
 	char	*error_msg;
 }	t_prg;

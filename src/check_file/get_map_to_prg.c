@@ -21,19 +21,62 @@ bool	init_map(t_parseer *p, t_prg *prg)
 	return (true);
 }
 
+char set_player_info(t_prg *prg, char c, int y, int x)
+{
+	if (c == 'N' || c == 'S')
+	{
+		prg->camara_x = 0;
+		if (c == 'N')
+			prg->camara_y = -1;
+		else
+			prg->camara_y = 1;
+	}
+	else if (c == 'E' || c == 'W')
+	{
+		prg->camara_y = 0;
+		if (c == 'E')
+			prg->camara_x = 1;
+		else
+			prg->camara_x = -1;
+	}
+	prg->player_x = x;
+	prg->player_y = y;
+	return ('0');
+}
+
+char *save_str_info_to_map(char *s, t_prg *prg, int y)
+{
+	int		x;
+	char	*res;
+	
+	res = ft_strdup(s);
+	if (!res)
+		return (NULL);
+	x = -1;
+	while (res[++x])
+	{
+		if (res[x] != '0' && res[x] != '1' && res[x] != ' ')
+			res[x] = set_player_info(prg, res[x], y, x);
+	}
+	return (res);
+}
+
 bool	get_map_to_prg(t_prg *prg, t_parseer *parse)
 {
 	int		i;
+	int		y;
 	t_list	*curr;
 	t_list	*next;
 
 	if (!init_map(parse, prg))
 		return (free_list(parse, false));
 	i = -1;
+	y = -1;
 	curr = parse->list;
 	while (++i < parse->list_size)
 	{
-		prg->map[i] = ft_strdup(curr->content);
+		y++;
+		prg->map[i] = save_str_info_to_map(curr->content, prg, y);
 		if (!prg->map[i])
 			return (free_list(parse, false));
 		curr = curr->next;

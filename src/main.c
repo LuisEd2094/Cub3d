@@ -20,10 +20,8 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		exit_error(INCORRECT_USE, &prg);
 	validate_map(argv[1], &prg);
-	for (int i = 0; i < 3; i++)
-		ft_printf(1, "RGB >%i<\n", prg.floor_vals[i]);
-	for (int i = 0; i < 3; i++)
-		ft_printf(1, "RGB >%i<\n", prg.ceiling_vals[i]);
 	ft_printf(1, "VALID MAP\n");
+	for (int i = 0; prg.map[i]; ++i)
+		ft_printf(1, "%s\n", prg.map[i]);
 	exit_success(&prg);
 }

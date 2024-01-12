@@ -29,7 +29,10 @@ void	init_prg(t_prg *prg)
 	prg->east_img = 0;
 	init_int_array(prg->floor_vals, RGB_ARRAY);
 	init_int_array(prg->ceiling_vals, RGB_ARRAY);
-	init_int_array(prg->player_pos, 3);
+	prg->camara_x = 0;
+	prg->camara_y = 0;
+	prg->player_y = 0;
+	prg->player_x = 0;
 	prg->error_msg = NULL;
 	prg->map = NULL;
 	errno = 0;
