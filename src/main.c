@@ -1,19 +1,53 @@
 #include <cub3d.h>
 #define mapWidth 24
 #define mapHeight 24
-#define w 600
-#define h 400
+#define w 640
+#define h 480
 
 #include <math.h>
 
+
+
+/*	int		i;
+	float	x;
+	float	y;
+	float	x1, y1;
+	float	x2, y2, dx, dy, step;
+
+	x1 = 1;
+	y1 = 1;
+	x2 = 3;
+	y2 = 4;
+
+	dx = x2 - x1;
+	dy = y2 - y1;
+	if (fabs(dx) >= fabs(dy))
+		step = fabs(dx);
+	else
+		step = fabs(dy);
+	dx = dx / step;
+	dy = dy / step;
+	x = x1;
+	y = y1;
+	i = 0;
+	while (i <= step)
+	{
+		printf("%d - x: %f, y: %f\n", i, x, y);
+		x = x + dx;
+		y = y + dy;
+		i = i + 1;
+	}*/
+
+void draw_walls(t_prg *prg)
+{
  int worldMap[mapWidth][mapHeight]=
 {
-  {1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-  {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
-  {3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
-  {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
-  {3,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+  {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {3,0,0,0,0,0,1,2,2,2,2,0,0,0,0,1,1,1,1,1,0,0,0,4},
+  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,4,0,0,0,4,0,0,0,1},
   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
   {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
@@ -34,10 +68,9 @@
   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
-
-void draw_walls(t_prg *prg)
-{
-    double posX = 5, posY = 3;  //x and y start position
+    for(int x = 0; x < w; x++)
+    {
+    double posX = 1, posY = 1.10;  //x and y start position
     double dirX = 1, dirY = 0; //initial direction vector
 
     //dir x 0 y -1 up
@@ -45,13 +78,10 @@ void draw_walls(t_prg *prg)
     // dirX = 1, dirY = 0;right
     // dirX = -1, dirY = 0;left
 
-    double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+      double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
 
-    //planeY  closer to 0, more to up
-    double time = 0; //time of current frame
-    double oldTime = 0; //time of previous frame
-    for(int x = 0; x < w; x++)
-    {
+      double time = 0; //time of current frame
+      double oldTime = 0; //time of previous frame
       //calculate ray position and direction
       double cameraX = 2 * x / (double)w - 1; //x-coordinate in camera space
       double rayDirX = dirX + planeX * cameraX;
@@ -76,7 +106,7 @@ void draw_walls(t_prg *prg)
       // Division through zero is prevented, even though technically that's not
       // needed in C++ with IEEE 754 floating point values.
       double deltaDistX = (rayDirX == 0) ? 1e30 : abs(1 / rayDirX);
-      double deltaDistY =  (rayDirY == 0) ? 1e30 : abs(1 / rayDirY);
+      double deltaDistY = (rayDirY == 0) ? 1e30 : abs(1 / rayDirY);
 
       double perpWallDist;
 
@@ -108,47 +138,43 @@ void draw_walls(t_prg *prg)
         sideDistY = (mapY + 1.0 - posY) * deltaDistY;
       }
       //perform DDA
-    while (hit == 0)
-    {
-        // Jump to the next map square, either in x-direction or y-direction
-        if (sideDistX < sideDistY)
+      while(hit == 0)
+      {
+        //jump to next map square, either in x-direction, or in y-direction
+        if(sideDistX < sideDistY)
         {
-            sideDistX += deltaDistX;
-            mapX += stepX;
-            side = 0;
+          sideDistX += deltaDistX;
+          mapX += stepX;
+          side = 0;
         }
         else
         {
-            sideDistY += deltaDistY;
-            mapY += stepY;
-            side = 1;
+          sideDistY += deltaDistY;
+          mapY += stepY;
+          side = 1;
         }
-
-        // Check if ray has hit a wall
-        if (worldMap[mapX][mapY] > 0)
-            hit = 1;
-    }
+        //Check if ray has hit a wall
+        if(worldMap[mapY][mapX] > 0) hit = 1;
+      }
       //Calculate distance projected on camera direction. This is the shortest distance from the point where the wall is
       //hit to the camera plane. Euclidean to center camera point would give fisheye effect!
       //This can be computed as (mapX - posX + (1 - stepX) / 2) / rayDirX for side == 0, or same formula with Y
       //for size == 1, but can be simplified to the code below thanks to how sideDist and deltaDist are computed:
       //because they were left scaled to |rayDir|. sideDist is the entire length of the ray above after the multiple
       //steps, but we subtract deltaDist once because one step more into the wall was taken above.
-     //Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
-if(side == 0) perpWallDist = fabs((mapX - posX + (1 - stepX) / 2) / rayDirX);
-else          perpWallDist = fabs((mapY - posY + (1 - stepY) / 2) / rayDirY);
+      if(side == 0) 
+        perpWallDist = fabs((mapX - posX + (1 - stepX) / 2) / rayDirX);
+      else          
+        perpWallDist = fabs((mapY - posY + (1 - stepY) / 2) / rayDirY);
 
       //Calculate height of line to draw on screen
-    int lineHeight = (int)(h / perpWallDist);
+      int lineHeight = (int)(h / perpWallDist);
 
-    // Apply a scaling factor based on the distance to the wall
-    lineHeight = (lineHeight > h) ? h : lineHeight; // Clamp the line height
-
-    // Calculate starting and ending pixel positions for the wall slice
-    int drawStart = -lineHeight / 2 + h / 2;
-    if (drawStart < 0) drawStart = 0;
-    int drawEnd = lineHeight / 2 + h / 2;
-    if (drawEnd >= h) drawEnd = h - 1;
+      //calculate lowest and highest pixel to fill in current stripe
+      int drawStart = -lineHeight / 2 + h / 2;
+      if(drawStart < 0) drawStart = 0;
+      int drawEnd = lineHeight / 2 + h / 2;
+      if(drawEnd >= h) drawEnd = h - 1;
 
       //choose wall color
     int wallColor;
@@ -173,7 +199,6 @@ else          perpWallDist = fabs((mapY - posY + (1 - stepY) / 2) / rayDirY);
         wallColor = 0x2F4F4F; // Default color for unknown values
         break;
     }
-      if(side == 1) {wallColor = wallColor / 2;}
 
       //give x and y sides different brightness
     for (int y = drawStart; y <= drawEnd; y++)
