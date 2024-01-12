@@ -8,7 +8,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "/home/luised94/Cub3d/cub3D",
-      "args": ["/home/luised94/Cub3d/maps/valid.cub"],
+      "args": ["/home/luised94/Cub3d/maps/another_invalid_extension_img.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],

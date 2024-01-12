@@ -12,10 +12,17 @@
 
 #include "parse_file.h"
 
-bool	return_error_invalid_line(char *line, t_prg *prg)
+bool	return_error_invalid_line(char *line, t_prg *prg, int fd, bool set_msg)
 {
 	free(line);
-	prg->error_msg = WRONG_MAP;
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	if (set_msg)
+		prg->error_msg = WRONG_MAP;
 	return (false);
 }
 
@@ -41,7 +48,7 @@ bool	get_map_to_list(int fd, t_prg *prg, t_parseer *parse, char *line)
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
 		if (!valid_map_line(line, parse))
-			return (return_error_invalid_line(line, prg));
+			return (return_error_invalid_line(line, prg, fd, 1));
 		if (!line[0])
 		{
 			free(line);
@@ -49,7 +56,7 @@ bool	get_map_to_list(int fd, t_prg *prg, t_parseer *parse, char *line)
 			continue ;
 		}
 		if (!add_line_to_list(line, parse))
-			return (false);
+			return (return_error_invalid_line(line, prg, fd, 0));
 		line = get_next_line(fd);
 	}
 	if (!parse->found_player)
