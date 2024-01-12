@@ -18,19 +18,6 @@ void	check_if_found_all(t_parseer *p)
 		p->found_all = 1;
 }
 
-bool	read_to_free_next(int fd)
-{
-	char *line;
-
-	line = get_next_line(fd);
-	while (line)
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
-	return (false);
-}
-
 bool	parse_for_ids(int fd, t_prg *prg, t_parseer *parse)
 {
 	char	*line;
@@ -38,7 +25,7 @@ bool	parse_for_ids(int fd, t_prg *prg, t_parseer *parse)
 	line = "";
 	while (line && !parse->found_all)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(fd, 0);
 		if (!line)
 			break ;
 		if (line[ft_strlen(line) - 1] == '\n')
@@ -46,7 +33,7 @@ bool	parse_for_ids(int fd, t_prg *prg, t_parseer *parse)
 		check_elements(parse, line, prg);
 		free(line);
 		if (prg->error_msg || errno)
-			return (read_to_free_next(fd));
+			return (get_next_line(fd, 1));
 		check_if_found_all(parse);
 	}
 	return (true);

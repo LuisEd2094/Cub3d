@@ -16,11 +16,11 @@ char	*get_start_map(int fd, t_prg *prg)
 {
 	char	*line;
 
-	line = get_next_line(fd);
+	line = get_next_line(fd, 0);
 	while (line && is_new_line(line))
 	{
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(fd, 0);
 		if (!line)
 			break ;
 	}
