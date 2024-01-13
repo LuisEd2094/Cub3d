@@ -178,9 +178,9 @@ void draw_walls(t_prg *prg)
       //because they were left scaled to |rayDir|. sideDist is the entire length of the ray above after the multiple
       //steps, but we subtract deltaDist once because one step more into the wall was taken above.
       if(side == 0) 
-        perpWallDist = fabs((mapX - posX + (1 - stepX) / 2) / rayDirX);
+        perpWallDist = fabs((mapX - posX + (1 - stepX) / 2) / rayDirX) ; //(sideDistX - deltaDistX); //
       else          
-        perpWallDist = fabs((mapY - posY + (1 - stepY) / 2) / rayDirY);
+        perpWallDist = fabs((mapY - posY + (1 - stepY) / 2) / rayDirY); //(sideDistY - deltaDistY); //
 
       //Calculate height of line to draw on screen
       int lineHeight = (int)(h / perpWallDist);
@@ -249,7 +249,7 @@ int rotate_camara(t_prg *prg, int dir)
 {
   double old_dir_x = prg->camara_x;
   double old_plane_x = prg->plane_x;
-  double rotate_angle = dir  * M_PI / 2.0;
+  double rotate_angle = (90  * M_PI / 180.0);
   double cos_rot = cos(rotate_angle);
   double sin_rot = sin(rotate_angle);
   
@@ -259,12 +259,14 @@ int rotate_camara(t_prg *prg, int dir)
 
   // Rotate plane vector
   double new_plane_x = prg->plane_x * cos_rot - prg->plane_y * sin_rot;
-  double new_plane_y = prg->plane_x * sin_rot + prg->plane_y * cos_rot;
+  double new_plane_y = old_plane_x  * sin_rot + prg->plane_y * cos_rot;
 
-  prg->camara_x = new_camara_x;
-  prg->camara_y = new_camara_y;
-  prg->plane_x = new_plane_x;
-  prg->plane_y = new_plane_y;
+  prg->camara_x = new_camara_x * dir;
+  prg->camara_y = new_camara_y * dir;
+  prg->plane_x = new_plane_x * dir ;
+  prg->plane_y = new_plane_y * dir;
+
+  //RayX 0.657937 RayY -1.000000
 
   update_window(prg);
   return (0);
