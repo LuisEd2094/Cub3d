@@ -25,6 +25,7 @@
 # include "error_messages.h"
 # include "mlx.h"
 # include <math.h>
+# include "keys.h"
 
 
 # ifndef RGB_ARRAY
@@ -49,6 +50,8 @@ typedef struct s_prg
 	double	player_y;
 	double	camara_x;
 	double	camara_y;
+	double	plane_x;
+	double	plane_y;
 	char	**map;
 	char	*error_msg;
     t_mlx   *mlx;

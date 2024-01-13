@@ -26,18 +26,23 @@ char set_player_info(t_prg *prg, char c, int y, int x)
 	if (c == 'N' || c == 'S')
 	{
 		prg->camara_x = 0;
+		prg->plane_y = 0;
 		if (c == 'N')
 			prg->camara_y = -1;
 		else
 			prg->camara_y = 1;
+		prg->plane_x = 0.66 * (-prg->camara_y);
+
 	}
 	else if (c == 'E' || c == 'W')
 	{
 		prg->camara_y = 0;
+		prg->camara_x = 0;
 		if (c == 'E')
 			prg->camara_x = 1;
 		else
 			prg->camara_x = -1;
+		prg->plane_y = 0.66 * (prg->camara_y);
 	}
 	prg->player_x = x;
 	prg->player_y = y;
