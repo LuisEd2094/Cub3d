@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/11 10:05:31 by lsoto-do          #+#    #+#              #
+#    Updated: 2024/01/11 10:05:32 by lsoto-do         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME        = cub3D
 CFLAGS      = -g #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
@@ -23,7 +35,7 @@ LIB_PATH	= 	./libft
 LIB			=	$(LIB_PATH)/libft.a /home/luised94/Cub3d/libmlx.a  -lm -lXext -lX11
 LDFLAGS		= 	-L$(LIB_PATH) -lft 
 
-INCS        = -I./includes/
+INCS        = -I./includes/ -I$(LIB_PATH)/includes
 #Colors
 
 
@@ -45,6 +57,7 @@ SRC         =	main.c
 CHECK		=	check_file.c parse_file.c init_parseer.c parse_for_ids.c \
 				check_img_file.c check_ceil_floor_vals.c check_elements.c \
 				parse_map.c get_map_to_list.c free_list.c valid_map_line.c \
+				get_map_to_prg.c check_map_borders.c
 				
 
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))

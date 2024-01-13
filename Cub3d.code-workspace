@@ -1,16 +1,7 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"files.associations": {
-			"error_messages.h": "c",
-			"ft_printf.h": "c",
-			"stdbool.h": "c",
-			"parse_file.h": "c",
-			"cub3d.h": "c"
-		}
-	}
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
 }

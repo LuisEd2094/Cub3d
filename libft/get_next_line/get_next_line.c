@@ -95,7 +95,7 @@ char	*read_file(int fd, char *buffer, int bytes_read)
 	return (buffer);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int close)
 {
 	static char	*buffer[4096];
 	char		*line;
@@ -103,7 +103,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0)
 		return (NULL);
-	if (BUFFER_SIZE <= 0)
+	if (BUFFER_SIZE <= 0 || close)
 	{
 		if (buffer[fd])
 			ft_free_strs_line(&buffer[fd], 0);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/11 10:19:02 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/01/11 10:19:27 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 #define mapWidth 24
 #define mapHeight 24
@@ -208,9 +220,9 @@ void draw_walls(t_prg *prg)
   }
  }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-    t_prg prg;
+	t_prg	prg;
 
     init_prg(&prg);
     if (argc != 2)
@@ -221,21 +233,6 @@ int main(int argc, char *argv[])
     for (int i = 0; i < 3; i++)
         ft_printf(1, "RGB >%i<\n", prg.ceiling_vals[i]);
     ft_printf(1, "VALID MAP\n");
-
-
-    prg.mlx->ptr = mlx_init();
-    if (!prg.mlx->ptr)
-	{
-		exit_success(&prg);
-        ft_printf(1, "HELLO");
-
-	}
-    prg.mlx->window = mlx_new_window(prg.mlx->ptr, w, h, "cub3d"); 
-    draw_walls(&prg);
-
-
-	mlx_loop(prg.mlx->ptr);
-
 
     exit_success(&prg);
 }
