@@ -38,7 +38,7 @@ bool	check_zero(t_prg *prg, int i, int j, t_parseer *parse)
 {
 	if (i == 0 || j == 0)
 		return (set_open_map_error(prg));
-	else if (prg->map[i][j + 1] && prg->map[i][j + 1] == ' ')
+	else if (!prg->map[i][j + 1] || prg->map[i][j + 1] == ' ')
 		return (set_open_map_error(prg));
 	else if (parse->next_line && j < parse->next_len && \
 			parse->next_line[j] == ' ')

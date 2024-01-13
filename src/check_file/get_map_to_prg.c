@@ -82,5 +82,9 @@ bool	get_map_to_prg(t_prg *prg, t_parseer *parse)
 		curr = curr->next;
 	}
 	prg->map[i] = NULL;
+	for (int j = 0; prg->map[j]; ++j)
+	{
+		ft_printf(1, "%s\n", prg->map[j]);
+	}
 	return (check_map_borders(prg, parse));
 }
