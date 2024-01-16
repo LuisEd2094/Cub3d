@@ -52,7 +52,7 @@
 
 void draw_walls(t_prg *prg)
 {
- /*int worldMap[mapWidth][mapHeight]=
+ int worldMap[mapWidth][mapHeight]=
 {
   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
   {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -78,20 +78,19 @@ void draw_walls(t_prg *prg)
   {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
   {1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};*/
+};
 
     for(int x = 0; x < w; x++)
     {
     double posX = prg->player_x, posY = prg->player_y;  //x and y start position
-    double dirX = prg->camara_x, dirY = prg->camara_y; //initial direction vector
+    double dirX = 1, dirY = 0; //initial direction vector
 
     //dir x 0 y -1 up
     //x 0 y 1 down
     // dirX = 1, dirY = 0;right
     // dirX = -1, dirY = 0;left
-      // i think plany X and Y change depending on where you are looking at
-      double planeX = prg->plane_x, planeY = prg->plane_y; //the 2d raycaster version of camera plane
-      //plane X has to be - for SOUTH VIEW, plane Y has to be -Negative for west view
+
+      double planeX = 0, planeY = 0.80; //the 2d raycaster version of camera plane
 
       double time = 0; //time of current frame
       double oldTime = 0; //time of previous frame
@@ -120,8 +119,6 @@ void draw_walls(t_prg *prg)
       // needed in C++ with IEEE 754 floating point values.
       double deltaDistX = (rayDirX == 0) ? 1e30 : abs(1 / rayDirX);
       double deltaDistY = (rayDirY == 0) ? 1e30 : abs(1 / rayDirY);
-
-      printf("RayX %f RayY %f\n", rayDirX, rayDirY);
 
       double perpWallDist;
 
@@ -169,7 +166,7 @@ void draw_walls(t_prg *prg)
           side = 1;
         }
         //Check if ray has hit a wall
-        if(prg->map[mapY][mapX] == '1') hit = 1;
+        if(prg->map[mapX][mapY] == '1') hit = 1;
       }
       //Calculate distance projected on camera direction. This is the shortest distance from the point where the wall is
       //hit to the camera plane. Euclidean to center camera point would give fisheye effect!
@@ -178,36 +175,36 @@ void draw_walls(t_prg *prg)
       //because they were left scaled to |rayDir|. sideDist is the entire length of the ray above after the multiple
       //steps, but we subtract deltaDist once because one step more into the wall was taken above.
       if(side == 0) 
-        perpWallDist = fabs((mapX - posX + (1 - stepX) / 2) / rayDirX) ; //(sideDistX - deltaDistX); //
+        perpWallDist = fabs((mapX - posX + (1 - stepX) / 2) / rayDirX);
       else          
-        perpWallDist = fabs((mapY - posY + (1 - stepY) / 2) / rayDirY); //(sideDistY - deltaDistY); //
+        perpWallDist = fabs((mapY - posY + (1 - stepY) / 2) / rayDirY);
 
       //Calculate height of line to draw on screen
       int lineHeight = (int)(h / perpWallDist);
 
       //calculate lowest and highest pixel to fill in current stripe
-      int drawStart = -(lineHeight / 2) + (h / 2);
+      int drawStart = -lineHeight / 2 + h / 2;
       if(drawStart < 0) drawStart = 0;
-      int drawEnd = (lineHeight / 2 )+( h / 2);
+      int drawEnd = lineHeight / 2 + h / 2;
       if(drawEnd >= h) drawEnd = h - 1;
 
       //choose wall color
     int wallColor;
-    switch (prg->map[mapY][mapX])
+    switch (prg->map[mapX][mapY])
     {
-    case '1':
+    case 1:
         wallColor = 0xFF0000; // Red for walls
         break;
-    case '2':
+    case 2:
         wallColor = 0x00FF00; // Green for different walls
         break;
-    case '3':
+    case 3:
         wallColor = 0x0000FF; // Blue for other walls
         break;
-    case '4':
+    case 4:
         wallColor = 0xFFFFFF; // White for another type of wall
         break;
-    case '5':
+    case 5:
         wallColor = 0xFFFF00; // Yellow for yet another type of wall
         break;
     default:
@@ -239,9 +236,10 @@ int make_move(t_prg *prg, int dir)
   double move_speed;
 
   move_speed = 0.5;
-  prg->player_x += (prg->camara_x * move_speed) * dir; // 1 is movement speed
-  prg->player_y += (prg->camara_y * move_speed) * dir;
+  prg->player_x +=  move_speed * dir; // 1 is movement speed
+  prg->player_y +=  move_speed * dir;
   update_window(prg);
+  printf("");
 
 }
 

@@ -8,11 +8,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "/home/luised94/Cub3d/cub3D",
-<<<<<<< HEAD
       "args": ["/home/luised94/Cub3d/maps/valid.cub"],
-=======
-      "args": ["/home/luised94/Cub3d/maps/invalid_player_on_border.cub"],
->>>>>>> parse_file
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
