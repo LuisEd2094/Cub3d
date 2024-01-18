@@ -63,6 +63,7 @@ char *save_str_info_to_map(char *s, t_prg *prg, int y)
 		if (res[x] != '0' && res[x] != '1' && res[x] != ' ')
 			res[x] = set_player_info(prg, res[x], y, x);
 	}
+	prg->map_w = ft_max(prg->map_w, x);
 	return (res);
 }
 
@@ -87,5 +88,6 @@ bool	get_map_to_prg(t_prg *prg, t_parseer *parse)
 		curr = curr->next;
 	}
 	prg->map[i] = NULL;
+	prg->map_h = parse->list_size;
 	return (check_map_borders(prg, parse));
 }

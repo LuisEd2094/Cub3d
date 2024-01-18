@@ -23,6 +23,9 @@ void	init_str_array(char **array, int size)
 
 void	init_prg(t_prg *prg)
 {
+	prg->mlx = (t_mlx *)malloc(sizeof (t_mlx));
+	if (!prg->mlx)
+		exit_error(NULL, prg);
 	prg->north_img = 0;
 	prg->south_img = 0;
 	prg->west_img = 0;
@@ -35,5 +38,9 @@ void	init_prg(t_prg *prg)
 	prg->player_x = 0;
 	prg->error_msg = NULL;
 	prg->map = NULL;
+	prg->map_h = 0;
+	prg->map_w = 0;
+	prg->map_tile_h = 0;
+	prg->map_tile_w = 0; 
 	errno = 0;
 }

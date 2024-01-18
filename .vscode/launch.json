@@ -7,17 +7,13 @@
       "name": "(lldb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/home/luised94/Cub3d/cub3D",
-<<<<<<< HEAD
-      "args": ["/home/luised94/Cub3d/maps/valid.cub"],
-=======
-      "args": ["/home/luised94/Cub3d/maps/invalid_player_on_border.cub"],
->>>>>>> parse_file
+      "program": "/Users/lsoto-do/core04/Cub3d/cub3D",
+      "args": ["/Users/lsoto-do/core04/Cub3d/maps/valid.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "gdb"
+      "MIMode": "lldb"
     }
     ],
 

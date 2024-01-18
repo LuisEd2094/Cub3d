@@ -118,8 +118,8 @@ void draw_walls(t_prg *prg)
       //stepping further below works. So the values can be computed as below.
       // Division through zero is prevented, even though technically that's not
       // needed in C++ with IEEE 754 floating point values.
-      double deltaDistX = (rayDirX == 0) ? 1e30 : abs(1 / rayDirX);
-      double deltaDistY = (rayDirY == 0) ? 1e30 : abs(1 / rayDirY);
+      double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
+      double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
 
       printf("RayX %f RayY %f\n", rayDirX, rayDirY);
 
@@ -226,6 +226,7 @@ void draw_walls(t_prg *prg)
 int close_game(t_prg *prg)
 {
   exit_success(prg);
+  return (0);
 }
 
 void update_window(t_prg *prg)
@@ -242,7 +243,8 @@ int make_move(t_prg *prg, int dir)
   prg->player_x += (prg->camara_x * move_speed) * dir; // 1 is movement speed
   prg->player_y += (prg->camara_y * move_speed) * dir;
   update_window(prg);
-
+  
+  return (1);
 }
 
 int rotate_camara(t_prg *prg, int dir)
@@ -292,36 +294,87 @@ void get_hooks(t_prg *prg)
   mlx_hook(prg->mlx->window, 17, 0, close_game, (void *)prg);
   mlx_key_hook(prg->mlx->window, key_hook, (void *)prg); 
 }
+/*
+x 0 3
+y 0 3
+
+x 4 7
+y 0 3
+
+x 0 3
+y 4 7*/
+//each box is 2 x 2 pixels
+
+void draw_map(t_prg *prg)
+{
+
+  int wallColor = 0xFF0000; // Red for walls
+  int y_pos;
+  int x_pos; 
+
+
+  prg->map_tile_h = 8;
+  prg->map_tile_w = 8;
+  x_pos = 0;
+  for (int x = 0; x < w; ++x)
+  {
+    if (x % prg->map_tile_w == prg->map_tile_w - 1)
+      x_pos++;
+    y_pos = 0;
+    for (int y = 0; y < h ; ++y)
+    {
+ 
+     // printf ("x = %i\n", x / 4);
+      //printf ("y = %i\n",  y_pos);
+      if (y % prg->map_tile_h == prg->map_tile_h - 1)
+        y_pos++;     
+      if (y_pos < prg->map_h && x_pos < ft_strlen(prg->map[y_pos]))
+      {
+        if (prg->map[y_pos][x_pos] == '1')
+          wallColor = 0xFF0000;
+        else
+          wallColor = 0x000000;
+      }
+      else
+        wallColor = 0x000000;
+
+      mlx_pixel_put(prg->mlx->ptr, prg->mlx->window, x, y, wallColor);
+
+    }
+  }
+}
 
 int	main(int argc, char *argv[])
 {
 	t_prg	prg;
 
-    init_prg(&prg);
-    if (argc != 2)
-        exit_error(INCORRECT_USE, &prg);
-    validate_map(argv[1], &prg);
-    for (int i = 0; i < 3; i++)
-        ft_printf(1, "RGB >%i<\n", prg.floor_vals[i]);
-    for (int i = 0; i < 3; i++)
-        ft_printf(1, "RGB >%i<\n", prg.ceiling_vals[i]);
-    ft_printf(1, "VALID MAP\n");
-    prg.mlx->ptr = mlx_init();
-    if (!prg.mlx->ptr)
-      exit_error(NULL, &prg);
-    prg.mlx->window = mlx_new_window(prg.mlx->ptr, w, h, "cub3d");
-    if (!prg.mlx->window)
-    {
-      //free_mlx(prg->mlx); Should check mlx elemtns, imgs and stuff and free them;
-      exit_error(NULL, &prg);
-    }
-    /*prg.plane_x = 0;
-    prg.plane_y = -0.66;*/
-    get_hooks(&prg); 
+  init_prg(&prg);
+  if (argc != 2)
+      exit_error(INCORRECT_USE, &prg);
+  validate_map(argv[1], &prg);
+  for (int i = 0; i < 3; i++)
+      ft_printf(1, "RGB >%i<\n", prg.floor_vals[i]);
+  for (int i = 0; i < 3; i++)
+      ft_printf(1, "RGB >%i<\n", prg.ceiling_vals[i]);
+  ft_printf(1, "VALID MAP\n");
+  prg.mlx->ptr = NULL;
+  prg.mlx->ptr = mlx_init();
+  if (!prg.mlx->ptr)
+    exit_error(NULL, &prg);
+  prg.mlx->window = mlx_new_window(prg.mlx->ptr, w, h, "cub3d");
+  if (!prg.mlx->window)
+  {
+    //free_mlx(prg->mlx); Should check mlx elemtns, imgs and stuff and free them;
+    exit_error(NULL, &prg);
+  }
+  /*prg.plane_x = 0;
+  prg.plane_y = -0.66;*/
+  //get_hooks(&prg); 
 
-    draw_walls(&prg);
-	  mlx_loop(prg.mlx->ptr);
+  //draw_walls(&prg);
+  draw_map(&prg);
+  mlx_loop(prg.mlx->ptr);
 
 
-    exit_success(&prg);
+  exit_success(&prg);
 }

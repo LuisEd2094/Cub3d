@@ -52,6 +52,10 @@ typedef struct s_prg
 	double	camara_y;
 	double	plane_x;
 	double	plane_y;
+	int		map_h;
+	int		map_w;
+	int		map_tile_h;
+	int		map_tile_w;
 	char	**map;
 	char	*error_msg;
     t_mlx   *mlx;
@@ -67,6 +71,8 @@ int		check_if_invalid_ext(char *file_name, \
 		char *extension, int extension_len);
 bool	is_new_line(char *element);
 void	free_mallocs(t_prg *p);
+int		ft_max(int a, int b);
+
 
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);

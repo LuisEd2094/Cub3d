@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME        = cub3D
-CFLAGS      = -g #-fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g -fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 AUX_PATH		= aux/
@@ -32,8 +32,8 @@ MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
 
 DEPS_PATH	= deps/
 LIB_PATH	= 	./libft
-LIB			=	$(LIB_PATH)/libft.a /home/luised94/Cub3d/libmlx.a  -lm -lXext -lX11
-LDFLAGS		= 	-L$(LIB_PATH) -lft 
+LIB			=	$(LIB_PATH)/libft.a 
+LDFLAGS		= 	-L$(LIB_PATH) -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 INCS        = -I./includes/ -I$(LIB_PATH)/includes
 #Colors
@@ -64,7 +64,7 @@ CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
 AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				init_int_array.c check_file_extension.c is_new_line.c \
-				free_mallocs.c
+				free_mallocs.c ft_max.c
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
