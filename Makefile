@@ -14,6 +14,7 @@ NAME        = cub3D
 CFLAGS      = -g -fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
+GAME_PATH		= game/
 AUX_PATH		= aux/
 SRCS_PATH           = src/
 OBJS_PATH           = obj/
@@ -26,6 +27,7 @@ CC = cc
 MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
 									$(CK_FD_PATH), \
 									$(AUX_PATH), \
+									$(GAME_PATH), \
 									)
 										
 #Add new path to objects
@@ -68,15 +70,20 @@ AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
+GAME		=	hooks.c draw_map_bonus.c
+
+GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
+
 DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \
 											$(CHECK:.c=.d)\
-											$(AUX:.c=.d)) 
+											$(AUX:.c=.d) \
+											$(GAME:.c=.d)) 
 										
 										
 
 #add .d files to deps
 
-SRC			+= $(CK_FILES) $(AUX_FILES)
+SRC			+= $(CK_FILES) $(AUX_FILES) $(GAME_FILES)
 ## add to sercs
 
 OBJS        =	$(addprefix $(OBJS_PATH), $(SRC:.c=.o)) 

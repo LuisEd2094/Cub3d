@@ -32,6 +32,9 @@
 #  define RGB_ARRAY 3
 # endif
 
+#define w 640
+#define h 480
+
 # define TILE_HEIGHT 64
 # define TILE_WIDTH	64
 
@@ -105,6 +108,17 @@ int		ft_max(int a, int b);
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);
 bool	parse_file(int fd, t_prg *prg);
+
+
+// GAME FUNCTIONS
+
+void get_hooks(t_prg *prg);
+
+
+//BONUS
+
+void draw_map(t_prg *prg);
+
 
 // INIT PRG
 

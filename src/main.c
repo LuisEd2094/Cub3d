@@ -13,8 +13,7 @@
 #include <cub3d.h>
 #define mapWidth 24
 #define mapHeight 24
-#define w 640
-#define h 480
+
 
 #include <math.h>
 
@@ -222,139 +221,6 @@ void draw_walls(t_prg *prg)
     }
   }
  }
-
-int close_game(t_prg *prg)
-{
-  exit_success(prg);
-  return (0);
-}
-
-void draw_map(t_prg *prg);
-
-
-void update_window(t_prg *prg)
-{
-  mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
-  draw_map(prg);
-}
-
-int make_move(t_prg *prg, int dir)
-{
-  double move_speed;
-
-  move_speed = 0.5;
-  //prg->player_x += (move_speed) * dir; // 1 is movement speed should check camara angle first
-  PLAYER_Y(prg) += (move_speed * prg->camara_y) * dir;
-  update_window(prg);
-  
-  return (1);
-}
-
-int rotate_camara(t_prg *prg, int dir)
-{
-  double old_dir_x = prg->camara_x;
-  double old_plane_x = prg->plane_x;
-  double rotate_angle = (90  * M_PI / 180.0);
-  double cos_rot = cos(rotate_angle);
-  double sin_rot = sin(rotate_angle);
-  
-
-  double new_camara_x = prg->camara_x * cos_rot - prg->camara_y * sin_rot;
-  double new_camara_y = prg->camara_x * sin_rot + prg->camara_y * cos_rot;
-
-  // Rotate plane vector
-  double new_plane_x = prg->plane_x * cos_rot - prg->plane_y * sin_rot;
-  double new_plane_y = old_plane_x  * sin_rot + prg->plane_y * cos_rot;
-
-  prg->camara_x = new_camara_x * dir;
-  prg->camara_y = new_camara_y * dir;
-  prg->plane_x = new_plane_x * dir ;
-  prg->plane_y = new_plane_y * dir;
-
-  //RayX 0.657937 RayY -1.000000
-
-  update_window(prg);
-  return (0);
-}
-
-int key_hook(int key, t_prg *prg)
-{
-  if (key == KEY_ESC || key == KEY_Q)
-    close_game(prg);
-    else if ((key == KEY_W || key == KEY_UP))
-      return (make_move(prg, 1));
-  else if ((key == KEY_S || key == KEY_DOWN))
-      return (make_move(prg, -1));
-  else if ((key == KEY_A || key == KEY_LFT))
-      return (rotate_camara(prg, -1));
-  else if ((key == KEY_D || key == KEY_RGT))
-      return (rotate_camara(prg, 1));
-  return (0);
-}
-
-void get_hooks(t_prg *prg)
-{
-  mlx_hook(prg->mlx->window, 17, 0, close_game, (void *)prg);
-  mlx_key_hook(prg->mlx->window, key_hook, (void *)prg); 
-}
-
-int side_of_line(t_point *p1, t_point *p2, t_point *p3)
-{
-  return ((p2->x - p1->x) * (p3->y - p1->y) - (p3->x - p1->x) * (p2->y - p1->y));
-}
-
-
-bool calculate_if_inside_player(t_pc *player, int x, int y)
-{
-  t_point p3;
-  int     side_a_b;
-  int     side_b_c;
-  int     side_c_a;
-  
-  p3.x = x;
-  p3.y = y;
-  side_a_b = side_of_line(player->dir, player->left_corner, &p3);
-  side_b_c = side_of_line(player->left_corner, player->right_corner, &p3);
-  side_c_a = side_of_line(player->right_corner, player->dir, &p3);
-
-  return ((side_a_b >= 0 && side_b_c >= 0 && side_c_a >= 0) || \
-          (side_a_b <= 0 && side_b_c <= 0 && side_c_a <= 0)); 
-}
-
-void draw_map(t_prg *prg)
-{
-
-  int wallColor = 0xFF0000; // Red for walls
-  int y_pos;
-  int x_pos; 
-
-
-  x_pos = 0;
-  for (int x = 0; x < w; ++x)
-  {
-    if (x % TILE_WIDTH == TILE_WIDTH - 1)
-      x_pos++;
-    y_pos = 0;
-    for (int y = 0; y < h ; ++y)
-    {
-      if (y % TILE_HEIGHT == TILE_HEIGHT - 1)
-        y_pos++;     
-      if (y_pos < prg->map_h && x_pos < ft_strlen(prg->map[y_pos]))
-      {
-        if (prg->map[y_pos][x_pos] == '1')
-          wallColor = 0xFF0000;
-        else if (calculate_if_inside_player(prg->player, x, y))
-                  wallColor = 0xFFFF00;
-        else
-          wallColor = 0x000000;
-      }
-      else
-        wallColor = 0x000000;
-      mlx_pixel_put(prg->mlx->ptr, prg->mlx->window, x, y, wallColor);
-
-    }
-  }
-}
 
 int	main(int argc, char *argv[])
 {
