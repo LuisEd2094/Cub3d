@@ -13,8 +13,6 @@
 #include <cub3d.h>
 #define mapWidth 24
 #define mapHeight 24
-#define w 640
-#define h 480
 
 #include <math.h>
 

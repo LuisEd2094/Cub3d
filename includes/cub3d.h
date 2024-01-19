@@ -32,6 +32,9 @@
 #  define RGB_ARRAY 3
 # endif
 
+#define w 640
+#define h 480
+
 typedef struct  t_s_mlx
 {
     void    *ptr;
@@ -54,6 +57,8 @@ typedef struct s_prg
 	double	plane_y;
 	char	**map;
 	char	*error_msg;
+	int		map_h;
+	int		map_w;
     t_mlx   *mlx;
 }	t_prg;
 
@@ -67,6 +72,8 @@ int		check_if_invalid_ext(char *file_name, \
 		char *extension, int extension_len);
 bool	is_new_line(char *element);
 void	free_mallocs(t_prg *p);
+int		ft_max(int a, int b);
+
 
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);
