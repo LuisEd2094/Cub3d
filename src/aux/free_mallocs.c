@@ -12,11 +12,25 @@
 
 #include <cub3d.h>
 
+void free_player(t_pc * player)
+{
+	if (player)
+	{
+		if (player->dir)
+			free(player->dir);
+		if (player->left_corner)
+			free(player->left_corner);
+		if (player->right_corner)
+			free(player->right_corner);
+		free(player);
+	}
+}
+
 void	free_mallocs(t_prg *p)
 {
 	free_2d_array((void **)p->map);
 	if (p->mlx)
 		free(p->mlx);
-	if (p->player)
-		free(p->player);
+	free_player(p->player);
+
 }

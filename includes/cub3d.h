@@ -32,26 +32,34 @@
 #  define RGB_ARRAY 3
 # endif
 
-# define TILE_HEIGHT 32
-# define TILE_WIDTH	32
+# define TILE_HEIGHT 64
+# define TILE_WIDTH	64
+
+typedef struct s_point
+{
+	int x;
+	int y;
+}	t_point;
 
 typedef struct s_player
 {
 	double	x;
 	double	y;
-	double	width_start;
-	double	width_end;
-	double	height_start;
-	double	height_end;
+	t_point *dir;
+	t_point	*left_corner;
+	t_point	*right_corner;
 }	t_pc;
 
 #define PLAYER(prg) (prg->player)
 #define PLAYER_X(prg) (prg->player->x)
 #define PLAYER_Y(prg) (prg->player->y)
-#define PLAYER_WIDTH_START(prg) (prg->player->width_start)
-#define PLAYER_WIDTH_END(prg) (prg->player->width_end)
-#define PLAYER_HEIGHT_START(prg) (prg->player->height_start)
-#define PLAYER_HEIGHT_END(prg) (prg->player->height_end)
+#define PLAYER_DIR_X(prg) (prg->player->dir->x)
+#define PLAYER_DIR_Y(prg) (prg->player->dir->y)
+#define PLAYER_LEFT_X(prg) (prg->player->left_corner->x)
+#define PLAYER_LEFT_Y(prg) (prg->player->left_corner->y)
+#define PLAYER_RIGHT_X(prg) (prg->player->right_corner->x)
+#define PLAYER_RIGHT_Y(prg) (prg->player->right_corner->y)
+
 
 
 
@@ -75,8 +83,6 @@ typedef struct s_prg
 	double	plane_y;
 	int		map_h;
 	int		map_w;
-	int		map_tile_h;
-	int		map_tile_w;
 	char	**map;
 	char	*error_msg;
     t_mlx   *mlx;

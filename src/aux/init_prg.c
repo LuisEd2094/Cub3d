@@ -27,6 +27,11 @@ void	init_prg(t_prg *prg)
 	prg->player = (t_pc *)malloc(sizeof (t_pc));
 	if (!prg->mlx || !prg->player)
 		exit_error(NULL, prg);
+	prg->player->dir = (t_point *)malloc(sizeof (t_point));
+	prg->player->left_corner = (t_point *)malloc(sizeof (t_point));
+	prg->player->right_corner = (t_point *)malloc(sizeof (t_point));
+	if (!prg->player->dir || !prg->player->left_corner  || ! prg->player->right_corner)
+		exit_error(NULL, prg);
 	prg->north_img = 0;
 	prg->south_img = 0;
 	prg->west_img = 0;
@@ -39,7 +44,5 @@ void	init_prg(t_prg *prg)
 	prg->map = NULL;
 	prg->map_h = 0;
 	prg->map_w = 0;
-	prg->map_tile_h = TILE_HEIGHT;
-	prg->map_tile_w = TILE_WIDTH; 
 	errno = 0;
 }

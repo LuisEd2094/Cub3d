@@ -244,11 +244,7 @@ int make_move(t_prg *prg, int dir)
 
   move_speed = 0.5;
   //prg->player_x += (move_speed) * dir; // 1 is movement speed should check camara angle first
-  PLAYER_Y(prg) += (move_speed) * dir;
-	PLAYER_WIDTH_START(prg) = (PLAYER_X(prg) * prg->map_tile_w) - 1;
-	PLAYER_WIDTH_END(prg) = ((PLAYER_X(prg) + 1) * prg->map_tile_w) - 1;
-	PLAYER_HEIGHT_START(prg) = ((PLAYER_Y(prg)) * prg->map_tile_h) - 1;
-	PLAYER_HEIGHT_END(prg) = ((PLAYER_Y(prg) + 1) * prg->map_tile_w) - 1;
+  PLAYER_Y(prg) += (move_speed * prg->camara_y) * dir;
   update_window(prg);
   
   return (1);
@@ -302,6 +298,29 @@ void get_hooks(t_prg *prg)
   mlx_key_hook(prg->mlx->window, key_hook, (void *)prg); 
 }
 
+int side_of_line(t_point *p1, t_point *p2, t_point *p3)
+{
+  return ((p2->x - p1->x) * (p3->y - p1->y) - (p3->x - p1->x) * (p2->y - p1->y));
+}
+
+
+bool calculate_if_inside_player(t_pc *player, int x, int y)
+{
+  t_point p3;
+  int     side_a_b;
+  int     side_b_c;
+  int     side_c_a;
+  
+  p3.x = x;
+  p3.y = y;
+  side_a_b = side_of_line(player->dir, player->left_corner, &p3);
+  side_b_c = side_of_line(player->left_corner, player->right_corner, &p3);
+  side_c_a = side_of_line(player->right_corner, player->dir, &p3);
+
+  return ((side_a_b >= 0 && side_b_c >= 0 && side_c_a >= 0) || \
+          (side_a_b <= 0 && side_b_c <= 0 && side_c_a <= 0)); 
+}
+
 void draw_map(t_prg *prg)
 {
 
@@ -313,20 +332,19 @@ void draw_map(t_prg *prg)
   x_pos = 0;
   for (int x = 0; x < w; ++x)
   {
-    if (x % prg->map_tile_w == prg->map_tile_w - 1)
+    if (x % TILE_WIDTH == TILE_WIDTH - 1)
       x_pos++;
     y_pos = 0;
     for (int y = 0; y < h ; ++y)
     {
-      if (y % prg->map_tile_h == prg->map_tile_h - 1)
+      if (y % TILE_HEIGHT == TILE_HEIGHT - 1)
         y_pos++;     
       if (y_pos < prg->map_h && x_pos < ft_strlen(prg->map[y_pos]))
       {
         if (prg->map[y_pos][x_pos] == '1')
           wallColor = 0xFF0000;
-        else if ((y >= (PLAYER_HEIGHT_START(prg)) && y <= (PLAYER_HEIGHT_END(prg))) \
-                  && (x >= (PLAYER_WIDTH_START(prg)) && x <= (PLAYER_WIDTH_END(prg))))
-          wallColor = 0xFFFF00;
+        else if (calculate_if_inside_player(prg->player, x, y))
+                  wallColor = 0xFFFF00;
         else
           wallColor = 0x000000;
       }

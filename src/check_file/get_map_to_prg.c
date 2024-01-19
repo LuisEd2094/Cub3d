@@ -23,12 +23,38 @@ bool	init_map(t_parseer *p, t_prg *prg)
 
 void set_player_pos_and_mini_map(t_prg *prg, int x, int y)
 {
+	int new_y;
+
 	PLAYER_X(prg) = x;
 	PLAYER_Y(prg) = y;
-	PLAYER_WIDTH_START(prg) = (x * prg->map_tile_w) - 1;
-	PLAYER_WIDTH_END(prg) = ((x + 1) * prg->map_tile_w) - 1;
-	PLAYER_HEIGHT_START(prg) = (y * prg->map_tile_h) - 1;
-	PLAYER_HEIGHT_END(prg) = ((y + 1) * prg->map_tile_h) - 1;
+	if (prg->camara_y == -1 || prg->camara_y == 1)
+	{
+		PLAYER_DIR_X(prg) = (((x + 1) * TILE_WIDTH) - (TILE_WIDTH / 2)) - 1;
+		if (prg->camara_y == -1)
+		{
+			PLAYER_DIR_Y(prg) = ((y * TILE_HEIGHT));
+			PLAYER_LEFT_Y(prg) = ((y + 1) * TILE_HEIGHT) - 1;
+			PLAYER_RIGHT_Y(prg) = ((y + 1) * TILE_HEIGHT) - 1;
+			PLAYER_LEFT_X(prg) = ((x) * TILE_WIDTH);
+			PLAYER_RIGHT_X(prg) = ((x + 1) * TILE_WIDTH) - 1;
+
+		}
+		else
+		{
+			PLAYER_DIR_Y(prg) = (((y + 1) * TILE_HEIGHT)) - 1;
+			PLAYER_LEFT_Y(prg) = ((y) * TILE_HEIGHT);
+			PLAYER_LEFT_X(prg) = ((x + 1) * TILE_WIDTH) - 1;
+			PLAYER_RIGHT_X(prg) = ((x) * TILE_WIDTH);
+			PLAYER_RIGHT_Y(prg) = ((y) * TILE_HEIGHT);
+		}
+	}
+	else
+	{
+		PLAYER_DIR_Y(prg) = (((y) * TILE_HEIGHT)) - 1;
+		PLAYER_LEFT_Y(prg) = ((y) * TILE_HEIGHT) - 1;
+		PLAYER_RIGHT_Y(prg) = ((y) * TILE_HEIGHT) - 1;
+
+	}
 }
 
 char set_player_info(t_prg *prg, char c, int y, int x)
