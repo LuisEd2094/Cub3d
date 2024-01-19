@@ -15,4 +15,8 @@
 void	free_mallocs(t_prg *p)
 {
 	free_2d_array((void **)p->map);
+	if (p->mlx)
+		free(p->mlx);
+	if (p->player)
+		free(p->player);
 }

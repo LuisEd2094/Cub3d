@@ -32,6 +32,21 @@
 #  define RGB_ARRAY 3
 # endif
 
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	top_left;
+	double	top_right;
+	double	bot_left;
+	double	bot_right;
+}	t_pc;
+
+#define PLAYER(prg) (prg->player)
+#define PLAYER_X(prg) (prg->player->x)
+#define PLAYER_Y(prg) (prg->player->y)
+
+
 typedef struct  t_s_mlx
 {
     void    *ptr;
@@ -46,8 +61,6 @@ typedef struct s_prg
 	int		east_img; //3
 	int		floor_vals[4];
 	int		ceiling_vals[4];
-	double	player_x;
-	double	player_y;
 	double	camara_x;
 	double	camara_y;
 	double	plane_x;
@@ -59,6 +72,7 @@ typedef struct s_prg
 	char	**map;
 	char	*error_msg;
     t_mlx   *mlx;
+	t_pc	*player;
 }	t_prg;
 
 // AUX FUNCTIONS 

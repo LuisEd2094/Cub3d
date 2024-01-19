@@ -229,10 +229,13 @@ int close_game(t_prg *prg)
   return (0);
 }
 
+void draw_map(t_prg *prg);
+
+
 void update_window(t_prg *prg)
 {
   mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
-  draw_walls(prg);
+  draw_map(prg);
 }
 
 int make_move(t_prg *prg, int dir)
@@ -240,8 +243,8 @@ int make_move(t_prg *prg, int dir)
   double move_speed;
 
   move_speed = 0.5;
-  prg->player_x += (prg->camara_x * move_speed) * dir; // 1 is movement speed
-  prg->player_y += (prg->camara_y * move_speed) * dir;
+  //prg->player_x += (move_speed) * dir; // 1 is movement speed should check camara angle first
+  PLAYER_Y(prg) += (move_speed) * dir;
   update_window(prg);
   
   return (1);
@@ -313,8 +316,8 @@ void draw_map(t_prg *prg)
   int x_pos; 
 
 
-  prg->map_tile_h = 8;
-  prg->map_tile_w = 8;
+  prg->map_tile_h = 32;
+  prg->map_tile_w = 32;
   x_pos = 0;
   for (int x = 0; x < w; ++x)
   {
@@ -332,12 +335,14 @@ void draw_map(t_prg *prg)
       {
         if (prg->map[y_pos][x_pos] == '1')
           wallColor = 0xFF0000;
+        else if ((y >= (PLAYER_Y(prg) * prg->map_tile_h) - 1 && y <= ((PLAYER_Y(prg) + 1) * prg->map_tile_h)) \
+                  && (x >= (PLAYER_X(prg) * prg->map_tile_w) - 1 && x <= ((PLAYER_X(prg) + 1) * prg->map_tile_w ) - 1))
+          wallColor = 0xFFFF00;
         else
           wallColor = 0x000000;
       }
       else
         wallColor = 0x000000;
-
       mlx_pixel_put(prg->mlx->ptr, prg->mlx->window, x, y, wallColor);
 
     }
@@ -352,12 +357,6 @@ int	main(int argc, char *argv[])
   if (argc != 2)
       exit_error(INCORRECT_USE, &prg);
   validate_map(argv[1], &prg);
-  for (int i = 0; i < 3; i++)
-      ft_printf(1, "RGB >%i<\n", prg.floor_vals[i]);
-  for (int i = 0; i < 3; i++)
-      ft_printf(1, "RGB >%i<\n", prg.ceiling_vals[i]);
-  ft_printf(1, "VALID MAP\n");
-  prg.mlx->ptr = NULL;
   prg.mlx->ptr = mlx_init();
   if (!prg.mlx->ptr)
     exit_error(NULL, &prg);
@@ -369,7 +368,7 @@ int	main(int argc, char *argv[])
   }
   /*prg.plane_x = 0;
   prg.plane_y = -0.66;*/
-  //get_hooks(&prg); 
+  get_hooks(&prg); 
 
   //draw_walls(&prg);
   draw_map(&prg);

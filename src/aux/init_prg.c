@@ -24,7 +24,8 @@ void	init_str_array(char **array, int size)
 void	init_prg(t_prg *prg)
 {
 	prg->mlx = (t_mlx *)malloc(sizeof (t_mlx));
-	if (!prg->mlx)
+	prg->player = (t_pc *)malloc(sizeof (t_pc));
+	if (!prg->mlx || !prg->player)
 		exit_error(NULL, prg);
 	prg->north_img = 0;
 	prg->south_img = 0;
@@ -34,8 +35,6 @@ void	init_prg(t_prg *prg)
 	init_int_array(prg->ceiling_vals, RGB_ARRAY);
 	prg->camara_x = 0;
 	prg->camara_y = 0;
-	prg->player_y = 0;
-	prg->player_x = 0;
 	prg->error_msg = NULL;
 	prg->map = NULL;
 	prg->map_h = 0;

@@ -44,8 +44,8 @@ char set_player_info(t_prg *prg, char c, int y, int x)
 			prg->camara_x = -1;
 		prg->plane_y = 0.66 * (prg->camara_y);
 	}
-	prg->player_x = x;
-	prg->player_y = y;
+	PLAYER_X(prg) = x;
+	PLAYER_Y(prg) = y;
 	return ('0');
 }
 
