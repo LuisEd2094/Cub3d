@@ -21,6 +21,16 @@ bool	init_map(t_parseer *p, t_prg *prg)
 	return (true);
 }
 
+void set_player_pos_and_mini_map(t_prg *prg, int x, int y)
+{
+	PLAYER_X(prg) = x;
+	PLAYER_Y(prg) = y;
+	PLAYER_WIDTH_START(prg) = (x * prg->map_tile_w) - 1;
+	PLAYER_WIDTH_END(prg) = ((x + 1) * prg->map_tile_w) - 1;
+	PLAYER_HEIGHT_START(prg) = (y * prg->map_tile_h) - 1;
+	PLAYER_HEIGHT_END(prg) = ((y + 1) * prg->map_tile_h) - 1;
+}
+
 char set_player_info(t_prg *prg, char c, int y, int x)
 {
 	if (c == 'N' || c == 'S')
@@ -44,8 +54,7 @@ char set_player_info(t_prg *prg, char c, int y, int x)
 			prg->camara_x = -1;
 		prg->plane_y = 0.66 * (prg->camara_y);
 	}
-	PLAYER_X(prg) = x;
-	PLAYER_Y(prg) = y;
+	set_player_pos_and_mini_map(prg, x, y);
 	return ('0');
 }
 

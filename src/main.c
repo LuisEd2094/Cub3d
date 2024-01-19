@@ -82,7 +82,7 @@ void draw_walls(t_prg *prg)
 
     for(int x = 0; x < w; x++)
     {
-    double posX = prg->player_x, posY = prg->player_y;  //x and y start position
+    double posX = PLAYER_X(prg), posY = PLAYER_Y(prg);  //x and y start position
     double dirX = prg->camara_x, dirY = prg->camara_y; //initial direction vector
 
     //dir x 0 y -1 up
@@ -245,6 +245,10 @@ int make_move(t_prg *prg, int dir)
   move_speed = 0.5;
   //prg->player_x += (move_speed) * dir; // 1 is movement speed should check camara angle first
   PLAYER_Y(prg) += (move_speed) * dir;
+	PLAYER_WIDTH_START(prg) = (PLAYER_X(prg) * prg->map_tile_w) - 1;
+	PLAYER_WIDTH_END(prg) = ((PLAYER_X(prg) + 1) * prg->map_tile_w) - 1;
+	PLAYER_HEIGHT_START(prg) = ((PLAYER_Y(prg)) * prg->map_tile_h) - 1;
+	PLAYER_HEIGHT_END(prg) = ((PLAYER_Y(prg) + 1) * prg->map_tile_w) - 1;
   update_window(prg);
   
   return (1);
@@ -281,7 +285,7 @@ int key_hook(int key, t_prg *prg)
 {
   if (key == KEY_ESC || key == KEY_Q)
     close_game(prg);
-    else if ((key == KEY_W || key == KEY_UP)) // need to check first if its a valid move
+    else if ((key == KEY_W || key == KEY_UP))
       return (make_move(prg, 1));
   else if ((key == KEY_S || key == KEY_DOWN))
       return (make_move(prg, -1));
@@ -297,16 +301,6 @@ void get_hooks(t_prg *prg)
   mlx_hook(prg->mlx->window, 17, 0, close_game, (void *)prg);
   mlx_key_hook(prg->mlx->window, key_hook, (void *)prg); 
 }
-/*
-x 0 3
-y 0 3
-
-x 4 7
-y 0 3
-
-x 0 3
-y 4 7*/
-//each box is 2 x 2 pixels
 
 void draw_map(t_prg *prg)
 {
@@ -316,8 +310,6 @@ void draw_map(t_prg *prg)
   int x_pos; 
 
 
-  prg->map_tile_h = 32;
-  prg->map_tile_w = 32;
   x_pos = 0;
   for (int x = 0; x < w; ++x)
   {
@@ -326,17 +318,14 @@ void draw_map(t_prg *prg)
     y_pos = 0;
     for (int y = 0; y < h ; ++y)
     {
- 
-     // printf ("x = %i\n", x / 4);
-      //printf ("y = %i\n",  y_pos);
       if (y % prg->map_tile_h == prg->map_tile_h - 1)
         y_pos++;     
       if (y_pos < prg->map_h && x_pos < ft_strlen(prg->map[y_pos]))
       {
         if (prg->map[y_pos][x_pos] == '1')
           wallColor = 0xFF0000;
-        else if ((y >= (PLAYER_Y(prg) * prg->map_tile_h) - 1 && y <= ((PLAYER_Y(prg) + 1) * prg->map_tile_h)) \
-                  && (x >= (PLAYER_X(prg) * prg->map_tile_w) - 1 && x <= ((PLAYER_X(prg) + 1) * prg->map_tile_w ) - 1))
+        else if ((y >= (PLAYER_HEIGHT_START(prg)) && y <= (PLAYER_HEIGHT_END(prg))) \
+                  && (x >= (PLAYER_WIDTH_START(prg)) && x <= (PLAYER_WIDTH_END(prg))))
           wallColor = 0xFFFF00;
         else
           wallColor = 0x000000;

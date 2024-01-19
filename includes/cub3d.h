@@ -32,19 +32,27 @@
 #  define RGB_ARRAY 3
 # endif
 
+# define TILE_HEIGHT 32
+# define TILE_WIDTH	32
+
 typedef struct s_player
 {
 	double	x;
 	double	y;
-	double	top_left;
-	double	top_right;
-	double	bot_left;
-	double	bot_right;
+	double	width_start;
+	double	width_end;
+	double	height_start;
+	double	height_end;
 }	t_pc;
 
 #define PLAYER(prg) (prg->player)
 #define PLAYER_X(prg) (prg->player->x)
 #define PLAYER_Y(prg) (prg->player->y)
+#define PLAYER_WIDTH_START(prg) (prg->player->width_start)
+#define PLAYER_WIDTH_END(prg) (prg->player->width_end)
+#define PLAYER_HEIGHT_START(prg) (prg->player->height_start)
+#define PLAYER_HEIGHT_END(prg) (prg->player->height_end)
+
 
 
 typedef struct  t_s_mlx

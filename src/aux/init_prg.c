@@ -39,7 +39,7 @@ void	init_prg(t_prg *prg)
 	prg->map = NULL;
 	prg->map_h = 0;
 	prg->map_w = 0;
-	prg->map_tile_h = 0;
-	prg->map_tile_w = 0; 
+	prg->map_tile_h = TILE_HEIGHT;
+	prg->map_tile_w = TILE_WIDTH; 
 	errno = 0;
 }
