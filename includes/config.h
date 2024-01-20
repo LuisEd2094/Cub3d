@@ -10,7 +10,7 @@
 # define TILE_WIDTH	64
 
 
-# define MOVE_SPEED 0.5
+# define MOVE_SPEED 0.50
 # define ROTATION_ANGLE 45
 
 #endif

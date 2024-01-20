@@ -64,8 +64,6 @@ typedef struct s_player
 #define PLAYER_CENTER_Y(prg) (prg->player->center->y)
 
 
-
-
 typedef struct  t_s_mlx
 {
     void    *ptr;

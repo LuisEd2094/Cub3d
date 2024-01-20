@@ -67,8 +67,8 @@ void set_player_pos_and_mini_map(t_prg *prg, int x, int y)
 			PLAYER_RIGHT_Y(prg) = ((y)* TILE_HEIGHT);
 		}
 	}
-	PLAYER_CENTER_X(prg) = (PLAYER_DIR_X(prg) + PLAYER_LEFT_X(prg) + PLAYER_RIGHT_X(prg)) / 3;
-	PLAYER_CENTER_Y(prg) = (PLAYER_DIR_Y(prg) + PLAYER_LEFT_Y(prg) + PLAYER_RIGHT_Y(prg)) / 3;
+	PLAYER_CENTER_X(prg) =  (((x + 1) * TILE_WIDTH) - (TILE_WIDTH / 2)) - 1;
+	PLAYER_CENTER_Y(prg) = ((((y + 1) * TILE_HEIGHT) - (TILE_HEIGHT / 2)) - 1);
 }
 
 char set_player_info(t_prg *prg, char c, int y, int x)

@@ -30,6 +30,16 @@ void rotate_point(t_point *point, t_point *center, int dir )
   point->y = round((( -1 * (temp_x - center->x)) * sin(angle * dir) + (temp_y - center->y) * cos(angle * dir)) + center->y);
 }
 
+int check_camara(int coordiante, int center)
+{
+  if (coordiante == center)
+    return (0);
+  else if (coordiante > center)
+    return (1);
+  else
+    return (-1);
+}
+
 int rotate_triangle(t_prg *prg, int dir)
 {
   
@@ -37,36 +47,12 @@ int rotate_triangle(t_prg *prg, int dir)
   rotate_point( prg->player->left_corner, PLAYER_CENTER(prg), dir);
   rotate_point( prg->player->right_corner, PLAYER_CENTER(prg), dir);
 
+  prg->camara_x = check_camara(PLAYER_DIR_X(prg), PLAYER_CENTER_X(prg));
+  prg->camara_y = check_camara(PLAYER_DIR_Y(prg), PLAYER_CENTER_Y(prg));
   //RayX 0.657937 RayY -1.000000
 
   update_window(prg);
   return (0);
-}
-
-
-float calculateDirection(int x1, int y1, int x2, int y2) 
-{
-    // Calculate the change in x and y
-    float dx = x2 - x1;
-    float dy = y2 - y1;
-
-    // Calculate the angle in radians
-    float radians = atan2(dy, dx);
-
-    // Convert the angle to degrees
-    float degrees = radians * 180.0 / M_PI;
-
-    // Ensure the angle is positive
-    if (degrees < 0) {
-        degrees += 360.0;
-    }
-
-    return degrees;
-}
-
-float degreesToRadians(float degrees) 
-{
-    return degrees * M_PI / 180.0;
 }
 
 // Function to move an equilateral triangle
@@ -82,6 +68,8 @@ void moveTriangle(t_prg *prg, int dir) {
     PLAYER_LEFT_Y(prg) += dy;
     PLAYER_RIGHT_X(prg) += dx;
     PLAYER_RIGHT_Y(prg) += dy;
+    PLAYER_CENTER_X(prg) += dx;
+    PLAYER_CENTER_Y(prg) += dy;
 }
 
 
@@ -92,8 +80,6 @@ int make_move(t_prg *prg, int dir)
   move_speed = MOVE_SPEED;
   //prg->player_x += (move_speed) * dir; // 1 is movement speed should check camara angle first
   PLAYER_Y(prg) += (move_speed * prg->camara_y) * dir;
-
-  float direction = calculateDirection(PLAYER_DIR_X(prg), PLAYER_DIR_Y(prg), PLAYER_LEFT_X(prg), PLAYER_LEFT_Y(prg));
 
   moveTriangle(prg, dir);
   update_window(prg);
