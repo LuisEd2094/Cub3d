@@ -27,33 +27,40 @@ bool calculate_if_inside_player(t_pc *player, int x, int y)
 void draw_map(t_prg *prg)
 {
 
-  int wallColor = 0xFF0000; // Red for walls
+  int color = 0xFF0000; // Red for walls
   int y_pos;
   int x_pos; 
 
 
-  x_pos = 0;
+  x_pos = -1;
   for (int x = 0; x < w; ++x)
   {
-    if (x % TILE_WIDTH == TILE_WIDTH - 1)
+    if (x % (TILE_WIDTH - 1) == 0)
       x_pos++;
-    y_pos = 0;
+    y_pos = -1;
     for (int y = 0; y < h ; ++y)
     {
-      if (y % TILE_HEIGHT == TILE_HEIGHT - 1)
+      if (y % (TILE_HEIGHT - 1) == 0)
         y_pos++;     
       if (y_pos < prg->map_h && x_pos < ft_strlen(prg->map[y_pos]))
       {
         if (prg->map[y_pos][x_pos] == '1')
-          wallColor = 0xFF0000;
+          color = 0xFF0000;
+        else if (x == PLAYER_CENTER_X(prg) && y == PLAYER_CENTER_Y(prg))
+          color = 0x0000FF;
         else if (calculate_if_inside_player(prg->player, x, y))
-                  wallColor = 0xFFFF00;
+                  color = 0xFFFF00;
         else
-          wallColor = 0x000000;
+          color = 0x000000;
       }
       else
-        wallColor = 0x000000;
-      mlx_pixel_put(prg->mlx->ptr, prg->mlx->window, x, y, wallColor);
+        color = 0x000000;
+
+      //DEBUG GRID
+      if (x % (TILE_WIDTH - 1) == 0 || y % (TILE_HEIGHT -1)  == 0)
+        color = 0xFFFFFF;
+
+      mlx_pixel_put(prg->mlx->ptr, prg->mlx->window, x, y, color);
 
     }
   }

@@ -7,26 +7,35 @@ void update_window(t_prg *prg)
   draw_map(prg);
 }
 
-int rotate_camara(t_prg *prg, int dir)
+
+void rotatePoint(int x, int y, int cx, int cy, double theta, int *resultX, int *resultY) {
+    double radians = theta * (M_PI / 180.0);
+    *resultX = (int)((x - cx) * cos(radians) - (y - cy) * sin(radians) + cx);
+    *resultY = (int)((x - cx) * sin(radians) + (y - cy) * cos(radians) + cy);
+}
+
+
+
+void rotate_point(t_point *point, t_point *center, int dir )
 {
-  double old_dir_x = prg->camara_x;
-  double old_plane_x = prg->plane_x;
-  double rotate_angle = (90  * M_PI / 180.0);
-  double cos_rot = cos(rotate_angle);
-  double sin_rot = sin(rotate_angle);
+  int temp_x;
+  int temp_y;
+  double angle;
+
+  angle = ROTATION_ANGLE  * (M_PI / 180.0);
+  temp_x = point->x;
+  temp_y = point->y;
+
+  point->x = round(((temp_x - center->x) * cos(angle * dir) + (temp_y - center->y) * sin(angle * dir)) + center->x);
+  point->y = round((( -1 * (temp_x - center->x)) * sin(angle * dir) + (temp_y - center->y) * cos(angle * dir)) + center->y);
+}
+
+int rotate_triangle(t_prg *prg, int dir)
+{
   
-
-  double new_camara_x = prg->camara_x * cos_rot - prg->camara_y * sin_rot;
-  double new_camara_y = prg->camara_x * sin_rot + prg->camara_y * cos_rot;
-
-  // Rotate plane vector
-  double new_plane_x = prg->plane_x * cos_rot - prg->plane_y * sin_rot;
-  double new_plane_y = old_plane_x  * sin_rot + prg->plane_y * cos_rot;
-
-  prg->camara_x = new_camara_x * dir;
-  prg->camara_y = new_camara_y * dir;
-  prg->plane_x = new_plane_x * dir ;
-  prg->plane_y = new_plane_y * dir;
+  rotate_point( prg->player->dir, PLAYER_CENTER(prg), dir);
+  rotate_point( prg->player->left_corner, PLAYER_CENTER(prg), dir);
+  rotate_point( prg->player->right_corner, PLAYER_CENTER(prg), dir);
 
   //RayX 0.657937 RayY -1.000000
 
@@ -61,17 +70,18 @@ float degreesToRadians(float degrees)
 }
 
 // Function to move an equilateral triangle
-void moveTriangle(t_prg *prg, int distance, float direction) {
+void moveTriangle(t_prg *prg, int dir) {
     // Convert direction to radians
-    float radians = degreesToRadians(direction);
+    int dx = prg->camara_x * (MOVE_SPEED * TILE_WIDTH) *  dir;
+    int dy = prg->camara_y * (MOVE_SPEED * TILE_WIDTH) *  dir;
 
     // Calculate the new positions using trigonometry
-    PLAYER_DIR_X(prg) += distance * cos(radians);
-    PLAYER_DIR_Y(prg) += distance * sin(radians);
-    PLAYER_LEFT_X(prg) += distance * cos(radians);
-    PLAYER_LEFT_Y(prg) += distance * sin(radians);
-    PLAYER_RIGHT_X(prg) += distance * cos(radians);
-    PLAYER_RIGHT_Y(prg) += distance * sin(radians);
+    PLAYER_DIR_X(prg) += dx;
+    PLAYER_DIR_Y(prg) += dy;
+    PLAYER_LEFT_X(prg) += dx;
+    PLAYER_LEFT_Y(prg) += dy;
+    PLAYER_RIGHT_X(prg) += dx;
+    PLAYER_RIGHT_Y(prg) += dy;
 }
 
 
@@ -79,13 +89,13 @@ int make_move(t_prg *prg, int dir)
 {
   double move_speed;
 
-  move_speed = 0.5;
+  move_speed = MOVE_SPEED;
   //prg->player_x += (move_speed) * dir; // 1 is movement speed should check camara angle first
   PLAYER_Y(prg) += (move_speed * prg->camara_y) * dir;
 
   float direction = calculateDirection(PLAYER_DIR_X(prg), PLAYER_DIR_Y(prg), PLAYER_LEFT_X(prg), PLAYER_LEFT_Y(prg));
 
-  moveTriangle(prg, 1, direction * dir);
+  moveTriangle(prg, dir);
   update_window(prg);
   return (1);
 }
@@ -105,9 +115,9 @@ int key_hook(int key, t_prg *prg)
   else if ((key == KEY_S || key == KEY_DOWN))
       return (make_move(prg, -1));
   else if ((key == KEY_A || key == KEY_LFT))
-      return (rotate_camara(prg, -1));
+      return (rotate_triangle(prg, 1));
   else if ((key == KEY_D || key == KEY_RGT))
-      return (rotate_camara(prg, 1));
+      return (rotate_triangle(prg, -1));
   return (0);
 }
 

@@ -13,30 +13,26 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <math.h>
 # include <fcntl.h>
 # include <stdbool.h>
-# include <stdlib.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <errno.h>
 # include <get_next_line.h>
 # include <ft_printf.h>
 # include <libft.h>
-# include "error_messages.h"
-# include "mlx.h"
-# include <math.h>
-# include "keys.h"
+# include <error_messages.h>
+# include <keys.h>
+# include <mlx.h>
+# include <config.h>
 
 
 # ifndef RGB_ARRAY
 #  define RGB_ARRAY 3
 # endif
 
-#define w 640
-#define h 480
 
-# define TILE_HEIGHT 64
-# define TILE_WIDTH	64
 
 typedef struct s_point
 {
@@ -51,6 +47,7 @@ typedef struct s_player
 	t_point *dir;
 	t_point	*left_corner;
 	t_point	*right_corner;
+	t_point	*center;
 }	t_pc;
 
 #define PLAYER(prg) (prg->player)
@@ -62,6 +59,9 @@ typedef struct s_player
 #define PLAYER_LEFT_Y(prg) (prg->player->left_corner->y)
 #define PLAYER_RIGHT_X(prg) (prg->player->right_corner->x)
 #define PLAYER_RIGHT_Y(prg) (prg->player->right_corner->y)
+#define PLAYER_CENTER(prg) (prg->player->center)
+#define PLAYER_CENTER_X(prg) (prg->player->center->x)
+#define PLAYER_CENTER_Y(prg) (prg->player->center->y)
 
 
 

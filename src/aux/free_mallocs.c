@@ -22,6 +22,8 @@ void free_player(t_pc * player)
 			free(player->left_corner);
 		if (player->right_corner)
 			free(player->right_corner);
+		if (player->center)
+			free(player->center);
 		free(player);
 	}
 }
