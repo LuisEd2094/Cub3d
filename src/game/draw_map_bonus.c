@@ -26,24 +26,6 @@ bool calculate_if_inside_player(t_pc *player, int x, int y)
 
 
 
-// Function to perform ray casting
-/*HitInfo castRay(Ray ray) {
-    Point currentPoint = ray.start;
-    
-    while (isInsideMap(currentPoint.x, currentPoint.y) &&
-           map[currentPoint.x][currentPoint.y] != 1) {
-        currentPoint.x += ray.direction.x;
-        currentPoint.y += ray.direction.y;
-    }
-
-    HitInfo hitInfo;
-    hitInfo.point = currentPoint;
-    hitInfo.distance = sqrt(pow(currentPoint.x - ray.start.x, 2) + pow(currentPoint.y - ray.start.y, 2));
-
-    return hitInfo;
-}*/
-
-
 
 void draw_map(t_prg *prg)
 {

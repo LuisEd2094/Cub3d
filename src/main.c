@@ -17,38 +17,6 @@
 
 #include <math.h>
 
-
-
-/*	int		i;
-	float	x;
-	float	y;
-	float	x1, y1;
-	float	x2, y2, dx, dy, step;
-
-	x1 = 1;
-	y1 = 1;
-	x2 = 3;
-	y2 = 4;
-
-	dx = x2 - x1;
-	dy = y2 - y1;
-	if (fabs(dx) >= fabs(dy))
-		step = fabs(dx);
-	else
-		step = fabs(dy);
-	dx = dx / step;
-	dy = dy / step;
-	x = x1;
-	y = y1;
-	i = 0;
-	while (i <= step)
-	{
-		printf("%d - x: %f, y: %f\n", i, x, y);
-		x = x + dx;
-		y = y + dy;
-		i = i + 1;
-	}*/
-
 void draw_walls(t_prg *prg)
 {
  /*int worldMap[mapWidth][mapHeight]=
@@ -130,7 +98,6 @@ void draw_walls(t_prg *prg)
 
       int hit = 0; //was there a wall hit?
       int side; //was a NS or a EW wall hit?
-      //calculate step and initial sideDist
       if(rayDirX < 0)
       {
         stepX = -1;
@@ -213,8 +180,6 @@ void draw_walls(t_prg *prg)
         wallColor = 0x2F4F4F; // Default color for unknown values
         break;
     }
-
-      //give x and y sides different brightness
     for (int y = drawStart; y <= drawEnd; y++)
     {
         mlx_pixel_put(prg->mlx->ptr, prg->mlx->window, x, y, wallColor);

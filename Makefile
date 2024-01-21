@@ -70,7 +70,8 @@ AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
-GAME		=	hooks.c draw_map_bonus.c
+GAME		=	hooks.c draw_map_bonus.c triangle_bonus.c update_window.c \
+				make_move.c ray.c
 
 GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 

@@ -132,14 +132,26 @@ bool	parse_file(int fd, t_prg *prg);
 
 // GAME FUNCTIONS
 
-void get_hooks(t_prg *prg);
-void update_window(t_prg *prg);
+void	get_hooks(t_prg *prg);
+void	update_window(t_prg *prg);
+int		make_move(t_prg *prg, int dir);
+void	cast_ray(t_prg *prg);
+void	draw_map(t_prg *prg);
 
 
+
+
+
+// MINI MAP FUNCTIONS
+
+void	draw_map(t_prg *prg);
+int		rotate_triangle(t_prg *prg, int dir);
+void	move_triangle(t_prg *prg, int dir);
+void	draw_ray(t_prg *p);
 
 //BONUS
 
-void draw_map(t_prg *prg);
+
 
 
 // INIT PRG
