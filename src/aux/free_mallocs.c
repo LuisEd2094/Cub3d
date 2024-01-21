@@ -36,8 +36,6 @@ void free_ray(t_ray *r)
 			free(r->end);
 		if (r->start)
 			free(r->start);
-		if (r->direction)
-			free(r->direction);
 		free(r);
 	}
 }

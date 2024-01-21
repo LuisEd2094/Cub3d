@@ -48,6 +48,7 @@ int rotate_triangle(t_prg *prg, int dir)
 
   prg->camara_x = check_camara(PLAYER_DIR_X(prg), PLAYER_CENTER_X(prg));
   prg->camara_y = check_camara(PLAYER_DIR_Y(prg), PLAYER_CENTER_Y(prg));
+	prg->player->angle = atan2(prg->camara_y, prg->camara_x);
   update_window(prg);
   return (0);
 }

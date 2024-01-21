@@ -93,6 +93,7 @@ char set_player_info(t_prg *prg, char c, int y, int x)
 			prg->camara_x = -1;
 		prg->plane_y = 0.66 * (prg->camara_y);
 	}
+	prg->player->angle = atan2(prg->camara_y, prg->camara_x) * -1;
 	set_player_pos_and_mini_map(prg, x, y);
 	return ('0');
 }

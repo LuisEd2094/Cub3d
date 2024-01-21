@@ -26,7 +26,7 @@
 # include <keys.h>
 # include <mlx.h>
 # include <config.h>
-
+# include <float.h>
 
 # ifndef RGB_ARRAY
 #  define RGB_ARRAY 3
@@ -38,10 +38,12 @@ typedef struct s_point
 	int y;
 }	t_point;
 
+
 typedef struct s_player
 {
 	double	x;
 	double	y;
+	double	angle;
 	t_point *dir;
 	t_point	*left_corner;
 	t_point	*right_corner;
@@ -60,22 +62,24 @@ typedef struct s_player
 #define PLAYER_CENTER(prg) (prg->player->center)
 #define PLAYER_CENTER_X(prg) (prg->player->center->x)
 #define PLAYER_CENTER_Y(prg) (prg->player->center->y)
+#define PLAYER_ANGLE(prg) (prg->player->angle)
 
 
 typedef struct s_ray
 {
 	t_point *start;
 	t_point *end;
-	t_point *direction;
-	float	distance;
+	double 	dir_x;
+	double	dir_y;
+	double	distance;
 } t_ray;
 
 #define RAY_START_X(prg) (prg->ray->start->x)
 #define RAY_START_Y(prg) (prg->ray->start->y)
 #define RAY_END_X(prg) (prg->ray->end->x)
 #define RAY_END_Y(prg) (prg->ray->end->y)
-#define RAY_DIRECTION_X(prg) (prg->ray->direction->x)
-#define RAY_DIRECTION_Y(prg) (prg->ray->direction->y)
+#define RAY_DIRECTION_X(prg) (prg->ray->dir_x)
+#define RAY_DIRECTION_Y(prg) (prg->ray->dir_y)
 
 typedef struct  t_s_mlx
 {

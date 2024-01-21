@@ -14,7 +14,18 @@
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb"
-    }
+    },
+    {
+      "name": "Pygame Debug",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/2d.py",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {},
+      "console": "integratedTerminal",
+      "stopOnEntry": false,
+  }
     ],
 
   }

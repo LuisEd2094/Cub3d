@@ -34,7 +34,6 @@ void draw_map(t_prg *prg)
   int x_pos; 
 
   x_pos = -1;
-  ft_printf(1, "END_X (%i) END_Y(%i)\n", RAY_END_X(prg), RAY_END_Y(prg));
   for (int x = 0; x < w; ++x)
   {
     if (x % (TILE_WIDTH) == 0)
