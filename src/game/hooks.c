@@ -1,10 +1,37 @@
 #include <cub3d.h>
 
 
+void draw_ray(t_prg *p) 
+{
+    int dx = abs(RAY_END_X(p) - RAY_START_X(p)) * TILE_WIDTH;
+    int dy = abs(RAY_END_Y(p) - RAY_START_Y(p)) * TILE_HEIGHT;
+    int sx = (RAY_START_X(p) < RAY_END_X(p)) ? 1 : -1;
+    int sy = (RAY_START_Y(p) < RAY_END_Y(p)) ? 1 : -1;
+    int err = dx - dy;
+
+    while (1) {
+        mlx_pixel_put(MLX_PTR(p), MLX_WIN(p), RAY_START_X(p), RAY_START_Y(p), 0x0000FF);
+
+        if (RAY_START_X(p) == RAY_END_X(p) && RAY_START_Y(p) == RAY_END_Y(p))
+            break;
+
+        int e2 = 2 * err;
+        if (e2 > -dy) {
+            err -= dy;
+            RAY_START_X(p) += sx;
+        }
+        if (e2 < dx) {
+            err += dx;
+            RAY_START_Y(p) += sy;
+        }
+    }
+}
+
 void update_window(t_prg *prg)
 {
   mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
   draw_map(prg);
+  draw_ray(prg);
 }
 
 
@@ -49,17 +76,15 @@ int rotate_triangle(t_prg *prg, int dir)
 
   prg->camara_x = check_camara(PLAYER_DIR_X(prg), PLAYER_CENTER_X(prg));
   prg->camara_y = check_camara(PLAYER_DIR_Y(prg), PLAYER_CENTER_Y(prg));
-  //RayX 0.657937 RayY -1.000000
-
   update_window(prg);
   return (0);
 }
 
 // Function to move an equilateral triangle
-void moveTriangle(t_prg *prg, int dir) {
+void move_triangle(t_prg *prg, int dir) {
     // Convert direction to radians
-    int dx = prg->camara_x * (MOVE_SPEED * TILE_WIDTH) *  dir;
-    int dy = prg->camara_y * (MOVE_SPEED * TILE_WIDTH) *  dir;
+    int dx = (prg->camara_x * (MOVE_SPEED * TILE_WIDTH) *  dir);
+    int dy = (prg->camara_y * (MOVE_SPEED * TILE_WIDTH) *  dir);
 
     // Calculate the new positions using trigonometry
     PLAYER_DIR_X(prg) += dx;
@@ -78,10 +103,10 @@ int make_move(t_prg *prg, int dir)
   double move_speed;
 
   move_speed = MOVE_SPEED;
-  //prg->player_x += (move_speed) * dir; // 1 is movement speed should check camara angle first
+  PLAYER_X(prg) += (move_speed * prg->camara_x) * dir;
   PLAYER_Y(prg) += (move_speed * prg->camara_y) * dir;
 
-  moveTriangle(prg, dir);
+  move_triangle(prg, dir);
   update_window(prg);
   return (1);
 }

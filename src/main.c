@@ -245,6 +245,7 @@ int	main(int argc, char *argv[])
 
   //draw_walls(&prg);
   draw_map(&prg);
+
   mlx_loop(prg.mlx->ptr);
 
 

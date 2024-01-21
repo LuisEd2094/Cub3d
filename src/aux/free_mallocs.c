@@ -28,11 +28,25 @@ void free_player(t_pc * player)
 	}
 }
 
+void free_ray(t_ray *r)
+{
+	if (r)
+	{
+		if (r->end)
+			free(r->end);
+		if (r->start)
+			free(r->start);
+		if (r->direction)
+			free(r->direction);
+		free(r);
+	}
+}
+
 void	free_mallocs(t_prg *p)
 {
 	free_2d_array((void **)p->map);
 	if (p->mlx)
 		free(p->mlx);
 	free_player(p->player);
-
+	free_ray(p->ray);
 }

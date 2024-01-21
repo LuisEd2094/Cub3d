@@ -25,13 +25,18 @@ void	init_prg(t_prg *prg)
 {
 	prg->mlx = (t_mlx *)malloc(sizeof (t_mlx));
 	prg->player = (t_pc *)malloc(sizeof (t_pc));
-	if (!prg->mlx || !prg->player)
+	prg->ray = (t_ray *)malloc(sizeof (t_ray));
+	if (!prg->mlx || !prg->player || !prg->ray)
 		exit_error(NULL, prg);
 	prg->player->dir = (t_point *)malloc(sizeof (t_point));
 	prg->player->left_corner = (t_point *)malloc(sizeof (t_point));
 	prg->player->right_corner = (t_point *)malloc(sizeof (t_point));
 	prg->player->center = (t_point *)malloc(sizeof (t_point));
-	if (!prg->player->dir || !prg->player->left_corner  || !prg->player->right_corner || !prg->player->center)
+	prg->ray->start = (t_point *)malloc(sizeof (t_point));
+	prg->ray->end = (t_point *)malloc(sizeof (t_point));
+	prg->ray->direction = (t_point *)malloc(sizeof (t_point));
+	if (!prg->player->dir || !prg->player->left_corner  || !prg->player->right_corner || !prg->player->center \
+		|| !prg->ray->distance|| !prg->ray->start || !prg->ray->end || !prg->ray->direction)
 		exit_error(NULL, prg);
 	prg->north_img = 0;
 	prg->south_img = 0;

@@ -32,8 +32,6 @@
 #  define RGB_ARRAY 3
 # endif
 
-
-
 typedef struct s_point
 {
 	int x;
@@ -64,6 +62,21 @@ typedef struct s_player
 #define PLAYER_CENTER_Y(prg) (prg->player->center->y)
 
 
+typedef struct s_ray
+{
+	t_point *start;
+	t_point *end;
+	t_point *direction;
+	float	distance;
+} t_ray;
+
+#define RAY_START_X(prg) (prg->ray->start->x)
+#define RAY_START_Y(prg) (prg->ray->start->y)
+#define RAY_END_X(prg) (prg->ray->end->x)
+#define RAY_END_Y(prg) (prg->ray->end->y)
+#define RAY_DIRECTION_X(prg) (prg->ray->direction->x)
+#define RAY_DIRECTION_Y(prg) (prg->ray->direction->y)
+
 typedef struct  t_s_mlx
 {
     void    *ptr;
@@ -88,7 +101,14 @@ typedef struct s_prg
 	char	*error_msg;
     t_mlx   *mlx;
 	t_pc	*player;
+	t_ray	*ray;
 }	t_prg;
+
+#define MLX_PTR(prg) (prg->mlx->ptr)
+#define MLX_WIN(prg) (prg->mlx->window)
+
+#define CAMARA_X(prg) (prg->camara_x)
+#define CAMARA_Y(prg) (prg->camara_y)
 
 // AUX FUNCTIONS 
 bool	print_error(char *error);
