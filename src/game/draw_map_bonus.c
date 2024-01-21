@@ -43,35 +43,7 @@ bool calculate_if_inside_player(t_pc *player, int x, int y)
     return hitInfo;
 }*/
 
-int is_inside_map(int x, int y, t_prg *prg) {
-    return (y >= 0 && y < prg->map_h && x >= 0 && x < ft_strlen(prg->map[y]));
-}
 
-void cast_ray(t_prg *prg)
-{
-  RAY_START_X(prg) = PLAYER_CENTER_X(prg);
-  RAY_START_Y(prg) = PLAYER_CENTER_Y(prg);
-  RAY_DIRECTION_X(prg) = CAMARA_X(prg);
-  RAY_DIRECTION_Y(prg) = CAMARA_Y(prg);
-  RAY_END_X(prg) = PLAYER_X(prg);
-  RAY_END_Y(prg) = PLAYER_Y(prg);  
-  
-  while (is_inside_map(RAY_END_X(prg), RAY_END_Y(prg), prg) && \
-        prg->map[RAY_END_Y(prg)][RAY_END_X(prg)] != '1')
-  {
-    RAY_END_X(prg) += RAY_DIRECTION_X(prg);
-    RAY_END_Y(prg) += RAY_DIRECTION_Y(prg);
-  }
-  if (RAY_END_Y(prg) == 0)
-    RAY_END_Y(prg) = TILE_HEIGHT - 1;
-  else
-    RAY_END_Y(prg) = (RAY_END_Y(prg) * TILE_HEIGHT) - 1;
-  if (RAY_END_X(prg) == 0)
-    RAY_END_X(prg) = TILE_WIDTH - 1; 
-  else 
-    RAY_END_X(prg) = (RAY_END_X(prg) * TILE_WIDTH) - 1;
-
-}
 
 void draw_map(t_prg *prg)
 {
@@ -80,7 +52,6 @@ void draw_map(t_prg *prg)
   int x_pos; 
 
   x_pos = -1;
-  cast_ray(prg);
   ft_printf(1, "END_X (%i) END_Y(%i)\n", RAY_END_X(prg), RAY_END_Y(prg));
   for (int x = 0; x < w; ++x)
   {

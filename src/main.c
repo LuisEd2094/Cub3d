@@ -236,16 +236,11 @@ int	main(int argc, char *argv[])
   prg.mlx->window = mlx_new_window(prg.mlx->ptr, w, h, "cub3d");
   if (!prg.mlx->window)
   {
-    //free_mlx(prg->mlx); Should check mlx elemtns, imgs and stuff and free them;
     exit_error(NULL, &prg);
   }
-  /*prg.plane_x = 0;
-  prg.plane_y = -0.66;*/
   get_hooks(&prg); 
 
-  //draw_walls(&prg);
-  draw_map(&prg);
-
+  update_window(&prg);
   mlx_loop(prg.mlx->ptr);
 
 

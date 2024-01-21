@@ -27,11 +27,43 @@ void draw_ray(t_prg *p)
     }
 }
 
+int is_inside_map(int x, int y, t_prg *prg) {
+    return (y >= 0 && y < prg->map_h && x >= 0 && x < ft_strlen(prg->map[y]));
+}
+
+void cast_ray(t_prg *prg)
+{
+  RAY_START_X(prg) = PLAYER_CENTER_X(prg);
+  RAY_START_Y(prg) = PLAYER_CENTER_Y(prg);
+  RAY_DIRECTION_X(prg) = CAMARA_X(prg);
+  RAY_DIRECTION_Y(prg) = CAMARA_Y(prg);
+  RAY_END_X(prg) = RAY_START_X(prg);
+  RAY_END_Y(prg) = RAY_START_Y(prg);
+
+  int x;
+  int y;
+
+  x = PLAYER_X(prg);
+  y = PLAYER_Y(prg);  
+  while (is_inside_map(x,  y, prg) && \
+        prg->map[y][x] != '1')
+  {
+    RAY_END_X(prg) += RAY_DIRECTION_X(prg);
+    RAY_END_Y(prg) += RAY_DIRECTION_Y(prg);
+    if (RAY_END_X(prg) % TILE_WIDTH == 0)
+      x += RAY_DIRECTION_X(prg);
+    if (RAY_END_Y(prg) % TILE_HEIGHT == 0)
+      y += RAY_DIRECTION_Y(prg);
+  }
+}
+
 void update_window(t_prg *prg)
 {
   mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
   draw_map(prg);
+  cast_ray(prg);
   draw_ray(prg);
+
 }
 
 

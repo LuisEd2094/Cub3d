@@ -6,8 +6,8 @@
 #define h 600
 
 
-# define TILE_HEIGHT 64
-# define TILE_WIDTH	64
+# define TILE_HEIGHT 96
+# define TILE_WIDTH	96
 
 
 # define MOVE_SPEED 0.50

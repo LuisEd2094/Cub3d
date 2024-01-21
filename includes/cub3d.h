@@ -122,6 +122,8 @@ bool	is_new_line(char *element);
 void	free_mallocs(t_prg *p);
 int		ft_max(int a, int b);
 
+int is_inside_map(int x, int y, t_prg *prg);
+
 
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);
@@ -131,6 +133,8 @@ bool	parse_file(int fd, t_prg *prg);
 // GAME FUNCTIONS
 
 void get_hooks(t_prg *prg);
+void update_window(t_prg *prg);
+
 
 
 //BONUS
