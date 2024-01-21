@@ -100,13 +100,15 @@ float perpWallDist;
       else          
         perpWallDist = fabs((mapY - PLAYER_Y(prg) + (1 - stepY) / 2) / RAY_DIRECTION_Y(prg)); //(sideDistY - deltaDistY); //
 
-  if (sideDistX == FLT_MAX)
+  if (deltaDistX == FLT_MAX)
   {
     RAY_END_X(prg) = PLAYER_CENTER_X(prg);
   }
   else
     RAY_END_X(prg) = sideDistX * TILE_WIDTH;
-  if (sideDistY == FLT_MAX)
+  
+  
+  if (deltaDistY == FLT_MAX)
   {
     RAY_END_Y(prg)  = PLAYER_CENTER_Y(prg);
   }

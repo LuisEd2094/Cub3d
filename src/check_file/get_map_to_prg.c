@@ -25,8 +25,8 @@ void set_player_pos_and_mini_map(t_prg *prg, int x, int y)
 {
 	int new_y;
 
-	PLAYER_X(prg) = x;
-	PLAYER_Y(prg) = y;
+	PLAYER_X(prg) = x + 0.5;
+	PLAYER_Y(prg) = y + 0.5;
 	if (prg->camara_y == -1 || prg->camara_y == 1)
 	{
 		PLAYER_DIR_X(prg) = (((x + 1) * TILE_WIDTH) - (TILE_WIDTH / 2)) - 1;
