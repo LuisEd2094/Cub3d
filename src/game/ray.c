@@ -49,8 +49,8 @@ void cast_ray(t_prg *prg)
   RAY_END_X(prg) = RAY_START_X(prg);
   RAY_END_Y(prg) = RAY_START_Y(prg);
 
-  float deltaDistX = (RAY_DIRECTION_X(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_X(prg));
-  float deltaDistY = (RAY_DIRECTION_Y(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_Y(prg));
+  float deltaDistX = (RAY_DIRECTION_X(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_X(prg)) ;
+  float deltaDistY = (RAY_DIRECTION_Y(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_Y(prg)) ;
   int x;
   int y;
   x = PLAYER_X(prg);
@@ -67,12 +67,12 @@ void cast_ray(t_prg *prg)
   if(RAY_DIRECTION_X(prg) < 0)
   {
     stepX = -1;
-    sideDistX = (PLAYER_X(prg) - mapX) * deltaDistX;
+    sideDistX = ((PLAYER_X(prg) - mapX) * deltaDistX);
   }
   else
   {
     stepX = 1;
-    sideDistX = (mapX + 1.0 - PLAYER_X(prg)) * deltaDistX;
+    sideDistX = ((mapX + 1.0 - PLAYER_X(prg)) * deltaDistX);
   }
   if(RAY_DIRECTION_Y(prg) < 0)
   {
@@ -129,7 +129,7 @@ float perpWallDist;
       og_side_disty = og_side_distx;
       sideDistY = 0;
     }
-  if (side)
+  /*  if (side)
   {
     if (sideDistX > 0)
       sideDistX -= 1;
@@ -146,19 +146,36 @@ float perpWallDist;
       sideDistY -= 1;
     if (sideDistX > 0)
       sideDistX -= 1;
-  }
+  }*/
 
-
+ float new_dist_x = fabs(sideDistX);
+ float new_dist_y = fabs(sideDistY);
+float length = sqrt((new_dist_x - PLAYER_X(prg)) * (new_dist_x - PLAYER_X(prg)) +
+                        (new_dist_y - PLAYER_Y(prg)) * (new_dist_y - PLAYER_Y(prg)));
+  printf("length = %f\n", length);
+  printf(ANSI_GREEN "new_dist_x t%f y new_dist_y pos  %f" ANSI_RESET, new_dist_x, new_dist_y);
+  printf("DISTANCE = %f\n", perpWallDist);
   printf(ANSI_YELLOW "MAP X %i map Y %i\n" ANSI_RESET, mapX, mapY);
 
   printf(ANSI_BLUE "%F DISTANCE SUMS %f \n" ANSI_RESET, perpWallDist, perpWallDist - (og_side_distx));
-  printf(ANSI_GREEN "SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
+  printf(ANSI_GREEN "SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX * 64, sideDistY * 64);
+  printf(ANSI_GREEN "SIDE X - SIDE Y %f \n" ANSI_RESET, fabs(fabs(sideDistX) * 64 - fabs(sideDistY) * 64));
+
   printf(ANSI_MAGNETA "OG SIDE X %f OG SIDE Y %f \n" ANSI_RESET, og_side_distx, og_side_disty);
   printf(ANSI_CYAN "ADDITION %f SUBSTRACTION X %f\nABSOLUTE SUB %f ABSOLUTE SUM %f \n" ANSI_RESET, og_side_distx + og_side_disty, og_side_distx - og_side_disty, fabs(fabs(og_side_distx) - fabs(og_side_disty)), fabs(fabs(og_side_distx) + fabs(og_side_disty)));
 
 
 
-  double offset = fabs(fabs(og_side_distx) - fabs(og_side_disty));
+  double offset = 0;
+  if ((fabs(og_side_distx) > 0 && fabs(og_side_distx) < 1) && fabs(og_side_disty) > 0 && fabs(og_side_disty) < 1)
+  {
+      if (fabs(og_side_distx) > fabs(og_side_disty))
+    offset = fabs(og_side_distx + og_side_disty);
+  else
+      offset = fabs(og_side_disty + og_side_distx);
+
+  }
+
   printf(ANSI_MAGNETA "OFFSET  %f \n" ANSI_RESET,  offset);
 /*
   if (side)
