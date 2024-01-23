@@ -7,13 +7,13 @@
       "name": "(lldb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/home/luised94/Cub3d/cub3D",
-      "args": ["/home/luised94/Cub3d/maps/valid.cub"],
+      "program": "/Users/lsoto-do/core04/Cub3d/cub3D",
+      "args": ["/Users/lsoto-do/core04/Cub3d/maps/valid.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "gdb"
+      "MIMode": "lldb"
     },
     {
       "name": "Pygame Debug",

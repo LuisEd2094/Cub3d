@@ -6,6 +6,10 @@
 #define ANSI_GREEN "\x1b[32m"
 #define ANSI_YELLOW "\x1b[33m"
 #define ANSI_BLUE "\x1b[34m"
+#define ANSI_MAGNETA "\x1b[35m"
+#define ANSI_CYAN "\x1b[36m"
+
+
 void draw_ray(t_prg *p) 
 {
     int dx = abs(RAY_END_X(p) - RAY_START_X(p)) * TILE_WIDTH;
@@ -83,7 +87,6 @@ void cast_ray(t_prg *prg)
 
   double og_side_disty = sideDistY;
   double og_side_distx = sideDistX;
-  printf("side X before %f side Y before%f\n", sideDistX, sideDistY);
 
   int hit = 0;
   int side; 
@@ -105,22 +108,65 @@ void cast_ray(t_prg *prg)
     //Check if ray has hit a wall
     if(prg->map[mapY][mapX] == '1') hit = 1;
   }
-  printf(ANSI_BLUE "max X %i map Y %i \n" ANSI_RESET, mapX, mapY);
 float perpWallDist;
   if(side == 0) 
   perpWallDist = fabs((mapX - PLAYER_X(prg) + (1 - stepX) / 2) / RAY_DIRECTION_X(prg)) ; //(sideDistX - deltaDistX); //
   else          
   perpWallDist = fabs((mapY - PLAYER_Y(prg) + (1 - stepY) / 2) / RAY_DIRECTION_Y(prg)); //(sideDistY - deltaDistY); //
 
+
+
+
+
   if (deltaDistX == FLT_MAX)
+  {
     og_side_distx = og_side_disty;
+    sideDistX = 0;
+  }
 
   if (deltaDistY == FLT_MAX)
-    og_side_disty = og_side_distx;
+    {
+      og_side_disty = og_side_distx;
+      sideDistY = 0;
+    }
+  if (side)
+  {
+    if (sideDistX > 0)
+      sideDistX -= 1;
+    else if (sideDistX < 0)
+      sideDistX += 1;
+    if (sideDistY > 0)
+      sideDistY -= 1; 
+  }
+  else
+  {
+    if (sideDistY < 0)
+      sideDistY += 1;
+    else if (sideDistY > 0 )
+      sideDistY -= 1;
+    if (sideDistX > 0)
+      sideDistX -= 1;
+  }
+
+
+  printf(ANSI_YELLOW "MAP X %i map Y %i\n" ANSI_RESET, mapX, mapY);
+
+  printf(ANSI_BLUE "%F DISTANCE SUMS %f \n" ANSI_RESET, perpWallDist, perpWallDist - (og_side_distx));
+  printf(ANSI_GREEN "SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
+  printf(ANSI_MAGNETA "OG SIDE X %f OG SIDE Y %f \n" ANSI_RESET, og_side_distx, og_side_disty);
+  printf(ANSI_CYAN "ADDITION %f SUBSTRACTION X %f\nABSOLUTE SUB %f ABSOLUTE SUM %f \n" ANSI_RESET, og_side_distx + og_side_disty, og_side_distx - og_side_disty, fabs(fabs(og_side_distx) - fabs(og_side_disty)), fabs(fabs(og_side_distx) + fabs(og_side_disty)));
+
+
+
+  double offset = fabs(fabs(og_side_distx) - fabs(og_side_disty));
+  printf(ANSI_MAGNETA "OFFSET  %f \n" ANSI_RESET,  offset);
+/*
   if (side)
   {
     if (sideDistX < 0)
       sideDistX += 1;
+    else
+      sideDistX -= 1;
   }
   else
   {
@@ -128,88 +174,61 @@ float perpWallDist;
       sideDistY -= 1;
     else if (sideDistY < 0)
       sideDistY += 1;
-    if (sideDistX < 0 )
+    if (offset > 0.0 && offset < 1.0)
     {
-      if (sideDistY < 0)
+      if (offset > 0.0 && offset < 1.0)
       {
-        if (og_side_distx > og_side_disty)
-          sideDistX +=  fabs(og_side_disty + og_side_distx);
-        else
-          sideDistX +=  fabs(og_side_disty - og_side_distx);
-      }
-      else
+
+      if (og_side_distx > 0) //right  
       {
-        if (fabs(og_side_distx) < og_side_disty)
+        double x_correction = 1 - offset;
+        if (og_side_disty > 0)
         {
-          printf("i am here\n");
-          sideDistX += 1 - (og_side_disty + og_side_distx);
+          printf("correction %f\n", x_correction); 
+
+          if (x_correction >= 0.5 && og_side_distx <= 0.5) 
+          {
+            sideDistX -= x_correction;
+            printf("%f\n",x_correction ); 
+
+          }
+          else
+          {
+            sideDistX -= 1 - x_correction;
+          }
         }
-        else
-          sideDistX +=  fabs(og_side_disty + og_side_distx);
+        else 
+            printf("%f\n", x_correction + 0.5);
+
+        
+        if (sideDistY > 0) //riight down
+        {
+          if (og_side_distx >= 0.0 && og_side_distx <= 0.5)
+            sideDistX -= 1  - offset;
+          else
+            sideDistX -= offset;
+        }
+        else //right up
+        {
+            printf("right up%f \n", 0.5 + offset);
+
+          if (og_side_distx >= 0.0 && og_side_distx <= 0.5)
+            sideDistX -= 1 - offset;
+          else
+            sideDistX -= offset;
+        }
 
 
       }
-
     }
+        
+      }
 
 
-    printf("plust =  %f minus = %f\n", (og_side_disty + og_side_distx), og_side_disty - og_side_distx);
-  }
+  }*/
+  printf(ANSI_YELLOW "PLAYER X %f PLAYER Y %f \n" ANSI_RESET, 0.5 - og_side_distx, 0.5 - og_side_disty);
 
-  /*printf("side X After %f side Y After %f\n", sideDistX, sideDistY);
-
-  if (side)
-  {
-    if (deltaDistY == FLT_MAX)
-      og_side_disty = og_side_distx;
-   if (fabs(og_side_disty) > fabs(og_side_distx))
-      sideDistY += fabs(og_side_distx) - fabs(og_side_disty);
-    else
-      sideDistY += (og_side_distx) - (og_side_disty);
-
-    if (sideDistX > 0) 
-      sideDistX -= 1.0;
-    else
-      sideDistX += 1.0;
-    printf(ANSI_RED  "%f og_side_distx %f og_side_disty\n" ANSI_RESET , og_side_distx,  og_side_disty);
-
-    printf(ANSI_RED  "%f og_side_distx - og_side_disty\n" ANSI_RESET , og_side_distx - og_side_disty);
-  }
-  else
-  {
-    if (deltaDistX == FLT_MAX)
-      og_side_distx = og_side_disty;
-    if (sideDistY > 0)
-      sideDistY -= 1.0 ;
-    else
-      sideDistY += 1.0 ;
-    printf("%f side X PRE FABS\n", sideDistX);
-
-    if (fabs(og_side_disty - og_side_distx) <= 1.0)
-    {
-      printf("I AM HERE %f \n", 1 + (og_side_disty - og_side_distx));
-      sideDistX += (1 + (og_side_disty - og_side_distx)) - 1;
-
-    }
-    else
-    {
-            printf("THIS IS FABS HERE %f \n", fabs(og_side_disty - og_side_distx) - 2);
-
-      sideDistX += fabs(og_side_disty - og_side_distx) - 2; 
-
-    }
-    printf("side X FABS %f side Y FABs %f\n", sideDistX, sideDistY);
-
-    printf(ANSI_GREEN  "%f og_side_disty %f og_side_distx\n" ANSI_RESET, og_side_disty , og_side_distx);
-
-    printf(ANSI_GREEN  "%f og_side_disty - og_side_distx %f fabs \n" ANSI_RESET, og_side_disty - og_side_distx, fabs(og_side_disty - og_side_distx));
-
-  }
-
-    printf("%f ogX  %f ogY\n", og_side_distx, og_side_disty);
-
-  printf("side X Pre Ray %f side Y Pre ray %f\n", sideDistX, sideDistY);*/
-
+  printf(ANSI_GREEN "BEFORE RAY SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
 
 
   if (deltaDistX == FLT_MAX)
@@ -226,22 +245,8 @@ float perpWallDist;
   }
   else
     RAY_END_Y(prg) = PLAYER_CENTER_Y(prg) + (sideDistY * TILE_WIDTH);
-  /*if (deltaDistY == FLT_MAX)
-    sideDistY = 0;
-  if (deltaDistX == FLT_MAX)
-    sideDistX = 0;
-
-    printf(ANSI_GREEN  "%f DIST X %f DIST Y\n" ANSI_RESET, sideDistX , sideDistY);
-    printf(ANSI_GREEN  "%f DELTA X %f DELTA Y\n" ANSI_RESET, deltaDistX , deltaDistY);
-
-if (side) {
-    RAY_END_X(prg)  = PLAYER_CENTER_X(prg) + (sideDistX * TILE_WIDTH);
-    RAY_END_Y(prg) = PLAYER_CENTER_Y(prg) + (sideDistY * TILE_WIDTH);
-} else {
-    RAY_END_X(prg) = PLAYER_CENTER_X(prg) + (sideDistX * TILE_WIDTH);
-    RAY_END_Y(prg)  = PLAYER_CENTER_Y(prg) + (sideDistY * TILE_WIDTH);
-}*/
-
   printf("%i side\n", side);
+  printf("\n\n");
+
   draw_ray(prg);
 }

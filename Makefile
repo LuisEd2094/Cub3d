@@ -35,7 +35,7 @@ MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
 DEPS_PATH	= deps/
 LIB_PATH	= 	./libft
 LIB			=	$(LIB_PATH)/libft.a 
-LDFLAGS		= 	-L$(LIB_PATH) -lft -L./minilibx-linux -lm -lmlx  -lXext -lX11  #-framework OpenGL -framework AppKit
+LDFLAGS		= 	-L$(LIB_PATH) -lft -lm  -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit #-L./minilibx-linux -lmlx  -lXext -lX11   
 
 INCS        = -I./includes/ -I$(LIB_PATH)/includes
 #Colors

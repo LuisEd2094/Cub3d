@@ -1,14 +1,12 @@
-NO /home/luised94/Cub3d/imgs/a.xml
-SO /home/luised94/Cub3d/imgs/b.xml
-WE /home/luised94/Cub3d/imgs/c.xml
-EA /home/luised94/Cub3d/imgs/d.xml
+NO /Users/lsoto-do/core04/Cub3d/imgs/a.xml
+SO /Users/lsoto-do/core04/Cub3d/imgs/b.xml
+WE /Users/lsoto-do/core04/Cub3d/imgs/c.xml
+EA /Users/lsoto-do/core04/Cub3d/imgs/d.xml
 F 220,100,0
 C 225,30,0
 
-11111111111
-10000000001
-10000000001
-10000000001
-100S0100001
-10000001001
-11111111111
+11111
+10001
+10N01
+10001
+11111
