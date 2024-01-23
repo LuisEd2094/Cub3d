@@ -61,8 +61,8 @@ void cast_ray(t_prg *prg)
 
   int stepX;
   int stepY;
-  float mapX = PLAYER_X(prg);
-  float mapY = PLAYER_Y(prg);
+  int mapX = PLAYER_X(prg);
+  int mapY = PLAYER_Y(prg);
 
   if(RAY_DIRECTION_X(prg) < 0)
   {
