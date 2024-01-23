@@ -61,8 +61,8 @@ void cast_ray(t_prg *prg)
 
   int stepX;
   int stepY;
-  int mapX = PLAYER_X(prg);
-  int mapY = PLAYER_Y(prg);
+  float mapX = PLAYER_X(prg);
+  float mapY = PLAYER_Y(prg);
 
   if(RAY_DIRECTION_X(prg) < 0)
   {
@@ -90,6 +90,8 @@ void cast_ray(t_prg *prg)
 
   int hit = 0;
   int side; 
+
+  // DDA 
   while(hit == 0)
   {
     //jump to next map square, either in x-direction, or in y-direction
@@ -106,15 +108,13 @@ void cast_ray(t_prg *prg)
       side = 0;
     }
     //Check if ray has hit a wall
-    if(prg->map[mapY][mapX] == '1') hit = 1;
+    if(prg->map[(int)mapY][(int)mapX] == '1') hit = 1;
   }
 float perpWallDist;
   if(side == 0) 
   perpWallDist = fabs((mapX - PLAYER_X(prg) + (1 - stepX) / 2) / RAY_DIRECTION_X(prg)) ; //(sideDistX - deltaDistX); //
   else          
   perpWallDist = fabs((mapY - PLAYER_Y(prg) + (1 - stepY) / 2) / RAY_DIRECTION_Y(prg)); //(sideDistY - deltaDistY); //
-
-
 
 
 
@@ -129,6 +129,14 @@ float perpWallDist;
       og_side_disty = og_side_distx;
       sideDistY = 0;
     }
+    printf(ANSI_GREEN "\t SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
+
+  /*
+
+  double offset = fabs(fabs(og_side_distx) - fabs(og_side_disty));
+
+
+
   if (side)
   {
     if (sideDistX > 0)
@@ -146,20 +154,36 @@ float perpWallDist;
       sideDistY -= 1;
     if (sideDistX > 0)
       sideDistX -= 1;
+    
+    
+    if (offset == 0.0)
+      sideDistX += 1;
+    else if (sideDistX > 0  && offset >  0 && og_side_distx > og_side_disty)
+      sideDistX += 1 - offset;
+    else
+      sideDistX += offset;
   }
 
+  double dif = RAY_DIRECTION_Y(prg) / RAY_DIRECTION_X(prg);
 
-  printf(ANSI_YELLOW "MAP X %i map Y %i\n" ANSI_RESET, mapX, mapY);
+  double cont = ( PLAYER_CENTER_Y(prg) -  PLAYER_CENTER_X(prg) ) * dif;
 
-  printf(ANSI_BLUE "%F DISTANCE SUMS %f \n" ANSI_RESET, perpWallDist, perpWallDist - (og_side_distx));
-  printf(ANSI_GREEN "SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
-  printf(ANSI_MAGNETA "OG SIDE X %f OG SIDE Y %f \n" ANSI_RESET, og_side_distx, og_side_disty);
-  printf(ANSI_CYAN "ADDITION %f SUBSTRACTION X %f\nABSOLUTE SUB %f ABSOLUTE SUM %f \n" ANSI_RESET, og_side_distx + og_side_disty, og_side_distx - og_side_disty, fabs(fabs(og_side_distx) - fabs(og_side_disty)), fabs(fabs(og_side_distx) + fabs(og_side_disty)));
+  printf("%f Y\n", dif);
 
+  printf(" const %f Y\n",cont);*/
 
 
-  double offset = fabs(fabs(og_side_distx) - fabs(og_side_disty));
-  printf(ANSI_MAGNETA "OFFSET  %f \n" ANSI_RESET,  offset);
+  //printf(ANSI_CYAN " RAY FINAL X %d RAY FINAL Y  %f\n" ANSI_RESET, PLAYER_CENTER_X(prg) + (RAY_DIRECTION_X(prg) < 0), (PLAYER_CENTER_X(prg) + (RAY_DIRECTION_X(prg) < 0)) * dif + cont );
+
+  printf(ANSI_YELLOW "MAP X %f map Y %f\n" ANSI_RESET, mapX, mapY);
+
+//  printf(ANSI_BLUE "%F DISTANCE SUMS %f \n" ANSI_RESET, perpWallDist, perpWallDist - (og_side_distx));
+  //printf(ANSI_MAGNETA "OG SIDE X %f OG SIDE Y %f \n" ANSI_RESET, og_side_distx, og_side_disty);
+  //printf(ANSI_GREEN "ADDITION %f SUBSTRACTION X %f\nABSOLUTE SUB %f ABSOLUTE SUM %f \n" ANSI_RESET, og_side_distx + og_side_disty, og_side_distx - og_side_disty, fabs(fabs(og_side_distx) - fabs(og_side_disty)), fabs(fabs(og_side_distx) + fabs(og_side_disty)));
+
+
+
+ // printf(ANSI_MAGNETA "OFFSET  %f \n" ANSI_RESET,  offset);
 /*
   if (side)
   {
@@ -226,9 +250,9 @@ float perpWallDist;
 
 
   }*/
-  printf(ANSI_YELLOW "PLAYER X %f PLAYER Y %f \n" ANSI_RESET, 0.5 - og_side_distx, 0.5 - og_side_disty);
+  //printf(ANSI_YELLOW "PLAYER X %f PLAYER Y %f \n" ANSI_RESET, 0.5 - og_side_distx, 0.5 - og_side_disty);
 
-  printf(ANSI_GREEN "BEFORE RAY SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
+ // printf(ANSI_GREEN "BEFORE RAY SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
 
 
   if (deltaDistX == FLT_MAX)
