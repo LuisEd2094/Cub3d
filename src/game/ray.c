@@ -49,8 +49,8 @@ void cast_ray(t_prg *prg)
   RAY_END_X(prg) = RAY_START_X(prg);
   RAY_END_Y(prg) = RAY_START_Y(prg);
 
-  float deltaDistX = (RAY_DIRECTION_X(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_X(prg));
-  float deltaDistY = (RAY_DIRECTION_Y(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_Y(prg));
+  float deltaDistX = (RAY_DIRECTION_X(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_X(prg)) ;
+  float deltaDistY = (RAY_DIRECTION_Y(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_Y(prg)) ;
   int x;
   int y;
   x = PLAYER_X(prg);
@@ -67,12 +67,12 @@ void cast_ray(t_prg *prg)
   if(RAY_DIRECTION_X(prg) < 0)
   {
     stepX = -1;
-    sideDistX = (PLAYER_X(prg) - mapX) * deltaDistX;
+    sideDistX = ((PLAYER_X(prg) - mapX) * deltaDistX);
   }
   else
   {
     stepX = 1;
-    sideDistX = (mapX + 1.0 - PLAYER_X(prg)) * deltaDistX;
+    sideDistX = ((mapX + 1.0 - PLAYER_X(prg)) * deltaDistX);
   }
   if(RAY_DIRECTION_Y(prg) < 0)
   {
@@ -94,7 +94,6 @@ void cast_ray(t_prg *prg)
   // DDA 
   while(hit == 0)
   {
-    //jump to next map square, either in x-direction, or in y-direction
     if(fabs(sideDistX) < fabs(sideDistY))
     {
       sideDistX += deltaDistX;
@@ -107,153 +106,57 @@ void cast_ray(t_prg *prg)
       mapY += stepY;
       side = 0;
     }
-    //Check if ray has hit a wall
-    if(prg->map[(int)mapY][(int)mapX] == '1') hit = 1;
+    if(prg->map[mapY][mapX] == '1') hit = 1;
   }
-float perpWallDist;
+  float perpWallDist;
   if(side == 0) 
-  perpWallDist = fabs((mapX - PLAYER_X(prg) + (1 - stepX) / 2) / RAY_DIRECTION_X(prg)) ; //(sideDistX - deltaDistX); //
+    perpWallDist = fabs((mapX - PLAYER_X(prg) + (1 - stepX) / 2) / RAY_DIRECTION_X(prg)) ; //(sideDistX - deltaDistX); //
   else          
-  perpWallDist = fabs((mapY - PLAYER_Y(prg) + (1 - stepY) / 2) / RAY_DIRECTION_Y(prg)); //(sideDistY - deltaDistY); //
+    perpWallDist = fabs((mapY - PLAYER_Y(prg) + (1 - stepY) / 2) / RAY_DIRECTION_Y(prg)); //(sideDistY - deltaDistY); //
 
 
 
-  if (deltaDistX == FLT_MAX)
-  {
-    og_side_distx = og_side_disty;
-    sideDistX = 0;
-  }
-
-  if (deltaDistY == FLT_MAX)
+    if (deltaDistX == FLT_MAX)
     {
-      og_side_disty = og_side_distx;
+      sideDistX = 0;
+    }
+    if (deltaDistY == FLT_MAX)
+    {
       sideDistY = 0;
     }
-    printf(ANSI_GREEN "\t SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
-
-  /*
-
-  double offset = fabs(fabs(og_side_distx) - fabs(og_side_disty));
-
-
-
-  if (side)
+  double offset = fabs(fabs(sideDistX) - fabs(sideDistY));
+if (side)
+{
+  if (sideDistX < 0)
+    sideDistX += 1;
+  else
+    sideDistX -= 1;
+  if (sideDistY > 0)
   {
-    if (sideDistX > 0)
-      sideDistX -= 1;
-    else if (sideDistX < 0)
-      sideDistX += 1;
-    if (sideDistY > 0)
-      sideDistY -= 1; 
+    sideDistY += offset - 1 ;
   }
   else
   {
-    if (sideDistY < 0)
-      sideDistY += 1;
-    else if (sideDistY > 0 )
-      sideDistY -= 1;
-    if (sideDistX > 0)
-      sideDistX -= 1;
-    
-    
-    if (offset == 0.0)
-      sideDistX += 1;
-    else if (sideDistX > 0  && offset >  0 && og_side_distx > og_side_disty)
-      sideDistX += 1 - offset;
-    else
-      sideDistX += offset;
+    sideDistY += 1 - offset;
+
   }
-
-  double dif = RAY_DIRECTION_Y(prg) / RAY_DIRECTION_X(prg);
-
-  double cont = ( PLAYER_CENTER_Y(prg) -  PLAYER_CENTER_X(prg) ) * dif;
-
-  printf("%f Y\n", dif);
-
-  printf(" const %f Y\n",cont);*/
-
-
-  //printf(ANSI_CYAN " RAY FINAL X %d RAY FINAL Y  %f\n" ANSI_RESET, PLAYER_CENTER_X(prg) + (RAY_DIRECTION_X(prg) < 0), (PLAYER_CENTER_X(prg) + (RAY_DIRECTION_X(prg) < 0)) * dif + cont );
-
-  printf(ANSI_YELLOW "MAP X %f map Y %f\n" ANSI_RESET, mapX, mapY);
-
-//  printf(ANSI_BLUE "%F DISTANCE SUMS %f \n" ANSI_RESET, perpWallDist, perpWallDist - (og_side_distx));
-  //printf(ANSI_MAGNETA "OG SIDE X %f OG SIDE Y %f \n" ANSI_RESET, og_side_distx, og_side_disty);
-  //printf(ANSI_GREEN "ADDITION %f SUBSTRACTION X %f\nABSOLUTE SUB %f ABSOLUTE SUM %f \n" ANSI_RESET, og_side_distx + og_side_disty, og_side_distx - og_side_disty, fabs(fabs(og_side_distx) - fabs(og_side_disty)), fabs(fabs(og_side_distx) + fabs(og_side_disty)));
-
-
-
- // printf(ANSI_MAGNETA "OFFSET  %f \n" ANSI_RESET,  offset);
-/*
-  if (side)
+}
+else
+{
+  if (sideDistY < 0)
+    sideDistY += 1;
+  else
+    sideDistY -= 1;
+  if (sideDistX > 0)
   {
-    if (sideDistX < 0)
-      sideDistX += 1;
-    else
-      sideDistX -= 1;
+    sideDistX += offset - 1 ;
   }
   else
   {
-    if (sideDistY > 0)
-      sideDistY -= 1;
-    else if (sideDistY < 0)
-      sideDistY += 1;
-    if (offset > 0.0 && offset < 1.0)
-    {
-      if (offset > 0.0 && offset < 1.0)
-      {
+    sideDistX += 1 - offset;
 
-      if (og_side_distx > 0) //right  
-      {
-        double x_correction = 1 - offset;
-        if (og_side_disty > 0)
-        {
-          printf("correction %f\n", x_correction); 
-
-          if (x_correction >= 0.5 && og_side_distx <= 0.5) 
-          {
-            sideDistX -= x_correction;
-            printf("%f\n",x_correction ); 
-
-          }
-          else
-          {
-            sideDistX -= 1 - x_correction;
-          }
-        }
-        else 
-            printf("%f\n", x_correction + 0.5);
-
-        
-        if (sideDistY > 0) //riight down
-        {
-          if (og_side_distx >= 0.0 && og_side_distx <= 0.5)
-            sideDistX -= 1  - offset;
-          else
-            sideDistX -= offset;
-        }
-        else //right up
-        {
-            printf("right up%f \n", 0.5 + offset);
-
-          if (og_side_distx >= 0.0 && og_side_distx <= 0.5)
-            sideDistX -= 1 - offset;
-          else
-            sideDistX -= offset;
-        }
-
-
-      }
-    }
-        
-      }
-
-
-  }*/
-  //printf(ANSI_YELLOW "PLAYER X %f PLAYER Y %f \n" ANSI_RESET, 0.5 - og_side_distx, 0.5 - og_side_disty);
-
- // printf(ANSI_GREEN "BEFORE RAY SIDE X %f SIDE Y %f \n" ANSI_RESET, sideDistX, sideDistY);
-
+  }
+}
 
   if (deltaDistX == FLT_MAX)
   {
@@ -269,8 +172,6 @@ float perpWallDist;
   }
   else
     RAY_END_Y(prg) = PLAYER_CENTER_Y(prg) + (sideDistY * TILE_WIDTH);
-  printf("%i side\n", side);
-  printf("\n\n");
 
   draw_ray(prg);
 }
