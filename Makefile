@@ -19,6 +19,10 @@ AUX_PATH		= aux/
 SRCS_PATH           = src/
 OBJS_PATH           = obj/
 CC = cc
+OS			:= $(shell uname -s)
+DEPS_PATH	=	deps/
+LIB_PATH	= 	./libft
+LIB			=	$(LIB_PATH)/libft.a 
 
 #BUILT INS variables
 
@@ -32,10 +36,20 @@ MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
 										
 #Add new path to objects
 
-DEPS_PATH	= deps/
-LIB_PATH	= 	./libft
-LIB			=	$(LIB_PATH)/libft.a 
-LDFLAGS		= 	-L$(LIB_PATH) -lft -lm  -L./minilibx-linux -lmlx  -lXext -lX11  #-L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit   
+
+ifeq ($(OS), Linux)
+MLX_PATH = ./minilibx-linux/
+FRAME = -lXext -lX11 -lm -lz
+KEYS = -D LINUX_KEYS=1
+else
+MLX_PATH = ./minilibx_opengl_20191021/
+FRAME = -framework OpenGL -framework AppKit
+KEYS = 
+endif
+
+
+
+LDFLAGS		= 	-L$(LIB_PATH) -lft -lm -L$(MLX_PATH) -lmlx $(FRAME)
 
 INCS        = -I./includes/ -I$(LIB_PATH)/includes
 #Colors
@@ -90,22 +104,26 @@ SRC			+= $(CK_FILES) $(AUX_FILES) $(GAME_FILES)
 OBJS        =	$(addprefix $(OBJS_PATH), $(SRC:.c=.o)) 
 				
 
-all: make_lib $(NAME)
+all: make_mlx make_lib $(NAME)
 
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
 			@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCS) -MMD -MP -c $< -o  $@
+			@$(CC) $(CFLAGS) $(INCS) $(KEYS) -MMD -MP -c $< -o  $@
 			@mv $(basename $@).d $(DEPS_PATH)
 
 
-$(NAME): $(OBJS) $(LIB) Makefile
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LINEFLAGS) $(LIB)  -o $(NAME) $(LDFLAGS)
+$(NAME): $(OBJS) $(LIB) $(L_MLX) Makefile
+	@$(CC) $(CFLAGS) $(OBJS) $(LINEFLAGS) $(LIB) $(LDFLAGS) -o $(NAME) 
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
 
 make_lib:
 	@$(MAKE) -s -C $(LIB_PATH)
 	@echo "$(BLUE)Done checking Libft! $(DEF_COLOR)"
+
+make_mlx:
+	@$(MAKE) -s -C $(MLX_PATH)
+	@echo "$(BLUE)Done checking MLX! $(DEF_COLOR)"
 
 
 $(MAKE_OBJ_DIR):
@@ -124,10 +142,13 @@ fclean_lib:
 clean_lib:
 	@$(MAKE) clean -s -C $(LIB_PATH) 
 
+fclean_mlx:
+	@$(MAKE) clean -s -C $(MLX_PATH) 
+
 
 clean: clean_lib clean_objects
 
-fclean:  clean_objects fclean_lib
+fclean:  clean_objects fclean_lib fclean_mlx
 	@$(RM) $(NAME)
 	@echo "$(GREEN)$(NAME) executable cleaned!$(DEF_COLOR)"
 
@@ -138,4 +159,4 @@ clean_objects:
 
 re: fclean all 
 
-.PHONY: all fclean clean re 
+.PHONY: all fclean clean re clean_objects clean_lib fclean_lib make_mlx make_lib
