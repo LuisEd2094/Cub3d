@@ -49,44 +49,37 @@ void cast_ray(t_prg *prg)
   RAY_END_X(prg) = RAY_START_X(prg);
   RAY_END_Y(prg) = RAY_START_Y(prg);
 
-  float deltaDistX = (RAY_DIRECTION_X(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_X(prg)) ;
-  float deltaDistY = (RAY_DIRECTION_Y(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_Y(prg)) ;
-  int x;
-  int y;
-  x = PLAYER_X(prg);
-  y = PLAYER_Y(prg); 
+  RAY_DELTA_X(prg) = (RAY_DIRECTION_X(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_X(prg)) ;
+  RAY_DELTA_Y(prg) = (RAY_DIRECTION_Y(prg) == 0) ? FLT_MAX : floor(1 / RAY_DIRECTION_Y(prg)) ;
 
   double sideDistX;
   double sideDistY;
 
-  int stepX;
-  int stepY;
+  RAY_STEP_X(prg);
+  RAY_STEP_Y(prg);
   int mapX = PLAYER_X(prg);
   int mapY = PLAYER_Y(prg);
 
   if(RAY_DIRECTION_X(prg) < 0)
   {
-    stepX = -1;
-    sideDistX = ((PLAYER_X(prg) - mapX) * deltaDistX);
+    RAY_STEP_X(prg) = -1;
+    sideDistX = ((PLAYER_X(prg) - mapX) * RAY_DELTA_X(prg));
   }
   else
   {
-    stepX = 1;
-    sideDistX = ((mapX + 1.0 - PLAYER_X(prg)) * deltaDistX);
+    RAY_STEP_X(prg) = 1;
+    sideDistX = ((mapX + 1.0 - PLAYER_X(prg)) * RAY_DELTA_X(prg));
   }
   if(RAY_DIRECTION_Y(prg) < 0)
   {
-    stepY = -1;
-    sideDistY = (PLAYER_Y(prg) - mapY) * deltaDistY;
+    RAY_STEP_Y(prg) = -1;
+    sideDistY = (PLAYER_Y(prg) - mapY) * RAY_DELTA_Y(prg);
   }
   else
   {
-    stepY = 1;
-    sideDistY = (mapY + 1.0 - PLAYER_Y(prg)) * deltaDistY;
+    RAY_STEP_Y(prg) = 1;
+    sideDistY = (mapY + 1.0 - PLAYER_Y(prg)) * RAY_DELTA_Y(prg);
   }
-
-  double og_side_disty = sideDistY;
-  double og_side_distx = sideDistX;
 
   int hit = 0;
   int side; 
@@ -96,31 +89,31 @@ void cast_ray(t_prg *prg)
   {
     if(fabs(sideDistX) < fabs(sideDistY))
     {
-      sideDistX += deltaDistX;
-      mapX += stepX;
+      sideDistX += RAY_DELTA_X(prg);
+      mapX += RAY_STEP_X(prg);
       side = 1;
     }
     else
     {
-      sideDistY += deltaDistY;
-      mapY += stepY;
+      sideDistY += RAY_DELTA_Y(prg);
+      mapY += RAY_STEP_Y(prg);
       side = 0;
     }
     if(prg->map[mapY][mapX] == '1') hit = 1;
   }
-  float perpWallDist;
+  double perpWallDist;
   if(side == 0) 
-    perpWallDist = fabs((mapX - PLAYER_X(prg) + (1 - stepX) / 2) / RAY_DIRECTION_X(prg)) ; //(sideDistX - deltaDistX); //
+    perpWallDist = fabs((mapX - PLAYER_X(prg) + (1 - RAY_STEP_X(prg)) / 2) / RAY_DIRECTION_X(prg)) ; //(sideDistX - RAY_DELTA_X(prg)); //
   else          
-    perpWallDist = fabs((mapY - PLAYER_Y(prg) + (1 - stepY) / 2) / RAY_DIRECTION_Y(prg)); //(sideDistY - deltaDistY); //
+    perpWallDist = fabs((mapY - PLAYER_Y(prg) + (1 - RAY_STEP_Y(prg)) / 2) / RAY_DIRECTION_Y(prg)); //(sideDistY - RAY_DELTA_Y(prg)); //
 
 
 
-    if (deltaDistX == FLT_MAX)
+    if (RAY_DELTA_X(prg) == FLT_MAX)
     {
       sideDistX = 0;
     }
-    if (deltaDistY == FLT_MAX)
+    if (RAY_DELTA_Y(prg) == FLT_MAX)
     {
       sideDistY = 0;
     }
@@ -158,7 +151,7 @@ else
   }
 }
 
-  if (deltaDistX == FLT_MAX)
+  if (RAY_DELTA_X(prg) == FLT_MAX)
   {
     RAY_END_X(prg) = PLAYER_CENTER_X(prg);
   }
@@ -166,7 +159,7 @@ else
     RAY_END_X(prg) = PLAYER_CENTER_X(prg) + (sideDistX * TILE_WIDTH);
   
   
-  if (deltaDistY == FLT_MAX)
+  if (RAY_DELTA_Y(prg) == FLT_MAX)
   {
     RAY_END_Y(prg)  = PLAYER_CENTER_Y(prg);
   }

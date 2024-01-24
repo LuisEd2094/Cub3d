@@ -11,6 +11,7 @@
 
 
 # define MOVE_SPEED 0.125
+# define HIT_BOX    MOVE_SPEED * 2
 # define ROTATION_ANGLE 45
 
 #endif

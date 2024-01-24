@@ -80,12 +80,12 @@ CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
 AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				init_int_array.c check_file_extension.c is_new_line.c \
-				free_mallocs.c ft_max.c
+				free_mallocs.c ft_max.c 
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
 GAME		=	hooks.c draw_map_bonus.c triangle_bonus.c update_window.c \
-				make_move.c ray.c
+				make_move.c ray.c check_collision_bonus.c
 
 GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 

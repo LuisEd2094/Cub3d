@@ -72,6 +72,14 @@ typedef struct s_ray
 	double 	dir_x;
 	double	dir_y;
 	double	distance;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	map_step_x;
+	double	map_step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		map_x;
+	int		map_y;
 } t_ray;
 
 #define RAY_START_X(prg) (prg->ray->start->x)
@@ -80,7 +88,14 @@ typedef struct s_ray
 #define RAY_END_Y(prg) (prg->ray->end->y)
 #define RAY_DIRECTION_X(prg) (prg->ray->dir_x)
 #define RAY_DIRECTION_Y(prg) (prg->ray->dir_y)
-
+#define RAY_DELTA_X(prg) (prg->ray->delta_dist_x)
+#define RAY_DELTA_Y(prg) (prg->ray->delta_dist_y)
+#define RAY_STEP_X(prg) (prg->ray->map_step_x)
+#define RAY_STEP_Y(prg) (prg->ray->map_step_y)
+#define RAY_DIST_X(prg) (prg->ray->side_dist_x)
+#define RAY_DIST_Y(prg) (prg->ray->side_dist_y)
+#define RAY_MAP_X(prg)	(prg->ray->map_x)
+#define RAY_MAP_Y(prg)	(prg->ray->map_y)
 typedef struct  t_s_mlx
 {
     void    *ptr;
