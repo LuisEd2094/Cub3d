@@ -1,35 +1,17 @@
-#include <math.h>
+#include "./includes/keys.h"
 #include <stdio.h>
+int main() {
+#ifdef LINUX_KEYS
+    // Linux-specific code using Linux key codes
+    printf("Using Linux key codes\n");
+    printf("ESC key code: %d\n", KEY_ESC);
+#else
+    // Non-Linux code using alternative key codes
+    printf("Using alternative key codes\n");
+    printf("ESC key code: %d\n", KEY_ESC);
+#endif
 
-int	main(void)
-{
-	int		i;
-	float	x;
-	float	y;
-	float	x1, y1;
-	float	x2, y2, dx, dy, step;
+    // Rest of your code...
 
-	x1 = 1;
-	y1 = 1;
-	x2 = 3;
-	y2 = 4;
-
-	dx = x2 - x1;
-	dy = y2 - y1;
-	if (fabs(dx) >= fabs(dy))
-		step = fabs(dx);
-	else
-		step = fabs(dy);
-	dx = dx / step;
-	dy = dy / step;
-	x = x1;
-	y = y1;
-	i = 0;
-	while (i <= step)
-	{
-		printf("%d - x: %f, y: %f\n", i, x, y);
-		x = x + dx;
-		y = y + dy;
-		i = i + 1;
-	}
+    return 0;
 }
