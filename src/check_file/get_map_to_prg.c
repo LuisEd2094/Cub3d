@@ -44,6 +44,8 @@ char set_player_info(t_prg *prg, char c, int y, int x)
 	return ('0');
 }
 
+#if BONUS_FLAG == 0
+
 char *save_str_info_to_map(char *s, t_prg *prg, int y)
 {
 	int		x;
@@ -60,6 +62,47 @@ char *save_str_info_to_map(char *s, t_prg *prg, int y)
 	}
 	return (res);
 }
+
+#else 
+
+char	get_door_info(t_prg *prg, int x, int y)
+{
+	t_doors *new_door;
+	t_list *new;
+
+	new_door = (t_doors *)malloc(sizeof(t_doors));
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new_door || !new)
+		exit_error(NULL, prg);
+	new_door->x = x;
+	new_door->y = y;
+	new->content = new_door;
+	new->next = NULL;
+	ft_lstadd_back(&prg->doors_list, new);
+	printf("%i %i\n", ((t_doors*)(new->content))->x, ((t_doors*)(new->content))->y); 
+	return ('1');
+}
+
+char *save_str_info_to_map(char *s, t_prg *prg, int y)
+{
+	int		x;
+	char	*res;
+	
+	res = ft_strdup(s);
+	if (!res)
+		return (NULL);
+	x = -1;
+	while (res[++x])
+	{
+		if (res[x] != '0' && res[x] != '1' && res[x] != ' ' && res[x] != '2')
+			res[x] = set_player_info(prg, res[x], y, x);
+		if (res[x] == '2')
+			res[x] = get_door_info(prg, x, y);
+	}
+	return (res);
+}
+
+#endif
 
 bool	get_map_to_prg(t_prg *prg, t_parseer *parse)
 {
@@ -82,9 +125,5 @@ bool	get_map_to_prg(t_prg *prg, t_parseer *parse)
 		curr = curr->next;
 	}
 	prg->map[i] = NULL;
-	for (int j = 0; prg->map[j]; ++j)
-	{
-		ft_printf(1, "%s\n", prg->map[j]);
-	}
 	return (check_map_borders(prg, parse));
 }

@@ -18,7 +18,12 @@ AUX_PATH		= aux/
 SRCS_PATH           = src/
 OBJS_PATH           = obj/
 CC = cc
+BONUS_FLAG 	:= 0
 
+# Check if the target is 'bonus' and set BONUS_FLAG accordingly
+ifeq ($(MAKECMDGOALS),bonus)
+    BONUS_FLAG := 1
+endif
 #BUILT INS variables
 
 
@@ -87,13 +92,15 @@ all: make_lib $(NAME)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
 			@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCS) -MMD -MP -c $< -o  $@
+			@$(CC) $(CFLAGS) $(INCS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
 			@mv $(basename $@).d $(DEPS_PATH)
 
 
 $(NAME): $(OBJS) $(LIB) Makefile
 	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LINEFLAGS) $(LIB)-o $(NAME) $(LDFLAGS)
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
+
+bonus: clean_objects all
 
 make_lib:
 	@$(MAKE) -s -C $(LIB_PATH)

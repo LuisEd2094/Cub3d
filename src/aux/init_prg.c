@@ -35,5 +35,6 @@ void	init_prg(t_prg *prg)
 	prg->player_x = 0;
 	prg->error_msg = NULL;
 	prg->map = NULL;
+	prg->doors_list = NULL;
 	errno = 0;
 }

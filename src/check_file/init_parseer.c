@@ -39,6 +39,8 @@ void	set_booleans(t_parseer *parse)
 	parse->found_map = 0;
 }
 
+#if BONUS_FLAG == 0
+
 void	set_valid_char_map(t_parseer *p)
 {
 	p->valid_map_chars[0] = '0';
@@ -49,7 +51,25 @@ void	set_valid_char_map(t_parseer *p)
 	p->valid_map_chars[5] = 'E';
 	p->valid_map_chars[6] = 'W';
 	p->valid_map_chars[7] = '\0';
+	p->valid_map_chars[8] = '\0';
 }
+
+#else
+
+void	set_valid_char_map(t_parseer *p)
+{
+	p->valid_map_chars[0] = '0';
+	p->valid_map_chars[1] = '1';
+	p->valid_map_chars[2] = '2';
+	p->valid_map_chars[3] = ' ';
+	p->valid_map_chars[4] = 'N';
+	p->valid_map_chars[5] = 'S';
+	p->valid_map_chars[6] = 'E';
+	p->valid_map_chars[7] = 'W';
+	p->valid_map_chars[8] = '\0';
+}
+
+#endif
 
 void	init_parseer(t_parseer *parse)
 {

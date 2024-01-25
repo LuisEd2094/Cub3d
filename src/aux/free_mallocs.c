@@ -15,4 +15,9 @@
 void	free_mallocs(t_prg *p)
 {
 	free_2d_array((void **)p->map);
+	
+
+
+
+	ft_lstclear(&p->doors_list, free);
 }
