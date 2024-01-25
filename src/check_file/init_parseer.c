@@ -43,13 +43,13 @@ void	set_booleans(t_parseer *parse)
 
 void	set_valid_char_map(t_parseer *p)
 {
-	p->valid_map_chars[0] = '0';
-	p->valid_map_chars[1] = '1';
-	p->valid_map_chars[2] = ' ';
+	p->valid_map_chars[0] = 'W';
+	p->valid_map_chars[1] = 'S';
+	p->valid_map_chars[2] = 'E';
 	p->valid_map_chars[3] = 'N';
-	p->valid_map_chars[4] = 'S';
-	p->valid_map_chars[5] = 'E';
-	p->valid_map_chars[6] = 'W';
+	p->valid_map_chars[4] = ' ';
+	p->valid_map_chars[5] = '0';
+	p->valid_map_chars[6] = '1';
 	p->valid_map_chars[7] = '\0';
 	p->valid_map_chars[8] = '\0';
 }
@@ -58,14 +58,14 @@ void	set_valid_char_map(t_parseer *p)
 
 void	set_valid_char_map(t_parseer *p)
 {
-	p->valid_map_chars[0] = '0';
-	p->valid_map_chars[1] = '1';
-	p->valid_map_chars[2] = '2';
-	p->valid_map_chars[3] = ' ';
-	p->valid_map_chars[4] = 'N';
-	p->valid_map_chars[5] = 'S';
-	p->valid_map_chars[6] = 'E';
-	p->valid_map_chars[7] = 'W';
+	p->valid_map_chars[0] = 'W';
+	p->valid_map_chars[1] = 'S';
+	p->valid_map_chars[2] = 'E';
+	p->valid_map_chars[3] = 'N';
+	p->valid_map_chars[4] = ' ';
+	p->valid_map_chars[5] = '0';
+	p->valid_map_chars[6] = '1';
+	p->valid_map_chars[7] = '2';
 	p->valid_map_chars[8] = '\0';
 }
 

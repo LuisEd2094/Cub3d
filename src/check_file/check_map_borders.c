@@ -93,9 +93,12 @@ bool	check_map_borders(t_prg *prg, t_parseer *parse)
 
 bool	check_adjecent_values(t_prg *prg, int i, int j)
 {
-	if (prg->map[i][j - 1] == '1' && prg->map[i][j + 1] == '1')
+	if (prg->map[i][j - 1] == ' ' || prg->map[i][j + 1] == ' ' \
+		|| prg->map[i - 1][j] == ' ' || prg->map[i + 1][j] == ' ')
+		return(false);
+	if ((prg->map[i][j - 1] == '1' && prg->map[i][j + 1] == '1'))
 		return (true);
-	if (prg->map[i - 1][j] == '1' && prg->map[i + 1][j] == '1')
+	if ((prg->map[i - 1][j] == '1' && prg->map[i + 1][j] == '1'))
 		return (true);
 	return (false);
 }

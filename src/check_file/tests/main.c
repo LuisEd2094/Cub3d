@@ -10,8 +10,6 @@ void tearDown(void) {
     // clean stuff up here
 }
 
-
-
 void test_ids()
 {
 /// SUCCESS TESTS///
@@ -146,7 +144,84 @@ void test_maps(void)
     exit_value = system("../../../cub3D ../../../maps/invalid_open_pitfall_down.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
+}
 
+void bonus_test(void)
+{
+    //Success test
+    int exit_value = system("../../../cub3D ../../../maps/doors/valid.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/valid_pit_fall.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/valid_pit_fall_down.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
+
+    //Error Test
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_long_open_down.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_long_open.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_open_complex.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_open_map.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_open_pitfall_down.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_open_pitfall.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+    
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_door_left.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+    
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_door_right.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+}
+
+void normal_with_bonus_map(void)
+{
+    //Success test
+    int exit_value = system("../../../cub3D ../../../maps/doors/valid.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/valid_pit_fall.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/valid_pit_fall_down.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    //Error Test
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_long_open_down.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_long_open.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_open_complex.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_open_map.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_open_pitfall_down.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_open_pitfall.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+    
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_door_left.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
+    
+    exit_value = system("../../../cub3D ../../../maps/doors/invalid_door_right.cub");
+    TEST_ASSERT_EQUAL_INT(EXIT_FAILURE, WEXITSTATUS(exit_value));
 
 }
 
@@ -155,6 +230,11 @@ int main()
     UNITY_BEGIN();
     RUN_TEST(test_ids);
     RUN_TEST(test_maps);
+    #ifdef BONUS
+        RUN_TEST(bonus_test);
+    #else
+        RUN_TEST(normal_with_bonus_map);
+    #endif
     UNITY_END();
     return (0);
 }
