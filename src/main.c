@@ -23,15 +23,6 @@ int	main(int argc, char *argv[])
 	ft_printf(1, "VALID MAP\n");
 	for (int i = 0; prg.map[i]; ++i)
 		ft_printf(1, "%s\n", prg.map[i]);
-
-	t_list *temp;
-	temp = prg.doors_list;
-	while(temp)
-	{
-		printf("%i %i\n", ((t_doors *)(temp->content))->x, ((t_doors *)(temp->content))->y);
-		temp = temp->next;
-	}
-
 	exit_success(&prg);
 
 }

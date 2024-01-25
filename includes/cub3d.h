@@ -29,12 +29,6 @@
 # endif
 
 
-typedef struct s_doors
-{
-	int x;
-	int y;
-}	t_doors;
-
 typedef struct s_prg
 {
 	int		north_img; //0
@@ -49,7 +43,6 @@ typedef struct s_prg
 	double	camara_y;
 	char	**map;
 	char	*error_msg;
-	t_list	*doors_list;
 }	t_prg;
 
 
