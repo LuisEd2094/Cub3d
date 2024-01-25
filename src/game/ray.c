@@ -42,10 +42,12 @@ int is_inside_map(int x, int y, t_prg *prg) {
 
 void cast_ray(t_prg *prg)
 {  
+  //for (int i = 0; i < w; ++i){
+  
   RAY_START_X(prg) = PLAYER_CENTER_X(prg);
   RAY_START_Y(prg) = PLAYER_CENTER_Y(prg);
-  RAY_DIRECTION_X(prg) = CAMARA_X(prg);
-  RAY_DIRECTION_Y(prg) = CAMARA_Y(prg);
+  RAY_DIRECTION_X(prg) = CAMARA_X(prg);// + prg->plane_x * (2 * i  / (double)w - 1);
+  RAY_DIRECTION_Y(prg) = CAMARA_Y(prg);//+ prg->plane_y * (2 * i  / (double)w - 1);
   RAY_END_X(prg) = RAY_START_X(prg);
   RAY_END_Y(prg) = RAY_START_Y(prg);
 

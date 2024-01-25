@@ -44,10 +44,15 @@ typedef struct s_player
 	double	x;
 	double	y;
 	double	angle;
+	double	hit_box_angle;
+	t_point	*hit_box_center;
+	t_point *hit_box_left;
+	t_point *hit_box_right;
 	t_point *dir;
 	t_point	*left_corner;
 	t_point	*right_corner;
 	t_point	*center;
+
 }	t_pc;
 
 #define PLAYER(prg) (prg->player)
@@ -63,6 +68,10 @@ typedef struct s_player
 #define PLAYER_CENTER_X(prg) (prg->player->center->x)
 #define PLAYER_CENTER_Y(prg) (prg->player->center->y)
 #define PLAYER_ANGLE(prg) (prg->player->angle)
+#define HIT_BOX_CENTER(prg) (prg->player->hit_box_center)
+#define HIT_BOX_LEFT(prg)	(prg->player->hit_box_left)
+#define HIT_BOX_RIGHT(prg)	(prg->player->hit_box_right)
+#define HIT_BOX_ANGLE(prg) (prg->player->hit_box_angle)
 
 
 typedef struct s_ray
