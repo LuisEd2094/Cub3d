@@ -6,11 +6,11 @@
 #define h 600
 
 
-# define TILE_HEIGHT 64
-# define TILE_WIDTH	64
+# define TILE_SIZE	64
 
 
 # define MOVE_SPEED 0.125
+# define MOVE_PIXELS (TILE_SIZE / 4) // I want to use ints since those operations are cheaper
 # define HIT_BOX    MOVE_SPEED * 2
 # define ROTATION_ANGLE 45
 

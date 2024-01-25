@@ -12,8 +12,8 @@
 
 void draw_ray(t_prg *p) 
 {
-    int dx = abs(RAY_END_X(p) - RAY_START_X(p)) * TILE_WIDTH;
-    int dy = abs(RAY_END_Y(p) - RAY_START_Y(p)) * TILE_HEIGHT;
+    int dx = abs(RAY_END_X(p) - RAY_START_X(p)) * TILE_SIZE;
+    int dy = abs(RAY_END_Y(p) - RAY_START_Y(p)) * TILE_SIZE;
     int sx = (RAY_START_X(p) < RAY_END_X(p)) ? 1 : -1;
     int sy = (RAY_START_Y(p) < RAY_END_Y(p)) ? 1 : -1;
     int err = dx - dy;
@@ -156,7 +156,7 @@ else
     RAY_END_X(prg) = PLAYER_CENTER_X(prg);
   }
   else
-    RAY_END_X(prg) = PLAYER_CENTER_X(prg) + (sideDistX * TILE_WIDTH);
+    RAY_END_X(prg) = PLAYER_CENTER_X(prg) + (sideDistX * TILE_SIZE);
   
   
   if (RAY_DELTA_Y(prg) == FLT_MAX)
@@ -164,7 +164,6 @@ else
     RAY_END_Y(prg)  = PLAYER_CENTER_Y(prg);
   }
   else
-    RAY_END_Y(prg) = PLAYER_CENTER_Y(prg) + (sideDistY * TILE_WIDTH);
-
+    RAY_END_Y(prg) = PLAYER_CENTER_Y(prg) + (sideDistY * TILE_SIZE);
   draw_ray(prg);
 }

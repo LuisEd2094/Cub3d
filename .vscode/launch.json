@@ -13,7 +13,7 @@
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "lldb"
+      "MIMode": "gdb"
     },
     {
       "name": "Pygame Debug",

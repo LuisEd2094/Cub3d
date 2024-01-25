@@ -125,6 +125,7 @@ typedef struct s_prg
 
 #define MLX_PTR(prg) (prg->mlx->ptr)
 #define MLX_WIN(prg) (prg->mlx->window)
+#define MAP(prg) (prg->map)
 
 #define CAMARA_X(prg) (prg->camara_x)
 #define CAMARA_Y(prg) (prg->camara_y)
@@ -165,7 +166,7 @@ void	draw_map(t_prg *prg);
 
 void	draw_map(t_prg *prg);
 int		rotate_triangle(t_prg *prg, int dir);
-void	move_triangle(t_prg *prg, int dir);
+void	move_triangle(t_prg *prg, int dir, double x, double y);
 void	draw_ray(t_prg *p);
 
 //BONUS

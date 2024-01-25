@@ -36,12 +36,12 @@ void draw_map(t_prg *prg)
   x_pos = -1;
   for (int x = 0; x < w; ++x)
   {
-    if (x % (TILE_WIDTH) == 0)
+    if (x % (TILE_SIZE) == 0)
       x_pos++;
     y_pos = -1;
     for (int y = 0; y < h ; ++y)
     {
-      if (y % (TILE_HEIGHT) == 0)
+      if (y % (TILE_SIZE) == 0)
         y_pos++;     
       if (is_inside_map(x_pos, y_pos, prg))
       {
@@ -52,13 +52,13 @@ void draw_map(t_prg *prg)
         else if (calculate_if_inside_player(prg->player, x, y))
                   color = 0xFFFF00;
         else
-          color = 0x000000;
+          color = 0xededed ;
       }
       else
-        color = 0x000000;
+        color = 0xededed ;
 
       //DEBUG GRID
-      if (x % (TILE_WIDTH) == 0 || y % (TILE_HEIGHT)  == 0)
+      if (x % (TILE_SIZE) == 0 || y % (TILE_SIZE)  == 0)
         color = 0xFFFFFF;
 
       mlx_pixel_put(prg->mlx->ptr, prg->mlx->window, x, y, color);

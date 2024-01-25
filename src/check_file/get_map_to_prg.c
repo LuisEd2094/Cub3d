@@ -29,46 +29,46 @@ void set_player_pos_and_mini_map(t_prg *prg, int x, int y)
 	PLAYER_Y(prg) = y + 0.5;
 	if (prg->camara_y == -1 || prg->camara_y == 1)
 	{
-		PLAYER_DIR_X(prg) = (((x + 1) * TILE_WIDTH) - (TILE_WIDTH / 2)) - 1;
+		PLAYER_DIR_X(prg) = (((x + 1) * TILE_SIZE) - (TILE_SIZE / 2)) - 1;
 		if (prg->camara_y == -1) //N
 		{
-			PLAYER_DIR_Y(prg) = ((y * TILE_HEIGHT));
-			PLAYER_LEFT_X(prg) = ((x) * TILE_WIDTH);
-			PLAYER_LEFT_Y(prg) = ((y + 1) * TILE_HEIGHT) - 1;
-			PLAYER_RIGHT_Y(prg) = ((y + 1) * TILE_HEIGHT) - 1;
-			PLAYER_RIGHT_X(prg) = ((x + 1) * TILE_WIDTH) - 1;
+			PLAYER_DIR_Y(prg) = ((y * TILE_SIZE));
+			PLAYER_LEFT_X(prg) = ((x) * TILE_SIZE);
+			PLAYER_LEFT_Y(prg) = ((y + 1) * TILE_SIZE) - 1;
+			PLAYER_RIGHT_Y(prg) = ((y + 1) * TILE_SIZE) - 1;
+			PLAYER_RIGHT_X(prg) = ((x + 1) * TILE_SIZE) - 1;
 		} 
 		else // S
 		{
-			PLAYER_DIR_Y(prg) = (((y + 1) * TILE_HEIGHT)) - 1;
-			PLAYER_LEFT_X(prg) = ((x + 1) * TILE_WIDTH) - 1;
-			PLAYER_LEFT_Y(prg) = ((y) * TILE_HEIGHT);
-			PLAYER_RIGHT_X(prg) = ((x) * TILE_WIDTH);
-			PLAYER_RIGHT_Y(prg) = ((y) * TILE_HEIGHT);
+			PLAYER_DIR_Y(prg) = (((y + 1) * TILE_SIZE)) - 1;
+			PLAYER_LEFT_X(prg) = ((x + 1) * TILE_SIZE) - 1;
+			PLAYER_LEFT_Y(prg) = ((y) * TILE_SIZE);
+			PLAYER_RIGHT_X(prg) = ((x) * TILE_SIZE);
+			PLAYER_RIGHT_Y(prg) = ((y) * TILE_SIZE);
 		}
 	}
 	else
 	{
-		PLAYER_DIR_Y(prg) = ((((y + 1) * TILE_HEIGHT) - (TILE_HEIGHT / 2)) - 1);
+		PLAYER_DIR_Y(prg) = ((((y + 1) * TILE_SIZE) - (TILE_SIZE / 2)) - 1);
 		if (prg->camara_x == 1) //E
 		{
-			PLAYER_DIR_X(prg) = ((x + 1) * TILE_WIDTH) - 1;
-			PLAYER_LEFT_X(prg) = (x * TILE_WIDTH);
-			PLAYER_LEFT_Y(prg) = (y * TILE_HEIGHT);
-			PLAYER_RIGHT_X(prg) = (x * TILE_WIDTH);
-			PLAYER_RIGHT_Y(prg) = ((y + 1)* TILE_HEIGHT) - 1;
+			PLAYER_DIR_X(prg) = ((x + 1) * TILE_SIZE) - 1;
+			PLAYER_LEFT_X(prg) = (x * TILE_SIZE);
+			PLAYER_LEFT_Y(prg) = (y * TILE_SIZE);
+			PLAYER_RIGHT_X(prg) = (x * TILE_SIZE);
+			PLAYER_RIGHT_Y(prg) = ((y + 1)* TILE_SIZE) - 1;
 		}
 		else // W
 		{
-			PLAYER_DIR_X(prg) = ((x) * TILE_WIDTH);
-			PLAYER_LEFT_X(prg) = ((x + 1) * TILE_WIDTH) - 1;
-			PLAYER_LEFT_Y(prg) = ((y + 1) * TILE_HEIGHT) - 1;
-			PLAYER_RIGHT_X(prg) = ((x + 1) * TILE_WIDTH) - 1;
-			PLAYER_RIGHT_Y(prg) = ((y)* TILE_HEIGHT);
+			PLAYER_DIR_X(prg) = ((x) * TILE_SIZE);
+			PLAYER_LEFT_X(prg) = ((x + 1) * TILE_SIZE) - 1;
+			PLAYER_LEFT_Y(prg) = ((y + 1) * TILE_SIZE) - 1;
+			PLAYER_RIGHT_X(prg) = ((x + 1) * TILE_SIZE) - 1;
+			PLAYER_RIGHT_Y(prg) = ((y)* TILE_SIZE);
 		}
 	}
-	PLAYER_CENTER_X(prg) =  (((x + 1) * TILE_WIDTH) - (TILE_WIDTH / 2)) - 1;
-	PLAYER_CENTER_Y(prg) = ((((y + 1) * TILE_HEIGHT) - (TILE_HEIGHT / 2)) - 1);
+	PLAYER_CENTER_X(prg) =  (((x + 1) * TILE_SIZE) - (TILE_SIZE / 2)) - 1;
+	PLAYER_CENTER_Y(prg) = ((((y + 1) * TILE_SIZE) - (TILE_SIZE / 2)) - 1);
 }
 
 char set_player_info(t_prg *prg, char c, int y, int x)

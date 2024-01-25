@@ -1,9 +1,9 @@
 #include <cub3d.h>
 
-void move_triangle(t_prg *prg, int dir) 
+void move_triangle(t_prg *prg, int dir, double x, double y) 
 {
-    int dx = (prg->camara_x * (MOVE_SPEED * TILE_WIDTH) *  dir);
-    int dy = (prg->camara_y * (MOVE_SPEED * TILE_WIDTH) *  dir);
+    int dx = (prg->camara_x * (x * TILE_SIZE) *  dir);
+    int dy = (prg->camara_y * (y * TILE_SIZE) *  dir);
 
     PLAYER_DIR_X(prg) += dx;
     PLAYER_DIR_Y(prg) += dy;
