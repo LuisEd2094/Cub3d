@@ -1,7 +1,7 @@
 #include "unity.h"
 #include "unity_internals.h"
 #include <stdlib.h>
-
+#include <string.h>
 void setUp(void) {
     // set stuff up here
 }
@@ -13,6 +13,8 @@ void tearDown(void) {
 void test_ids()
 {
 /// SUCCESS TESTS///
+    char dest[1000];
+    strcpy(dest, "../../../cub3D ");
     int exit_value = system("../../../cub3D ../../../maps/valid.cub");
     TEST_ASSERT_EQUAL_INT(EXIT_SUCCESS, WEXITSTATUS(exit_value));
 

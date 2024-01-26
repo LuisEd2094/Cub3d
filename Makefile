@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME        = cub3D
+NAME_BONUS	= $(NAME)_bonus
 CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
@@ -18,12 +19,16 @@ AUX_PATH		= aux/
 SRCS_PATH           = src/
 OBJS_PATH           = obj/
 CC = cc
-BONUS_FLAG 	:= 0
+BONUS_FLAG 	= 0
+BONUS_FILE	= .bonus_checker
+MACRO_FLAG = $(shell cat $(BONUS_FILE) 2>/dev/null)
 
 # Check if the target is 'bonus' and set BONUS_FLAG accordingly
 ifeq ($(MAKECMDGOALS),bonus)
     BONUS_FLAG := 1
 endif
+
+
 #BUILT INS variables
 
 
@@ -73,6 +78,9 @@ AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
+B_FLAG_FILE	=	$(SRCS_PATH)$(CK_FD_PATH)check_map_borders.c $(SRCS_PATH)$(CK_FD_PATH)init_parseer.c \
+				$(SRCS_PATH)$(CK_FD_PATH)get_map_to_prg.c
+
 DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \
 											$(CHECK:.c=.d)\
 											$(AUX:.c=.d)) 
@@ -96,11 +104,34 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
 			@mv $(basename $@).d $(DEPS_PATH)
 
 
-$(NAME): $(OBJS) $(LIB) Makefile
+$(NAME): $(BONUS_FILE) $(OBJS) $(LIB) Makefile | check_files_bonus_flag
 	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LINEFLAGS) $(LIB)-o $(NAME) $(LDFLAGS)
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
 
-bonus: clean_objects all
+bonus: make_lib $(NAME_BONUS)
+
+
+$(NAME_BONUS): $(BONUS_FILE) $(OBJS) Makefile  | check_files_bonus_flag # SHOULD HAVE A RULE TO MAKE SRS_BONUS
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LINEFLAGS) $(LIB)-o $(NAME_BONUS) $(LDFLAGS)
+	@echo "$(LIGHT_GREEN)Created $(NAME_BONUS) executable$(DEF_COLOR)"
+
+$(BONUS_FILE):
+	@if [ ! -e $(BONUS_FILE) ]; then \
+		echo $(BONUS_FLAG) > $(BONUS_FILE); \
+	fi
+	
+check_files_bonus_flag:
+	@if ([ "$(strip $(MACRO_FLAG))" = "0" ] && [ $(BONUS_FLAG) -eq 1 ]) || ([ "$(strip $(MACRO_FLAG))" = "1" ] && [  $(BONUS_FLAG) -eq 0 ]) ; then \
+		echo "$(GREEN)Recompiling files with bonus flag $(DEF_COLOR)";\
+		for file in $(B_FLAG_FILE); do \
+			obj_file=obj/$${file#src/}; \
+			echo "$(CYAN)Compiling $$file $(DEF_COLOR)"; \
+			$(CC) $(CFLAGS) $(INCS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $$file -o $${obj_file%.c}.o; \
+			mv $${obj_file%.c}.d $(DEPS_PATH);\
+		done; \
+		echo $(BONUS_FLAG) > $(BONUS_FILE);\
+	fi 
+
 
 make_lib:
 	@$(MAKE) -s -C $(LIB_PATH)
@@ -127,6 +158,7 @@ clean_lib:
 clean: clean_lib clean_objects
 
 fclean:  clean_objects fclean_lib
+	@$(RM) $(BONUS_FILE)
 	@$(RM) $(NAME)
 	@echo "$(GREEN)$(NAME) executable cleaned!$(DEF_COLOR)"
 
@@ -137,4 +169,4 @@ clean_objects:
 
 re: fclean all 
 
-.PHONY: all fclean clean re 
+.PHONY: all fclean clean re bonus

@@ -21,8 +21,8 @@ int	main(int argc, char *argv[])
 		exit_error(INCORRECT_USE, &prg);
 	validate_map(argv[1], &prg);
 	ft_printf(1, "VALID MAP\n");
-	for (int i = 0; prg.map[i]; ++i)
-		ft_printf(1, "%s\n", prg.map[i]);
+	//for (int i = 0; prg.map[i]; aasd++i)
+		//ft_printf(1, "%s\n", prg.map[i]);
 	exit_success(&prg);
 
 }
