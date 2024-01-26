@@ -101,7 +101,7 @@ void cast_ray(t_prg *prg)
       mapY += RAY_STEP_Y(prg);
       side = 0;
     }
-    if(prg->map[mapY][mapX] == '1') hit = 1;
+    if(prg->map[mapY][mapX] == '1' || prg->map[mapY][mapX] == '2') hit = 1;
   }
   double perpWallDist;
   if(side == 0) 

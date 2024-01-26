@@ -110,9 +110,10 @@ GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 
 B_FLAG_FILE	=	$(SRCS_PATH)$(CK_FD_PATH)check_map_borders.c $(SRCS_PATH)$(CK_FD_PATH)init_parseer.c \
 				$(SRCS_PATH)$(CK_FD_PATH)get_map_to_prg.c $(SRCS_PATH)$(GAME_PATH)update_window.c \
-				$(SRCS_PATH)$(GAME_PATH)make_move.c $(SRCS_PATH)$(GAME_PATH)rotate_player.c
+				$(SRCS_PATH)$(GAME_PATH)make_move.c $(SRCS_PATH)$(GAME_PATH)rotate_player.c \
+				$(SRCS_PATH)$(GAME_PATH)hooks.c
 
-BONUS		=	draw_map_bonus.c triangle_bonus.c
+BONUS		=	draw_map_bonus.c triangle_bonus.c open_door_bonus.c
 
 BONUS_FILE	=	$(addprefix $(BONUS_PATH), $(BONUS))
 
@@ -172,7 +173,7 @@ check_files_bonus_flag:
 		for file in $(B_FLAG_FILE); do \
 			obj_file=obj/$${file#src/}; \
 			echo "$(CYAN)Compiling $$file $(DEF_COLOR)"; \
-			$(CC) $(CFLAGS) $(INCS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $$file -o $${obj_file%.c}.o; \
+			$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $$file -o $${obj_file%.c}.o; \
 			mv $${obj_file%.c}.d $(DEPS_PATH);\
 		done; \
 		echo $(BONUS_FLAG) > $(HIDDEN_BONUS_FILE);\

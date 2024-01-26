@@ -180,8 +180,10 @@ void	draw_ray(t_prg *p);
 
 //BONUS
 
-void rotate_point(t_point *point, t_point *center, int dir );
-void move_triangle(t_prg *prg, int dir, double x, double y);
+void	rotate_point(t_point *point, t_point *center, int dir );
+void	move_triangle(t_prg *prg, int dir, double x, double y);
+int		open_door(t_prg *prg);
+
 
 
 

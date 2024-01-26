@@ -43,6 +43,10 @@ void draw_map(t_prg *prg)
       {
         if (prg->map[y_pos][x_pos] == '1')
           color = 0xFF0000;
+        else if (prg->map[y_pos][x_pos] == '2')
+          color = 0x00FF00;
+        else if (prg->map[y_pos][x_pos] == '3')
+          color = 0x00008B;
         else if (x == PLAYER_CENTER_X(prg) && y == PLAYER_CENTER_Y(prg))
           color = 0x0000FF;
         else if (calculate_if_inside_player(prg->player, x, y))

@@ -11,6 +11,8 @@
 #  define KEY_RGT 65363
 #  define KEY_UP 65362
 #  define KEY_DOWN 65364
+#  define KEY_E 101
+#  define KEY_SPACE 32  
 # else
 #  define KEY_ESC 53
 #  define KEY_Q 12

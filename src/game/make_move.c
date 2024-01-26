@@ -8,6 +8,12 @@ bool check_collision(t_prg *prg, t_point *center, t_point *left, t_point *right)
     return (0);
   if (MAP(prg)[right->y / TILE_SIZE][right->x / TILE_SIZE] == '1')
     return (0);
+  if (MAP(prg)[center->y / TILE_SIZE][center->x / TILE_SIZE] == '2')
+    return (0);
+  if (MAP(prg)[left->y / TILE_SIZE][left->x / TILE_SIZE] == '2')
+    return (0);
+  if (MAP(prg)[right->y / TILE_SIZE][right->x / TILE_SIZE] == '2')
+    return (0);
   return (1);
 }
 
@@ -32,7 +38,6 @@ int make_move(t_prg *prg, int dir)
   bool  can_move;
 
   get_hit_box_values(prg, dir);
-  printf("I AM NOT BONUS\n");
   can_move = check_collision(prg, HIT_BOX_CENTER(prg), HIT_BOX_LEFT(prg), HIT_BOX_RIGHT(prg));
   if(can_move)
   {
@@ -51,7 +56,6 @@ int make_move(t_prg *prg, int dir)
   double move_y;
   bool  can_move;
 
-  printf("I AM BONUS\n");
   get_hit_box_values(prg, dir);
   can_move = check_collision(prg, HIT_BOX_CENTER(prg), HIT_BOX_LEFT(prg), HIT_BOX_RIGHT(prg));
   if(can_move)
