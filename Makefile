@@ -17,12 +17,13 @@ RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/
 AUX_PATH		= aux/
+BONUS_PATH		= bonus/
 SRCS_PATH           = src/
 OBJS_PATH           = obj/
 CC = cc
 BONUS_FLAG 	= 0
-BONUS_FILE	= .bonus_checker
-MACRO_FLAG = $(shell cat $(BONUS_FILE) 2>/dev/null)
+HIDDEN_BONUS_FILE	= .bonus_checker
+MACRO_FLAG = $(shell cat $(HIDDEN_BONUS_FILE) 2>/dev/null)
 
 # Check if the target is 'bonus' and set BONUS_FLAG accordingly
 ifeq ($(MAKECMDGOALS),bonus)
@@ -43,6 +44,9 @@ MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
 									$(AUX_PATH), \
 									$(GAME_PATH), \
 									)
+
+MAKE_OBJ_DIR_BONUS	= $(addprefix $(OBJS_PATH),	$(BONUS_PATH))
+OBJS_BONUS_DIR = $(MAKE_OBJ_DIR_BONUS)
 										
 #Add new path to objects
 
@@ -85,7 +89,6 @@ CHECK		=	check_file.c parse_file.c init_parseer.c parse_for_ids.c \
 				parse_map.c get_map_to_list.c free_list.c valid_map_line.c \
 				get_map_to_prg.c check_map_borders.c
 				
-
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
 AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
@@ -94,18 +97,30 @@ AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
-GAME		=	hooks.c draw_map_bonus.c triangle_bonus.c update_window.c \
-				make_move.c ray.c check_collision_bonus.c
+GAME		=	hooks.c  update_window.c \
+				make_move.c ray.c rotate_player.c
 
 GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 
+
+## B_FLAG_FILES ARE FILES USED BY THE BONUS AND NORMAL GAME. They compile differenly depending on the Bonus flag passed, so we need to check and compile them directly
+#if we change from one program to the other
+
+## BONUS FILES are just the bonus files, they are not used by the normal program
+
 B_FLAG_FILE	=	$(SRCS_PATH)$(CK_FD_PATH)check_map_borders.c $(SRCS_PATH)$(CK_FD_PATH)init_parseer.c \
-				$(SRCS_PATH)$(CK_FD_PATH)get_map_to_prg.c
+				$(SRCS_PATH)$(CK_FD_PATH)get_map_to_prg.c $(SRCS_PATH)$(GAME_PATH)update_window.c \
+				$(SRCS_PATH)$(GAME_PATH)make_move.c $(SRCS_PATH)$(GAME_PATH)rotate_player.c
+
+BONUS		=	draw_map_bonus.c triangle_bonus.c
+
+BONUS_FILE	=	$(addprefix $(BONUS_PATH), $(BONUS))
 
 DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \
 											$(CHECK:.c=.d)\
 											$(AUX:.c=.d) \
-											$(GAME:.c=.d)) 
+											$(GAME:.c=.d) \
+											$(BONUS:.c=.d)) 
 										
 										
 
@@ -115,6 +130,8 @@ SRC			+= $(CK_FILES) $(AUX_FILES) $(GAME_FILES)
 ## add to sercs
 
 OBJS        =	$(addprefix $(OBJS_PATH), $(SRC:.c=.o)) 
+
+OBJS_BONUS	=	$(addprefix $(OBJS_PATH), $(BONUS_FILE:.c=.o))
 				
 
 all: make_mlx make_lib $(NAME)
@@ -126,20 +143,27 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
 			@mv $(basename $@).d $(DEPS_PATH)
 
 
-$(NAME): $(BONUS_FILE) $(OBJS) $(LIB) $(L_MLX) Makefile | check_files_bonus_flag
+$(NAME):  $(HIDDEN_BONUS_FILE) $(OBJS) $(LIB) $(L_MLX) Makefile | check_files_bonus_flag 
 	@$(CC) $(CFLAGS) $(OBJS) $(LINEFLAGS) $(LIB) $(LDFLAGS) -o $(NAME) 
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
 
-bonus: make_lib $(NAME_BONUS)
+bonus: make_lib make_mlx $(NAME_BONUS)
 
 
-$(NAME_BONUS): $(BONUS_FILE) $(OBJS) Makefile  | check_files_bonus_flag # SHOULD HAVE A RULE TO MAKE SRS_BONUS
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LINEFLAGS) $(LIB)-o $(NAME_BONUS) $(LDFLAGS)
+$(MAKE_OBJ_DIR_BONUS)%.o: $(SRCS_PATH)$(BONUS_PATH)%.c | $(MAKE_OBJ_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH) 
+	@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
+	@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
+	@mv $(basename $@).d $(DEPS_PATH)
+
+# SHOULD HAVE A RULE TO MAKE SRS_BONUS
+
+$(NAME_BONUS):  $(HIDDEN_BONUS_FILE) $(OBJS) $(OBJS_BONUS) Makefile  | check_files_bonus_flag 
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(OBJS_BONUS) $(LINEFLAGS) $(LIB)-o $(NAME_BONUS) $(LDFLAGS)
 	@echo "$(LIGHT_GREEN)Created $(NAME_BONUS) executable$(DEF_COLOR)"
 
-$(BONUS_FILE):
-	@if [ ! -e $(BONUS_FILE) ]; then \
-		echo $(BONUS_FLAG) > $(BONUS_FILE); \
+$(HIDDEN_BONUS_FILE):
+	@if [ ! -e $(HIDDEN_BONUS_FILE) ]; then \
+		echo $(BONUS_FLAG) > $(HIDDEN_BONUS_FILE); \
 	fi
 	
 check_files_bonus_flag:
@@ -151,9 +175,8 @@ check_files_bonus_flag:
 			$(CC) $(CFLAGS) $(INCS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $$file -o $${obj_file%.c}.o; \
 			mv $${obj_file%.c}.d $(DEPS_PATH);\
 		done; \
-		echo $(BONUS_FLAG) > $(BONUS_FILE);\
+		echo $(BONUS_FLAG) > $(HIDDEN_BONUS_FILE);\
 	fi 
-
 
 make_lib:
 	@$(MAKE) -s -C $(LIB_PATH)
@@ -163,6 +186,9 @@ make_mlx:
 	@$(MAKE) -s -C $(MLX_PATH)
 	@echo "$(BLUE)Done checking MLX! $(DEF_COLOR)"
 
+$(MAKE_OBJ_DIR_BONUS):
+	@echo "$(GREEN)Creating $(NAME_BONUS) Obj Dir $(DEF_COLOR)"
+	@mkdir -p $(MAKE_OBJ_DIR_BONUS)
 
 $(MAKE_OBJ_DIR):
 	@echo "$(GREEN)Creating $(NAME) Obj Dir $(DEF_COLOR)"
@@ -187,7 +213,7 @@ fclean_mlx:
 clean: clean_lib clean_objects
 
 fclean:  clean_objects fclean_lib fclean_mlx
-	@$(RM) $(BONUS_FILE)
+	@$(RM) $(HIDDEN_BONUS_FILE)
 	@$(RM) $(NAME)
 	@$(RM) $(NAME_BONUS)
 	@echo "$(GREEN)$(NAME) executable cleaned!$(DEF_COLOR)"
@@ -196,7 +222,6 @@ clean_objects:
 	@echo "$(GREEN)$(NAME) Objects and Dependencies cleaned!$(DEF_COLOR)"
 	@$(RM) -r $(OBJS_PATH) $(DEPS_PATH)
 
-
 re: fclean all 
 
-.PHONY: all fclean clean re bonus clean_objects clean_lib fclean_lib make_mlx make_lib
+.PHONY: all fclean clean re bonus clean_objects clean_lib fclean_lib make_mlx make_lib check_files_bonus_flag

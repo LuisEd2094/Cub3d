@@ -15,15 +15,6 @@ void move_triangle(t_prg *prg, int dir, double x, double y)
     PLAYER_CENTER_Y(prg) += dy;
 }
 
-int check_camara(int coordiante, int center)
-{
-  if (coordiante == center)
-    return (0);
-  else if (coordiante > center)
-    return (1);
-  else
-    return (-1);
-}
 
 void rotate_point(t_point *point, t_point *center, int dir )
 {
@@ -37,18 +28,4 @@ void rotate_point(t_point *point, t_point *center, int dir )
 
   point->x = round(((temp_x - center->x) * cos(angle * dir) + (temp_y - center->y) * sin(angle * dir)) + center->x);
   point->y = round((( -1 * (temp_x - center->x)) * sin(angle * dir) + (temp_y - center->y) * cos(angle * dir)) + center->y);
-}
-
-int rotate_triangle(t_prg *prg, int dir)
-{
-  
-  rotate_point( prg->player->dir, PLAYER_CENTER(prg), dir);
-  rotate_point( prg->player->left_corner, PLAYER_CENTER(prg), dir);
-  rotate_point( prg->player->right_corner, PLAYER_CENTER(prg), dir);
-
-  prg->camara_x = check_camara(PLAYER_DIR_X(prg), PLAYER_CENTER_X(prg));
-  prg->camara_y = check_camara(PLAYER_DIR_Y(prg), PLAYER_CENTER_Y(prg));
-	prg->player->angle = atan2(prg->camara_y, prg->camara_x);
-  update_window(prg);
-  return (0);
 }

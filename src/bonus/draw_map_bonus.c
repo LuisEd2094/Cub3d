@@ -1,6 +1,5 @@
 #include <cub3d.h>
 
-
 int side_of_line(t_point *p1, t_point *p2, t_point *p3)
 {
   return ((p2->x - p1->x) * (p3->y - p1->y) - (p3->x - p1->x) * (p2->y - p1->y));
@@ -23,9 +22,6 @@ bool calculate_if_inside_player(t_pc *player, int x, int y)
   return ((side_a_b >= 0 && side_b_c >= 0 && side_c_a >= 0) || \
           (side_a_b <= 0 && side_b_c <= 0 && side_c_a <= 0)); 
 }
-
-
-
 
 void draw_map(t_prg *prg)
 {

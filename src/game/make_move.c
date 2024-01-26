@@ -23,12 +23,35 @@ void get_hit_box_values(t_prg *prg, int dir)
   HIT_BOX_RIGHT(prg)->y = HIT_BOX_CENTER(prg)->y + ((MOVE_PIXELS * dir) / 2) * sin(HIT_BOX_ANGLE(prg) + M_PI/2);
 }
 
+#if BONUS_FLAG == 0
+
 int make_move(t_prg *prg, int dir)
 {
   double move_x;
   double move_y;
   bool  can_move;
 
+  get_hit_box_values(prg, dir);
+  printf("I AM NOT BONUS\n");
+  can_move = check_collision(prg, HIT_BOX_CENTER(prg), HIT_BOX_LEFT(prg), HIT_BOX_RIGHT(prg));
+  if(can_move)
+  {
+    move_x = MOVE_SPEED;
+    move_y = MOVE_SPEED;
+    PLAYER_X(prg) += (move_x * prg->camara_x) * dir;
+    PLAYER_Y(prg) += (move_y * prg->camara_y) * dir;
+    update_window(prg);
+  }
+  return (1);
+}
+#else
+int make_move(t_prg *prg, int dir)
+{
+  double move_x;
+  double move_y;
+  bool  can_move;
+
+  printf("I AM BONUS\n");
   get_hit_box_values(prg, dir);
   can_move = check_collision(prg, HIT_BOX_CENTER(prg), HIT_BOX_LEFT(prg), HIT_BOX_RIGHT(prg));
   if(can_move)
@@ -42,3 +65,4 @@ int make_move(t_prg *prg, int dir)
   }
   return (1);
 }
+#endif

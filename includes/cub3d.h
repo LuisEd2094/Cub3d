@@ -174,11 +174,14 @@ void	draw_map(t_prg *prg);
 // MINI MAP FUNCTIONS
 
 void	draw_map(t_prg *prg);
-int		rotate_triangle(t_prg *prg, int dir);
+int		rotate_player(t_prg *prg, int dir);
 void	move_triangle(t_prg *prg, int dir, double x, double y);
 void	draw_ray(t_prg *p);
 
 //BONUS
+
+void rotate_point(t_point *point, t_point *center, int dir );
+void move_triangle(t_prg *prg, int dir, double x, double y);
 
 
 
