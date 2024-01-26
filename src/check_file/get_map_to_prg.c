@@ -113,6 +113,8 @@ char *save_str_info_to_map(char *s, t_prg *prg, int y)
 	{
 		if (res[x] != '0' && res[x] != '1' && res[x] != ' ')
 			res[x] = set_player_info(prg, res[x], y, x);
+		prg->map_w = ft_max(prg->map_w, x);
+
 	}
 	return (res);
 }
@@ -133,6 +135,7 @@ char *save_str_info_to_map(char *s, t_prg *prg, int y)
 	{
 		if (res[x] != '0' && res[x] != '1' && res[x] != ' ' && res[x] != '2')
 			res[x] = set_player_info(prg, res[x], y, x);
+		prg->map_w = ft_max(prg->map_w, x);
 	}
 	return (res);
 }

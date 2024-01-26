@@ -29,13 +29,16 @@ void draw_map(t_prg *prg)
   int y_pos;
   int x_pos; 
 
+  int max_w = (prg->map_w + 1) * TILE_SIZE;
+  int max_h = (prg->map_h - 1) * TILE_SIZE;
+  printf("max_w %i map w%i\n",max_w,  prg->map_w);
   x_pos = -1;
-  for (int x = 0; x < w; ++x)
+  for (int x = 0; x < max_w; ++x)
   {
     if (x % (TILE_SIZE) == 0)
       x_pos++;
     y_pos = -1;
-    for (int y = 0; y < h ; ++y)
+    for (int y = 0; y < max_w ; ++y)
     {
       if (y % (TILE_SIZE) == 0)
         y_pos++;     

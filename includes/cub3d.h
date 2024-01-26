@@ -32,6 +32,12 @@
 #  define RGB_ARRAY 3
 # endif
 
+#define RGB_GREY 0x808080
+#define RGB_DARK_RED 0x880000
+#define RGB_LIGHT_RED 0xA80000
+#define RGB_BLUE 0x6495ED
+
+
 typedef struct s_point
 {
 	int x;
@@ -73,11 +79,26 @@ typedef struct s_player
 #define HIT_BOX_RIGHT(prg)	(prg->player->hit_box_right)
 #define HIT_BOX_ANGLE(prg) (prg->player->hit_box_angle)
 
-
 typedef struct s_ray
 {
 	t_point *start;
 	t_point *end;
+	
+	int		mapX;		//
+	int		mapY;		//
+	double	camera;		//
+	double	rayDirX;	//
+	double	rayDirY;	//
+	double	sideDistX;	//
+	double	sideDistY;	//
+	double	deltaDistX;	//
+	double	deltaDistY;	//
+	double	wallDist;	//
+	int		stepX;		//
+	int		stepY;		//
+	int		hit;		//
+	int		side;		//
+
 	double 	dir_x;
 	double	dir_y;
 	double	distance;
@@ -111,6 +132,15 @@ typedef struct  t_s_mlx
     void    *window;
 }   t_mlx;
 
+typedef struct	s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_img;
+
 typedef struct s_prg
 {
 	int		north_img; //0
@@ -128,6 +158,7 @@ typedef struct s_prg
 	char	**map;
 	char	*error_msg;
     t_mlx   *mlx;
+	t_img	*img;	//
 	t_pc	*player;
 	t_ray	*ray;
 }	t_prg;
@@ -166,25 +197,22 @@ void	update_window(t_prg *prg);
 int		make_move(t_prg *prg, int dir);
 void	cast_ray(t_prg *prg);
 void	draw_map(t_prg *prg);
-
-
+void	raycaster(t_prg *prg);			//
+void	ray_to_img(t_prg *prg, int i);	//
 
 
 
 // MINI MAP FUNCTIONS
 
-void	draw_map(t_prg *prg);
-int		rotate_player(t_prg *prg, int dir);
-void	move_triangle(t_prg *prg, int dir, double x, double y);
 void	draw_ray(t_prg *p);
 
 //BONUS
 
+int		rotate_player(t_prg *prg, int dir);
+void	draw_map(t_prg *prg);
 void	rotate_point(t_point *point, t_point *center, int dir );
 void	move_triangle(t_prg *prg, int dir, double x, double y);
 int		open_door(t_prg *prg);
-
-
 
 
 

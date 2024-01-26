@@ -46,6 +46,12 @@ void free_ray(t_ray *r)
 	}
 }
 
+void free_img(t_img *img)
+{
+	if (img)
+		free(img);
+}
+
 void	free_mallocs(t_prg *p)
 {
 	free_2d_array((void **)p->map);
@@ -53,4 +59,5 @@ void	free_mallocs(t_prg *p)
 		free(p->mlx);
 	free_player(p->player);
 	free_ray(p->ray);
+	free_img(p->img);
 }

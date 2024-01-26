@@ -98,7 +98,7 @@ AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
 GAME		=	hooks.c  update_window.c \
-				make_move.c ray.c rotate_player.c
+				make_move.c ray.c rotate_player.c raycaster.c
 
 GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 
