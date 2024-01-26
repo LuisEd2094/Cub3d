@@ -24,7 +24,7 @@
 # endif
 
 void	*ft_free_strs_line(char **str, char **str2);
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, int close);
 char	*read_file(int fd, char *buffer, int bytes_read);
 char	*join_buff(char *buffer, char *reader);
 char	*buffer_prep(char *buffer);

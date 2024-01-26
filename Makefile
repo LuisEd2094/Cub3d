@@ -11,13 +11,29 @@
 # **************************************************************************** #
 
 NAME        = cub3D
-CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
+NAME_BONUS	= $(NAME)_bonus
+CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
+GAME_PATH		= game/
 AUX_PATH		= aux/
+BONUS_PATH		= bonus/
 SRCS_PATH           = src/
 OBJS_PATH           = obj/
 CC = cc
+BONUS_FLAG 	= 0
+HIDDEN_BONUS_FILE	= .bonus_checker
+MACRO_FLAG = $(shell cat $(HIDDEN_BONUS_FILE) 2>/dev/null)
+
+# Check if the target is 'bonus' and set BONUS_FLAG accordingly
+ifeq ($(MAKECMDGOALS),bonus)
+    BONUS_FLAG := 1
+endif
+
+OS			:= $(shell uname -s)
+DEPS_PATH	=	deps/
+LIB_PATH	= 	./libft
+LIB			=	$(LIB_PATH)/libft.a 
 
 #BUILT INS variables
 
@@ -26,16 +42,30 @@ CC = cc
 MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
 									$(CK_FD_PATH), \
 									$(AUX_PATH), \
+									$(GAME_PATH), \
 									)
+
+MAKE_OBJ_DIR_BONUS	= $(addprefix $(OBJS_PATH),	$(BONUS_PATH))
+OBJS_BONUS_DIR = $(MAKE_OBJ_DIR_BONUS)
 										
 #Add new path to objects
 
-DEPS_PATH	= deps/
-LIB_PATH	= 	./libft
-LIB			=	$(LIB_PATH)/libft.a 
-LDFLAGS		= 	-L$(LIB_PATH) -lft 
 
-INCS        = -I./includes/
+ifeq ($(OS), Linux)
+MLX_PATH = ./minilibx-linux/
+FRAME = -lXext -lX11 -lm -lz
+KEYS = -D LINUX_KEYS=1
+else
+MLX_PATH = ./minilibx_opengl_20191021/
+FRAME = -framework OpenGL -framework AppKit
+KEYS = 
+endif
+
+
+
+LDFLAGS		= 	-L$(LIB_PATH) -lft -lm -L$(MLX_PATH) -lmlx $(FRAME)
+
+INCS        = -I./includes/ -I$(LIB_PATH)/includes
 #Colors
 
 
@@ -59,46 +89,107 @@ CHECK		=	check_file.c parse_file.c init_parseer.c parse_for_ids.c \
 				parse_map.c get_map_to_list.c free_list.c valid_map_line.c \
 				get_map_to_prg.c check_map_borders.c
 				
-
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
 AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				init_int_array.c check_file_extension.c is_new_line.c \
-				free_mallocs.c
+				free_mallocs.c ft_max.c 
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
+GAME		=	hooks.c  update_window.c \
+				make_move.c ray.c rotate_player.c raycaster.c
+
+GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
+
+
+## B_FLAG_FILES ARE FILES USED BY THE BONUS AND NORMAL GAME. They compile differenly depending on the Bonus flag passed, so we need to check and compile them directly
+#if we change from one program to the other
+
+## BONUS FILES are just the bonus files, they are not used by the normal program
+
+B_FLAG_FILE	=	$(SRCS_PATH)$(CK_FD_PATH)check_map_borders.c $(SRCS_PATH)$(CK_FD_PATH)init_parseer.c \
+				$(SRCS_PATH)$(CK_FD_PATH)get_map_to_prg.c $(SRCS_PATH)$(GAME_PATH)update_window.c \
+				$(SRCS_PATH)$(GAME_PATH)make_move.c $(SRCS_PATH)$(GAME_PATH)rotate_player.c \
+				$(SRCS_PATH)$(GAME_PATH)hooks.c
+
+BONUS		=	draw_map_bonus.c triangle_bonus.c open_door_bonus.c
+
+BONUS_FILE	=	$(addprefix $(BONUS_PATH), $(BONUS))
+
 DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \
 											$(CHECK:.c=.d)\
-											$(AUX:.c=.d)) 
+											$(AUX:.c=.d) \
+											$(GAME:.c=.d) \
+											$(BONUS:.c=.d)) 
 										
 										
 
 #add .d files to deps
 
-SRC			+= $(CK_FILES) $(AUX_FILES)
+SRC			+= $(CK_FILES) $(AUX_FILES) $(GAME_FILES)
 ## add to sercs
 
 OBJS        =	$(addprefix $(OBJS_PATH), $(SRC:.c=.o)) 
+
+OBJS_BONUS	=	$(addprefix $(OBJS_PATH), $(BONUS_FILE:.c=.o))
 				
 
-all: make_lib $(NAME)
+all: make_mlx make_lib $(NAME)
 
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
 			@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCS) -MMD -MP -c $< -o  $@
+			@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
 			@mv $(basename $@).d $(DEPS_PATH)
 
 
-$(NAME): $(OBJS) $(LIB) Makefile
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LINEFLAGS) $(LIB)-o $(NAME) $(LDFLAGS)
+$(NAME):  $(HIDDEN_BONUS_FILE) $(OBJS) $(LIB) $(L_MLX) Makefile | check_files_bonus_flag 
+	@$(CC) $(CFLAGS) $(OBJS) $(LINEFLAGS) $(LIB) $(LDFLAGS) -o $(NAME) 
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
+
+bonus: make_lib make_mlx $(NAME_BONUS)
+
+
+$(MAKE_OBJ_DIR_BONUS)%.o: $(SRCS_PATH)$(BONUS_PATH)%.c | $(MAKE_OBJ_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH) 
+	@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
+	@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
+	@mv $(basename $@).d $(DEPS_PATH)
+
+# SHOULD HAVE A RULE TO MAKE SRS_BONUS
+
+$(NAME_BONUS):  $(HIDDEN_BONUS_FILE) $(OBJS) $(OBJS_BONUS) Makefile  | check_files_bonus_flag 
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(OBJS_BONUS) $(LINEFLAGS) $(LIB)-o $(NAME_BONUS) $(LDFLAGS)
+	@echo "$(LIGHT_GREEN)Created $(NAME_BONUS) executable$(DEF_COLOR)"
+
+$(HIDDEN_BONUS_FILE):
+	@if [ ! -e $(HIDDEN_BONUS_FILE) ]; then \
+		echo $(BONUS_FLAG) > $(HIDDEN_BONUS_FILE); \
+	fi
+	
+check_files_bonus_flag:
+	@if ([ "$(strip $(MACRO_FLAG))" = "0" ] && [ $(BONUS_FLAG) -eq 1 ]) || ([ "$(strip $(MACRO_FLAG))" = "1" ] && [  $(BONUS_FLAG) -eq 0 ]) ; then \
+		echo "$(GREEN)Recompiling files with bonus flag $(DEF_COLOR)";\
+		for file in $(B_FLAG_FILE); do \
+			obj_file=obj/$${file#src/}; \
+			echo "$(CYAN)Compiling $$file $(DEF_COLOR)"; \
+			$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $$file -o $${obj_file%.c}.o; \
+			mv $${obj_file%.c}.d $(DEPS_PATH);\
+		done; \
+		echo $(BONUS_FLAG) > $(HIDDEN_BONUS_FILE);\
+	fi 
 
 make_lib:
 	@$(MAKE) -s -C $(LIB_PATH)
 	@echo "$(BLUE)Done checking Libft! $(DEF_COLOR)"
 
+make_mlx:
+	@$(MAKE) -s -C $(MLX_PATH)
+	@echo "$(BLUE)Done checking MLX! $(DEF_COLOR)"
+
+$(MAKE_OBJ_DIR_BONUS):
+	@echo "$(GREEN)Creating $(NAME_BONUS) Obj Dir $(DEF_COLOR)"
+	@mkdir -p $(MAKE_OBJ_DIR_BONUS)
 
 $(MAKE_OBJ_DIR):
 	@echo "$(GREEN)Creating $(NAME) Obj Dir $(DEF_COLOR)"
@@ -116,18 +207,22 @@ fclean_lib:
 clean_lib:
 	@$(MAKE) clean -s -C $(LIB_PATH) 
 
+fclean_mlx:
+	@$(MAKE) clean -s -C $(MLX_PATH) 
+
 
 clean: clean_lib clean_objects
 
-fclean:  clean_objects fclean_lib
+fclean:  clean_objects fclean_lib fclean_mlx
+	@$(RM) $(HIDDEN_BONUS_FILE)
 	@$(RM) $(NAME)
+	@$(RM) $(NAME_BONUS)
 	@echo "$(GREEN)$(NAME) executable cleaned!$(DEF_COLOR)"
 
 clean_objects:
 	@echo "$(GREEN)$(NAME) Objects and Dependencies cleaned!$(DEF_COLOR)"
 	@$(RM) -r $(OBJS_PATH) $(DEPS_PATH)
 
-
 re: fclean all 
 
-.PHONY: all fclean clean re 
+.PHONY: all fclean clean re bonus clean_objects clean_lib fclean_lib make_mlx make_lib check_files_bonus_flag

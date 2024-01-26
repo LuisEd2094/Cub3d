@@ -7,14 +7,37 @@
       "name": "(lldb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/Users/lsoto-do/core04/Cub3d/cub3D",
-      "args": ["/Users/lsoto-do/core04/Cub3d/maps/invalid_open_complex.cub"],
+      "program": "/home/luised94/Cub3d/cub3D",
+      "args": ["/home/luised94/Cub3d/maps/valid.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "lldb"
-    }
+      "MIMode": "gdb"
+    },
+    {
+      "name": "(lldb) Launch bonus",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/home/luised94/Cub3d/cub3D_bonus",
+      "args": ["/home/luised94/Cub3d/maps/doors/valid.cub"],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb"
+    },
+    {
+      "name": "Pygame Debug",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/2d.py",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {},
+      "console": "integratedTerminal",
+      "stopOnEntry": false,
+  }
     ],
 
   }

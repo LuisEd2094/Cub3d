@@ -16,6 +16,8 @@
         "unordered_map": "c",
         "utility": "c",
         "vector": "c",
-        "__node_handle": "c"
+        "__node_handle": "c",
+        "cmath": "c"
+        "cstdlib": "c"
     }
 }

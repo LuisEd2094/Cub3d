@@ -20,10 +20,20 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		exit_error(INCORRECT_USE, &prg);
 	validate_map(argv[1], &prg);
-	for (int i = 0; i < 3; i++)
-		ft_printf(1, "RGB >%i<\n", prg.floor_vals[i]);
-	for (int i = 0; i < 3; i++)
-		ft_printf(1, "RGB >%i<\n", prg.ceiling_vals[i]);
-	ft_printf(1, "VALID MAP\n");
+	prg.mlx->ptr = mlx_init();
+	if (!prg.mlx->ptr)
+		exit_error(NULL, &prg);
+	//if (prg.img->img)
+	prg.mlx->window = mlx_new_window(prg.mlx->ptr, w, h, "cub3d");
+	prg.img->img = mlx_new_image(prg.mlx->ptr, w, h);
+	if (!prg.mlx->window || !prg.img->img)
+		exit_error(NULL, &prg);
+	prg.img->addr = mlx_get_data_addr(prg.img->img, &prg.img->bpp,
+		&prg.img->line_length, &prg.img->endian);
+	if (!prg.img->addr)
+		exit_error(NULL, &prg);
+	get_hooks(&prg);
+	update_window(&prg);
+	mlx_loop(prg.mlx->ptr);
 	exit_success(&prg);
 }
