@@ -38,7 +38,7 @@ void	init_prg(t_prg *prg)
 	prg->ray->start = (t_point *)malloc(sizeof (t_point));
 	prg->ray->end = (t_point *)malloc(sizeof (t_point));
 	if (!prg->player->dir || !prg->player->left_corner  || !prg->player->right_corner || !prg->player->center \
-		|| !prg->ray->distance|| !prg->ray->start || !prg->ray->end || !prg->player->hit_box_center || !prg->player->hit_box_center || !prg->player->hit_box_center)
+		|| !prg->ray->start || !prg->ray->end || !prg->player->hit_box_center || !prg->player->hit_box_left || !prg->player->hit_box_right)
 		exit_error(NULL, prg);
 	prg->north_img = 0;
 	prg->south_img = 0;

@@ -18,5 +18,6 @@
         "vector": "c",
         "__node_handle": "c",
         "cmath": "c"
+        "cstdlib": "c"
     }
 }

@@ -21,7 +21,7 @@ bool	check_valid_char(char c, t_parseer *p)
 	{
 		if (p->valid_map_chars[i] == c)
 		{
-			if (i > 2)
+			if (i < 4)
 			{
 				if (!p->found_player)
 					p->found_player = 1;
