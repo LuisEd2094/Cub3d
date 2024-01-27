@@ -135,7 +135,7 @@ OBJS        =	$(addprefix $(OBJS_PATH), $(SRC:.c=.o))
 OBJS_BONUS	=	$(addprefix $(OBJS_PATH), $(BONUS_FILE:.c=.o))
 				
 
-all: make_mlx make_lib $(NAME)
+all: check_files_bonus_flag make_mlx make_lib $(NAME)
 
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
@@ -144,11 +144,11 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
 			@mv $(basename $@).d $(DEPS_PATH)
 
 
-$(NAME):  $(HIDDEN_BONUS_FILE) $(OBJS) $(LIB) $(L_MLX) Makefile | check_files_bonus_flag 
+$(NAME):  $(HIDDEN_BONUS_FILE) $(OBJS) $(LIB) $(L_MLX) Makefile
 	@$(CC) $(CFLAGS) $(OBJS) $(LINEFLAGS) $(LIB) $(LDFLAGS) -o $(NAME) 
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
 
-bonus: make_lib make_mlx $(NAME_BONUS)
+bonus: check_files_bonus_flag make_mlx make_lib $(NAME_BONUS)
 
 
 $(MAKE_OBJ_DIR_BONUS)%.o: $(SRCS_PATH)$(BONUS_PATH)%.c | $(MAKE_OBJ_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH) 
@@ -158,7 +158,7 @@ $(MAKE_OBJ_DIR_BONUS)%.o: $(SRCS_PATH)$(BONUS_PATH)%.c | $(MAKE_OBJ_DIR) $(MAKE_
 
 # SHOULD HAVE A RULE TO MAKE SRS_BONUS
 
-$(NAME_BONUS):  $(HIDDEN_BONUS_FILE) $(OBJS) $(OBJS_BONUS) Makefile  | check_files_bonus_flag 
+$(NAME_BONUS):  $(HIDDEN_BONUS_FILE) $(OBJS) $(OBJS_BONUS) Makefile 
 	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(OBJS_BONUS) $(LINEFLAGS) $(LIB)-o $(NAME_BONUS) $(LDFLAGS)
 	@echo "$(LIGHT_GREEN)Created $(NAME_BONUS) executable$(DEF_COLOR)"
 
