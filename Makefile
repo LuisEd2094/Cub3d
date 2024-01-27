@@ -100,7 +100,7 @@ CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
 AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				init_int_array.c check_file_extension.c is_new_line.c \
-				free_mallocs.c ft_max.c ft_min.c
+				free_mallocs.c ft_max.c ft_min.c destoy_imgs.c
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
@@ -118,7 +118,7 @@ GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 B_FLAG_FILE	=	$(SRCS_PATH)$(CK_FD_PATH)check_map_borders.c $(SRCS_PATH)$(CK_FD_PATH)init_parseer.c \
 				$(SRCS_PATH)$(CK_FD_PATH)get_map_to_prg.c $(SRCS_PATH)$(GAME_PATH)update_window.c \
 				$(SRCS_PATH)$(GAME_PATH)make_move.c $(SRCS_PATH)$(GAME_PATH)rotate_player.c \
-				$(SRCS_PATH)$(GAME_PATH)hooks.c
+				$(SRCS_PATH)$(GAME_PATH)hooks.c $(SRCS_PATH)$(AUX_PATH)destoy_imgs.c
 
 BONUS		=	draw_map_bonus.c triangle_bonus.c open_door_bonus.c
 

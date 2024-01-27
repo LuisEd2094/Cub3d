@@ -12,7 +12,6 @@ int key_hook(int key, t_prg *prg)
 {
 
   // COMMENTING AS MARKER; KEY HOOKS SHOULD CHANGE DEPEDING ON BONUS
-    printf("%i\n", key);
   if (key == KEY_ESC || key == KEY_Q)
     close_game(prg);
     else if ((key == KEY_W || key == KEY_UP))
@@ -28,7 +27,6 @@ int key_hook(int key, t_prg *prg)
 #else
 int key_hook(int key, t_prg *prg)
 {
-  printf("%i\n", key);
   // COMMENTING AS MARKER; KEY HOOKS SHOULD CHANGE DEPEDING ON BONUS
   if (key == KEY_ESC || key == KEY_Q)
     close_game(prg);

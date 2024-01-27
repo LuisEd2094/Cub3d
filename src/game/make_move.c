@@ -40,7 +40,6 @@ int make_move(t_prg *prg, int dir)
 
   get_hit_box_values(prg, dir);
   can_move = check_collision(prg, HIT_BOX_CENTER(prg), HIT_BOX_LEFT(prg), HIT_BOX_RIGHT(prg));
-  printf("%i\n", can_move);
   if(can_move)
   {
     move_x = MOVE_SPEED;

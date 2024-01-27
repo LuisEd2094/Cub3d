@@ -26,6 +26,8 @@ void  set_mini_map_vals(t_prg *prg)
 {
   MAP_MAX_W(prg) = ft_min(MAP_W(prg), MINI_MAP_SIZE); // this MAX i should calculate once
   MAP_MAX_H(prg) = ft_min(MAP_H(prg), MINI_MAP_SIZE);
+  prg->mini_map->off_set_x = MAP_W(prg) > MINI_MAP_SIZE;
+  prg->mini_map->off_set_y = MAP_H(prg) > MINI_MAP_SIZE;
   MAP_X(prg) = -1;
 }
 
@@ -52,12 +54,25 @@ void draw_map(t_prg *prg)
   int y;
 
   set_mini_map_vals(prg);
+  if (prg->mini_map->off_set_x)
+  {
+    if (PLAYER_CENTER_X(prg) + 1 > (MINI_MAP_SIZE / 2))
+      MAP_X(prg) = ((PLAYER_CENTER_X(prg) + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE;
+  }
   x = -1;
   while (++x < MAP_MAX_W(prg))
   {
    if (x % (TILE_SIZE) == 0)
       MAP_X(prg)++;
-    MAP_Y(prg) = -1;
+    if (prg->mini_map->off_set_y)
+    {
+      if (PLAYER_CENTER_Y(prg) + 1 > (MINI_MAP_SIZE / 2))
+      {
+        MAP_Y(prg) = ((PLAYER_CENTER_Y(prg) + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE;
+      }
+    }
+    else
+      MAP_Y(prg) = -1;
     y = -1;
     while (++y < MAP_MAX_H(prg))
     {

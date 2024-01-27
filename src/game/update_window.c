@@ -58,7 +58,6 @@ void update_window(t_prg *prg)
 
 void update_window(t_prg *prg)
 {
-  printf("%i\n", BONUS_FLAG);
   mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
   raycaster(prg);
   mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->img->img, 0, 0);

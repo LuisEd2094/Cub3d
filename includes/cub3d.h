@@ -118,6 +118,10 @@ typedef struct s_map
 	t_img	*t_img;
 	int		max_w;
 	int		max_h;
+	int		x_relative;
+	int		y_relative;
+	bool	off_set_x;
+	bool	off_set_y;
 	int		x_pos;
 	int		y_pos;
 }	t_map;
@@ -159,6 +163,8 @@ bool	is_new_line(char *element);
 void	free_mallocs(t_prg *p);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
+void	destroy_img(t_prg *prg);
+
 
 int is_inside_map(int x, int y, t_prg *prg);
 

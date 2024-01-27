@@ -50,6 +50,7 @@ static void	init_prg_structs(t_prg *prg)
 static void	init_mini_map_img(t_map *map)
 {
 	map->t_img = (t_img *)malloc(sizeof(t_img));
+	map->t_img->img = NULL;
 }
 
 static bool	check_correct_inits(t_prg *prg)
@@ -69,6 +70,7 @@ void	init_prg(t_prg *prg)
 	init_prg_structs(prg);
 	if (!prg->mlx || !prg->player || !prg->ray || !prg->img || !prg->mini_map)
 		exit_error(NULL, prg);
+	prg->img->img = NULL;
 	init_player(prg->player);
 	init_ray(prg->ray);
 	init_mini_map_img(prg->mini_map);

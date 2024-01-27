@@ -54,3 +54,5 @@
 #define MAP_MAX_H(prg) (prg->mini_map->max_h)
 #define MAP_X(prg) (prg->mini_map->x_pos)
 #define MAP_Y(prg) (prg->mini_map->y_pos)
+#define MAP_RELATIVE_X(prg) (prg->mini_map->x_relative)
+#define MAP_RELATIVE_Y(prg) (prg->mini_map->y_relative)

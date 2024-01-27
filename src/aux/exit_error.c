@@ -15,6 +15,7 @@
 void	exit_error(char *error, t_prg *prg)
 {
 	close_imgs_fd(prg);
+	destroy_img(prg);
 	free_mallocs(prg);
 	if (error)
 	{
