@@ -1,5 +1,16 @@
-#include <cub3d.h>
+/* ************************************************************************** */
+/*																			  */
+/*														  :::	   ::::::::   */
+/*	 update_window.c									:+:		 :+:	:+:   */
+/*													  +:+ +:+		  +:+	  */
+/*	 By: lsoto-do <lsoto-do@student.42barcel>		+#+  +:+	   +#+		  */
+/*												  +#+#+#+#+#+	+#+			  */
+/*	 Created: 2024/01/27 11:35:21 by lsoto-do		   #+#	  #+#			  */
+/*	 Updated: 2024/01/27 11:35:21 by lsoto-do		  ###	########.fr		  */
+/*																			  */
+/* ************************************************************************** */
 
+#include <cub3d.h>
 
 void	ray_to_img(t_prg *prg, int i)
 {
@@ -44,6 +55,7 @@ void update_window(t_prg *prg)
   //draw_ray(prg);
 }
 #else
+
 void update_window(t_prg *prg)
 {
   printf("%i\n", BONUS_FLAG);

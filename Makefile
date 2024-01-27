@@ -26,8 +26,15 @@ HIDDEN_BONUS_FILE	= .bonus_checker
 MACRO_FLAG = $(shell cat $(HIDDEN_BONUS_FILE) 2>/dev/null)
 
 # Check if the target is 'bonus' and set BONUS_FLAG accordingly
-ifeq ($(MAKECMDGOALS),bonus)
+
+GOALS_CONTAIN_BONUS := $(if $(filter bonus,$(MAKECMDGOALS)),yes,no)
+ifeq ($(GOALS_CONTAIN_BONUS),yes)
     BONUS_FLAG := 1
+endif
+ifeq ($(GOALS_CONTAIN_BONUS),yes)
+    RE_RULE_TARGET := fclean bonus
+else
+    RE_RULE_TARGET := fclean all
 endif
 
 OS			:= $(shell uname -s)
@@ -139,13 +146,13 @@ all: check_files_bonus_flag make_mlx make_lib $(NAME)
 
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
-			@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
-			@mv $(basename $@).d $(DEPS_PATH)
+		@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
+		@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
+		@mv $(basename $@).d $(DEPS_PATH)
 
 
 $(NAME):  $(HIDDEN_BONUS_FILE) $(OBJS) $(LIB) $(L_MLX) Makefile
-	@$(CC) $(CFLAGS) $(OBJS) $(LINEFLAGS) $(LIB) $(LDFLAGS) -o $(NAME) 
+	@$(CC) $(CFLAGS) $(OBJS) $(LINEFLAGS) $(LIB) $(LDFLAGS) -o $(NAME)
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
 
 bonus: check_files_bonus_flag make_mlx make_lib $(NAME_BONUS)
@@ -223,6 +230,6 @@ clean_objects:
 	@echo "$(GREEN)$(NAME) Objects and Dependencies cleaned!$(DEF_COLOR)"
 	@$(RM) -r $(OBJS_PATH) $(DEPS_PATH)
 
-re: fclean all 
+re: $(RE_RULE_TARGET)
 
 .PHONY: all fclean clean re bonus clean_objects clean_lib fclean_lib make_mlx make_lib check_files_bonus_flag

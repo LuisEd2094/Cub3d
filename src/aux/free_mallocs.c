@@ -52,6 +52,16 @@ void free_img(t_img *img)
 		free(img);
 }
 
+void	free_mini_map(t_map *map)
+{
+	if (map)
+	{
+		if (map->t_img)
+			free(map->t_img);
+		free(map);
+	}
+}
+
 void	free_mallocs(t_prg *p)
 {
 	free_2d_array((void **)p->map);
@@ -60,5 +70,5 @@ void	free_mallocs(t_prg *p)
 	free_player(p->player);
 	free_ray(p->ray);
 	free_img(p->img);
-	free_img(p->mini_map);
+	free_mini_map(p->mini_map);
 }
