@@ -60,4 +60,5 @@ void	free_mallocs(t_prg *p)
 	free_player(p->player);
 	free_ray(p->ray);
 	free_img(p->img);
+	free_img(p->mini_map);
 }

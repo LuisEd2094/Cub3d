@@ -25,47 +25,49 @@ bool calculate_if_inside_player(t_pc *player, int x, int y)
 
 void draw_map(t_prg *prg)
 {
-  int color = 0xFF0000; // Red for walls
+  int color; // Red for walls
   int y_pos;
-  int x_pos; 
+  int x_pos;
+  char *pixel; 
+  int x;
+  int y;
 
-  int max_w = (prg->map_w + 1) * TILE_SIZE;
-  int max_h = (prg->map_h - 1) * TILE_SIZE;
-  printf("max_w %i map w%i\n",max_w,  prg->map_w);
+  int max_w = ft_min(((prg->map_w + 1) * TILE_SIZE), MINI_MAP_SIZE);
+  int max_h = ft_min((prg->map_h) * TILE_SIZE, MINI_MAP_SIZE);
   x_pos = -1;
-  for (int x = 0; x < max_w; ++x)
+  for ( x = 0; x < max_w; ++x)
   {
     if (x % (TILE_SIZE) == 0)
       x_pos++;
     y_pos = -1;
-    for (int y = 0; y < max_w ; ++y)
+    for ( y = 0; y < max_h ; ++y)
     {
       if (y % (TILE_SIZE) == 0)
-        y_pos++;     
+        y_pos++;
+      pixel = prg->mini_map->addr + (y * prg->mini_map->line_length + x * (prg->img->bpp / 8));  
       if (is_inside_map(x_pos, y_pos, prg))
       {
         if (prg->map[y_pos][x_pos] == '1')
-          color = 0xFF0000;
+          *(unsigned int*)pixel = 0xFF0000;
         else if (prg->map[y_pos][x_pos] == '2')
-          color = 0x00FF00;
+          *(unsigned int*)pixel = 0x00FF00;
         else if (prg->map[y_pos][x_pos] == '3')
-          color = 0x00008B;
+          *(unsigned int*)pixel = 0x00008B;
         else if (x == PLAYER_CENTER_X(prg) && y == PLAYER_CENTER_Y(prg))
-          color = 0x0000FF;
+          *(unsigned int*)pixel = 0x0000FF;
         else if (calculate_if_inside_player(prg->player, x, y))
-                  color = 0xFFFF00;
+            *(unsigned int*)pixel = 0xFFFF00;
         else
-          color = 0xededed ;
+          *(unsigned int*)pixel = 0xededed ;
       }
       else
-        color = 0xededed ;
+        *(unsigned int*)pixel = 0xededed ;
 
       //DEBUG GRID
       if (x % (TILE_SIZE) == 0 || y % (TILE_SIZE)  == 0)
-        color = 0xFFFFFF;
-
-      mlx_pixel_put(prg->mlx->ptr, prg->mlx->window, x, y, color);
-
+        *(unsigned int*)pixel = 0xFFFFFF;
     }
   }
+  printf("x %i y %i\n", x, y);
+  mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->mini_map->img, 0, 0);
 }

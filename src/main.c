@@ -32,6 +32,12 @@ int	main(int argc, char *argv[])
 		&prg.img->line_length, &prg.img->endian);
 	if (!prg.img->addr)
 		exit_error(NULL, &prg);
+	prg.mini_map->img = mlx_new_image(prg.mlx->ptr, ft_min(((prg.map_w + 1) * TILE_SIZE), MINI_MAP_SIZE), ft_min((prg.map_h) * TILE_SIZE, MINI_MAP_SIZE));
+	if (!prg.mini_map->img)
+		exit_error(NULL, &prg);
+	prg.mini_map->addr = mlx_get_data_addr(prg.mini_map->img, &prg.mini_map->bpp, &prg.mini_map->line_length, &prg.mini_map->endian);
+	if (!prg.mini_map->addr)
+		exit_error(NULL, &prg);// should have a better check, should clean the image
 	get_hooks(&prg);
 	update_window(&prg);
 	mlx_loop(prg.mlx->ptr);

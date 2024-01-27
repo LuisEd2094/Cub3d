@@ -12,88 +12,77 @@
 
 #include <cub3d.h>
 
+void	init_dda(t_prg *prg)
+{
+	if (prg->ray->rayDirX < 0)
+	{
+		prg->ray->stepX = -1;
+		prg->ray->sideDistX = (PLAYER_X(prg) - prg->ray->mapX) * prg->ray->deltaDistX;
+	}
+	else
+	{
+		prg->ray->stepX = 1;
+		prg->ray->sideDistX = (prg->ray->mapX + 1.0 - PLAYER_X(prg)) * prg->ray->deltaDistX;
+	}
+	if (prg->ray->rayDirY < 0)
+	{
+		prg->ray->stepY = -1;
+		prg->ray->sideDistY = (PLAYER_Y(prg) - prg->ray->mapY) * prg->ray->deltaDistY;
+	}
+	else
+	{
+		prg->ray->stepY = 1;
+		prg->ray->sideDistY = (prg->ray->mapY + 1.0 - PLAYER_Y(prg)) * prg->ray->deltaDistY;
+	}
+}
+
+void	perform_dda(t_prg *prg)
+{
+	while (prg->ray->hit == 0)
+	{
+		if (prg->ray->sideDistX < prg->ray->sideDistY)
+		{
+			prg->ray->sideDistX += prg->ray->deltaDistX;
+			prg->ray->mapX += prg->ray->stepX;
+			prg->ray->side = 0;
+		}
+		else
+		{
+			prg->ray->sideDistY += prg->ray->deltaDistY;
+			prg->ray->mapY += prg->ray->stepY;
+			prg->ray->side = 1;
+		}
+		if (prg->map[prg->ray->mapY][prg->ray->mapX] == '1')
+			prg->ray->hit = 1;
+	}
+}
+
 void	raycaster(t_prg *prg)
 {
-	double	posX = PLAYER_X(prg), posY = PLAYER_Y(prg);		//
-	double	dirX = prg->camara_x, dirY = prg->camara_y;		//	info del player
 	double	planeX = 0.66, planeY = 0;	//
-
-	int		mapX;		//
-	int		mapY;		//
-	double	camera;		//
-	double	rayDirX;	//
-	double	rayDirY;	//
-	double	sideDistX;	//
-	double	sideDistY;	//	info del rayo
-	double	deltaDistX;	//
-	double	deltaDistY;	//
-	double	wallDist;	//
-	int		stepX;		//
-	int		stepY;		//
-	int		hit;		//
-	int		side;		//
 
 	for (int i = 0; i < w; i++)
 	{
-		camera = 2 * i / (double)w - 1;
-		rayDirX = dirX + planeX * camera;
-		rayDirY = dirY + planeY * camera;
-		mapX = (int)posX;
-		mapY = (int)posY;
-		hit = 0;
-		if (rayDirX == 0)
-			deltaDistX = FLT_MAX;
+		prg->ray->camera = 2 * i / (double)w - 1;
+		prg->ray->rayDirX = prg->camara_x + planeX * prg->ray->camera;
+		prg->ray->rayDirY = prg->camara_y + planeY * prg->ray->camera;
+		prg->ray->mapX = (int)PLAYER_X(prg);
+		prg->ray->mapY = (int)PLAYER_Y(prg);
+		prg->ray->hit = 0;
+		if (prg->ray->rayDirX == 0)
+			prg->ray->deltaDistX = FLT_MAX;
 		else
-			deltaDistX = fabs(1 / rayDirX);
-		if (rayDirY == 0)
-			deltaDistY = FLT_MAX;
+			prg->ray->deltaDistX = fabs(1 / prg->ray->rayDirX);
+		if (prg->ray->rayDirY == 0)
+			prg->ray->deltaDistY = FLT_MAX;
 		else
-			deltaDistY = fabs(1 / rayDirY);
-		//dda_init()
-		if (rayDirX < 0)
-		{
-			stepX = -1;
-			sideDistX = (posX - mapX) * deltaDistX;
-		}
+			prg->ray->deltaDistY = fabs(1 / prg->ray->rayDirY);
+		init_dda(prg);
+		perform_dda(prg);
+		if (prg->ray->side == 0)
+			prg->ray->wallDist = prg->ray->sideDistX - prg->ray->deltaDistX;
 		else
-		{
-			stepX = 1;
-			sideDistX = (mapX + 1.0 - posX) * deltaDistX;
-		}
-		if (rayDirY < 0)
-		{
-			stepY = -1;
-			sideDistY = (posY - mapY) * deltaDistY;
-		}
-		else
-		{
-			stepY = 1;
-			sideDistY = (mapY + 1.0 - posY) * deltaDistY;
-		}
-		//dda()
-		while (hit == 0)
-		{
-			if (sideDistX < sideDistY)
-			{
-				sideDistX += deltaDistX;
-				mapX += stepX;
-				side = 0;
-			}
-			else
-			{
-				sideDistY += deltaDistY;
-				mapY += stepY;
-				side = 1;
-			}
-			if (prg->map[mapY][mapX] == '1')
-				hit = 1;
-		}
-		//
-		if (side == 0)
-			wallDist = sideDistX - deltaDistX;
-		else
-			wallDist = sideDistY - deltaDistY;
-		prg->ray->wallDist = wallDist;
+			prg->ray->wallDist = prg->ray->sideDistY - prg->ray->deltaDistY;
 		ray_to_img(prg, i);
 	}
 }

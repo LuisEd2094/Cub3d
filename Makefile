@@ -93,7 +93,7 @@ CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
 AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
 				init_int_array.c check_file_extension.c is_new_line.c \
-				free_mallocs.c ft_max.c 
+				free_mallocs.c ft_max.c ft_min.c
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 

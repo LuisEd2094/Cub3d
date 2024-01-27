@@ -159,6 +159,7 @@ typedef struct s_prg
 	char	*error_msg;
     t_mlx   *mlx;
 	t_img	*img;	//
+	t_img	*mini_map;
 	t_pc	*player;
 	t_ray	*ray;
 }	t_prg;
@@ -181,6 +182,7 @@ int		check_if_invalid_ext(char *file_name, \
 bool	is_new_line(char *element);
 void	free_mallocs(t_prg *p);
 int		ft_max(int a, int b);
+int		ft_min(int a, int b);
 
 int is_inside_map(int x, int y, t_prg *prg);
 

@@ -4,7 +4,8 @@
 #define w 800
 #define h 600
 
-# define TILE_SIZE	16
+# define TILE_SIZE	24
+# define MINI_MAP_SIZE TILE_SIZE * 8
 
 # define MOVE_SPEED 0.125
 # define DOORS_PIXELS (TILE_SIZE / 2)
