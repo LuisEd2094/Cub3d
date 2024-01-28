@@ -16,6 +16,8 @@
       "MIMode": "gdb"
     },
     {
+      "preLaunchTask": "Buils Cub3d bonus",
+
       "name": "(lldb) Launch bonus",
       "type": "cppdbg",
       "request": "launch",

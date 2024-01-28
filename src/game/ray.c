@@ -103,6 +103,8 @@ void cast_ray(t_prg *prg)
     }
     if(prg->map[mapY][mapX] == '1' || prg->map[mapY][mapX] == '2') hit = 1;
   }
+
+
   double perpWallDist;
   if(side == 0) 
     perpWallDist = fabs((mapX - PLAYER_X(prg) + (1 - RAY_STEP_X(prg)) / 2) / RAY_DIRECTION_X(prg)) ; //(sideDistX - RAY_DELTA_X(prg)); //
@@ -168,4 +170,136 @@ else
   else
     RAY_END_Y(prg) = PLAYER_CENTER_Y(prg) + (sideDistY * TILE_SIZE);
   draw_ray(prg);
+  printf("%f\n", offset);
 }
+
+
+void	init_dda_map(t_prg *prg)
+{
+	if (prg->ray->rayDirX < 0)
+	{
+		prg->ray->stepX = -1;
+		prg->ray->sideDistX = (PLAYER_X(prg) - prg->ray->mapX) * prg->ray->deltaDistX;
+	}
+	else
+	{
+		prg->ray->stepX = 1;
+		prg->ray->sideDistX = (prg->ray->mapX + 1.0 - PLAYER_X(prg)) * prg->ray->deltaDistX;
+	}
+	if (prg->ray->rayDirY < 0)
+	{
+		prg->ray->stepY = -1;
+		prg->ray->sideDistY = (PLAYER_Y(prg) - prg->ray->mapY) * prg->ray->deltaDistY;
+	}
+	else
+	{
+		prg->ray->stepY = 1;
+		prg->ray->sideDistY = (prg->ray->mapY + 1.0 - PLAYER_Y(prg)) * prg->ray->deltaDistY;
+	}
+}
+
+void	perform_dda_map(t_prg *prg)
+{
+	while (prg->ray->hit == 0)
+	{
+		if (prg->ray->sideDistX < prg->ray->sideDistY)
+		{
+			prg->ray->sideDistX += prg->ray->deltaDistX;
+			prg->ray->mapX += prg->ray->stepX;
+			prg->ray->side = 0;
+		}
+		else
+		{
+			prg->ray->sideDistY += prg->ray->deltaDistY;
+			prg->ray->mapY += prg->ray->stepY;
+			prg->ray->side = 1;
+		}
+		if (prg->ray->mapY < 0.25
+			|| prg->ray->mapX < 0.25
+			|| prg->ray->mapY > prg->map_h - 0.25
+			|| prg->ray->mapX > prg->map_w - 0.25)
+			break ;
+		if (prg->map[prg->ray->mapY][prg->ray->mapX] == '1')
+			prg->ray->hit = 1;
+	}
+}
+/*
+void	cast_ray(t_prg *prg)
+{
+  RAY_START_X(prg) = PLAYER_CENTER_X(prg);
+  RAY_START_Y(prg) = PLAYER_CENTER_Y(prg);
+	for (int i = 0; i < w; i++)
+	{
+		prg->ray->camera = 2 * i / (double)w - 1;
+		prg->ray->rayDirX = prg->camara_x + prg->plane_x * prg->ray->camera;
+		prg->ray->rayDirY = prg->camara_y + prg->plane_y * prg->ray->camera;
+		prg->ray->mapX = (int)PLAYER_X(prg);
+		prg->ray->mapY = (int)PLAYER_Y(prg);
+		prg->ray->hit = 0;
+		if (prg->ray->rayDirX == 0)
+			prg->ray->deltaDistX = FLT_MAX;
+		else
+			prg->ray->deltaDistX = fabs(1 / prg->ray->rayDirX);
+		if (prg->ray->rayDirY == 0)
+			prg->ray->deltaDistY = FLT_MAX;
+		else
+			prg->ray->deltaDistY = fabs(1 / prg->ray->rayDirY);
+		init_dda_map(prg);
+		perform_dda_map(prg);
+		if (prg->ray->side == 0)
+			prg->ray->wallDist = prg->ray->sideDistX - prg->ray->deltaDistX;
+		else
+			prg->ray->wallDist = prg->ray->sideDistY - prg->ray->deltaDistY;
+
+double offset = fabs(fabs(prg->ray->sideDistX) - fabs(prg->ray->deltaDistY));
+if (prg->ray->side)
+{
+  if (prg->ray->sideDistX < 0)
+    prg->ray->sideDistX += 1;
+  else
+    prg->ray->sideDistX -= 1;
+  if (prg->ray->deltaDistY > 0)
+  {
+    prg->ray->deltaDistY += offset - 1 ;
+  }
+  else
+  {
+    prg->ray->deltaDistY += 1 - offset;
+
+  }
+}
+else
+{
+  if (prg->ray->deltaDistY < 0)
+    prg->ray->deltaDistY += 1;
+  else
+    prg->ray->deltaDistY -= 1;
+  if (prg->ray->sideDistX > 0)
+  {
+    prg->ray->sideDistX += offset - 1 ;
+  }
+  else
+  {
+    prg->ray->sideDistX += 1 - offset;
+
+  }
+}
+
+  if (RAY_DELTA_X(prg) == FLT_MAX)
+  {
+    RAY_END_X(prg) = PLAYER_CENTER_X(prg);
+  }
+  else
+    RAY_END_X(prg) = PLAYER_CENTER_X(prg) + (prg->ray->sideDistX * TILE_SIZE);
+  
+  
+  if (RAY_DELTA_Y(prg) == FLT_MAX)
+  {
+    RAY_END_Y(prg)  = PLAYER_CENTER_Y(prg);
+  }
+  else
+    RAY_END_Y(prg) = PLAYER_CENTER_Y(prg) + (prg->ray->deltaDistY * TILE_SIZE);
+  draw_ray(prg);
+	}
+}
+*/

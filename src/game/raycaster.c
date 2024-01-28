@@ -55,7 +55,7 @@ void	perform_dda(t_prg *prg)
 		if (prg->ray->mapY < 0.25
 			|| prg->ray->mapX < 0.25
 			|| prg->ray->mapY > prg->map_h - 0.25
-			|| prg->ray->mapX > prg->map_w - 1.25)
+			|| prg->ray->mapX > prg->map_w - 0.25)
 			break ;
 		if (prg->map[prg->ray->mapY][prg->ray->mapX] == '1')
 			prg->ray->hit = 1;
@@ -87,5 +87,15 @@ void	raycaster(t_prg *prg)
 		else
 			prg->ray->wallDist = prg->ray->sideDistY - prg->ray->deltaDistY;
 		ray_to_img(prg, i);
+		prg->ray->sideDistX -= 1;
+		prg->ray->sideDistY -= 1;
+		printf("map x%i map y %i\n", prg->ray->mapX, prg->ray->mapY);
+		printf("player X pixel %i player Y pixel %i\n", PLAYER_CENTER_X(prg), PLAYER_CENTER_Y(prg));
+		printf("side %i\n", prg->ray->side);
+		printf("player + X %i player + y %i\n", (int)(PLAYER_CENTER_X(prg) + (prg->ray->sideDistX * TILE_SIZE)), (int)(PLAYER_CENTER_Y(prg) + (prg->ray->sideDistY * TILE_SIZE)));
+		printf("side dist X %i side dist y %i\n", (int)(prg->ray->sideDistX * TILE_SIZE), (int)(prg->ray->sideDistY * TILE_SIZE));
+
+		printf("side dist X %f side dist Y %f\n", prg->ray->sideDistX, prg->ray->sideDistY);
+		printf("\tnew ray\n");
 	}
 }
