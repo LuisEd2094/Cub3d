@@ -8,39 +8,45 @@ int close_game(t_prg *prg)
 
 #if BONUS_FLAG == 0
 
-int key_hook(int key, t_prg *prg)
+int	key_hook(int key, t_prg *prg)
 {
 
-  // COMMENTING AS MARKER; KEY HOOKS SHOULD CHANGE DEPEDING ON BONUS
-  if (key == KEY_ESC || key == KEY_Q)
-    close_game(prg);
-    else if ((key == KEY_W || key == KEY_UP))
-      return (make_move(prg, 1));
-  else if ((key == KEY_S || key == KEY_DOWN))
-      return (make_move(prg, -1));
-  else if ((key == KEY_A || key == KEY_LFT))
-      return (rotate_player(prg, -1));
-  else if ((key == KEY_D || key == KEY_RGT))
-      return (rotate_player(prg, 1));
-  return (0);
+	// COMMENTING AS MARKER; KEY HOOKS SHOULD CHANGE DEPEDING ON BONUS
+	if (key == KEY_ESC || key == KEY_Q)
+		close_game(prg);
+	else if (key == KEY_W || key == KEY_UP)
+		return (make_move(prg, 1, 0));
+	else if (key == KEY_S || key == KEY_DOWN)
+		return (make_move(prg, -1, 0));
+	else if (key == KEY_A)
+		return (make_move(prg, -1, 1));
+	else if (key == KEY_D)
+		return (make_move(prg, 1, 1));
+	else if (key == KEY_LFT)
+		return (rotate_player(prg, -1));
+	else if (key == KEY_RGT)
+		return (rotate_player(prg, 1));
+	return (0);
 }
 #else
 int key_hook(int key, t_prg *prg)
 {
   // COMMENTING AS MARKER; KEY HOOKS SHOULD CHANGE DEPEDING ON BONUS
-  if (key == KEY_ESC || key == KEY_Q)
-    close_game(prg);
-  else if ((key == KEY_W || key == KEY_UP))
-    return (make_move(prg, 1));
-  else if ((key == KEY_S || key == KEY_DOWN))
-    return (make_move(prg, -1));
-  else if (key == KEY_E || key == KEY_SPACE)
-    return (open_door(prg));
-  else if ((key == KEY_A || key == KEY_LFT))
-    return (rotate_player(prg, -1));
-  else if ((key == KEY_D || key == KEY_RGT))
-    return (rotate_player(prg, 1));
-  return (0);
+	if (key == KEY_ESC || key == KEY_Q)
+		close_game(prg);
+	else if (key == KEY_W || key == KEY_UP)
+		return (make_move(prg, 1, 0));
+	else if (key == KEY_S || key == KEY_DOWN)
+		return (make_move(prg, -1, 0));
+	else if (key == KEY_A)
+		return (make_move(prg, -1, 1));
+	else if (key == KEY_D)
+		return (make_move(prg, 1, 1));
+	else if (key == KEY_LFT)
+		return (rotate_player(prg, -1));
+	else if (key == KEY_RGT)
+		return (rotate_player(prg, 1));
+	return (0);
 }
 
 #endif

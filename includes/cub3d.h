@@ -179,7 +179,7 @@ bool	parse_file(int fd, t_prg *prg);
 
 void	get_hooks(t_prg *prg);
 void	update_window(t_prg *prg);
-int		make_move(t_prg *prg, int dir);
+int		make_move(t_prg *prg, int dir, int side);
 void	cast_ray(t_prg *prg);
 void	draw_map(t_prg *prg);
 void	raycaster(t_prg *prg);			//
@@ -196,7 +196,7 @@ void	draw_ray(t_prg *p);
 int		rotate_player(t_prg *prg, int dir);
 void	draw_map(t_prg *prg);
 void	rotate_point(t_point *point, t_point *center, int dir, double rads );
-void	move_triangle(t_prg *prg, int dir, double x, double y);
+void	move_triangle(t_prg *prg, int dx, int dy);
 int		open_door(t_prg *prg);
 
 

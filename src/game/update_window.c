@@ -62,7 +62,11 @@ void update_window(t_prg *prg)
 	raycaster(prg);
 	mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->img->img, 0, 0);
 	draw_map(prg);
-	printf("player X %f player Y%f\n", PLAYER_X(prg), PLAYER_Y(prg));
+	mlx_pixel_put(MLX_PTR(prg), MLX_WIN(prg), HIT_BOX_CENTER(prg)->x, PLAYER_CENTER_Y(prg), 0x000000);
+	mlx_pixel_put(MLX_PTR(prg), MLX_WIN(prg),  PLAYER_CENTER_X(prg), HIT_BOX_CENTER(prg)->y, 0x000000);
+
+	printf("Hitbox Center %i %i\n", HIT_BOX_CENTER(prg)->x, HIT_BOX_CENTER(prg)->y);
+	printf("Player Center X %d Player Center Y %d\n", PLAYER_CENTER_X(prg), PLAYER_CENTER_Y(prg));
 
   //cast_ray(prg);
   //draw_ray(prg);
