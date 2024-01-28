@@ -14,6 +14,7 @@ void destroy_img(t_prg *prg)
 
 void destroy_img(t_prg *prg)
 {
+
     if (prg->img->img)
     {
         mlx_destroy_image(MLX_PTR(prg), prg->img->img);
@@ -21,6 +22,7 @@ void destroy_img(t_prg *prg)
     if (MAP_IMG(prg))
     {
         mlx_destroy_image(MLX_PTR(prg), MAP_IMG(prg));
+
     }
 }
 

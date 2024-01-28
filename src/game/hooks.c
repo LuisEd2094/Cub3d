@@ -19,9 +19,9 @@ int key_hook(int key, t_prg *prg)
   else if ((key == KEY_S || key == KEY_DOWN))
       return (make_move(prg, -1));
   else if ((key == KEY_A || key == KEY_LFT))
-      return (rotate_player(prg, 1));
-  else if ((key == KEY_D || key == KEY_RGT))
       return (rotate_player(prg, -1));
+  else if ((key == KEY_D || key == KEY_RGT))
+      return (rotate_player(prg, 1));
   return (0);
 }
 #else
@@ -37,9 +37,9 @@ int key_hook(int key, t_prg *prg)
   else if (key == KEY_E || key == KEY_SPACE)
     return (open_door(prg));
   else if ((key == KEY_A || key == KEY_LFT))
-    return (rotate_player(prg, 1));
-  else if ((key == KEY_D || key == KEY_RGT))
     return (rotate_player(prg, -1));
+  else if ((key == KEY_D || key == KEY_RGT))
+    return (rotate_player(prg, 1));
   return (0);
 }
 

@@ -52,6 +52,11 @@ void	perform_dda(t_prg *prg)
 			prg->ray->mapY += prg->ray->stepY;
 			prg->ray->side = 1;
 		}
+		if (prg->ray->mapY < 0.25
+			|| prg->ray->mapX < 0.25
+			|| prg->ray->mapY > prg->map_h - 0.25
+			|| prg->ray->mapX > prg->map_w - 1.25)
+			break ;
 		if (prg->map[prg->ray->mapY][prg->ray->mapX] == '1')
 			prg->ray->hit = 1;
 	}

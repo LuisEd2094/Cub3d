@@ -14,9 +14,7 @@
 
 void	exit_error(char *error, t_prg *prg)
 {
-	close_imgs_fd(prg);
-	destroy_img(prg);
-	free_mallocs(prg);
+	free_memory(prg);
 	if (error)
 	{
 		ft_printf(STDERR_FILENO, error);

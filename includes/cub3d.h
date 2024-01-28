@@ -154,6 +154,7 @@ typedef struct s_prg
 // AUX FUNCTIONS 
 bool	print_error(char *error);
 void	init_int_array(int *array, int size);
+void	free_memory(t_prg *prg);
 void	exit_success(t_prg *p);
 void	exit_error(char *error, t_prg *prg);
 void	close_imgs_fd(t_prg *prg);
