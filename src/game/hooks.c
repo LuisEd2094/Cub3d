@@ -10,8 +10,6 @@ int close_game(t_prg *prg)
 
 int	key_hook(int key, t_prg *prg)
 {
-
-	// COMMENTING AS MARKER; KEY HOOKS SHOULD CHANGE DEPEDING ON BONUS
 	if (key == KEY_ESC || key == KEY_Q)
 		close_game(prg);
 	else if (key == KEY_W || key == KEY_UP)
@@ -31,7 +29,6 @@ int	key_hook(int key, t_prg *prg)
 #else
 int key_hook(int key, t_prg *prg)
 {
-  // COMMENTING AS MARKER; KEY HOOKS SHOULD CHANGE DEPEDING ON BONUS
 	if (key == KEY_ESC || key == KEY_Q)
 		close_game(prg);
 	else if (key == KEY_W || key == KEY_UP)
@@ -42,6 +39,8 @@ int key_hook(int key, t_prg *prg)
 		return (make_move(prg, -1, 1));
 	else if (key == KEY_D)
 		return (make_move(prg, 1, 1));
+	else if (key == KEY_E || key == KEY_SPACE)
+		return (open_door(prg));
 	else if (key == KEY_LFT)
 		return (rotate_player(prg, -1));
 	else if (key == KEY_RGT)

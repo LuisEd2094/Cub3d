@@ -195,7 +195,7 @@ void	draw_ray(t_prg *p);
 
 int		rotate_player(t_prg *prg, int dir);
 void	draw_map(t_prg *prg);
-void	rotate_point(t_point *point, t_point *center, int dir, double rads );
+void	rotate_point(t_point *point, t_point *center, double rads );
 void	move_triangle(t_prg *prg, int dx, int dy);
 int		open_door(t_prg *prg);
 
