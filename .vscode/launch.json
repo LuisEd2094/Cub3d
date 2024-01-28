@@ -7,25 +7,25 @@
       "name": "(lldb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/Users/lsoto-do/core04/Cub3d/cub3D",
-      "args": ["/Users/lsoto-do/core04/Cub3d/maps/valid.cub"],
+      "program": "/home/luised94/Cub3d/cub3D",
+      "args": ["/home/luised94/Cub3d/maps/invalid_chars_map.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "lldb"
+      "MIMode": "gdb"
     },
     {
       "name": "(lldb) Launch bonus",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/Users/lsoto-do/core04/Cub3d/cub3D_bonus",
-      "args": ["/Users/lsoto-do/core04/Cub3d/maps/valid_long.cub"],
+      "program": "/home/luised94/Cub3d/cub3D_bonus",
+      "args": ["/home/luised94/Cub3d/maps/valid_long.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "lldb"
+      "MIMode": "gdb"
     },
     {
       "name": "Pygame Debug",

@@ -47,10 +47,10 @@ void	ray_to_img(t_prg *prg, int i)
 
 void update_window(t_prg *prg)
 {
-  mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
-  raycaster(prg);
-  mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->img->img, 0, 0);
-
+	mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
+	raycaster(prg);
+	mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->img->img, 0, 0);
+	printf("player X %f player Y%f\n", PLAYER_X(prg), PLAYER_Y(prg));
   //cast_ray(prg);
   //draw_ray(prg);
 }
@@ -58,11 +58,13 @@ void update_window(t_prg *prg)
 
 void update_window(t_prg *prg)
 {
-  mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
-  raycaster(prg);
-  mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->img->img, 0, 0);
-  draw_map(prg);
-  cast_ray(prg);
-  draw_ray(prg);
+	mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
+	raycaster(prg);
+	mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->img->img, 0, 0);
+	draw_map(prg);
+	printf("player X %f player Y%f\n", PLAYER_X(prg), PLAYER_Y(prg));
+
+  //cast_ray(prg);
+  //draw_ray(prg);
 }
 #endif

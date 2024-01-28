@@ -16,7 +16,7 @@ void move_triangle(t_prg *prg, int dir, double x, double y)
 }
 
 
-void rotate_point(t_point *point, t_point *center, int dir )
+void rotate_point(t_point *point, t_point *center, int dir, double rads)
 {
   int temp_x;
   int temp_y;
@@ -25,7 +25,8 @@ void rotate_point(t_point *point, t_point *center, int dir )
   angle = ROTATION_ANGLE  * (M_PI / 180.0);
   temp_x = point->x;
   temp_y = point->y;
+  printf("%f angle double %f rads * -1 %d Rotation ANGLe\n", angle, rads * -1, ROTATION_ANGLE);
 
-  point->x = round(((temp_x - center->x) * cos(angle * dir) + (temp_y - center->y) * sin(angle * dir)) + center->x);
-  point->y = round((( -1 * (temp_x - center->x)) * sin(angle * dir) + (temp_y - center->y) * cos(angle * dir)) + center->y);
+  point->x = round(((temp_x - center->x) * cos(rads * -1) + (temp_y - center->y) * sin(rads * -1)) + center->x);
+  point->y = round((( -1 * (temp_x - center->x)) * sin(rads * -1) + (temp_y - center->y) * cos(rads * -1)) + center->y);
 }

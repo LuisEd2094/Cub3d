@@ -64,13 +64,11 @@ void	perform_dda(t_prg *prg)
 
 void	raycaster(t_prg *prg)
 {
-	double	planeX = 0.66, planeY = 0;	//
-
 	for (int i = 0; i < w; i++)
 	{
 		prg->ray->camera = 2 * i / (double)w - 1;
-		prg->ray->rayDirX = prg->camara_x + planeX * prg->ray->camera;
-		prg->ray->rayDirY = prg->camara_y + planeY * prg->ray->camera;
+		prg->ray->rayDirX = prg->camara_x + prg->plane_x * prg->ray->camera;
+		prg->ray->rayDirY = prg->camara_y + prg->plane_y * prg->ray->camera;
 		prg->ray->mapX = (int)PLAYER_X(prg);
 		prg->ray->mapY = (int)PLAYER_Y(prg);
 		prg->ray->hit = 0;

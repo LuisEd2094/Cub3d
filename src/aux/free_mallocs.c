@@ -62,13 +62,23 @@ void	free_mini_map(t_map *map)
 	}
 }
 
-void	free_mallocs(t_prg *p)
+void	free_mlx(t_prg *prg)
 {
-	free_2d_array((void **)p->map);
-	if (p->mlx)
-		free(p->mlx);
-	free_player(p->player);
-	free_ray(p->ray);
-	free_img(p->img);
-	free_mini_map(p->mini_map);
+		if (prg->mlx)
+	{
+		if (prg->mlx->window)
+			mlx_destroy_window(prg->mlx->ptr, prg->mlx->window);
+		free(prg->mlx);
+	}
+
+}
+
+void	free_mallocs(t_prg *prg)
+{
+	free_2d_array((void **)prg->map);
+	free_mlx(prg);
+	free_player(prg->player);
+	free_ray(prg->ray);
+	free_img(prg->img);
+	free_mini_map(prg->mini_map);
 }

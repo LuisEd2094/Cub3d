@@ -41,6 +41,8 @@ static void	init_ray(t_ray *ray)
 static void	init_prg_structs(t_prg *prg)
 {	
 	prg->mlx = (t_mlx *)malloc(sizeof (t_mlx));
+	if (prg->mlx)
+		prg->mlx->window = NULL;
 	prg->player = (t_pc *)malloc(sizeof (t_pc));
 	prg->ray = (t_ray *)malloc(sizeof (t_ray));
 	prg->img = (t_img *)malloc(sizeof (t_img));
