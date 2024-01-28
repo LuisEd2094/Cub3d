@@ -1,0 +1,2400 @@
+map x3 map y 0
+ horizontal wall 241.454545
+	new ray
+map x3 map y 0
+ horizontal wall 241.819093
+	new ray
+map x3 map y 0
+ horizontal wall 242.185473
+	new ray
+map x3 map y 0
+ horizontal wall 242.553698
+	new ray
+map x3 map y 0
+ horizontal wall 242.923783
+	new ray
+map x3 map y 0
+ horizontal wall 243.295742
+	new ray
+map x3 map y 0
+ horizontal wall 243.669589
+	new ray
+map x3 map y 0
+ horizontal wall 244.045339
+	new ray
+map x3 map y 0
+ horizontal wall 244.423006
+	new ray
+map x3 map y 0
+ horizontal wall 244.802604
+	new ray
+map x3 map y 0
+ horizontal wall 245.184149
+	new ray
+map x3 map y 0
+ horizontal wall 245.567656
+	new ray
+map x3 map y 0
+ horizontal wall 245.953140
+	new ray
+map x3 map y 0
+ horizontal wall 246.340615
+	new ray
+map x3 map y 0
+ horizontal wall 246.730099
+	new ray
+map x3 map y 0
+ horizontal wall 247.121606
+	new ray
+map x3 map y 0
+ horizontal wall 247.515152
+	new ray
+map x3 map y 0
+ horizontal wall 247.910752
+	new ray
+map x3 map y 0
+ horizontal wall 248.308425
+	new ray
+map x3 map y 0
+ horizontal wall 248.708184
+	new ray
+map x3 map y 0
+ horizontal wall 249.110048
+	new ray
+map x3 map y 0
+ horizontal wall 249.514032
+	new ray
+map x3 map y 0
+ horizontal wall 249.920154
+	new ray
+map x3 map y 0
+ horizontal wall 250.328430
+	new ray
+map x3 map y 0
+ horizontal wall 250.738878
+	new ray
+map x3 map y 0
+ horizontal wall 251.151515
+	new ray
+map x3 map y 0
+ horizontal wall 251.566359
+	new ray
+map x3 map y 0
+ horizontal wall 251.983427
+	new ray
+map x3 map y 0
+ horizontal wall 252.402737
+	new ray
+map x3 map y 0
+ horizontal wall 252.824308
+	new ray
+map x3 map y 0
+ horizontal wall 253.248157
+	new ray
+map x3 map y 0
+ horizontal wall 253.674304
+	new ray
+map x3 map y 0
+ horizontal wall 254.102767
+	new ray
+map x3 map y 0
+ horizontal wall 254.533565
+	new ray
+map x3 map y 0
+ horizontal wall 254.966716
+	new ray
+map x3 map y 0
+ horizontal wall 255.402242
+	new ray
+map x3 map y 0
+ horizontal wall 255.840160
+	new ray
+map x4 map y 1
+ vertical wall 64.168000
+	new ray
+map x4 map y 1
+ vertical wall 64.432000
+	new ray
+map x4 map y 1
+ vertical wall 64.696000
+	new ray
+map x4 map y 1
+ vertical wall 64.960000
+	new ray
+map x4 map y 1
+ vertical wall 65.224000
+	new ray
+map x4 map y 1
+ vertical wall 65.488000
+	new ray
+map x4 map y 1
+ vertical wall 65.752000
+	new ray
+map x4 map y 1
+ vertical wall 66.016000
+	new ray
+map x4 map y 1
+ vertical wall 66.280000
+	new ray
+map x4 map y 1
+ vertical wall 66.544000
+	new ray
+map x4 map y 1
+ vertical wall 66.808000
+	new ray
+map x4 map y 1
+ vertical wall 67.072000
+	new ray
+map x4 map y 1
+ vertical wall 67.336000
+	new ray
+map x4 map y 1
+ vertical wall 67.600000
+	new ray
+map x4 map y 1
+ vertical wall 67.864000
+	new ray
+map x4 map y 1
+ vertical wall 68.128000
+	new ray
+map x4 map y 1
+ vertical wall 68.392000
+	new ray
+map x4 map y 1
+ vertical wall 68.656000
+	new ray
+map x4 map y 1
+ vertical wall 68.920000
+	new ray
+map x4 map y 1
+ vertical wall 69.184000
+	new ray
+map x4 map y 1
+ vertical wall 69.448000
+	new ray
+map x4 map y 1
+ vertical wall 69.712000
+	new ray
+map x4 map y 1
+ vertical wall 69.976000
+	new ray
+map x4 map y 1
+ vertical wall 70.240000
+	new ray
+map x4 map y 1
+ vertical wall 70.504000
+	new ray
+map x4 map y 1
+ vertical wall 70.768000
+	new ray
+map x4 map y 1
+ vertical wall 71.032000
+	new ray
+map x4 map y 1
+ vertical wall 71.296000
+	new ray
+map x4 map y 1
+ vertical wall 71.560000
+	new ray
+map x4 map y 1
+ vertical wall 71.824000
+	new ray
+map x4 map y 1
+ vertical wall 72.088000
+	new ray
+map x4 map y 1
+ vertical wall 72.352000
+	new ray
+map x4 map y 1
+ vertical wall 72.616000
+	new ray
+map x4 map y 1
+ vertical wall 72.880000
+	new ray
+map x4 map y 1
+ vertical wall 73.144000
+	new ray
+map x4 map y 1
+ vertical wall 73.408000
+	new ray
+map x4 map y 1
+ vertical wall 73.672000
+	new ray
+map x4 map y 1
+ vertical wall 73.936000
+	new ray
+map x4 map y 1
+ vertical wall 74.200000
+	new ray
+map x4 map y 1
+ vertical wall 74.464000
+	new ray
+map x4 map y 1
+ vertical wall 74.728000
+	new ray
+map x4 map y 1
+ vertical wall 74.992000
+	new ray
+map x4 map y 1
+ vertical wall 75.256000
+	new ray
+map x4 map y 1
+ vertical wall 75.520000
+	new ray
+map x4 map y 1
+ vertical wall 75.784000
+	new ray
+map x4 map y 1
+ vertical wall 76.048000
+	new ray
+map x4 map y 1
+ vertical wall 76.312000
+	new ray
+map x4 map y 1
+ vertical wall 76.576000
+	new ray
+map x4 map y 1
+ vertical wall 76.840000
+	new ray
+map x4 map y 1
+ vertical wall 77.104000
+	new ray
+map x4 map y 1
+ vertical wall 77.368000
+	new ray
+map x4 map y 1
+ vertical wall 77.632000
+	new ray
+map x4 map y 1
+ vertical wall 77.896000
+	new ray
+map x4 map y 1
+ vertical wall 78.160000
+	new ray
+map x4 map y 1
+ vertical wall 78.424000
+	new ray
+map x4 map y 1
+ vertical wall 78.688000
+	new ray
+map x4 map y 1
+ vertical wall 78.952000
+	new ray
+map x4 map y 1
+ vertical wall 79.216000
+	new ray
+map x4 map y 1
+ vertical wall 79.480000
+	new ray
+map x4 map y 1
+ vertical wall 79.744000
+	new ray
+map x4 map y 1
+ vertical wall 80.008000
+	new ray
+map x4 map y 1
+ vertical wall 80.272000
+	new ray
+map x4 map y 1
+ vertical wall 80.536000
+	new ray
+map x4 map y 1
+ vertical wall 80.800000
+	new ray
+map x4 map y 1
+ vertical wall 81.064000
+	new ray
+map x4 map y 1
+ vertical wall 81.328000
+	new ray
+map x4 map y 1
+ vertical wall 81.592000
+	new ray
+map x4 map y 1
+ vertical wall 81.856000
+	new ray
+map x4 map y 1
+ vertical wall 82.120000
+	new ray
+map x4 map y 1
+ vertical wall 82.384000
+	new ray
+map x4 map y 1
+ vertical wall 82.648000
+	new ray
+map x4 map y 1
+ vertical wall 82.912000
+	new ray
+map x4 map y 1
+ vertical wall 83.176000
+	new ray
+map x4 map y 1
+ vertical wall 83.440000
+	new ray
+map x4 map y 1
+ vertical wall 83.704000
+	new ray
+map x4 map y 1
+ vertical wall 83.968000
+	new ray
+map x4 map y 1
+ vertical wall 84.232000
+	new ray
+map x4 map y 1
+ vertical wall 84.496000
+	new ray
+map x4 map y 1
+ vertical wall 84.760000
+	new ray
+map x4 map y 1
+ vertical wall 85.024000
+	new ray
+map x4 map y 1
+ vertical wall 85.288000
+	new ray
+map x4 map y 1
+ vertical wall 85.552000
+	new ray
+map x4 map y 1
+ vertical wall 85.816000
+	new ray
+map x4 map y 1
+ vertical wall 86.080000
+	new ray
+map x4 map y 1
+ vertical wall 86.344000
+	new ray
+map x4 map y 1
+ vertical wall 86.608000
+	new ray
+map x4 map y 1
+ vertical wall 86.872000
+	new ray
+map x4 map y 1
+ vertical wall 87.136000
+	new ray
+map x4 map y 1
+ vertical wall 87.400000
+	new ray
+map x4 map y 1
+ vertical wall 87.664000
+	new ray
+map x4 map y 1
+ vertical wall 87.928000
+	new ray
+map x4 map y 1
+ vertical wall 88.192000
+	new ray
+map x4 map y 1
+ vertical wall 88.456000
+	new ray
+map x4 map y 1
+ vertical wall 88.720000
+	new ray
+map x4 map y 1
+ vertical wall 88.984000
+	new ray
+map x4 map y 1
+ vertical wall 89.248000
+	new ray
+map x4 map y 1
+ vertical wall 89.512000
+	new ray
+map x4 map y 1
+ vertical wall 89.776000
+	new ray
+map x4 map y 1
+ vertical wall 90.040000
+	new ray
+map x4 map y 1
+ vertical wall 90.304000
+	new ray
+map x4 map y 1
+ vertical wall 90.568000
+	new ray
+map x4 map y 1
+ vertical wall 90.832000
+	new ray
+map x4 map y 1
+ vertical wall 91.096000
+	new ray
+map x4 map y 1
+ vertical wall 91.360000
+	new ray
+map x4 map y 1
+ vertical wall 91.624000
+	new ray
+map x4 map y 1
+ vertical wall 91.888000
+	new ray
+map x4 map y 1
+ vertical wall 92.152000
+	new ray
+map x4 map y 1
+ vertical wall 92.416000
+	new ray
+map x4 map y 1
+ vertical wall 92.680000
+	new ray
+map x4 map y 1
+ vertical wall 92.944000
+	new ray
+map x4 map y 1
+ vertical wall 93.208000
+	new ray
+map x4 map y 1
+ vertical wall 93.472000
+	new ray
+map x4 map y 1
+ vertical wall 93.736000
+	new ray
+map x4 map y 1
+ vertical wall 94.000000
+	new ray
+map x4 map y 1
+ vertical wall 94.264000
+	new ray
+map x4 map y 1
+ vertical wall 94.528000
+	new ray
+map x4 map y 1
+ vertical wall 94.792000
+	new ray
+map x4 map y 1
+ vertical wall 95.056000
+	new ray
+map x4 map y 1
+ vertical wall 95.320000
+	new ray
+map x4 map y 1
+ vertical wall 95.584000
+	new ray
+map x4 map y 1
+ vertical wall 95.848000
+	new ray
+map x4 map y 1
+ vertical wall 96.112000
+	new ray
+map x4 map y 1
+ vertical wall 96.376000
+	new ray
+map x4 map y 1
+ vertical wall 96.640000
+	new ray
+map x4 map y 1
+ vertical wall 96.904000
+	new ray
+map x4 map y 1
+ vertical wall 97.168000
+	new ray
+map x4 map y 1
+ vertical wall 97.432000
+	new ray
+map x4 map y 1
+ vertical wall 97.696000
+	new ray
+map x4 map y 1
+ vertical wall 97.960000
+	new ray
+map x4 map y 1
+ vertical wall 98.224000
+	new ray
+map x4 map y 1
+ vertical wall 98.488000
+	new ray
+map x4 map y 1
+ vertical wall 98.752000
+	new ray
+map x4 map y 1
+ vertical wall 99.016000
+	new ray
+map x4 map y 1
+ vertical wall 99.280000
+	new ray
+map x4 map y 1
+ vertical wall 99.544000
+	new ray
+map x4 map y 1
+ vertical wall 99.808000
+	new ray
+map x4 map y 1
+ vertical wall 100.072000
+	new ray
+map x4 map y 1
+ vertical wall 100.336000
+	new ray
+map x4 map y 1
+ vertical wall 100.600000
+	new ray
+map x4 map y 1
+ vertical wall 100.864000
+	new ray
+map x4 map y 1
+ vertical wall 101.128000
+	new ray
+map x4 map y 1
+ vertical wall 101.392000
+	new ray
+map x4 map y 1
+ vertical wall 101.656000
+	new ray
+map x4 map y 1
+ vertical wall 101.920000
+	new ray
+map x4 map y 1
+ vertical wall 102.184000
+	new ray
+map x4 map y 1
+ vertical wall 102.448000
+	new ray
+map x4 map y 1
+ vertical wall 102.712000
+	new ray
+map x4 map y 1
+ vertical wall 102.976000
+	new ray
+map x4 map y 1
+ vertical wall 103.240000
+	new ray
+map x4 map y 1
+ vertical wall 103.504000
+	new ray
+map x4 map y 1
+ vertical wall 103.768000
+	new ray
+map x4 map y 1
+ vertical wall 104.032000
+	new ray
+map x4 map y 1
+ vertical wall 104.296000
+	new ray
+map x4 map y 1
+ vertical wall 104.560000
+	new ray
+map x4 map y 1
+ vertical wall 104.824000
+	new ray
+map x4 map y 1
+ vertical wall 105.088000
+	new ray
+map x4 map y 1
+ vertical wall 105.352000
+	new ray
+map x4 map y 1
+ vertical wall 105.616000
+	new ray
+map x4 map y 1
+ vertical wall 105.880000
+	new ray
+map x4 map y 1
+ vertical wall 106.144000
+	new ray
+map x4 map y 1
+ vertical wall 106.408000
+	new ray
+map x4 map y 1
+ vertical wall 106.672000
+	new ray
+map x4 map y 1
+ vertical wall 106.936000
+	new ray
+map x4 map y 1
+ vertical wall 107.200000
+	new ray
+map x4 map y 1
+ vertical wall 107.464000
+	new ray
+map x4 map y 1
+ vertical wall 107.728000
+	new ray
+map x4 map y 1
+ vertical wall 107.992000
+	new ray
+map x4 map y 1
+ vertical wall 108.256000
+	new ray
+map x4 map y 1
+ vertical wall 108.520000
+	new ray
+map x4 map y 1
+ vertical wall 108.784000
+	new ray
+map x4 map y 1
+ vertical wall 109.048000
+	new ray
+map x4 map y 1
+ vertical wall 109.312000
+	new ray
+map x4 map y 1
+ vertical wall 109.576000
+	new ray
+map x4 map y 1
+ vertical wall 109.840000
+	new ray
+map x4 map y 1
+ vertical wall 110.104000
+	new ray
+map x4 map y 1
+ vertical wall 110.368000
+	new ray
+map x4 map y 1
+ vertical wall 110.632000
+	new ray
+map x4 map y 1
+ vertical wall 110.896000
+	new ray
+map x4 map y 1
+ vertical wall 111.160000
+	new ray
+map x4 map y 1
+ vertical wall 111.424000
+	new ray
+map x4 map y 1
+ vertical wall 111.688000
+	new ray
+map x4 map y 1
+ vertical wall 111.952000
+	new ray
+map x4 map y 1
+ vertical wall 112.216000
+	new ray
+map x4 map y 1
+ vertical wall 112.480000
+	new ray
+map x4 map y 1
+ vertical wall 112.744000
+	new ray
+map x4 map y 1
+ vertical wall 113.008000
+	new ray
+map x4 map y 1
+ vertical wall 113.272000
+	new ray
+map x4 map y 1
+ vertical wall 113.536000
+	new ray
+map x4 map y 1
+ vertical wall 113.800000
+	new ray
+map x4 map y 1
+ vertical wall 114.064000
+	new ray
+map x4 map y 1
+ vertical wall 114.328000
+	new ray
+map x4 map y 1
+ vertical wall 114.592000
+	new ray
+map x4 map y 1
+ vertical wall 114.856000
+	new ray
+map x4 map y 1
+ vertical wall 115.120000
+	new ray
+map x4 map y 1
+ vertical wall 115.384000
+	new ray
+map x4 map y 1
+ vertical wall 115.648000
+	new ray
+map x4 map y 1
+ vertical wall 115.912000
+	new ray
+map x4 map y 1
+ vertical wall 116.176000
+	new ray
+map x4 map y 1
+ vertical wall 116.440000
+	new ray
+map x4 map y 1
+ vertical wall 116.704000
+	new ray
+map x4 map y 1
+ vertical wall 116.968000
+	new ray
+map x4 map y 1
+ vertical wall 117.232000
+	new ray
+map x4 map y 1
+ vertical wall 117.496000
+	new ray
+map x4 map y 1
+ vertical wall 117.760000
+	new ray
+map x4 map y 1
+ vertical wall 118.024000
+	new ray
+map x4 map y 1
+ vertical wall 118.288000
+	new ray
+map x4 map y 1
+ vertical wall 118.552000
+	new ray
+map x4 map y 1
+ vertical wall 118.816000
+	new ray
+map x4 map y 1
+ vertical wall 119.080000
+	new ray
+map x4 map y 1
+ vertical wall 119.344000
+	new ray
+map x4 map y 1
+ vertical wall 119.608000
+	new ray
+map x4 map y 1
+ vertical wall 119.872000
+	new ray
+map x4 map y 1
+ vertical wall 120.136000
+	new ray
+map x4 map y 1
+ vertical wall 120.400000
+	new ray
+map x4 map y 1
+ vertical wall 120.664000
+	new ray
+map x4 map y 1
+ vertical wall 120.928000
+	new ray
+map x4 map y 1
+ vertical wall 121.192000
+	new ray
+map x4 map y 1
+ vertical wall 121.456000
+	new ray
+map x4 map y 1
+ vertical wall 121.720000
+	new ray
+map x4 map y 1
+ vertical wall 121.984000
+	new ray
+map x4 map y 1
+ vertical wall 122.248000
+	new ray
+map x4 map y 1
+ vertical wall 122.512000
+	new ray
+map x4 map y 1
+ vertical wall 122.776000
+	new ray
+map x4 map y 1
+ vertical wall 123.040000
+	new ray
+map x4 map y 1
+ vertical wall 123.304000
+	new ray
+map x4 map y 1
+ vertical wall 123.568000
+	new ray
+map x4 map y 1
+ vertical wall 123.832000
+	new ray
+map x4 map y 1
+ vertical wall 124.096000
+	new ray
+map x4 map y 1
+ vertical wall 124.360000
+	new ray
+map x4 map y 1
+ vertical wall 124.624000
+	new ray
+map x4 map y 1
+ vertical wall 124.888000
+	new ray
+map x4 map y 1
+ vertical wall 125.152000
+	new ray
+map x4 map y 1
+ vertical wall 125.416000
+	new ray
+map x4 map y 1
+ vertical wall 125.680000
+	new ray
+map x4 map y 1
+ vertical wall 125.944000
+	new ray
+map x4 map y 1
+ vertical wall 126.208000
+	new ray
+map x4 map y 1
+ vertical wall 126.472000
+	new ray
+map x4 map y 1
+ vertical wall 126.736000
+	new ray
+map x4 map y 1
+ vertical wall 127.000000
+	new ray
+map x4 map y 1
+ vertical wall 127.264000
+	new ray
+map x4 map y 1
+ vertical wall 127.528000
+	new ray
+map x4 map y 1
+ vertical wall 127.792000
+	new ray
+map x4 map y 2
+ vertical wall 128.056000
+	new ray
+map x4 map y 2
+ vertical wall 128.320000
+	new ray
+map x4 map y 2
+ vertical wall 128.584000
+	new ray
+map x4 map y 2
+ vertical wall 128.848000
+	new ray
+map x4 map y 2
+ vertical wall 129.112000
+	new ray
+map x4 map y 2
+ vertical wall 129.376000
+	new ray
+map x4 map y 2
+ vertical wall 129.640000
+	new ray
+map x4 map y 2
+ vertical wall 129.904000
+	new ray
+map x4 map y 2
+ vertical wall 130.168000
+	new ray
+map x4 map y 2
+ vertical wall 130.432000
+	new ray
+map x4 map y 2
+ vertical wall 130.696000
+	new ray
+map x4 map y 2
+ vertical wall 130.960000
+	new ray
+map x4 map y 2
+ vertical wall 131.224000
+	new ray
+map x4 map y 2
+ vertical wall 131.488000
+	new ray
+map x4 map y 2
+ vertical wall 131.752000
+	new ray
+map x4 map y 2
+ vertical wall 132.016000
+	new ray
+map x4 map y 2
+ vertical wall 132.280000
+	new ray
+map x4 map y 2
+ vertical wall 132.544000
+	new ray
+map x4 map y 2
+ vertical wall 132.808000
+	new ray
+map x4 map y 2
+ vertical wall 133.072000
+	new ray
+map x4 map y 2
+ vertical wall 133.336000
+	new ray
+map x4 map y 2
+ vertical wall 133.600000
+	new ray
+map x4 map y 2
+ vertical wall 133.864000
+	new ray
+map x4 map y 2
+ vertical wall 134.128000
+	new ray
+map x4 map y 2
+ vertical wall 134.392000
+	new ray
+map x4 map y 2
+ vertical wall 134.656000
+	new ray
+map x4 map y 2
+ vertical wall 134.920000
+	new ray
+map x4 map y 2
+ vertical wall 135.184000
+	new ray
+map x4 map y 2
+ vertical wall 135.448000
+	new ray
+map x4 map y 2
+ vertical wall 135.712000
+	new ray
+map x4 map y 2
+ vertical wall 135.976000
+	new ray
+map x4 map y 2
+ vertical wall 136.240000
+	new ray
+map x4 map y 2
+ vertical wall 136.504000
+	new ray
+map x4 map y 2
+ vertical wall 136.768000
+	new ray
+map x4 map y 2
+ vertical wall 137.032000
+	new ray
+map x4 map y 2
+ vertical wall 137.296000
+	new ray
+map x4 map y 2
+ vertical wall 137.560000
+	new ray
+map x4 map y 2
+ vertical wall 137.824000
+	new ray
+map x4 map y 2
+ vertical wall 138.088000
+	new ray
+map x4 map y 2
+ vertical wall 138.352000
+	new ray
+map x4 map y 2
+ vertical wall 138.616000
+	new ray
+map x4 map y 2
+ vertical wall 138.880000
+	new ray
+map x4 map y 2
+ vertical wall 139.144000
+	new ray
+map x4 map y 2
+ vertical wall 139.408000
+	new ray
+map x4 map y 2
+ vertical wall 139.672000
+	new ray
+map x4 map y 2
+ vertical wall 139.936000
+	new ray
+map x4 map y 2
+ vertical wall 140.200000
+	new ray
+map x4 map y 2
+ vertical wall 140.464000
+	new ray
+map x4 map y 2
+ vertical wall 140.728000
+	new ray
+map x4 map y 2
+ vertical wall 140.992000
+	new ray
+map x4 map y 2
+ vertical wall 141.256000
+	new ray
+map x4 map y 2
+ vertical wall 141.520000
+	new ray
+map x4 map y 2
+ vertical wall 141.784000
+	new ray
+map x4 map y 2
+ vertical wall 142.048000
+	new ray
+map x4 map y 2
+ vertical wall 142.312000
+	new ray
+map x4 map y 2
+ vertical wall 142.576000
+	new ray
+map x4 map y 2
+ vertical wall 142.840000
+	new ray
+map x4 map y 2
+ vertical wall 143.104000
+	new ray
+map x4 map y 2
+ vertical wall 143.368000
+	new ray
+map x4 map y 2
+ vertical wall 143.632000
+	new ray
+map x4 map y 2
+ vertical wall 143.896000
+	new ray
+map x4 map y 2
+ vertical wall 144.160000
+	new ray
+map x4 map y 2
+ vertical wall 144.424000
+	new ray
+map x4 map y 2
+ vertical wall 144.688000
+	new ray
+map x4 map y 2
+ vertical wall 144.952000
+	new ray
+map x4 map y 2
+ vertical wall 145.216000
+	new ray
+map x4 map y 2
+ vertical wall 145.480000
+	new ray
+map x4 map y 2
+ vertical wall 145.744000
+	new ray
+map x4 map y 2
+ vertical wall 146.008000
+	new ray
+map x4 map y 2
+ vertical wall 146.272000
+	new ray
+map x4 map y 2
+ vertical wall 146.536000
+	new ray
+map x4 map y 2
+ vertical wall 146.800000
+	new ray
+map x4 map y 2
+ vertical wall 147.064000
+	new ray
+map x4 map y 2
+ vertical wall 147.328000
+	new ray
+map x4 map y 2
+ vertical wall 147.592000
+	new ray
+map x4 map y 2
+ vertical wall 147.856000
+	new ray
+map x4 map y 2
+ vertical wall 148.120000
+	new ray
+map x4 map y 2
+ vertical wall 148.384000
+	new ray
+map x4 map y 2
+ vertical wall 148.648000
+	new ray
+map x4 map y 2
+ vertical wall 148.912000
+	new ray
+map x4 map y 2
+ vertical wall 149.176000
+	new ray
+map x4 map y 2
+ vertical wall 149.440000
+	new ray
+map x4 map y 2
+ vertical wall 149.704000
+	new ray
+map x4 map y 2
+ vertical wall 149.968000
+	new ray
+map x4 map y 2
+ vertical wall 150.232000
+	new ray
+map x4 map y 2
+ vertical wall 150.496000
+	new ray
+map x4 map y 2
+ vertical wall 150.760000
+	new ray
+map x4 map y 2
+ vertical wall 151.024000
+	new ray
+map x4 map y 2
+ vertical wall 151.288000
+	new ray
+map x4 map y 2
+ vertical wall 151.552000
+	new ray
+map x4 map y 2
+ vertical wall 151.816000
+	new ray
+map x4 map y 2
+ vertical wall 152.080000
+	new ray
+map x4 map y 2
+ vertical wall 152.344000
+	new ray
+map x4 map y 2
+ vertical wall 152.608000
+	new ray
+map x4 map y 2
+ vertical wall 152.872000
+	new ray
+map x4 map y 2
+ vertical wall 153.136000
+	new ray
+map x4 map y 2
+ vertical wall 153.400000
+	new ray
+map x4 map y 2
+ vertical wall 153.664000
+	new ray
+map x4 map y 2
+ vertical wall 153.928000
+	new ray
+map x4 map y 2
+ vertical wall 154.192000
+	new ray
+map x4 map y 2
+ vertical wall 154.456000
+	new ray
+map x4 map y 2
+ vertical wall 154.720000
+	new ray
+map x4 map y 2
+ vertical wall 154.984000
+	new ray
+map x4 map y 2
+ vertical wall 155.248000
+	new ray
+map x4 map y 2
+ vertical wall 155.512000
+	new ray
+map x4 map y 2
+ vertical wall 155.776000
+	new ray
+map x4 map y 2
+ vertical wall 156.040000
+	new ray
+map x4 map y 2
+ vertical wall 156.304000
+	new ray
+map x4 map y 2
+ vertical wall 156.568000
+	new ray
+map x4 map y 2
+ vertical wall 156.832000
+	new ray
+map x4 map y 2
+ vertical wall 157.096000
+	new ray
+map x4 map y 2
+ vertical wall 157.360000
+	new ray
+map x4 map y 2
+ vertical wall 157.624000
+	new ray
+map x4 map y 2
+ vertical wall 157.888000
+	new ray
+map x4 map y 2
+ vertical wall 158.152000
+	new ray
+map x4 map y 2
+ vertical wall 158.416000
+	new ray
+map x4 map y 2
+ vertical wall 158.680000
+	new ray
+map x4 map y 2
+ vertical wall 158.944000
+	new ray
+map x4 map y 2
+ vertical wall 159.208000
+	new ray
+map x4 map y 2
+ vertical wall 159.472000
+	new ray
+map x4 map y 2
+ vertical wall 159.736000
+	new ray
+map x4 map y 2
+ vertical wall 160.000000
+	new ray
+map x4 map y 2
+ vertical wall 160.264000
+	new ray
+map x4 map y 2
+ vertical wall 160.528000
+	new ray
+map x4 map y 2
+ vertical wall 160.792000
+	new ray
+map x4 map y 2
+ vertical wall 161.056000
+	new ray
+map x4 map y 2
+ vertical wall 161.320000
+	new ray
+map x4 map y 2
+ vertical wall 161.584000
+	new ray
+map x4 map y 2
+ vertical wall 161.848000
+	new ray
+map x4 map y 2
+ vertical wall 162.112000
+	new ray
+map x4 map y 2
+ vertical wall 162.376000
+	new ray
+map x4 map y 2
+ vertical wall 162.640000
+	new ray
+map x4 map y 2
+ vertical wall 162.904000
+	new ray
+map x4 map y 2
+ vertical wall 163.168000
+	new ray
+map x4 map y 2
+ vertical wall 163.432000
+	new ray
+map x4 map y 2
+ vertical wall 163.696000
+	new ray
+map x4 map y 2
+ vertical wall 163.960000
+	new ray
+map x4 map y 2
+ vertical wall 164.224000
+	new ray
+map x4 map y 2
+ vertical wall 164.488000
+	new ray
+map x4 map y 2
+ vertical wall 164.752000
+	new ray
+map x4 map y 2
+ vertical wall 165.016000
+	new ray
+map x4 map y 2
+ vertical wall 165.280000
+	new ray
+map x4 map y 2
+ vertical wall 165.544000
+	new ray
+map x4 map y 2
+ vertical wall 165.808000
+	new ray
+map x4 map y 2
+ vertical wall 166.072000
+	new ray
+map x4 map y 2
+ vertical wall 166.336000
+	new ray
+map x4 map y 2
+ vertical wall 166.600000
+	new ray
+map x4 map y 2
+ vertical wall 166.864000
+	new ray
+map x4 map y 2
+ vertical wall 167.128000
+	new ray
+map x4 map y 2
+ vertical wall 167.392000
+	new ray
+map x4 map y 2
+ vertical wall 167.656000
+	new ray
+map x4 map y 2
+ vertical wall 167.920000
+	new ray
+map x4 map y 2
+ vertical wall 168.184000
+	new ray
+map x4 map y 2
+ vertical wall 168.448000
+	new ray
+map x4 map y 2
+ vertical wall 168.712000
+	new ray
+map x4 map y 2
+ vertical wall 168.976000
+	new ray
+map x4 map y 2
+ vertical wall 169.240000
+	new ray
+map x4 map y 2
+ vertical wall 169.504000
+	new ray
+map x4 map y 2
+ vertical wall 169.768000
+	new ray
+map x4 map y 2
+ vertical wall 170.032000
+	new ray
+map x4 map y 2
+ vertical wall 170.296000
+	new ray
+map x4 map y 2
+ vertical wall 170.560000
+	new ray
+map x4 map y 2
+ vertical wall 170.824000
+	new ray
+map x4 map y 2
+ vertical wall 171.088000
+	new ray
+map x4 map y 2
+ vertical wall 171.352000
+	new ray
+map x4 map y 2
+ vertical wall 171.616000
+	new ray
+map x4 map y 2
+ vertical wall 171.880000
+	new ray
+map x4 map y 2
+ vertical wall 172.144000
+	new ray
+map x4 map y 2
+ vertical wall 172.408000
+	new ray
+map x4 map y 2
+ vertical wall 172.672000
+	new ray
+map x4 map y 2
+ vertical wall 172.936000
+	new ray
+map x4 map y 2
+ vertical wall 173.200000
+	new ray
+map x4 map y 2
+ vertical wall 173.464000
+	new ray
+map x4 map y 2
+ vertical wall 173.728000
+	new ray
+map x4 map y 2
+ vertical wall 173.992000
+	new ray
+map x4 map y 2
+ vertical wall 174.256000
+	new ray
+map x4 map y 2
+ vertical wall 174.520000
+	new ray
+map x4 map y 2
+ vertical wall 174.784000
+	new ray
+map x4 map y 2
+ vertical wall 175.048000
+	new ray
+map x4 map y 2
+ vertical wall 175.312000
+	new ray
+map x4 map y 2
+ vertical wall 175.576000
+	new ray
+map x4 map y 2
+ vertical wall 175.840000
+	new ray
+map x4 map y 2
+ vertical wall 176.104000
+	new ray
+map x4 map y 2
+ vertical wall 176.368000
+	new ray
+map x4 map y 2
+ vertical wall 176.632000
+	new ray
+map x4 map y 2
+ vertical wall 176.896000
+	new ray
+map x4 map y 2
+ vertical wall 177.160000
+	new ray
+map x4 map y 2
+ vertical wall 177.424000
+	new ray
+map x4 map y 2
+ vertical wall 177.688000
+	new ray
+map x4 map y 2
+ vertical wall 177.952000
+	new ray
+map x4 map y 2
+ vertical wall 178.216000
+	new ray
+map x4 map y 2
+ vertical wall 178.480000
+	new ray
+map x4 map y 2
+ vertical wall 178.744000
+	new ray
+map x4 map y 2
+ vertical wall 179.008000
+	new ray
+map x4 map y 2
+ vertical wall 179.272000
+	new ray
+map x4 map y 2
+ vertical wall 179.536000
+	new ray
+map x4 map y 2
+ vertical wall 179.800000
+	new ray
+map x4 map y 2
+ vertical wall 180.064000
+	new ray
+map x4 map y 2
+ vertical wall 180.328000
+	new ray
+map x4 map y 2
+ vertical wall 180.592000
+	new ray
+map x4 map y 2
+ vertical wall 180.856000
+	new ray
+map x4 map y 2
+ vertical wall 181.120000
+	new ray
+map x4 map y 2
+ vertical wall 181.384000
+	new ray
+map x4 map y 2
+ vertical wall 181.648000
+	new ray
+map x4 map y 2
+ vertical wall 181.912000
+	new ray
+map x4 map y 2
+ vertical wall 182.176000
+	new ray
+map x4 map y 2
+ vertical wall 182.440000
+	new ray
+map x4 map y 2
+ vertical wall 182.704000
+	new ray
+map x4 map y 2
+ vertical wall 182.968000
+	new ray
+map x4 map y 2
+ vertical wall 183.232000
+	new ray
+map x4 map y 2
+ vertical wall 183.496000
+	new ray
+map x4 map y 2
+ vertical wall 183.760000
+	new ray
+map x4 map y 2
+ vertical wall 184.024000
+	new ray
+map x4 map y 2
+ vertical wall 184.288000
+	new ray
+map x4 map y 2
+ vertical wall 184.552000
+	new ray
+map x4 map y 2
+ vertical wall 184.816000
+	new ray
+map x4 map y 2
+ vertical wall 185.080000
+	new ray
+map x4 map y 2
+ vertical wall 185.344000
+	new ray
+map x4 map y 2
+ vertical wall 185.608000
+	new ray
+map x4 map y 2
+ vertical wall 185.872000
+	new ray
+map x4 map y 2
+ vertical wall 186.136000
+	new ray
+map x4 map y 2
+ vertical wall 186.400000
+	new ray
+map x4 map y 2
+ vertical wall 186.664000
+	new ray
+map x4 map y 2
+ vertical wall 186.928000
+	new ray
+map x4 map y 2
+ vertical wall 187.192000
+	new ray
+map x4 map y 2
+ vertical wall 187.456000
+	new ray
+map x4 map y 2
+ vertical wall 187.720000
+	new ray
+map x4 map y 2
+ vertical wall 187.984000
+	new ray
+map x4 map y 2
+ vertical wall 188.248000
+	new ray
+map x4 map y 2
+ vertical wall 188.512000
+	new ray
+map x4 map y 2
+ vertical wall 188.776000
+	new ray
+map x4 map y 2
+ vertical wall 189.040000
+	new ray
+map x4 map y 2
+ vertical wall 189.304000
+	new ray
+map x4 map y 2
+ vertical wall 189.568000
+	new ray
+map x4 map y 2
+ vertical wall 189.832000
+	new ray
+map x4 map y 2
+ vertical wall 190.096000
+	new ray
+map x4 map y 2
+ vertical wall 190.360000
+	new ray
+map x4 map y 2
+ vertical wall 190.624000
+	new ray
+map x4 map y 2
+ vertical wall 190.888000
+	new ray
+map x4 map y 2
+ vertical wall 191.152000
+	new ray
+map x4 map y 2
+ vertical wall 191.416000
+	new ray
+map x4 map y 2
+ vertical wall 191.680000
+	new ray
+map x4 map y 2
+ vertical wall 191.944000
+	new ray
+map x4 map y 3
+ vertical wall 192.208000
+	new ray
+map x4 map y 3
+ vertical wall 192.472000
+	new ray
+map x4 map y 3
+ vertical wall 192.736000
+	new ray
+map x4 map y 3
+ vertical wall 193.000000
+	new ray
+map x4 map y 3
+ vertical wall 193.264000
+	new ray
+map x4 map y 3
+ vertical wall 193.528000
+	new ray
+map x4 map y 3
+ vertical wall 193.792000
+	new ray
+map x4 map y 3
+ vertical wall 194.056000
+	new ray
+map x4 map y 3
+ vertical wall 194.320000
+	new ray
+map x4 map y 3
+ vertical wall 194.584000
+	new ray
+map x4 map y 3
+ vertical wall 194.848000
+	new ray
+map x4 map y 3
+ vertical wall 195.112000
+	new ray
+map x4 map y 3
+ vertical wall 195.376000
+	new ray
+map x4 map y 3
+ vertical wall 195.640000
+	new ray
+map x4 map y 3
+ vertical wall 195.904000
+	new ray
+map x4 map y 3
+ vertical wall 196.168000
+	new ray
+map x4 map y 3
+ vertical wall 196.432000
+	new ray
+map x4 map y 3
+ vertical wall 196.696000
+	new ray
+map x4 map y 3
+ vertical wall 196.960000
+	new ray
+map x4 map y 3
+ vertical wall 197.224000
+	new ray
+map x4 map y 3
+ vertical wall 197.488000
+	new ray
+map x4 map y 3
+ vertical wall 197.752000
+	new ray
+map x4 map y 3
+ vertical wall 198.016000
+	new ray
+map x4 map y 3
+ vertical wall 198.280000
+	new ray
+map x4 map y 3
+ vertical wall 198.544000
+	new ray
+map x4 map y 3
+ vertical wall 198.808000
+	new ray
+map x4 map y 3
+ vertical wall 199.072000
+	new ray
+map x4 map y 3
+ vertical wall 199.336000
+	new ray
+map x4 map y 3
+ vertical wall 199.600000
+	new ray
+map x4 map y 3
+ vertical wall 199.864000
+	new ray
+map x4 map y 3
+ vertical wall 200.128000
+	new ray
+map x4 map y 3
+ vertical wall 200.392000
+	new ray
+map x4 map y 3
+ vertical wall 200.656000
+	new ray
+map x4 map y 3
+ vertical wall 200.920000
+	new ray
+map x4 map y 3
+ vertical wall 201.184000
+	new ray
+map x4 map y 3
+ vertical wall 201.448000
+	new ray
+map x4 map y 3
+ vertical wall 201.712000
+	new ray
+map x4 map y 3
+ vertical wall 201.976000
+	new ray
+map x4 map y 3
+ vertical wall 202.240000
+	new ray
+map x4 map y 3
+ vertical wall 202.504000
+	new ray
+map x4 map y 3
+ vertical wall 202.768000
+	new ray
+map x4 map y 3
+ vertical wall 203.032000
+	new ray
+map x4 map y 3
+ vertical wall 203.296000
+	new ray
+map x4 map y 3
+ vertical wall 203.560000
+	new ray
+map x4 map y 3
+ vertical wall 203.824000
+	new ray
+map x4 map y 3
+ vertical wall 204.088000
+	new ray
+map x4 map y 3
+ vertical wall 204.352000
+	new ray
+map x4 map y 3
+ vertical wall 204.616000
+	new ray
+map x4 map y 3
+ vertical wall 204.880000
+	new ray
+map x4 map y 3
+ vertical wall 205.144000
+	new ray
+map x4 map y 3
+ vertical wall 205.408000
+	new ray
+map x4 map y 3
+ vertical wall 205.672000
+	new ray
+map x4 map y 3
+ vertical wall 205.936000
+	new ray
+map x4 map y 3
+ vertical wall 206.200000
+	new ray
+map x4 map y 3
+ vertical wall 206.464000
+	new ray
+map x4 map y 3
+ vertical wall 206.728000
+	new ray
+map x4 map y 3
+ vertical wall 206.992000
+	new ray
+map x4 map y 3
+ vertical wall 207.256000
+	new ray
+map x4 map y 3
+ vertical wall 207.520000
+	new ray
+map x4 map y 3
+ vertical wall 207.784000
+	new ray
+map x4 map y 3
+ vertical wall 208.048000
+	new ray
+map x4 map y 3
+ vertical wall 208.312000
+	new ray
+map x4 map y 3
+ vertical wall 208.576000
+	new ray
+map x4 map y 3
+ vertical wall 208.840000
+	new ray
+map x4 map y 3
+ vertical wall 209.104000
+	new ray
+map x4 map y 3
+ vertical wall 209.368000
+	new ray
+map x4 map y 3
+ vertical wall 209.632000
+	new ray
+map x4 map y 3
+ vertical wall 209.896000
+	new ray
+map x4 map y 3
+ vertical wall 210.160000
+	new ray
+map x4 map y 3
+ vertical wall 210.424000
+	new ray
+map x4 map y 3
+ vertical wall 210.688000
+	new ray
+map x4 map y 3
+ vertical wall 210.952000
+	new ray
+map x4 map y 3
+ vertical wall 211.216000
+	new ray
+map x4 map y 3
+ vertical wall 211.480000
+	new ray
+map x4 map y 3
+ vertical wall 211.744000
+	new ray
+map x4 map y 3
+ vertical wall 212.008000
+	new ray
+map x4 map y 3
+ vertical wall 212.272000
+	new ray
+map x4 map y 3
+ vertical wall 212.536000
+	new ray
+map x4 map y 3
+ vertical wall 212.800000
+	new ray
+map x4 map y 3
+ vertical wall 213.064000
+	new ray
+map x4 map y 3
+ vertical wall 213.328000
+	new ray
+map x4 map y 3
+ vertical wall 213.592000
+	new ray
+map x4 map y 3
+ vertical wall 213.856000
+	new ray
+map x4 map y 3
+ vertical wall 214.120000
+	new ray
+map x4 map y 3
+ vertical wall 214.384000
+	new ray
+map x4 map y 3
+ vertical wall 214.648000
+	new ray
+map x4 map y 3
+ vertical wall 214.912000
+	new ray
+map x4 map y 3
+ vertical wall 215.176000
+	new ray
+map x4 map y 3
+ vertical wall 215.440000
+	new ray
+map x4 map y 3
+ vertical wall 215.704000
+	new ray
+map x4 map y 3
+ vertical wall 215.968000
+	new ray
+map x4 map y 3
+ vertical wall 216.232000
+	new ray
+map x4 map y 3
+ vertical wall 216.496000
+	new ray
+map x4 map y 3
+ vertical wall 216.760000
+	new ray
+map x4 map y 3
+ vertical wall 217.024000
+	new ray
+map x4 map y 3
+ vertical wall 217.288000
+	new ray
+map x4 map y 3
+ vertical wall 217.552000
+	new ray
+map x4 map y 3
+ vertical wall 217.816000
+	new ray
+map x4 map y 3
+ vertical wall 218.080000
+	new ray
+map x4 map y 3
+ vertical wall 218.344000
+	new ray
+map x4 map y 3
+ vertical wall 218.608000
+	new ray
+map x4 map y 3
+ vertical wall 218.872000
+	new ray
+map x4 map y 3
+ vertical wall 219.136000
+	new ray
+map x4 map y 3
+ vertical wall 219.400000
+	new ray
+map x4 map y 3
+ vertical wall 219.664000
+	new ray
+map x4 map y 3
+ vertical wall 219.928000
+	new ray
+map x4 map y 3
+ vertical wall 220.192000
+	new ray
+map x4 map y 3
+ vertical wall 220.456000
+	new ray
+map x4 map y 3
+ vertical wall 220.720000
+	new ray
+map x4 map y 3
+ vertical wall 220.984000
+	new ray
+map x4 map y 3
+ vertical wall 221.248000
+	new ray
+map x4 map y 3
+ vertical wall 221.512000
+	new ray
+map x4 map y 3
+ vertical wall 221.776000
+	new ray
+map x4 map y 3
+ vertical wall 222.040000
+	new ray
+map x4 map y 3
+ vertical wall 222.304000
+	new ray
+map x4 map y 3
+ vertical wall 222.568000
+	new ray
+map x4 map y 3
+ vertical wall 222.832000
+	new ray
+map x4 map y 3
+ vertical wall 223.096000
+	new ray
+map x4 map y 3
+ vertical wall 223.360000
+	new ray
+map x4 map y 3
+ vertical wall 223.624000
+	new ray
+map x4 map y 3
+ vertical wall 223.888000
+	new ray
+map x4 map y 3
+ vertical wall 224.152000
+	new ray
+map x4 map y 3
+ vertical wall 224.416000
+	new ray
+map x4 map y 3
+ vertical wall 224.680000
+	new ray
+map x4 map y 3
+ vertical wall 224.944000
+	new ray
+map x4 map y 3
+ vertical wall 225.208000
+	new ray
+map x4 map y 3
+ vertical wall 225.472000
+	new ray
+map x4 map y 3
+ vertical wall 225.736000
+	new ray
+map x4 map y 3
+ vertical wall 226.000000
+	new ray
+map x4 map y 3
+ vertical wall 226.264000
+	new ray
+map x4 map y 3
+ vertical wall 226.528000
+	new ray
+map x4 map y 3
+ vertical wall 226.792000
+	new ray
+map x4 map y 3
+ vertical wall 227.056000
+	new ray
+map x4 map y 3
+ vertical wall 227.320000
+	new ray
+map x4 map y 3
+ vertical wall 227.584000
+	new ray
+map x4 map y 3
+ vertical wall 227.848000
+	new ray
+map x4 map y 3
+ vertical wall 228.112000
+	new ray
+map x4 map y 3
+ vertical wall 228.376000
+	new ray
+map x4 map y 3
+ vertical wall 228.640000
+	new ray
+map x4 map y 3
+ vertical wall 228.904000
+	new ray
+map x4 map y 3
+ vertical wall 229.168000
+	new ray
+map x4 map y 3
+ vertical wall 229.432000
+	new ray
+map x4 map y 3
+ vertical wall 229.696000
+	new ray
+map x4 map y 3
+ vertical wall 229.960000
+	new ray
+map x4 map y 3
+ vertical wall 230.224000
+	new ray
+map x4 map y 3
+ vertical wall 230.488000
+	new ray
+map x4 map y 3
+ vertical wall 230.752000
+	new ray
+map x4 map y 3
+ vertical wall 231.016000
+	new ray
+map x4 map y 3
+ vertical wall 231.280000
+	new ray
+map x4 map y 3
+ vertical wall 231.544000
+	new ray
+map x4 map y 3
+ vertical wall 231.808000
+	new ray
+map x4 map y 3
+ vertical wall 232.072000
+	new ray
+map x4 map y 3
+ vertical wall 232.336000
+	new ray
+map x4 map y 3
+ vertical wall 232.600000
+	new ray
+map x4 map y 3
+ vertical wall 232.864000
+	new ray
+map x4 map y 3
+ vertical wall 233.128000
+	new ray
+map x4 map y 3
+ vertical wall 233.392000
+	new ray
+map x4 map y 3
+ vertical wall 233.656000
+	new ray
+map x4 map y 3
+ vertical wall 233.920000
+	new ray
+map x4 map y 3
+ vertical wall 234.184000
+	new ray
+map x4 map y 3
+ vertical wall 234.448000
+	new ray
+map x4 map y 3
+ vertical wall 234.712000
+	new ray
+map x4 map y 3
+ vertical wall 234.976000
+	new ray
+map x4 map y 3
+ vertical wall 235.240000
+	new ray
+map x4 map y 3
+ vertical wall 235.504000
+	new ray
+map x4 map y 3
+ vertical wall 235.768000
+	new ray
+map x4 map y 3
+ vertical wall 236.032000
+	new ray
+map x4 map y 3
+ vertical wall 236.296000
+	new ray
+map x4 map y 3
+ vertical wall 236.560000
+	new ray
+map x4 map y 3
+ vertical wall 236.824000
+	new ray
+map x4 map y 3
+ vertical wall 237.088000
+	new ray
+map x4 map y 3
+ vertical wall 237.352000
+	new ray
+map x4 map y 3
+ vertical wall 237.616000
+	new ray
+map x4 map y 3
+ vertical wall 237.880000
+	new ray
+map x4 map y 3
+ vertical wall 238.144000
+	new ray
+map x4 map y 3
+ vertical wall 238.408000
+	new ray
+map x4 map y 3
+ vertical wall 238.672000
+	new ray
+map x4 map y 3
+ vertical wall 238.936000
+	new ray
+map x4 map y 3
+ vertical wall 239.200000
+	new ray
+map x4 map y 3
+ vertical wall 239.464000
+	new ray
+map x4 map y 3
+ vertical wall 239.728000
+	new ray
+map x4 map y 3
+ vertical wall 239.992000
+	new ray
+map x4 map y 3
+ vertical wall 240.256000
+	new ray
+map x4 map y 3
+ vertical wall 240.520000
+	new ray
+map x4 map y 3
+ vertical wall 240.784000
+	new ray
+map x4 map y 3
+ vertical wall 241.048000
+	new ray
+map x4 map y 3
+ vertical wall 241.312000
+	new ray
+map x4 map y 3
+ vertical wall 241.576000
+	new ray
+map x4 map y 3
+ vertical wall 241.840000
+	new ray
+map x4 map y 3
+ vertical wall 242.104000
+	new ray
+map x4 map y 3
+ vertical wall 242.368000
+	new ray
+map x4 map y 3
+ vertical wall 242.632000
+	new ray
+map x4 map y 3
+ vertical wall 242.896000
+	new ray
+map x4 map y 3
+ vertical wall 243.160000
+	new ray
+map x4 map y 3
+ vertical wall 243.424000
+	new ray
+map x4 map y 3
+ vertical wall 243.688000
+	new ray
+map x4 map y 3
+ vertical wall 243.952000
+	new ray
+map x4 map y 3
+ vertical wall 244.216000
+	new ray
+map x4 map y 3
+ vertical wall 244.480000
+	new ray
+map x4 map y 3
+ vertical wall 244.744000
+	new ray
+map x4 map y 3
+ vertical wall 245.008000
+	new ray
+map x4 map y 3
+ vertical wall 245.272000
+	new ray
+map x4 map y 3
+ vertical wall 245.536000
+	new ray
+map x4 map y 3
+ vertical wall 245.800000
+	new ray
+map x4 map y 3
+ vertical wall 246.064000
+	new ray
+map x4 map y 3
+ vertical wall 246.328000
+	new ray
+map x4 map y 3
+ vertical wall 246.592000
+	new ray
+map x4 map y 3
+ vertical wall 246.856000
+	new ray
+map x4 map y 3
+ vertical wall 247.120000
+	new ray
+map x4 map y 3
+ vertical wall 247.384000
+	new ray
+map x4 map y 3
+ vertical wall 247.648000
+	new ray
+map x4 map y 3
+ vertical wall 247.912000
+	new ray
+map x4 map y 3
+ vertical wall 248.176000
+	new ray
+map x4 map y 3
+ vertical wall 248.440000
+	new ray
+map x4 map y 3
+ vertical wall 248.704000
+	new ray
+map x4 map y 3
+ vertical wall 248.968000
+	new ray
+map x4 map y 3
+ vertical wall 249.232000
+	new ray
+map x4 map y 3
+ vertical wall 249.496000
+	new ray
+map x4 map y 3
+ vertical wall 249.760000
+	new ray
+map x4 map y 3
+ vertical wall 250.024000
+	new ray
+map x4 map y 3
+ vertical wall 250.288000
+	new ray
+map x4 map y 3
+ vertical wall 250.552000
+	new ray
+map x4 map y 3
+ vertical wall 250.816000
+	new ray
+map x4 map y 3
+ vertical wall 251.080000
+	new ray
+map x4 map y 3
+ vertical wall 251.344000
+	new ray
+map x4 map y 3
+ vertical wall 251.608000
+	new ray
+map x4 map y 3
+ vertical wall 251.872000
+	new ray
+map x4 map y 3
+ vertical wall 252.136000
+	new ray
+map x4 map y 3
+ vertical wall 252.400000
+	new ray
+map x4 map y 3
+ vertical wall 252.664000
+	new ray
+map x4 map y 3
+ vertical wall 252.928000
+	new ray
+map x4 map y 3
+ vertical wall 253.192000
+	new ray
+map x4 map y 3
+ vertical wall 253.456000
+	new ray
+map x4 map y 3
+ vertical wall 253.720000
+	new ray
+map x4 map y 3
+ vertical wall 253.984000
+	new ray
+map x4 map y 3
+ vertical wall 254.248000
+	new ray
+map x4 map y 3
+ vertical wall 254.512000
+	new ray
+map x4 map y 3
+ vertical wall 254.776000
+	new ray
+map x4 map y 3
+ vertical wall 255.040000
+	new ray
+map x4 map y 3
+ vertical wall 255.304000
+	new ray
+map x4 map y 3
+ vertical wall 255.568000
+	new ray
+map x4 map y 3
+ vertical wall 255.832000
+	new ray
+map x3 map y 4
+ horizontal wall 255.840160
+	new ray
+map x3 map y 4
+ horizontal wall 255.402242
+	new ray
+map x3 map y 4
+ horizontal wall 254.966716
+	new ray
+map x3 map y 4
+ horizontal wall 254.533565
+	new ray
+map x3 map y 4
+ horizontal wall 254.102767
+	new ray
+map x3 map y 4
+ horizontal wall 253.674304
+	new ray
+map x3 map y 4
+ horizontal wall 253.248157
+	new ray
+map x3 map y 4
+ horizontal wall 252.824308
+	new ray
+map x3 map y 4
+ horizontal wall 252.402737
+	new ray
+map x3 map y 4
+ horizontal wall 251.983427
+	new ray
+map x3 map y 4
+ horizontal wall 251.566359
+	new ray
+map x3 map y 4
+ horizontal wall 251.151515
+	new ray
+map x3 map y 4
+ horizontal wall 250.738878
+	new ray
+map x3 map y 4
+ horizontal wall 250.328430
+	new ray
+map x3 map y 4
+ horizontal wall 249.920154
+	new ray
+map x3 map y 4
+ horizontal wall 249.514032
+	new ray
+map x3 map y 4
+ horizontal wall 249.110048
+	new ray
+map x3 map y 4
+ horizontal wall 248.708184
+	new ray
+map x3 map y 4
+ horizontal wall 248.308425
+	new ray
+map x3 map y 4
+ horizontal wall 247.910752
+	new ray
+map x3 map y 4
+ horizontal wall 247.515152
+	new ray
+map x3 map y 4
+ horizontal wall 247.121606
+	new ray
+map x3 map y 4
+ horizontal wall 246.730099
+	new ray
+map x3 map y 4
+ horizontal wall 246.340615
+	new ray
+map x3 map y 4
+ horizontal wall 245.953140
+	new ray
+map x3 map y 4
+ horizontal wall 245.567656
+	new ray
+map x3 map y 4
+ horizontal wall 245.184149
+	new ray
+map x3 map y 4
+ horizontal wall 244.802604
+	new ray
+map x3 map y 4
+ horizontal wall 244.423006
+	new ray
+map x3 map y 4
+ horizontal wall 244.045339
+	new ray
+map x3 map y 4
+ horizontal wall 243.669589
+	new ray
+map x3 map y 4
+ horizontal wall 243.295742
+	new ray
+map x3 map y 4
+ horizontal wall 242.923783
+	new ray
+map x3 map y 4
+ horizontal wall 242.553698
+	new ray
+map x3 map y 4
+ horizontal wall 242.185473
+	new ray
+map x3 map y 4
+ horizontal wall 241.819093
+	new ray

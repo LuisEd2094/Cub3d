@@ -87,15 +87,28 @@ void	raycaster(t_prg *prg)
 		else
 			prg->ray->wallDist = prg->ray->sideDistY - prg->ray->deltaDistY;
 		ray_to_img(prg, i);
+
+		if (prg->ray->deltaDistX == FLT_MAX)
+		{
+		prg->ray->sideDistX = 0;
+		}
+		if (prg->ray->deltaDistY == FLT_MAX)
+		{
+		prg->ray->sideDistY = 0;
+		}
+
+  		printf("map x%i map y %i\n", prg->ray->mapX, prg->ray->mapY);
+
 		prg->ray->sideDistX -= 1;
 		prg->ray->sideDistY -= 1;
-		printf("map x%i map y %i\n", prg->ray->mapX, prg->ray->mapY);
-		printf("player X pixel %i player Y pixel %i\n", PLAYER_CENTER_X(prg), PLAYER_CENTER_Y(prg));
-		printf("side %i\n", prg->ray->side);
-		printf("player + X %i player + y %i\n", (int)(PLAYER_CENTER_X(prg) + (prg->ray->sideDistX * TILE_SIZE)), (int)(PLAYER_CENTER_Y(prg) + (prg->ray->sideDistY * TILE_SIZE)));
-		printf("side dist X %i side dist y %i\n", (int)(prg->ray->sideDistX * TILE_SIZE), (int)(prg->ray->sideDistY * TILE_SIZE));
-
-		printf("side dist X %f side dist Y %f\n", prg->ray->sideDistX, prg->ray->sideDistY);
+		if (prg->ray->side == 0) // If the ray hit a vertical wall
+		{
+			printf(" vertical wall %f\n",( PLAYER_Y(prg) + prg->ray->wallDist * prg->ray->rayDirY) * TILE_SIZE);
+		}
+		else // If the ray hit a horizontal wall
+		{
+			printf(" horizontal wall %f\n", (PLAYER_X(prg) + prg->ray->wallDist * prg->ray->rayDirX) * TILE_SIZE);
+}
 		printf("\tnew ray\n");
 	}
 }
