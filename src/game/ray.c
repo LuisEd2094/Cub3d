@@ -88,10 +88,11 @@ void	perform_dda_map(t_prg *prg)
 
 void	cast_ray(t_prg *prg)
 {
-  RAY_START_X(prg) = PLAYER_CENTER_X(prg);
-  RAY_START_Y(prg) = PLAYER_CENTER_Y(prg);
+
 	for (int i = 0; i < w; i++)
 	{
+		RAY_START_X(prg) = PLAYER_CENTER_X(prg);
+		RAY_START_Y(prg) = PLAYER_CENTER_Y(prg);
 		prg->ray->camera = 2 * i / (double)w - 1;
 		prg->ray->rayDirX = prg->camara_x + prg->plane_x * prg->ray->camera;
 		prg->ray->rayDirY = prg->camara_y + prg->plane_y * prg->ray->camera;
@@ -124,18 +125,23 @@ void	cast_ray(t_prg *prg)
 		}
 
   		printf("map x%i map y %i\n", prg->ray->mapX, prg->ray->mapY);
-
-		prg->ray->sideDistX -= 1;
-		prg->ray->sideDistY -= 1;
 		if (prg->ray->side == 0) // If the ray hit a vertical wall
 		{
-			RAY_END_X(prg) = ( PLAYER_Y(prg) + prg->ray->wallDist * prg->ray->rayDirY) * TILE_SIZE;
-      RAY_END_Y(prg) = (prg->ray->map_y) * TILE_SIZE;
+			RAY_END_Y(prg) = (int)(( PLAYER_Y(prg) + prg->ray->wallDist * prg->ray->rayDirY) * TILE_SIZE) ;
+      		RAY_END_X(prg) = (prg->ray->mapX) * TILE_SIZE; // I think you need to check the dirction for this
+			if (prg->ray->rayDirX < 0)
+				RAY_END_X(prg) += TILE_SIZE;
+			printf(" vertical wall X %d Y %d\n",RAY_END_X(prg) ,RAY_END_Y(prg));
+
 		}
 		else // If the ray hit a horizontal wall
 		{
-			RAY_END_Y(prg) = (PLAYER_X(prg) + prg->ray->wallDist * prg->ray->rayDirX) * TILE_SIZE;
-      RAY_END_X(prg) = (prg->ray->map_x + 1) * TILE_SIZE;
+			RAY_END_X(prg) = (int)((PLAYER_X(prg) + prg->ray->wallDist * prg->ray->rayDirX) * TILE_SIZE);
+      		RAY_END_Y(prg) = (prg->ray->mapY) * TILE_SIZE;
+			if (prg->ray->rayDirY < 0)
+				RAY_END_Y(prg) += TILE_SIZE;
+			printf(" horizontal wall X %d y %d\n", RAY_END_X(prg) ,RAY_END_Y(prg));
+
     }
 		printf("\tnew ray\n");
     draw_ray(prg);

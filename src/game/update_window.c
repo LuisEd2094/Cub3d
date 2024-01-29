@@ -63,7 +63,7 @@ void update_window(t_prg *prg)
 	draw_map(prg);
 	mlx_pixel_put(MLX_PTR(prg), MLX_WIN(prg), HIT_BOX_CENTER(prg)->x, PLAYER_CENTER_Y(prg), 0x000000);
 	mlx_pixel_put(MLX_PTR(prg), MLX_WIN(prg),  PLAYER_CENTER_X(prg), HIT_BOX_CENTER(prg)->y, 0x000000);
-  	//cast_ray(prg);
+  	cast_ray(prg);
   //draw_ray(prg);
 }
 #endif
