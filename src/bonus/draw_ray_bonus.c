@@ -25,7 +25,7 @@ void draw_ray(t_prg *prg)
     while (1) 
     {
       	MAP_PIXEL(prg) = MAP_GET_PIXEL(prg, RAY_START_X(prg), RAY_START_Y(prg));  
-		*(unsigned int*)MAP_PIXEL(prg) = 0x0000FF;
+		*(unsigned int*)MAP_PIXEL(prg) = RGB_BLUE;
         if (RAY_START_X(prg) == RAY_END_X(prg) && RAY_START_Y(prg) == RAY_END_Y(prg))
             break;
         MAP_E2(prg) = 2 * MAP_ERR(prg);

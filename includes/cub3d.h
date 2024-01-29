@@ -33,10 +33,7 @@
 #  define RGB_ARRAY 3
 # endif
 
-#define RGB_GREY 0x808080
-#define RGB_DARK_RED 0x880000
-#define RGB_LIGHT_RED 0xA80000
-#define RGB_BLUE 0x6495ED
+
 
 
 typedef struct s_point
@@ -69,32 +66,20 @@ typedef struct s_ray
 	t_point *start;
 	t_point *end;
 	
-	int		mapX;		//
-	int		mapY;		//
+	int		map_x;		//
+	int		map_y;		//
 	double	camera;		//
-	double	rayDirX;	//
-	double	rayDirY;	//
-	double	sideDistX;	//
-	double	sideDistY;	//
-	double	deltaDistX;	//
-	double	deltaDistY;	//
-	double	wallDist;	//
-	int		stepX;		//
-	int		stepY;		//
+	double	ray_dir_x;	//
+	double	ray_dir_y;	//
+	double	side_dist_x;	//
+	double	side_dist_y;	//
+	double	delta_dist_x;	//
+	double	delta_disy_y;	//
+	double	wall_dist;	//
+	int		step_x;		//
+	int		step_y;		//
 	int		hit;		//
 	int		side;		//
-
-	double 	dir_x;
-	double	dir_y;
-	double	distance;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	map_step_x;
-	double	map_step_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	int		map_x;
-	int		map_y;
 } t_ray;
 
 

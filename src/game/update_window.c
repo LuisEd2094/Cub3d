@@ -19,7 +19,7 @@ void	ray_to_img(t_prg *prg, int i)
 	int		end;
 	char	*pixel;
 
-	line_h = (int)(h / prg->ray->wallDist);
+	line_h = (int)(h / prg->ray->wall_dist);
 	start = -line_h / 2 + h / 2;
 	if (start < 0)
 		start = 0;
