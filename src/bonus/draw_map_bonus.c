@@ -82,5 +82,4 @@ void draw_map(t_prg *prg)
       *(unsigned int*)pixel = (get_pixel_color(prg, x, y));
     }
   }
-  mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->mini_map->t_img->img, 0, 0);
 }

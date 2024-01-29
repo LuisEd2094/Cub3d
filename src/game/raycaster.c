@@ -87,28 +87,6 @@ void	raycaster(t_prg *prg)
 		else
 			prg->ray->wallDist = prg->ray->sideDistY - prg->ray->deltaDistY;
 		ray_to_img(prg, i);
-
-		if (prg->ray->deltaDistX == FLT_MAX)
-		{
-		prg->ray->sideDistX = 0;
-		}
-		if (prg->ray->deltaDistY == FLT_MAX)
-		{
-		prg->ray->sideDistY = 0;
-		}
-
-  		printf("map x%i map y %i\n", prg->ray->mapX, prg->ray->mapY);
-
-		prg->ray->sideDistX -= 1;
-		prg->ray->sideDistY -= 1;
-		if (prg->ray->side == 0) // If the ray hit a vertical wall
-		{
-			printf(" vertical wall %f\n",( PLAYER_Y(prg) + prg->ray->wallDist * prg->ray->rayDirY) * TILE_SIZE);
-		}
-		else // If the ray hit a horizontal wall
-		{
-			printf(" horizontal wall %f\n", (PLAYER_X(prg) + prg->ray->wallDist * prg->ray->rayDirX) * TILE_SIZE);
-}
-		printf("\tnew ray\n");
+		draw_ray(prg);
 	}
 }
