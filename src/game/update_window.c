@@ -50,8 +50,6 @@ void update_window(t_prg *prg)
 	mlx_clear_window(prg->mlx->ptr, prg->mlx->window);
 	raycaster(prg);
 	mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->img->img, 0, 0);
-  //cast_ray(prg);
-  //draw_ray(prg);
 }
 #else
 
@@ -62,9 +60,8 @@ void update_window(t_prg *prg)
 	raycaster(prg);
 	mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->img->img, 0, 0);
   	mlx_put_image_to_window(prg->mlx->ptr, prg->mlx->window, prg->mini_map->t_img->img, 0, 0);
+	// this hit boxes will go away, but they don't seem to be working 100% correctly
 	mlx_pixel_put(MLX_PTR(prg), MLX_WIN(prg), HIT_BOX_CENTER(prg)->x, PLAYER_CENTER_Y(prg), 0x000000);
 	mlx_pixel_put(MLX_PTR(prg), MLX_WIN(prg),  PLAYER_CENTER_X(prg), HIT_BOX_CENTER(prg)->y, 0x000000);
-  	//cast_ray(prg);
-  //draw_ray(prg);
 }
 #endif

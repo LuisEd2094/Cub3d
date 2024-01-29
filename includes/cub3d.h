@@ -118,10 +118,15 @@ typedef struct s_map
 	t_img	*t_img;
 	int		max_w;
 	int		max_h;
-	int		x_relative;
-	int		y_relative;
 	bool	off_set_x;
 	bool	off_set_y;
+	int		dx;
+	int		dy;
+	int		sx;
+	int		sy;
+	int		err;
+	int		e2;
+	char	*pixel;
 	int		x_pos;
 	int		y_pos;
 }	t_map;
@@ -180,8 +185,9 @@ bool	parse_file(int fd, t_prg *prg);
 void	get_hooks(t_prg *prg);
 void	update_window(t_prg *prg);
 int		make_move(t_prg *prg, int dir, int side);
-void	cast_ray(t_prg *prg);
 void	draw_map(t_prg *prg);
+void	perform_dda(t_prg *prg);
+void	init_dda(t_prg *prg);
 void	raycaster(t_prg *prg);			//
 void	ray_to_img(t_prg *prg, int i);	//
 

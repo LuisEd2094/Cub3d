@@ -49,7 +49,6 @@ int get_pixel_color(t_prg *prg, int x, int y)
 
 void draw_map(t_prg *prg)
 {
-  char *pixel; 
   int x;
   int y;
 
@@ -78,8 +77,8 @@ void draw_map(t_prg *prg)
     {
       if (y % (TILE_SIZE) == 0)
         MAP_Y(prg)++;
-      pixel = prg->mini_map->t_img->addr + (y * prg->mini_map->t_img->line_length + x * (prg->mini_map->t_img->bpp / 8));  
-      *(unsigned int*)pixel = (get_pixel_color(prg, x, y));
+      MAP_PIXEL(prg) = MAP_GET_PIXEL(prg, x, y);  
+      *(unsigned int*)MAP_PIXEL(prg) = (get_pixel_color(prg, x, y));
     }
   }
 }
