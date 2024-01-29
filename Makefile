@@ -107,7 +107,7 @@ AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))
 
 GAME		=	hooks.c  update_window.c \
 				make_move.c rotate_player.c raycaster.c \
-				dda.c
+				dda.c ray_to_img.c
 
 GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 

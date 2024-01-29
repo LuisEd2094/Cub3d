@@ -173,8 +173,8 @@ int		make_move(t_prg *prg, int dir, int side);
 void	draw_map(t_prg *prg);
 void	perform_dda(t_prg *prg);
 void	init_dda(t_prg *prg);
-void	raycaster(t_prg *prg);			//
-void	ray_to_img(t_prg *prg, int i);	//
+void	raycaster(t_prg *prg);			
+void	ray_to_img(t_prg *prg, int i);	
 
 
 
