@@ -47,9 +47,6 @@ typedef struct s_player
 	t_point	*hit_box_center;
 	t_point *hit_box_left;
 	t_point *hit_box_right;
-	t_point *dir;
-	t_point	*left_corner;
-	t_point	*right_corner;
 	t_point	*center;
 
 }	t_pc;

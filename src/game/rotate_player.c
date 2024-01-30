@@ -44,10 +44,10 @@ int rotate_player(t_prg *prg, int dir)
   prg->camara_y = cam_x * sin(rads) + prg->camara_y * cos(rads);
   prg->plane_x = plane_x * cos(rads) - prg->plane_y * sin(rads);
   prg->plane_y = plane_x * sin(rads) + prg->plane_y * cos(rads);
-  prg->player->angle = atan2(prg->camara_y, prg->camara_x) * -1;
-  rotate_point(prg->player->dir, PLAYER_CENTER(prg),  rads);
+  prg->player->angle += rads; // should check to reset it so it oesn't get too high
+/*   rotate_point(prg->player->dir, PLAYER_CENTER(prg),  rads);
   rotate_point(prg->player->left_corner, PLAYER_CENTER(prg),  rads);
-  rotate_point(prg->player->right_corner, PLAYER_CENTER(prg), rads);
+  rotate_point(prg->player->right_corner, PLAYER_CENTER(prg), rads); */
   update_window(prg);
   return (0);
 }

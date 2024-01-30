@@ -23,9 +23,6 @@ static void	init_str_array(char **array, int size)
 
 static void	init_player(t_pc *player)
 {
-	player->dir = (t_point *)malloc(sizeof (t_point));
-	player->left_corner = (t_point *)malloc(sizeof (t_point));
-	player->right_corner = (t_point *)malloc(sizeof (t_point));
 	player->center = (t_point *)malloc(sizeof (t_point));
 	player->hit_box_center = (t_point *)malloc(sizeof (t_point));
 	player->hit_box_left = (t_point *)malloc(sizeof (t_point));
@@ -61,9 +58,7 @@ static void	init_mini_map_vals(t_map *map)
 
 static bool	check_correct_inits(t_prg *prg)
 {
-	if (!prg->player->dir \
-		|| !prg->player->left_corner || !prg->player->right_corner \
-		|| !prg->player->center	|| !prg->player->hit_box_center \
+	if (!prg->player->center || !prg->player->hit_box_center \
 		|| !prg->player->hit_box_left || !prg->player->hit_box_right \
 		|| !prg->ray->start || !prg->ray->end \
 		|| !prg->mini_map || !prg->mini_map->t_img \

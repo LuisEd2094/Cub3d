@@ -28,12 +28,18 @@ void  set_mini_map_vals(t_prg *prg)
   MAP_MAX_H(prg) = ft_min(MAP_H(prg), MINI_MAP_SIZE);
   prg->mini_map->off_set_x = MAP_W(prg) > MINI_MAP_SIZE;
   prg->mini_map->off_set_y = MAP_H(prg) > MINI_MAP_SIZE;
-  prg->mini_map->a->x = PLAYER_DIR_X(prg);
-  prg->mini_map->a->y = PLAYER_DIR_Y(prg);
-  prg->mini_map->b->x = PLAYER_LEFT_X(prg);
-  prg->mini_map->b->y = PLAYER_LEFT_Y(prg);
-  prg->mini_map->c->x = PLAYER_RIGHT_X(prg);
-  prg->mini_map->c->y = PLAYER_RIGHT_Y(prg);
+  prg->mini_map->a->x = ((PLAYER_CENTER_X(prg))) + ((TILE_SIZE / 2) * cos(prg->player->angle )); 
+;
+  prg->mini_map->a->y = ((PLAYER_CENTER_Y(prg)))  + ((TILE_SIZE / 2) * sin(prg->player->angle )); 
+
+  prg->mini_map->b->x = ((PLAYER_CENTER_X(prg)) )   + ((TILE_SIZE / 2) * cos(prg->player->angle + (2.0 * M_PI / 3.0)));
+
+  prg->mini_map->b->y = ((PLAYER_CENTER_Y(prg) + 1))   + ((TILE_SIZE / 2) * sin(prg->player->angle + (2.0 * M_PI / 3.0)));
+
+  prg->mini_map->c->x = ((PLAYER_CENTER_X(prg)))   + ((TILE_SIZE / 2) * cos(prg->player->angle + (4.0 * M_PI / 3.0)));  
+
+  prg->mini_map->c->y = ((PLAYER_CENTER_Y(prg) + 1) )  + ((TILE_SIZE / 2) * sin(prg->player->angle + (4.0 * M_PI / 3.0)));  
+;
    MAP_X(prg) = -1;
 }
 

@@ -16,12 +16,6 @@ void free_player(t_pc * player)
 {
 	if (player)
 	{
-		if (player->dir)
-			free(player->dir);
-		if (player->left_corner)
-			free(player->left_corner);
-		if (player->right_corner)
-			free(player->right_corner);
 		if (player->center)
 			free(player->center);
 		if (player->hit_box_center)

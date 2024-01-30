@@ -1,10 +1,7 @@
 #include <cub3d.h>
 
-void move_triangle(t_prg *prg, int dx, int dy) 
+/* void move_triangle(t_prg *prg, int dx, int dy) 
 {
-    //int dx = (prg->camara_x * (x * TILE_SIZE) *  dir);
-    //int dy = (prg->camara_y * (y * TILE_SIZE) *  dir);
-
     PLAYER_DIR_X(prg) += dx;
     PLAYER_DIR_Y(prg) += dy;
     PLAYER_LEFT_X(prg) += dx;
@@ -23,4 +20,4 @@ void rotate_point(t_point *point, t_point *center, double rads)
   temp_y = point->y;
   point->x = round(((temp_x - center->x) * cos(rads * -1) + (temp_y - center->y) * sin(rads * -1)) + center->x);
   point->y = round((( -1 * (temp_x - center->x)) * sin(rads * -1) + (temp_y - center->y) * cos(rads * -1)) + center->y);
-}
+} */
