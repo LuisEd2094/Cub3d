@@ -18,7 +18,7 @@ void	ray_to_img(t_prg *prg, int i)
 	{
 		pixel = prg->img->addr + (j * prg->img->line_length + i * (prg->img->bpp / 8));
 		if (j < start)
-			*(unsigned int*)pixel = RGB_BLUE;
+			*(unsigned int*)pixel = prg->floor_vals;
 		else if (j < end )
 		{
 			if (prg->ray->side == 0)
@@ -27,6 +27,6 @@ void	ray_to_img(t_prg *prg, int i)
 				*(unsigned int*)pixel = RGB_LIGHT_RED;
 		}
 		else
-			*(unsigned int*)pixel = RGB_GREY;
+			*(unsigned int*)pixel = prg->ceiling_vals;
 	}
 }

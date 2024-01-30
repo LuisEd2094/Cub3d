@@ -29,11 +29,6 @@
 # include <config.h>
 # include <float.h>
 
-# ifndef RGB_ARRAY
-#  define RGB_ARRAY 3
-# endif
-
-
 
 
 typedef struct s_point
@@ -65,7 +60,6 @@ typedef struct s_ray
 {
 	t_point *start;
 	t_point *end;
-	
 	int		map_x;		//
 	int		map_y;		//
 	double	camera;		//
@@ -101,6 +95,9 @@ typedef struct	s_img
 typedef struct s_map
 {
 	t_img	*t_img;
+	t_point	*a;
+	t_point	*b;
+	t_point *c;
 	int		max_w;
 	int		max_h;
 	bool	off_set_x;
@@ -122,8 +119,8 @@ typedef struct s_prg
 	int		south_img; // 1
 	int		west_img; //2
 	int		east_img; //3
-	int		floor_vals[4];
-	int		ceiling_vals[4];
+	int		floor_vals;
+	int		ceiling_vals;
 	double	camara_x;
 	double	camara_y;
 	double	plane_x;

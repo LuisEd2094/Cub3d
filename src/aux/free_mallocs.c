@@ -58,6 +58,12 @@ void	free_mini_map(t_map *map)
 	{
 		if (map->t_img)
 			free(map->t_img);
+		if (map->a)
+			free(map->a);
+		if (map->b)
+			free(map->b);
+		if (map->c)
+			free(map->c);
 		free(map);
 	}
 }

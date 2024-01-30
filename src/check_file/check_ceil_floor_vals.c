@@ -63,24 +63,23 @@ bool	check_rgb(char **elem, t_parseer *p)
 	return (1);
 }
 
-void	get_rgb_vals(char **rgb_array, int array[4], t_prg *p)
+int	get_rgb_vals(char **rgb_array, t_prg *p)
 {
 	int	i;
-	int	j;
+	int	array[3];
 
 	i = 0;
-	j = 0;
 	while (i < 3)
 	{
-		array[j] = ft_atoi(rgb_array[i]);
-		if (array[j] < 0 || array[j] > 255)
+		array[i] = ft_atoi(rgb_array[i]);
+		if (array[i] < 0 || array[i] > 255)
 		{
 			p->error_msg = RGB_ERROR;
-			return ;
+			return (0) ;
 		}
-		j++;
 		i++;
 	}
+	return ((array[0] << 16) | (array[1] << 8) | array[2]);
 }
 
 void	free_2d_array_content(char **array)
@@ -99,9 +98,9 @@ void	check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse)
 	else
 	{
 		if (ft_strcmp(elem[0], "F") == 0)
-			get_rgb_vals(parse->rgb_str, p->floor_vals, p);
+			p->floor_vals =  get_rgb_vals(parse->rgb_str, p);
 		else
-			get_rgb_vals(parse->rgb_str, p->ceiling_vals, p);
+			p->ceiling_vals = get_rgb_vals(parse->rgb_str, p);
 	}
 	free_2d_array_content(parse->rgb_str);
 }

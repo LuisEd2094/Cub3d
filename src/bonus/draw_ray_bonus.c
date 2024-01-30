@@ -1,11 +1,9 @@
 #include <cub3d.h>
 
-
 void    set_up_ray_values(t_prg *prg)
 {
     RAY_START_X(prg) = PLAYER_CENTER_X(prg);
 	RAY_START_Y(prg) = PLAYER_CENTER_Y(prg);
-        
     MAP_DX(prg) = abs(RAY_END_X(prg) - RAY_START_X(prg)) * TILE_SIZE;
     MAP_DY(prg) = abs(RAY_END_Y(prg) - RAY_START_Y(prg)) * TILE_SIZE;
     if (RAY_START_X(prg) < RAY_END_X(prg))
