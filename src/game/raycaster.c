@@ -84,7 +84,7 @@ void	raycaster(t_prg *prg)
 			prg->ray->wall_dist = prg->ray->side_dist_y - prg->ray->delta_disy_y;
 		get_pixel_collision(prg);
 		ray_to_img(prg, i);
-		draw_ray(prg);
+		//draw_ray(prg);
 	}
 }
 #endif
