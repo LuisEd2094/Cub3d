@@ -22,7 +22,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "/Users/lsoto-do/core04/Cub3d/cub3D_bonus",
-      "args": ["/Users/lsoto-do/core04/Cub3d/maps/valid_long.cub"],
+      "args": ["/Users/lsoto-do/core04/Cub3d/maps/valid.cub"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],

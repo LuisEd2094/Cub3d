@@ -16,6 +16,9 @@
 void	open_img(t_prg *p, t_img * img, char *path)
 {
 	img->img = mlx_xpm_file_to_image(p->mlx, path, &img->width, &img->height);
+	if (img->img)
+		img->addr = mlx_get_data_addr(img->img, &img->bpp, \
+		&img->line_length, &img->endian);
 }
 
 void	check_img_file(char **elemts, t_prg *p)

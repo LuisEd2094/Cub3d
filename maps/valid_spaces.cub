@@ -1,7 +1,7 @@
-NO ./imgs/north.xpm
-SO ./imgs/south.xpm
-WE ./imgs/west.xpm
-EA ./imgs/east.xpm
+NO /Users/lsoto-do/core04/Cub3d/imgs/north.xpm
+SO /Users/lsoto-do/core04/Cub3d/imgs/south.xpm
+WE /Users/lsoto-do/core04/Cub3d/imgs/west.xpm
+EA /Users/lsoto-do/core04/Cub3d/imgs/east.xpm
 F 220,100, 0
 C 225, 30,0
 
