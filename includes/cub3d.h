@@ -57,6 +57,8 @@ typedef struct s_ray
 {
 	t_point *start;
 	t_point *end;
+	float	ray_end_x;
+	float 	ray_end_y;
 	int		map_x;		//
 	int		map_y;		//
 	double	camera;		//

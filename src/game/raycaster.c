@@ -12,21 +12,22 @@
 
 #include <cub3d.h>
 
+
 void get_pixel_collision(t_prg *prg)
 {
 	if (prg->ray->side == 0) // If the ray hit a vertical wall
 	{
-		RAY_END_Y(prg) = (int)(( PLAYER_Y(prg) + prg->ray->wall_dist * prg->ray->ray_dir_y) * TILE_SIZE) ;
-		RAY_END_X(prg) = (prg->ray->map_x) * TILE_SIZE; // I think you need to check the dirction for this
+		prg->ray->ray_end_y = ( PLAYER_Y(prg) + prg->ray->wall_dist * prg->ray->ray_dir_y);
+		prg->ray->ray_end_x = (prg->ray->map_x); // I think you need to check the dirction for this
 		if (prg->ray->ray_dir_x < 0)
-			RAY_END_X(prg) += TILE_SIZE;
+		prg->ray->ray_end_x += 1;
 	}
 	else // If the ray hit a horizontal wall
 	{
-		RAY_END_X(prg) = (int)((PLAYER_X(prg) + prg->ray->wall_dist * prg->ray->ray_dir_x) * TILE_SIZE);
-		RAY_END_Y(prg) = (prg->ray->map_y) * TILE_SIZE;
+	prg->ray->ray_end_x = ((PLAYER_X(prg) + prg->ray->wall_dist * prg->ray->ray_dir_x));
+		prg->ray->ray_end_y = (prg->ray->map_y);
 		if (prg->ray->ray_dir_y < 0)
-			RAY_END_Y(prg) += TILE_SIZE;
+			prg->ray->ray_end_y += 1;
 	}
 }
 
