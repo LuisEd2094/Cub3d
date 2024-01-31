@@ -13,9 +13,9 @@
 #include "parse_file.h"
 
 
-void	open_img(t_prg *p, t_img * img, char *path)
+void	open_img(t_mlx *mlx, t_img *img, char *path)
 {
-	img->img = mlx_xpm_file_to_image(p->mlx, path, &img->width, &img->height);
+	img->img = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	if (img->img)
 		img->addr = mlx_get_data_addr(img->img, &img->bpp, \
 		&img->line_length, &img->endian);
@@ -30,12 +30,12 @@ void	check_img_file(char **elemts, t_prg *p)
 	else
 	{
 		if (ft_strcmp(elemts[0], "NO") == 0)
-			open_img(p, p->north_img, elemts[1]);
+			open_img(p->mlx, p->north_img, elemts[1]);
 		else if (ft_strcmp(elemts[0], "SO") == 0)
-			open_img(p, p->south_img, elemts[1]);
+			open_img(p->mlx, p->south_img, elemts[1]);
 		else if (ft_strcmp(elemts[0], "WE") == 0)
-			open_img(p, p->west_img, elemts[1]);
+			open_img(p->mlx, p->west_img, elemts[1]);
 		else
-			open_img(p, p->east_img, elemts[1]);
+			open_img(p->mlx, p->east_img, elemts[1]);
 	}
 }

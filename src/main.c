@@ -31,6 +31,7 @@ int	main(int argc, char *argv[])
 		&prg.img->line_length, &prg.img->endian);
 	if (!prg.img->addr)
 		exit_error(NULL, &prg);
+		mlx_do_key_autorepeaton(prg.mlx->ptr);
 
 	prg.mini_map->t_img->img = mlx_new_image(prg.mlx->ptr, ft_min(((prg.map_w + 1) * TILE_SIZE), MINI_MAP_SIZE), ft_min((prg.map_h) * TILE_SIZE, MINI_MAP_SIZE));
 	if (!prg.mini_map->t_img->img)
