@@ -35,22 +35,34 @@ static void	init_ray(t_ray *ray)
 	ray->end = (t_point *)malloc(sizeof (t_point));
 }
 
+static t_img *init_img(void)
+{
+	t_img *img;
+
+	img = (t_img *)malloc(sizeof (t_img));
+	if (img)
+		img->img = NULL;
+	return (img);
+}
+
 static void	init_prg_structs(t_prg *prg)
 {	
 	prg->mlx = (t_mlx *)malloc(sizeof (t_mlx));
 	if (prg->mlx)
 		prg->mlx->window = NULL;
+	prg->north_img = init_img();
+	prg->south_img = init_img();
+	prg->west_img =init_img();
+	prg->east_img =init_img();
+	prg->img = init_img();
 	prg->player = (t_pc *)malloc(sizeof (t_pc));
 	prg->ray = (t_ray *)malloc(sizeof (t_ray));
-	prg->img = (t_img *)malloc(sizeof (t_img));
 	prg->mini_map= (t_map *)malloc(sizeof (t_map));
 }
 
 static void	init_mini_map_vals(t_map *map)
 {
-	map->t_img = (t_img *)malloc(sizeof(t_img));
-	if (map->t_img)
-		map->t_img->img = NULL;
+	map->t_img = init_img();
 	map->a = (t_point *)malloc(sizeof(t_point));
 	map->b = (t_point *)malloc(sizeof(t_point));
 	map->c = (t_point *)malloc(sizeof(t_point));
@@ -71,18 +83,14 @@ static bool	check_correct_inits(t_prg *prg)
 void	init_prg(t_prg *prg)
 {
 	init_prg_structs(prg);
-	if (!prg->mlx || !prg->player || !prg->ray || !prg->img || !prg->mini_map)
+	if (!prg->mlx || !prg->player || !prg->ray || !prg->img || !prg->mini_map \
+		|| !prg->north_img || !prg->west_img || !prg->south_img || !prg->east_img)
 		exit_error(NULL, prg);
-	prg->img->img = NULL;
 	init_player(prg->player);
 	init_ray(prg->ray);
 	init_mini_map_vals(prg->mini_map);
 	if (!check_correct_inits(prg))
 		exit_error(NULL, prg);
-	prg->north_img = 0;
-	prg->south_img = 0;
-	prg->west_img = 0;
-	prg->east_img = 0;
 	prg->floor_vals = 0;
 	prg->ceiling_vals = 0;
 	prg->camara_x = 0;

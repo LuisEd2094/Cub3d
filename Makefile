@@ -98,7 +98,7 @@ CHECK		=	check_file.c parse_file.c init_parseer.c parse_for_ids.c \
 				
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
-AUX 		=	close_imgs_fd.c exit_error.c exit_success.c init_prg.c \
+AUX 		=	exit_error.c exit_success.c init_prg.c \
 				init_int_array.c check_file_extension.c is_new_line.c \
 				free_mallocs.c ft_max.c ft_min.c destoy_imgs.c \
 				free_memory.c

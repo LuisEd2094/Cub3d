@@ -80,5 +80,9 @@ void	free_mallocs(t_prg *prg)
 	free_player(prg->player);
 	free_ray(prg->ray);
 	free_img(prg->img);
+	free_img(prg->north_img);
+	free_img(prg->south_img);
+	free_img(prg->west_img);
+	free_img(prg->east_img);
 	free_mini_map(prg->mini_map);
 }

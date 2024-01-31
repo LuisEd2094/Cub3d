@@ -83,6 +83,8 @@ typedef struct  t_s_mlx
 typedef struct	s_img
 {
 	void	*img;
+	int		height;
+	int		width;
 	char	*addr;
 	int		bpp;
 	int		line_length;
@@ -112,10 +114,10 @@ typedef struct s_map
 
 typedef struct s_prg
 {
-	int		north_img; //0
-	int		south_img; // 1
-	int		west_img; //2
-	int		east_img; //3
+	t_img	*north_img; //0
+	t_img	*south_img; // 1
+	t_img	*west_img; //2
+	t_img	*east_img; //3
 	int		floor_vals;
 	int		ceiling_vals;
 	double	camara_x;
