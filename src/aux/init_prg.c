@@ -23,7 +23,7 @@ static void	init_str_array(char **array, int size)
 
 static void	init_player(t_pc *player)
 {
-	player->center = (t_point *)malloc(sizeof (t_point));
+	player->center = (t_point *)malloc(sizeof (t_point));// not for mandatory
 	player->hit_box_center = (t_point *)malloc(sizeof (t_point));
 	player->hit_box_left = (t_point *)malloc(sizeof (t_point));
 	player->hit_box_right = (t_point *)malloc(sizeof (t_point));
