@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ceil_floor_vals.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:25:07 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:28:18 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/01 10:02:12 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	check_ceil_floor_vals(t_prg *p, char **elem, t_parseer *parse)
 	else
 	{
 		if (ft_strcmp(elem[0], "F") == 0)
-			p->floor_vals =  get_rgb_vals(parse->rgb_str, p);
+			p->floor_vals = get_rgb_vals(parse->rgb_str, p);
 		else
 			p->ceiling_vals = get_rgb_vals(parse->rgb_str, p);
 	}

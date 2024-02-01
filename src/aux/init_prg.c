@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_prg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:20:13 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:24:24 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:57:32 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,15 @@ static void	init_prg_structs(t_prg *prg)
 		prg->mlx->window = NULL;
 	prg->north_img = init_img();
 	prg->south_img = init_img();
-	prg->west_img =init_img();
-	prg->east_img =init_img();
+	prg->west_img = init_img();
+	prg->east_img = init_img();
 	prg->img = init_img();
-	prg->player = (t_pc *)malloc(sizeof (t_pc));
-	prg->ray = (t_ray *)malloc(sizeof (t_ray));
-	prg->mini_map= (t_map *)malloc(sizeof (t_map));
+	prg->sprite[0] = init_img(); //
+	prg->sprite[1] = init_img(); // bonus
+	prg->sprite[2] = init_img(); //
+	prg->player = (t_pc *)malloc(sizeof(t_pc));
+	prg->ray = (t_ray *)malloc(sizeof(t_ray));
+	prg->mini_map= (t_map *)malloc(sizeof(t_map));
 }
 
 static void	init_mini_map_vals(t_map *map)
@@ -91,6 +94,7 @@ void	init_prg(t_prg *prg)
 	init_mini_map_vals(prg->mini_map);
 	if (!check_correct_inits(prg))
 		exit_error(NULL, prg);
+	prg->i = 1; // bonus
 	prg->floor_vals = 0;
 	prg->ceiling_vals = 0;
 	prg->camara_x = 0;

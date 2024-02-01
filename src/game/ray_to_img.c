@@ -69,14 +69,11 @@ void	ray_to_img(t_prg *prg, int i)
 
 	for (int j = 0; j < h; j++)
 	{
-
-
-		
 		pixel = (void *)prg->img->addr + (j * prg->img->line_length + i * (prg->img->bpp / 8));
 		color = *(unsigned int *)wall_pixel;
 		if (j < start)
-			*(unsigned int*)pixel = prg->floor_vals;
-		else if (j < end )
+			*(unsigned int*)pixel = prg->ceiling_vals;
+		else if (j < floor(end - step))
 		{
 			y += step;
 			color = get_color(prg->ray, img, y);
@@ -86,6 +83,6 @@ void	ray_to_img(t_prg *prg, int i)
 				*(unsigned int*)pixel = color;
 		}
 		else
-			*(unsigned int*)pixel = prg->ceiling_vals;
+			*(unsigned int*)pixel = prg->floor_vals;
 	}
 }

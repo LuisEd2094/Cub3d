@@ -39,11 +39,11 @@ bool check_collision(t_prg *prg, t_point *center, t_point *left, t_point *right)
 
 int	make_move(t_prg *prg, int dir, int side)
 {
-	double dx;
-	double dy;
-	bool  can_move;
+	double	dx;
+	double	dy;
+	bool	can_move;
 
-	if (side == 0)
+	if (side == -1)
 	{
 		dx = (prg->camara_x * MOVE_SPEED * dir);
 		dy = (prg->camara_y * MOVE_SPEED * dir);
@@ -53,15 +53,22 @@ int	make_move(t_prg *prg, int dir, int side)
 		dx = -prg->camara_y * MOVE_SPEED * dir;
 		dy = prg->camara_x * MOVE_SPEED * dir;
 	}
-	get_hit_box_values(prg, dx, dy);
-  	can_move = check_collision(prg, HIT_BOX_CENTER(prg), HIT_BOX_LEFT(prg), HIT_BOX_RIGHT(prg));
-	if(can_move)
+	PLAYER_X(prg) += dx;
+	PLAYER_Y(prg) += dy;
+	PLAYER_CENTER_X(prg) += (int)(dx * TILE_SIZE);
+	PLAYER_CENTER_Y(prg) += (int)(dy * TILE_SIZE);
+	if (prg->map[(int)(PLAYER_Y(prg) - dy)][(int)PLAYER_X(prg)] == '1'
+		|| prg->map[(int)(PLAYER_Y(prg) - dy)][(int)PLAYER_X(prg)] == '2')
 	{
-		PLAYER_X(prg) += dx;
-		PLAYER_Y(prg) += dy;
-		PLAYER_CENTER_X(prg) += (int)(dx * TILE_SIZE);
-		PLAYER_CENTER_Y(prg) += (int)(dy * TILE_SIZE);
-		update_window(prg);
+		PLAYER_X(prg) -= dx;
+		PLAYER_CENTER_X(prg) -= (int)(dx * TILE_SIZE);
 	}
+	if (prg->map[(int)PLAYER_Y(prg)][(int)(PLAYER_X(prg) - dx)] == '1'
+		|| prg->map[(int)PLAYER_Y(prg)][(int)(PLAYER_X(prg) - dx)] == '2')
+	{
+		PLAYER_Y(prg) -= dy;
+		PLAYER_CENTER_Y(prg) -= (int)(dy * TILE_SIZE);
+	}
+	update_window(prg);
 	return (1);
 }

@@ -11,7 +11,7 @@ int check_camara(int coordiante, int center)
 }
 
 #if BONUS_FLAG == 0
-int rotate_player(t_prg *prg, int dir)
+int rotate_player(t_prg *prg, int dir, int angle)
 {
   double  cam_x;
   double  plane_x;
@@ -31,13 +31,13 @@ int rotate_player(t_prg *prg, int dir)
 
 #else
 
-int rotate_player(t_prg *prg, int dir)
-{  
+int rotate_player(t_prg *prg, int dir, int angle)
+{ 
   double  cam_x;
   double  plane_x;
   double  rads;
 
-  rads = M_PI / 180.0 * 15 * dir;
+  rads = M_PI / 180.0 * angle * dir;
   cam_x = prg->camara_x;
   plane_x = prg->plane_x;
   prg->camara_x = cam_x * cos(rads) - prg->camara_y * sin(rads);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:05:54 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:07:26 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:54:00 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ typedef struct s_prg
 	t_img	*south_img; // 1
 	t_img	*west_img; //2
 	t_img	*east_img; //3
+	t_img	*sprite[3];
+	int		i;
 	int		floor_vals;
 	int		ceiling_vals;
 	double	camara_x;
@@ -130,6 +132,8 @@ typedef struct s_prg
 	int		map_w;
 	char	**map;
 	char	*error_msg;
+	int		mouse_delta;
+	int		prev_mouse;
     t_mlx   *mlx;
 	t_img	*img;	//
 	t_map	*mini_map;
@@ -182,7 +186,7 @@ void	draw_ray(t_prg *p);
 
 //BONUS
 
-int		rotate_player(t_prg *prg, int dir);
+int		rotate_player(t_prg *prg, int dir, int angle);
 void	draw_map(t_prg *prg);
 void	rotate_point(t_point *point, t_point *center, double rads );
 void	move_triangle(t_prg *prg, int dx, int dy);

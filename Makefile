@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+         #
+#    By: apodader <apodader@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 10:05:31 by lsoto-do          #+#    #+#              #
-#    Updated: 2024/01/11 10:05:32 by lsoto-do         ###   ########.fr        #
+#    Updated: 2024/02/01 15:08:55 by apodader         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = cub3D
 NAME_BONUS	= $(NAME)_bonus
-CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/
