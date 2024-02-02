@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_mallocs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:20:02 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:23:11 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:06:22 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	free_mallocs(t_prg *prg)
 {
 	free_2d_array((void **)prg->map);
 	free_mlx(prg);
-	free_player(prg->player);
+	//free_player(prg->player);
 	free_ray(prg->ray);
 	free_img(prg->img);
 	free_img(prg->north_img);

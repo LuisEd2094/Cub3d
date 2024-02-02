@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_img_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:25:20 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:30:57 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:35:11 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ void	check_img_file(char **elemts, t_prg *p)
 			open_img(p->mlx, p->west_img, elemts[1]);
 		else
 			open_img(p->mlx, p->east_img, elemts[1]);
+		open_img(p->mlx, p->sprite[0], "./imgs/sprite_1.xpm"); //
+		open_img(p->mlx, p->sprite[1], "./imgs/sprite_2.xpm"); // bonus
+		open_img(p->mlx, p->sprite[2], "./imgs/sprite_3.xpm"); //
 	}
 }

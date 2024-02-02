@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:19:02 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:19:27 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:15:38 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 	init_prg(&prg);
 	if (argc != 2)
 		exit_error(INCORRECT_USE, &prg);
-	validate_map(argv[1], &prg);
+	validate_map(argv[1], &prg); // peta al dar error en destroy_img
 	prg.mlx->ptr = mlx_init();
 	if (!prg.mlx->ptr)
 		exit_error(NULL, &prg);
@@ -31,8 +31,7 @@ int	main(int argc, char *argv[])
 		&prg.img->line_length, &prg.img->endian);
 	if (!prg.img->addr)
 		exit_error(NULL, &prg);
-		mlx_do_key_autorepeaton(prg.mlx->ptr);
-
+	mlx_do_key_autorepeaton(prg.mlx->ptr); // ?
 	prg.mini_map->t_img->img = mlx_new_image(prg.mlx->ptr, ft_min(((prg.map_w + 1) * TILE_SIZE), MINI_MAP_SIZE), ft_min((prg.map_h) * TILE_SIZE, MINI_MAP_SIZE));
 	if (!prg.mini_map->t_img->img)
 		exit_error(NULL, &prg);
