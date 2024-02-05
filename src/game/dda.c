@@ -75,7 +75,8 @@ void	perform_dda(t_prg *prg)
 			|| prg->ray->map_y > prg->map_h - 0.25
 			|| prg->ray->map_x > prg->map_w - 0.25)
 			break ;
-		if (prg->map[prg->ray->map_y][prg->ray->map_x] == '1' || prg->map[prg->ray->map_y][prg->ray->map_x] == '2')
+		if (prg->map[prg->ray->map_y][prg->ray->map_x] == '1'
+			|| prg->map[prg->ray->map_y][prg->ray->map_x] == '2')
 			prg->ray->hit = 1;
 	}
 }

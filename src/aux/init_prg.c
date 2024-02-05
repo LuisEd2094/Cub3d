@@ -6,7 +6,7 @@
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:20:13 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/02 15:19:47 by apodader         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:12:25 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	init_prg_structs(t_prg *prg)
 	prg->west_img = init_img();
 	prg->east_img = init_img();
 	prg->img = init_img();
+	prg->door_img = init_img();  //
 	prg->sprite[0] = init_img(); //
 	prg->sprite[1] = init_img(); // bonus
 	prg->sprite[2] = init_img(); //

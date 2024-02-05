@@ -6,7 +6,7 @@
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:05:54 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/01 14:54:00 by apodader         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:01:39 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,29 @@ typedef struct s_player
 
 }	t_pc;
 
-
-
 typedef struct s_ray
 {
 	t_point *start;
 	t_point *end;
 	float	ray_end_x;
 	float 	ray_end_y;
-	int		map_x;		//
-	int		map_y;		//
-	double	camera;		//
-	double	ray_dir_x;	//
-	double	ray_dir_y;	//
-	double	side_dist_x;	//
-	double	side_dist_y;	//
-	double	delta_dist_x;	//
-	double	delta_disy_y;	//
-	double	wall_dist;	//
-	int		step_x;		//
-	int		step_y;		//
-	int		hit;		//
-	int		side;		//
+	int		map_x;
+	int		map_y;
+	double	camera;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_disy_y;
+	double	wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_h;
+	int		end_p;
+	int		start_p;
 } t_ray;
 
 
@@ -120,7 +121,8 @@ typedef struct s_prg
 	t_img	*south_img; // 1
 	t_img	*west_img; //2
 	t_img	*east_img; //3
-	t_img	*sprite[3];
+	t_img	*door_img; //
+	t_img	*sprite[3];//
 	int		i;
 	int		floor_vals;
 	int		ceiling_vals;
@@ -135,7 +137,7 @@ typedef struct s_prg
 	int		mouse_delta;
 	int		prev_mouse;
     t_mlx   *mlx;
-	t_img	*img;	//
+	t_img	*img;
 	t_map	*mini_map;
 	t_pc	*player;
 	t_ray	*ray;

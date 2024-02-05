@@ -3,6 +3,8 @@
 
 t_img * get_img(t_prg *prg)
 {
+	if (prg->map[(int)prg->ray->ray_end_y][(int)prg->ray->ray_end_x] == '2')
+		return (prg->door_img);
 	if (prg->ray->side) //E or W
 	{
 		if (prg->ray->ray_dir_y < 0) // E
@@ -16,7 +18,6 @@ t_img * get_img(t_prg *prg)
 			return (prg->south_img);
 		else
 			return (prg->north_img);
-
 	}
 }
 
@@ -40,7 +41,6 @@ void	ray_to_img(t_prg *prg, int i)
 	int		end;
 	int 	*pixel;
 	t_img	*img;
-	unsigned int 		*wall_pixel;
 	int		color; 
 
 	line_h = (int)(h / prg->ray->wall_dist);
@@ -54,15 +54,6 @@ void	ray_to_img(t_prg *prg, int i)
 	end = line_h / 2 + h / 2;
 	if (end >= h)
 		end = h - 1;
-	// int x = (RAY_END_X(prg) % TILE_SIZE); // X img
-	// if (!prg->ray->side)
-	// 	x = (RAY_END_Y(prg) % TILE_SIZE);
-	// if (prg->ray->side)
-	// 	x 
-
-		// p->dda->y = (p->dda->drawstart - WIN_HEIGHT / 2
-		// 	+ p->dda->lineheight / 2) * p->dda->step;
-	//printf("%i\n", RAY_END_X(prg) % TILE_SIZE);// X POSITION on IMG
 	img = get_img(prg);
 
 	float y =  (start - h / 2 + line_h / 2) * step;
