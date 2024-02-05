@@ -191,6 +191,10 @@ void	draw_map(t_prg *prg);
 void	rotate_point(t_point *point, t_point *center, double rads );
 void	move_triangle(t_prg *prg, int dx, int dy);
 int		open_door(t_prg *prg);
+void	get_y_values(t_prg *prg);
+void	get_x_values(t_prg *prg);
+bool	calculate_if_inside_player(t_map *map, int x, int y);
+int		get_map_y_position(t_prg *prg);
 
 
 
