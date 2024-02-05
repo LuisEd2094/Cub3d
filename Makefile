@@ -123,7 +123,8 @@ B_FLAG_FILE	=	$(SRCS_PATH)$(CK_FD_PATH)check_map_borders.c $(SRCS_PATH)$(CK_FD_P
 				$(SRCS_PATH)$(GAME_PATH)hooks.c $(SRCS_PATH)$(AUX_PATH)destoy_imgs.c \
 				$(SRCS_PATH)$(GAME_PATH)raycaster.c $(SRCS_PATH)$(GAME_PATH)dda.c
 
-BONUS		=	draw_map_bonus.c triangle_bonus.c open_door_bonus.c draw_ray_bonus.c
+BONUS		=	draw_map_bonus.c open_door_bonus.c \
+				check_if_inside_player_bonus.c get_coordinates_bonus.c
 
 BONUS_FILE	=	$(addprefix $(BONUS_PATH), $(BONUS))
 

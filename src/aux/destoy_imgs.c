@@ -3,7 +3,7 @@
 void run_mlx_destroy(t_img *img, t_mlx *mlx)
 {
     if (img && img->img)
-        mlx_destroy_image(mlx->ptr,img->img);
+        mlx_destroy_image(mlx->ptr, img->img);
 
 }
 

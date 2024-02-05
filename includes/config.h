@@ -4,8 +4,10 @@
 #define w 800
 #define h 600
 
-# define TILE_SIZE	32
-# define MINI_MAP_SIZE TILE_SIZE * 8
+# define TILE_SIZE	24
+# define MAX_NUM_TILES 8
+# define MINI_MAP_SIZE TILE_SIZE * MAX_NUM_TILES
+
 
 #define RGB_GREY 0x808080
 #define RGB_DARK_RED 0x880000
