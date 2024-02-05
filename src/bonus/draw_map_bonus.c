@@ -52,8 +52,10 @@ int get_map_y_position(t_prg *prg)
   int map_y;
 
 
+  
     if (prg->mini_map->off_set_y && PLAYER_CENTER_Y(prg) + 1 > (MINI_MAP_SIZE / 2))
     {
+      return (((PLAYER_CENTER_Y(prg) + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE);
       map_y = ((PLAYER_CENTER_Y(prg) + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE;
       if (map_y > (prg->map_h - 9))
         return (prg->map_h - 9);
@@ -97,7 +99,7 @@ int get_pixel_color(t_prg *prg, int x, int y)
 
   if (x % (TILE_SIZE) == 0 || y % (TILE_SIZE)  == 0) // DEBUG GRID
     return (0xFFFFFF);
-  else if (MAP_X(prg) < ft_strlen(prg->map[MAP_Y(prg)]))
+  else if (MAP_Y(prg) < prg->map_h && MAP_X(prg) < ft_strlen(prg->map[MAP_Y(prg)]))
   {
     if (prg->map[MAP_Y(prg)][MAP_X(prg)] == '1')
       return (0xFF0000);
