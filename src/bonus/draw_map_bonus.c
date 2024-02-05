@@ -24,23 +24,39 @@ bool calculate_if_inside_player(t_map *map, int x, int y)
 
 void  set_mini_map_vals(t_prg *prg)
 {
-  MAP_MAX_W(prg) = ft_min(MAP_W(prg), MINI_MAP_SIZE); // this MAX i should calculate once
-  MAP_MAX_H(prg) = ft_min(MAP_H(prg), MINI_MAP_SIZE);
-  prg->mini_map->off_set_x = MAP_W(prg) > MINI_MAP_SIZE;
-  prg->mini_map->off_set_y = MAP_H(prg) > MINI_MAP_SIZE;
-  prg->mini_map->a->x = ((PLAYER_CENTER_X(prg))) + ((TILE_SIZE / 2) * cos(prg->player->angle )); 
-;
+
+
+}
+
+
+void get_x_values(t_prg *prg)
+{
+  double  reminder;
+  double  integer;
+
+  if (prg->mini_map->off_set_x && PLAYER_CENTER_X(prg) + 1 > (MINI_MAP_SIZE / 2))
+  {
+      reminder = modf(PLAYER_X(prg), &integer);
+      ft_printf(1,"map x cal %i\n", (int)(((MINI_MAP_SIZE / 2) + ((reminder * TILE_SIZE)) )));
+      MAP_X(prg) = ((PLAYER_CENTER_X(prg) + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE;
+      prg->mini_map->a->x = ((((MINI_MAP_SIZE / 2) - TILE_SIZE) + ((reminder * TILE_SIZE)))) + ((TILE_SIZE / 2) * cos(prg->player->angle )); 
+      prg->mini_map->b->x = ((((MINI_MAP_SIZE / 2) - TILE_SIZE) + ((reminder * TILE_SIZE)))) + ((TILE_SIZE / 2) * cos(prg->player->angle + (2.0 * M_PI / 3.0)));
+      prg->mini_map->c->x = ((((MINI_MAP_SIZE / 2) - TILE_SIZE) + ((reminder * TILE_SIZE)))) + ((TILE_SIZE / 2) * cos(prg->player->angle + (4.0 * M_PI / 3.0)));  
+  }
+  else
+  {
+    prg->mini_map->a->x = ((PLAYER_CENTER_X(prg))) + ((TILE_SIZE / 2) * cos(prg->player->angle )); 
+    prg->mini_map->b->x = ((PLAYER_CENTER_X(prg)) )   + ((TILE_SIZE / 2) * cos(prg->player->angle + (2.0 * M_PI / 3.0)));
+    prg->mini_map->c->x = ((PLAYER_CENTER_X(prg)))   + ((TILE_SIZE / 2) * cos(prg->player->angle + (4.0 * M_PI / 3.0)));
+    MAP_X(prg) = -1;  
+  }
+
+
+    
   prg->mini_map->a->y = ((PLAYER_CENTER_Y(prg)))  + ((TILE_SIZE / 2) * sin(prg->player->angle )); 
-
-  prg->mini_map->b->x = ((PLAYER_CENTER_X(prg)) )   + ((TILE_SIZE / 2) * cos(prg->player->angle + (2.0 * M_PI / 3.0)));
-
   prg->mini_map->b->y = ((PLAYER_CENTER_Y(prg) + 1))   + ((TILE_SIZE / 2) * sin(prg->player->angle + (2.0 * M_PI / 3.0)));
-
-  prg->mini_map->c->x = ((PLAYER_CENTER_X(prg)))   + ((TILE_SIZE / 2) * cos(prg->player->angle + (4.0 * M_PI / 3.0)));  
-
   prg->mini_map->c->y = ((PLAYER_CENTER_Y(prg) + 1) )  + ((TILE_SIZE / 2) * sin(prg->player->angle + (4.0 * M_PI / 3.0)));  
-;
-   MAP_X(prg) = -1;
+
 }
 
 int get_pixel_color(t_prg *prg, int x, int y)
@@ -48,7 +64,7 @@ int get_pixel_color(t_prg *prg, int x, int y)
   if (x % (TILE_SIZE) == 0 || y % (TILE_SIZE)  == 0) // DEBUG GRID
     return (0xFFFFFF);
   if (prg->map[MAP_Y(prg)][MAP_X(prg)] == '1')
-    return (0xFF0000);
+      return (0xFF0000);
   else if (prg->map[MAP_Y(prg)][MAP_X(prg)] == '2')
     return (0x00FF00);
   else if (prg->map[MAP_Y(prg)][MAP_X(prg)] == '3')
@@ -70,16 +86,8 @@ void draw_map(t_prg *prg)
   int y;
 
   set_mini_map_vals(prg);
-  if (prg->mini_map->off_set_x)
-  {
-    if (PLAYER_CENTER_X(prg) + 1 > (MINI_MAP_SIZE / 2))
-    {
-      MAP_X(prg) = ((PLAYER_CENTER_X(prg) + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE;
-      prg->mini_map->a->x = (((PLAYER_CENTER_X(prg) + 1) % TILE_SIZE)  + ((MINI_MAP_SIZE - TILE_SIZE - TILE_SIZE) / 2)) + ((TILE_SIZE / 2) * cos(prg->player->angle )); 
-      prg->mini_map->b->x = (((PLAYER_CENTER_X(prg) + 1) % TILE_SIZE)  + ((MINI_MAP_SIZE - TILE_SIZE - TILE_SIZE) / 2)) + ((TILE_SIZE / 2) * cos(prg->player->angle + (2.0 * M_PI / 3.0)));
-      prg->mini_map->c->x = (((PLAYER_CENTER_X(prg) + 1) % TILE_SIZE)  + ((MINI_MAP_SIZE - TILE_SIZE - TILE_SIZE) / 2)) + ((TILE_SIZE / 2) * cos(prg->player->angle + (4.0 * M_PI / 3.0)));  
-    }
-  }
+  get_x_values(prg);
+
   x = -1;
   while (++x < MAP_MAX_W(prg))
   {
@@ -89,14 +97,25 @@ void draw_map(t_prg *prg)
     {
       if (PLAYER_CENTER_Y(prg) + 1 > (MINI_MAP_SIZE / 2))
       {
-        MAP_Y(prg) = ((PLAYER_CENTER_Y(prg) + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE;
-        prg->mini_map->a->y = (((PLAYER_CENTER_Y(prg) + 1) % TILE_SIZE)  + ((MINI_MAP_SIZE - TILE_SIZE - TILE_SIZE) / 2)) + ((TILE_SIZE / 2) * sin(prg->player->angle )); 
-        prg->mini_map->b->y = (((PLAYER_CENTER_Y(prg) + 1) % TILE_SIZE)  + ((MINI_MAP_SIZE - TILE_SIZE - TILE_SIZE) / 2)) + ((TILE_SIZE / 2) * sin(prg->player->angle + (2.0 * M_PI / 3.0)));
-        prg->mini_map->c->y = (((PLAYER_CENTER_Y(prg) + 1) % TILE_SIZE)  + ((MINI_MAP_SIZE - TILE_SIZE - TILE_SIZE) / 2)) + ((TILE_SIZE / 2) * sin(prg->player->angle + (4.0 * M_PI / 3.0)));  
+        MAP_Y(prg) = (((PLAYER_CENTER_Y(prg) + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE);
+        double intteger = 0;
+        double reminder = modf(PLAYER_Y(prg), &intteger);
+        int mini_y = (reminder * TILE_SIZE);
+        //printf("mini y%i  reminder %f\n", mini_y, reminder);
+        prg->mini_map->a->y = ((reminder * TILE_SIZE) + ((MINI_MAP_SIZE) / 2) - TILE_SIZE) + ((TILE_SIZE / 2) * sin(prg->player->angle )); 
+        prg->mini_map->b->y = ((reminder * TILE_SIZE) + ((MINI_MAP_SIZE) / 2)- TILE_SIZE) + ((TILE_SIZE / 2) * sin(prg->player->angle + (2.0 * M_PI / 3.0)));
+        prg->mini_map->c->y = ((reminder * TILE_SIZE) + ((MINI_MAP_SIZE) / 2)- TILE_SIZE) + ((TILE_SIZE / 2) * sin(prg->player->angle + (4.0 * M_PI / 3.0)));  
       }
+      else
+        MAP_Y(prg) = -1;
     }
     else
       MAP_Y(prg) = -1;
+      // printf("I am moving player center %o\n",PLAYER_CENTER_Y(prg));
+      // printf("I am moving player Y %f\n",PLAYER_Y(prg));
+      // printf("y in mini map %i\n", prg->mini_map->a->y );
+
+
     y = -1;
     while (++y < MAP_MAX_H(prg))
     {
