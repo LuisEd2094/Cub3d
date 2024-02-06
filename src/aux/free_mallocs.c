@@ -12,21 +12,21 @@
 
 #include <cub3d.h>
 
-void free_player(t_pc * player)
-{
-	if (player)
-	{
-		if (player->center)
-			free(player->center);
-		if (player->hit_box_center)
-			free(player->hit_box_center);
-		if (player->hit_box_left)
-			free(player->hit_box_left);
-		if (player->hit_box_right)
-			free(player->hit_box_right);		
-		free(player);
-	}
-}
+// void free_player(t_pc * player)
+// {
+// 	if (player)
+// 	{
+// 		if (player->center)
+// 			free(player->center);
+// 		if (player->hit_box_center)
+// 			free(player->hit_box_center);
+// 		if (player->hit_box_left)
+// 			free(player->hit_box_left);
+// 		if (player->hit_box_right)
+// 			free(player->hit_box_right);		
+// 		free(player);
+// 	}
+// }
 
 void free_ray(t_ray *r)
 {

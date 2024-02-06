@@ -16,7 +16,7 @@ int	get_coordinate(t_prg *prg, double (*f)(double), double rem, double value)
 {
 	return (((rem * TILE_SIZE) + ((MINI_MAP_SIZE) / 2) - TILE_SIZE) \
 			+ ((TILE_SIZE / 2) \
-			* f(prg->player->angle + (value * M_PI / 3.0))));
+			* f(prg->player.angle + (value * M_PI / 3.0))));
 }
 
 void	get_x_values(t_prg *prg)
@@ -38,11 +38,11 @@ void	get_x_values(t_prg *prg)
 	{
 		//printf("%i player CENTER %f PLAYER X\n", PLAYER_CENTER_X(prg), PLAYER_X(prg) * TILE_SIZE);
 		MAP_A_X(prg) = ((PLAYER_X(prg) * TILE_SIZE)) + \
-		((TILE_SIZE / 2) * cos(prg->player->angle));
+		((TILE_SIZE / 2) * cos(prg->player.angle));
 		MAP_B_X(prg) = ((PLAYER_X(prg) * TILE_SIZE)) + \
-		((TILE_SIZE / 2) * cos(prg->player->angle + (2.0 * M_PI / 3.0)));
+		((TILE_SIZE / 2) * cos(prg->player.angle + (2.0 * M_PI / 3.0)));
 		MAP_C_X(prg) = ((PLAYER_X(prg) * TILE_SIZE)) + \
-		((TILE_SIZE / 2) * cos(prg->player->angle + (4.0 * M_PI / 3.0)));
+		((TILE_SIZE / 2) * cos(prg->player.angle + (4.0 * M_PI / 3.0)));
 		MAP_X(prg) = -1;
 	}
 }
@@ -77,10 +77,10 @@ void	get_y_values(t_prg *prg)
 	else
 	{
 		MAP_A_Y(prg) = ((PLAYER_Y(prg) * TILE_SIZE)) + \
-		((TILE_SIZE / 2) * sin(prg->player->angle));
+		((TILE_SIZE / 2) * sin(prg->player.angle));
 		MAP_B_Y(prg) = ((PLAYER_Y(prg) * TILE_SIZE + 1)) + \
-		((TILE_SIZE / 2) * sin(prg->player->angle + (2.0 * M_PI / 3.0)));
+		((TILE_SIZE / 2) * sin(prg->player.angle + (2.0 * M_PI / 3.0)));
 		MAP_C_Y(prg) = ((PLAYER_Y(prg) * TILE_SIZE + 1)) + \
-		((TILE_SIZE / 2) * sin(prg->player->angle + (4.0 * M_PI / 3.0)));
+		((TILE_SIZE / 2) * sin(prg->player.angle + (4.0 * M_PI / 3.0)));
 	}
 }

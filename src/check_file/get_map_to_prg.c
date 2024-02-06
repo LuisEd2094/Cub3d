@@ -25,8 +25,6 @@ void set_player_pos_and_mini_map(t_prg *prg, int x, int y)
 {
 	PLAYER_X(prg) = x + 0.5;
 	PLAYER_Y(prg) = y + 0.5;
-	PLAYER_CENTER_X(prg) =  (((x + 1) * TILE_SIZE) - (TILE_SIZE / 2)) - 1;
-	PLAYER_CENTER_Y(prg) = ((((y + 1) * TILE_SIZE) - (TILE_SIZE / 2)) - 1);
 }
 
 char set_player_info(t_prg *prg, char c, int y, int x)
@@ -61,7 +59,7 @@ char set_player_info(t_prg *prg, char c, int y, int x)
 			prg->plane_y = -0.66;
 		}
 	}
-	prg->player->angle = atan2(prg->camara_y, prg->camara_x);
+	prg->player.angle = atan2(prg->camara_y, prg->camara_x);
 	set_player_pos_and_mini_map(prg, x, y);
 	return ('0');
 }

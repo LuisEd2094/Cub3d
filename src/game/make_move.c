@@ -2,16 +2,16 @@
 
 
 
-void get_hit_box_values(t_prg *prg, double dx, double dy)
-{
-  HIT_BOX_ANGLE(prg) = atan2(dy,dx);
-  HIT_BOX_CENTER(prg)->x = PLAYER_CENTER_X(prg) + ((int)(MOVE_PIXELS * cos(HIT_BOX_ANGLE(prg))));
-  HIT_BOX_CENTER(prg)->y = PLAYER_CENTER_Y(prg) + ((int)(MOVE_PIXELS * sin(HIT_BOX_ANGLE(prg))));
-/*   HIT_BOX_LEFT(prg)->x = HIT_BOX_CENTER(prg)->x + ((MOVE_PIXELS ) / 2) * cos(HIT_BOX_ANGLE(prg) - M_PI/2);
-  HIT_BOX_LEFT(prg)->y = HIT_BOX_CENTER(prg)->y + ((MOVE_PIXELS ) / 2) * sin(HIT_BOX_ANGLE(prg) - M_PI/2);
-  HIT_BOX_RIGHT(prg)->x = HIT_BOX_CENTER(prg)->x + ((MOVE_PIXELS ) / 2) * cos(HIT_BOX_ANGLE(prg) + M_PI/2);
-  HIT_BOX_RIGHT(prg)->y = HIT_BOX_CENTER(prg)->y + ((MOVE_PIXELS ) / 2) * sin(HIT_BOX_ANGLE(prg) + M_PI/2); */
-}
+// void get_hit_box_values(t_prg *prg, double dx, double dy)
+// {
+//   HIT_BOX_ANGLE(prg) = atan2(dy,dx);
+//   HIT_BOX_CENTER(prg)->x = PLAYER_CENTER_X(prg) + ((int)(MOVE_PIXELS * cos(HIT_BOX_ANGLE(prg))));
+//   HIT_BOX_CENTER(prg)->y = PLAYER_CENTER_Y(prg) + ((int)(MOVE_PIXELS * sin(HIT_BOX_ANGLE(prg))));
+// /*   HIT_BOX_LEFT(prg)->x = HIT_BOX_CENTER(prg)->x + ((MOVE_PIXELS ) / 2) * cos(HIT_BOX_ANGLE(prg) - M_PI/2);
+//   HIT_BOX_LEFT(prg)->y = HIT_BOX_CENTER(prg)->y + ((MOVE_PIXELS ) / 2) * sin(HIT_BOX_ANGLE(prg) - M_PI/2);
+//   HIT_BOX_RIGHT(prg)->x = HIT_BOX_CENTER(prg)->x + ((MOVE_PIXELS ) / 2) * cos(HIT_BOX_ANGLE(prg) + M_PI/2);
+//   HIT_BOX_RIGHT(prg)->y = HIT_BOX_CENTER(prg)->y + ((MOVE_PIXELS ) / 2) * sin(HIT_BOX_ANGLE(prg) + M_PI/2); */
+// }
 
 
 
@@ -55,19 +55,15 @@ int	make_move(t_prg *prg, int dir, int side)
 	}
 	PLAYER_X(prg) += dx;
 	PLAYER_Y(prg) += dy;
-	PLAYER_CENTER_X(prg) += (int)(dx * TILE_SIZE);
-	PLAYER_CENTER_Y(prg) += (int)(dy * TILE_SIZE);
 	if (prg->map[(int)(PLAYER_Y(prg) - dy)][(int)PLAYER_X(prg)] == '1'
 		|| prg->map[(int)(PLAYER_Y(prg) - dy)][(int)PLAYER_X(prg)] == '2')
 	{
 		PLAYER_X(prg) -= dx;
-		PLAYER_CENTER_X(prg) -= (int)(dx * TILE_SIZE);
 	}
 	if (prg->map[(int)PLAYER_Y(prg)][(int)(PLAYER_X(prg) - dx)] == '1'
 		|| prg->map[(int)PLAYER_Y(prg)][(int)(PLAYER_X(prg) - dx)] == '2')
 	{
 		PLAYER_Y(prg) -= dy;
-		PLAYER_CENTER_Y(prg) -= (int)(dy * TILE_SIZE);
 	}
 	update_window(prg);
 	return (1);

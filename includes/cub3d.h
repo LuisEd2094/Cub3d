@@ -44,10 +44,6 @@ typedef struct s_player
 	double	y;
 	double	angle;
 	double	hit_box_angle;
-	t_point	*hit_box_center;
-	t_point *hit_box_left;
-	t_point *hit_box_right;
-	t_point	*center;
 
 }	t_pc;
 
@@ -139,7 +135,7 @@ typedef struct s_prg
     t_mlx   mlx;
 	t_img	img;
 	t_map	mini_map;
-	t_pc	*player;
+	t_pc	player;
 	t_ray	*ray;
 }	t_prg;
 
