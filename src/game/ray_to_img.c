@@ -3,18 +3,18 @@
 
 t_img *get_img(t_prg *prg)
 {
-	if (prg->map[(int)prg->ray->ray_end_y][(int)prg->ray->ray_end_x] == '2')
+	if (prg->map[(int)prg->ray.ray_end_y][(int)prg->ray.ray_end_x] == '2')
 		return (&(prg->door_img));
-	if (!prg->ray->side) //E or W
+	if (!prg->ray.side) //E or W
 	{
-		if (prg->ray->ray_dir_x < 0) // E
+		if (prg->ray.ray_dir_x < 0) // E
 			return (&(prg->east_img));
 		else
 			return (&(prg->west_img));
 	}
 	else 
 	{
-		if (prg->ray->ray_dir_y < 0) // E
+		if (prg->ray.ray_dir_y < 0) // E
 			return (&(prg->south_img));
 		else
 			return (&(prg->north_img));
@@ -43,7 +43,7 @@ void	ray_to_img(t_prg *prg, int i)
 	t_img	*img;
 	unsigned int		color; 
 
-	line_h = (int)(h / prg->ray->wall_dist);
+	line_h = (int)(h / prg->ray.wall_dist);
 	start = -line_h / 2 + h / 2;
 	if (start < 0)
 		start = 0;
@@ -62,7 +62,7 @@ void	ray_to_img(t_prg *prg, int i)
 		else if (j < floor(end - step))
 		{
 			y += step;
-			color = get_color(prg->ray, img, y);
+			color = get_color(&(prg->ray), img, y);
 				*(unsigned int*)pixel = color;
 		}
 		else

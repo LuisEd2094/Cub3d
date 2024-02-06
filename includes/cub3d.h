@@ -49,8 +49,6 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	t_point *start;
-	t_point *end;
 	float	ray_end_x;
 	float 	ray_end_y;
 	int		map_x;
@@ -136,7 +134,7 @@ typedef struct s_prg
 	t_img	img;
 	t_map	mini_map;
 	t_pc	player;
-	t_ray	*ray;
+	t_ray	ray;
 }	t_prg;
 
 

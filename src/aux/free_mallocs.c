@@ -28,17 +28,17 @@
 // 	}
 // }
 
-void free_ray(t_ray *r)
-{
-	if (r)
-	{
-		if (r->end)
-			free(r->end);
-		if (r->start)
-			free(r->start);
-		free(r);
-	}
-}
+// void free_ray(t_ray *r)
+// {
+// 	if (r)
+// 	{
+// 		if (r->end)
+// 			free(r->end);
+// 		if (r->start)
+// 			free(r->start);
+// 		free(r);
+// 	}
+// }
 
 void free_img(t_img *img)
 {
@@ -78,7 +78,7 @@ void	free_mallocs(t_prg *prg)
 	free_2d_array((void **)prg->map);
 	//free_mlx(prg);
 	//free_player(prg->player);
-	free_ray(prg->ray);
+	//free_ray(prg->ray);
 	//free_img(prg->img);
 	// free_img(&(prg->north_img));
 	// free_img(prg->south_img);

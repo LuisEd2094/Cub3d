@@ -22,12 +22,6 @@ static void	init_str_array(char **array, int size)
 }
 
 
-static void	init_ray(t_ray *ray)
-{
-	ray->start = (t_point *)malloc(sizeof (t_point));
-	ray->end = (t_point *)malloc(sizeof (t_point));
-}
-
 static t_img *init_img(void)
 {
 	t_img *img;
@@ -51,7 +45,6 @@ static void	init_prg_structs(t_prg *prg)
 	// prg->sprite[1] = init_img(); // bonus
 	// prg->sprite[2] = init_img(); //
 	//prg->player = (t_pc *)malloc(sizeof(t_pc));
-	prg->ray = (t_ray *)malloc(sizeof(t_ray));
 	//prg->mini_map= (t_map *)malloc(sizeof(t_map));
 }
 
@@ -63,23 +56,11 @@ static void	init_prg_structs(t_prg *prg)
 // 	map->c = (t_point *)malloc(sizeof(t_point));
 // }
 
-static bool	check_correct_inits(t_prg *prg)
-{
-	if (!prg->ray->start || !prg->ray->end)
-		return (0);
-	return (1);
-}
-
 void	init_prg(t_prg *prg)
 {
 	init_prg_structs(prg);
-	if (!prg->ray )
-		exit_error(NULL, prg);
 	prg->mini_map.t_img.img  = NULL;
-	init_ray(prg->ray);
 	//init_mini_map_vals(prg->mini_map);
-	if (!check_correct_inits(prg))
-		exit_error(NULL, prg);
 	prg->i = 1; // bonus
 	prg->floor_vals = 0;
 	prg->ceiling_vals = 0;

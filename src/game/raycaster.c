@@ -15,38 +15,38 @@
 
 void get_pixel_collision(t_prg *prg)
 {
-	if (prg->ray->side == 0) // If the ray hit a vertical wall
+	if (prg->ray.side == 0) // If the ray hit a vertical wall
 	{
-		prg->ray->ray_end_y = ( PLAYER_Y(prg) + prg->ray->wall_dist * prg->ray->ray_dir_y);
-		prg->ray->ray_end_x = (prg->ray->map_x); // I think you need to check the dirction for this
-		//if (prg->ray->ray_dir_x < 0)
-		//prg->ray->ray_end_x += 1;
+		prg->ray.ray_end_y = ( PLAYER_Y(prg) + prg->ray.wall_dist * prg->ray.ray_dir_y);
+		prg->ray.ray_end_x = (prg->ray.map_x); // I think you need to check the dirction for this
+		//if (prg->ray.ray_dir_x < 0)
+		//prg->ray.ray_end_x += 1;
 	}
 	else // If the ray hit a horizontal wall
 	{
-	prg->ray->ray_end_x = ((PLAYER_X(prg) + prg->ray->wall_dist * prg->ray->ray_dir_x));
-		prg->ray->ray_end_y = (prg->ray->map_y);
-		//if (prg->ray->ray_dir_y < 0)
-		//	prg->ray->ray_end_y += 1;
+	prg->ray.ray_end_x = ((PLAYER_X(prg) + prg->ray.wall_dist * prg->ray.ray_dir_x));
+		prg->ray.ray_end_y = (prg->ray.map_y);
+		//if (prg->ray.ray_dir_y < 0)
+		//	prg->ray.ray_end_y += 1;
 	}
 }
 
 void init_ray(t_prg *prg, int i)
 {
-	prg->ray->camera = 2 * i / (double)w - 1;
-	prg->ray->ray_dir_x = prg->camara_x + prg->plane_x * prg->ray->camera;
-	prg->ray->ray_dir_y = prg->camara_y + prg->plane_y * prg->ray->camera;
-	prg->ray->map_x = (int)PLAYER_X(prg);
-	prg->ray->map_y = (int)PLAYER_Y(prg);
-	prg->ray->hit = 0;
-	if (prg->ray->ray_dir_x == 0)
-		prg->ray->delta_dist_x = FLT_MAX;
+	prg->ray.camera = 2 * i / (double)w - 1;
+	prg->ray.ray_dir_x = prg->camara_x + prg->plane_x * prg->ray.camera;
+	prg->ray.ray_dir_y = prg->camara_y + prg->plane_y * prg->ray.camera;
+	prg->ray.map_x = (int)PLAYER_X(prg);
+	prg->ray.map_y = (int)PLAYER_Y(prg);
+	prg->ray.hit = 0;
+	if (prg->ray.ray_dir_x == 0)
+		prg->ray.delta_dist_x = FLT_MAX;
 	else
-		prg->ray->delta_dist_x = fabs(1 / prg->ray->ray_dir_x);
-	if (prg->ray->ray_dir_y == 0)
-		prg->ray->delta_disy_y = FLT_MAX;
+		prg->ray.delta_dist_x = fabs(1 / prg->ray.ray_dir_x);
+	if (prg->ray.ray_dir_y == 0)
+		prg->ray.delta_disy_y = FLT_MAX;
 	else
-		prg->ray->delta_disy_y = fabs(1 / prg->ray->ray_dir_y);
+		prg->ray.delta_disy_y = fabs(1 / prg->ray.ray_dir_y);
 }
 
 #if BONUS_FLAG == 0
@@ -60,10 +60,10 @@ void	raycaster(t_prg *prg)
 		init_ray(prg, i);
 		init_dda(prg);
 		perform_dda(prg);
-		if (prg->ray->side == 0)
-			prg->ray->wall_dist = prg->ray->side_dist_x - prg->ray->delta_dist_x;
+		if (prg->ray.side == 0)
+			prg->ray.wall_dist = prg->ray.side_dist_x - prg->ray.delta_dist_x;
 		else
-			prg->ray->wall_dist = prg->ray->side_dist_y - prg->ray->delta_disy_y;
+			prg->ray.wall_dist = prg->ray.side_dist_y - prg->ray.delta_disy_y;
 		get_pixel_collision(prg);
 		ray_to_img(prg, i);
 	}
@@ -79,10 +79,10 @@ void	raycaster(t_prg *prg)
 		init_ray(prg, i);
 		init_dda(prg);
 		perform_dda(prg);
-		if (prg->ray->side == 0)
-			prg->ray->wall_dist = prg->ray->side_dist_x - prg->ray->delta_dist_x;
+		if (prg->ray.side == 0)
+			prg->ray.wall_dist = prg->ray.side_dist_x - prg->ray.delta_dist_x;
 		else
-			prg->ray->wall_dist = prg->ray->side_dist_y - prg->ray->delta_disy_y;
+			prg->ray.wall_dist = prg->ray.side_dist_y - prg->ray.delta_disy_y;
 		get_pixel_collision(prg);
 		ray_to_img(prg, i);
 		//draw_ray(prg);

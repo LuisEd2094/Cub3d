@@ -1,20 +1,6 @@
 #include <cub3d.h>
 
 
-
-// void get_hit_box_values(t_prg *prg, double dx, double dy)
-// {
-//   HIT_BOX_ANGLE(prg) = atan2(dy,dx);
-//   HIT_BOX_CENTER(prg)->x = PLAYER_CENTER_X(prg) + ((int)(MOVE_PIXELS * cos(HIT_BOX_ANGLE(prg))));
-//   HIT_BOX_CENTER(prg)->y = PLAYER_CENTER_Y(prg) + ((int)(MOVE_PIXELS * sin(HIT_BOX_ANGLE(prg))));
-// /*   HIT_BOX_LEFT(prg)->x = HIT_BOX_CENTER(prg)->x + ((MOVE_PIXELS ) / 2) * cos(HIT_BOX_ANGLE(prg) - M_PI/2);
-//   HIT_BOX_LEFT(prg)->y = HIT_BOX_CENTER(prg)->y + ((MOVE_PIXELS ) / 2) * sin(HIT_BOX_ANGLE(prg) - M_PI/2);
-//   HIT_BOX_RIGHT(prg)->x = HIT_BOX_CENTER(prg)->x + ((MOVE_PIXELS ) / 2) * cos(HIT_BOX_ANGLE(prg) + M_PI/2);
-//   HIT_BOX_RIGHT(prg)->y = HIT_BOX_CENTER(prg)->y + ((MOVE_PIXELS ) / 2) * sin(HIT_BOX_ANGLE(prg) + M_PI/2); */
-// }
-
-
-
 #if BONUS_FLAG == 0
 
 bool check_collision(t_prg *prg, t_point *center, t_point *left, t_point *right)
