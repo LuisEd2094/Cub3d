@@ -84,5 +84,10 @@ void	free_mallocs(t_prg *prg)
 	free_img(prg->south_img);
 	free_img(prg->west_img);
 	free_img(prg->east_img);
+	free_img(prg->door_img);
+	free_img(prg->sprite[0]);
+	free_img(prg->sprite[1]);
+	free_img(prg->sprite[2]);
+
 	free_mini_map(prg->mini_map);
 }
