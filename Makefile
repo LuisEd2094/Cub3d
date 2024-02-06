@@ -12,7 +12,7 @@
 
 NAME        = cub3D
 NAME_BONUS	= $(NAME)_bonus
-CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/
@@ -100,7 +100,7 @@ CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
 AUX 		=	exit_error.c exit_success.c init_prg.c \
 				init_int_array.c check_file_extension.c is_new_line.c \
-				free_mallocs.c ft_max.c ft_min.c destoy_imgs.c \
+				ft_max.c ft_min.c destoy_imgs.c \
 				free_memory.c
 				
 AUX_FILES	= 	$(addprefix $(AUX_PATH), $(AUX))

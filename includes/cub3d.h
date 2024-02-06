@@ -115,8 +115,8 @@ typedef struct s_prg
 	t_img	east_img; //3
 	t_img	door_img; //
 	t_img	sprite[3];//
-    t_mlx   mlx;
 	t_img	img;
+    t_mlx   mlx;
 	t_map	mini_map;
 	t_pc	player;
 	t_ray	ray;
@@ -147,7 +147,6 @@ void	close_imgs_fd(t_prg *prg);
 int		check_if_invalid_ext(char *file_name, \
 		char *extension, int extension_len);
 bool	is_new_line(char *element);
-void	free_mallocs(t_prg *p);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 void	destroy_img(t_prg *prg);
