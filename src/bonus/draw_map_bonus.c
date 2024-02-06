@@ -59,7 +59,7 @@ void	draw_map(t_prg *prg)
 			if (y % (TILE_SIZE) == 0)
 				MAP_Y(prg)++;
 			MAP_PIXEL(prg) = MAP_GET_PIXEL(prg, x, y);
-			*(unsigned int *)MAP_PIXEL(prg) = (get_pixel_color(prg, x, y));
+			*(unsigned int *)MAP_PIXEL(prg) = (get_pixel_color(prg, x, y) + (42 << 24));
 		}
 	}
 }
