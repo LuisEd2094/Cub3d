@@ -36,7 +36,6 @@ void	get_x_values(t_prg *prg)
 	}
 	else
 	{
-		//printf("%i player CENTER %f PLAYER X\n", PLAYER_CENTER_X(prg), PLAYER_X(prg) * TILE_SIZE);
 		MAP_A_X(prg) = ((PLAYER_X(prg) * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * cos(prg->player.angle));
 		MAP_B_X(prg) = ((PLAYER_X(prg) * TILE_SIZE)) + \
@@ -53,11 +52,6 @@ int	get_map_y_position(t_prg *prg)
 			PLAYER_Y(prg) > (MAX_NUM_TILES / 2))
 		return (floor(PLAYER_Y(prg)) - (MAX_NUM_TILES / 2));
 	return (-1);
-
-	// if (prg->mini_map.off_set_y && \
-	// 		PLAYER_Y(prg) * TILE_SIZE + 1 > (MINI_MAP_SIZE / 2))
-	// 	return (((PLAYER_Y(prg) * TILE_SIZE + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE);
-	// return (-1);
 }
 
 void	get_y_values(t_prg *prg)
