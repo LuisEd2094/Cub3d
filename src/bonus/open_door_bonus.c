@@ -14,20 +14,20 @@
 
 int	open_door(t_prg *prg)
 {
-	int	map_x;
-	int	map_y;
+	double	map_x;
+	double	map_y;
 
 	HIT_BOX_ANGLE(prg) = atan2(CAMARA_Y(prg), CAMARA_X(prg));
-	map_x = (PLAYER_CENTER_X(prg) + (DOORS_PIXELS) * \
-			cos(HIT_BOX_ANGLE(prg))) / TILE_SIZE;
-	map_y = (PLAYER_CENTER_Y(prg) + (DOORS_PIXELS) * \
-			sin(HIT_BOX_ANGLE(prg))) / TILE_SIZE;
-	if (map_y == (int)PLAYER_Y(prg) && map_x == (int)PLAYER_X(prg))
+ 	map_x = (double)(PLAYER_X(prg) + (DOORS_PIXELS* \
+			cos(HIT_BOX_ANGLE(prg))));
+	map_y = (double)(PLAYER_Y(prg) + (DOORS_PIXELS * \
+			sin(HIT_BOX_ANGLE(prg))));
+	if ((int)map_y == (int)PLAYER_Y(prg) && (int)map_x == (int)PLAYER_X(prg))
 		return (0);
-	if (MAP(prg)[map_y][map_x] == '2')
-		MAP(prg)[map_y][map_x] = '3';
-	else if (MAP(prg)[map_y][map_x] == '3')
-		MAP(prg)[map_y][map_x] = '2';
+	if (MAP(prg)[(int)map_y][(int)map_x] == '2')
+		MAP(prg)[(int)map_y][(int)map_x] = '3';
+	else if (MAP(prg)[(int)map_y][(int)map_x] == '3')
+		MAP(prg)[(int)map_y][(int)map_x] = '2';
 	update_window(prg);
 	return (0);
 }

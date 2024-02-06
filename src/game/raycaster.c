@@ -19,15 +19,15 @@ void get_pixel_collision(t_prg *prg)
 	{
 		prg->ray->ray_end_y = ( PLAYER_Y(prg) + prg->ray->wall_dist * prg->ray->ray_dir_y);
 		prg->ray->ray_end_x = (prg->ray->map_x); // I think you need to check the dirction for this
-		if (prg->ray->ray_dir_x < 0)
-		prg->ray->ray_end_x += 1;
+		//if (prg->ray->ray_dir_x < 0)
+		//prg->ray->ray_end_x += 1;
 	}
 	else // If the ray hit a horizontal wall
 	{
 	prg->ray->ray_end_x = ((PLAYER_X(prg) + prg->ray->wall_dist * prg->ray->ray_dir_x));
 		prg->ray->ray_end_y = (prg->ray->map_y);
-		if (prg->ray->ray_dir_y < 0)
-			prg->ray->ray_end_y += 1;
+		//if (prg->ray->ray_dir_y < 0)
+		//	prg->ray->ray_end_y += 1;
 	}
 }
 
