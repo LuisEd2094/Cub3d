@@ -1,8 +1,8 @@
 
-NO /Users/lsoto-do/core04/Cub3d/imgs/north.xpm
-SO /Users/lsoto-do/core04/Cub3d/imgs/south.xpm
-WE /Users/lsoto-do/core04/Cub3d/imgs/west.xpm
-EA /Users/lsoto-do/core04/Cub3d/imgs/noaccess.xpm
+NO /home/luised94/Cub3d/imgs/north.xpm
+SO /home/luised94/Cub3d/imgs/south.xpm
+WE /home/luised94/Cub3d/imgs/west.xpm
+EA /home/luised94/Cub3d/imgs/noaccess.xpm
 F 220,100,0
 C 225,30,0
 
