@@ -27,20 +27,20 @@ void	get_x_values(t_prg *prg)
 			prg->player.x > (MAX_NUM_TILES / 2))
 	{
 		prg->mini_map.x_pos = floor(prg->player.x) - (MAX_NUM_TILES / 2);
-		MAP_A_X(prg) = get_coordinate(prg, &cos, \
+		prg->mini_map.a.x = get_coordinate(prg, &cos, \
 				modf(prg->player.x, &integer), 0);
-		MAP_B_X(prg) = get_coordinate(prg, &cos, \
+		prg->mini_map.b.x = get_coordinate(prg, &cos, \
 				modf(prg->player.x, &integer), 2.0);
-		MAP_C_X(prg) = get_coordinate(prg, &cos, \
+		prg->mini_map.c.x = get_coordinate(prg, &cos, \
 				modf(prg->player.x, &integer), 4.0);
 	}
 	else
 	{
-		MAP_A_X(prg) = ((prg->player.x * TILE_SIZE)) + \
+		prg->mini_map.a.x = ((prg->player.x * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * cos(prg->player.angle));
-		MAP_B_X(prg) = ((prg->player.x * TILE_SIZE)) + \
+		prg->mini_map.b.x = ((prg->player.x * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * cos(prg->player.angle + (2.0 * M_PI / 3.0)));
-		MAP_C_X(prg) = ((prg->player.x * TILE_SIZE)) + \
+		prg->mini_map.c.x = ((prg->player.x * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * cos(prg->player.angle + (4.0 * M_PI / 3.0)));
 		prg->mini_map.x_pos = -1;
 	}
@@ -61,20 +61,20 @@ void	get_y_values(t_prg *prg)
 	if (prg->mini_map.off_set_y && \
 			prg->player.y > (MAX_NUM_TILES / 2))
 	{
-		MAP_A_Y(prg) = get_coordinate(prg, \
+		prg->mini_map.a.y = get_coordinate(prg, \
 				&sin, modf(prg->player.y, &integer), 0);
-		MAP_B_Y(prg) = get_coordinate(prg, \
+		prg->mini_map.b.y = get_coordinate(prg, \
 				&sin, modf(prg->player.y, &integer), 2.0);
-		MAP_C_Y(prg) = get_coordinate(prg, \
+		prg->mini_map.c.y = get_coordinate(prg, \
 				&sin, modf(prg->player.y, &integer), 4.0);
 	}
 	else
 	{
-		MAP_A_Y(prg) = ((prg->player.y * TILE_SIZE)) + \
+		prg->mini_map.a.y = ((prg->player.y * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * sin(prg->player.angle));
-		MAP_B_Y(prg) = ((prg->player.y * TILE_SIZE + 1)) + \
+		prg->mini_map.b.y = ((prg->player.y * TILE_SIZE + 1)) + \
 		((TILE_SIZE / 2) * sin(prg->player.angle + (2.0 * M_PI / 3.0)));
-		MAP_C_Y(prg) = ((prg->player.y * TILE_SIZE + 1)) + \
+		prg->mini_map.c.y = ((prg->player.y * TILE_SIZE + 1)) + \
 		((TILE_SIZE / 2) * sin(prg->player.angle + (4.0 * M_PI / 3.0)));
 	}
 }

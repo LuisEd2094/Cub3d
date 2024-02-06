@@ -58,8 +58,8 @@ void	draw_map(t_prg *prg)
 		{
 			if (y % (TILE_SIZE) == 0)
 				prg->mini_map.y_pos++;
-			MAP_PIXEL(prg) = (prg->mini_map.t_img.addr) + (y * prg->mini_map.t_img.line_length + x * (prg->mini_map.t_img.bpp / 8));
-			*(unsigned int *)MAP_PIXEL(prg) = (get_pixel_color(prg, x, y) + (42 << 24));
+			prg->mini_map.pixel = (prg->mini_map.t_img.addr) + (y * prg->mini_map.t_img.line_length + x * (prg->mini_map.t_img.bpp / 8));
+			*(unsigned int *)prg->mini_map.pixel = (get_pixel_color(prg, x, y) + (42 << 24));
 		}
 	}
 }
