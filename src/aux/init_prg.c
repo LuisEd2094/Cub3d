@@ -39,7 +39,7 @@ static t_img *init_img(void)
 {
 	t_img *img;
 
-	img = (t_img *)malloc(sizeof (t_img));
+	img = (t_img *)malloc(sizeof(t_img));
 	if (img)
 		img->img = NULL;
 	return (img);
