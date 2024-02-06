@@ -47,9 +47,7 @@ static t_img *init_img(void)
 
 static void	init_prg_structs(t_prg *prg)
 {	
-	prg->mlx = (t_mlx *)malloc(sizeof (t_mlx));
-	if (prg->mlx)
-		prg->mlx->window = NULL;
+	prg->mlx.window = NULL;
 	prg->north_img = init_img();
 	prg->south_img = init_img();
 	prg->west_img = init_img();
@@ -87,7 +85,7 @@ static bool	check_correct_inits(t_prg *prg)
 void	init_prg(t_prg *prg)
 {
 	init_prg_structs(prg);
-	if (!prg->mlx || !prg->player || !prg->ray || !prg->img || !prg->mini_map \
+	if (!prg->player || !prg->ray || !prg->img || !prg->mini_map \
 		|| !prg->north_img || !prg->west_img || !prg->south_img || !prg->east_img)
 		exit_error(NULL, prg);
 	init_player(prg->player);

@@ -136,7 +136,7 @@ typedef struct s_prg
 	char	*error_msg;
 	int		mouse_delta;
 	int		prev_mouse;
-    t_mlx   *mlx;
+    t_mlx   mlx;
 	t_img	*img;
 	t_map	*mini_map;
 	t_pc	*player;

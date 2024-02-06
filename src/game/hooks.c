@@ -29,8 +29,8 @@ int	key_hook(int key, t_prg *prg)
 
 void	get_hooks(t_prg *prg)
 {
-	mlx_hook(prg->mlx->window, 17, 0, close_game, (void *)prg);
-	mlx_hook(prg->mlx->window, 2, 0, key_hook, (void *)prg);
+	mlx_hook(prg->mlx.window, 17, 0, close_game, (void *)prg);
+	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg);
 }
 
 #else
@@ -81,9 +81,9 @@ int	mouse_move(int x, int y, t_prg *prg)
 
 void	get_hooks(t_prg *prg)
 {
-	mlx_hook(prg->mlx->window, 17, 0, close_game, (void *)prg);
-	mlx_hook(prg->mlx->window, 6, 0, mouse_move, (void *)prg);
-	mlx_hook(prg->mlx->window, 2, 0, key_hook, (void *)prg);
+	mlx_hook(prg->mlx.window, 17, 0, close_game, (void *)prg);
+	mlx_hook(prg->mlx.window, 6, 0, mouse_move, (void *)prg);
+	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg);
 }
 
 #endif
