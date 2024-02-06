@@ -1,27 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_move.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/06 13:37:35 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/06 13:39:14 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
-
-
-#if BONUS_FLAG == 0
-
-bool check_collision(t_prg *prg, t_point *center, t_point *left, t_point *right)
-{
-  if (MAP(prg)[center->y / TILE_SIZE][center->x / TILE_SIZE] == '1')
-    return (0);
-  return (1);
-}
-
-#else
-
-bool check_collision(t_prg *prg, t_point *center, t_point *left, t_point *right)
-{
-  if (MAP(prg)[center->y / TILE_SIZE][center->x / TILE_SIZE] == '1')
-    return (0);
-  if (MAP(prg)[center->y / TILE_SIZE][center->x / TILE_SIZE] == '2')
-    return (0);
-  return (1);
-}
-#endif
-
 
 int	make_move(t_prg *prg, int dir, int side)
 {

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/06 13:36:16 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/06 13:37:13 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
-int close_game(t_prg *prg)
+int	close_game(t_prg *prg)
 {
-  exit_success(prg); 
-  return (0);
+	exit_success(prg);
+	return (0);
 }
 
 #if BONUS_FLAG == 0
@@ -34,7 +46,8 @@ void	get_hooks(t_prg *prg)
 }
 
 #else
-int key_hook(int key, t_prg *prg)
+
+int	key_hook(int key, t_prg *prg)
 {
 	prg->i = 1;
 	if (key == KEY_ESC || key == KEY_Q)
@@ -69,7 +82,7 @@ int	mouse_move(int x, int y, t_prg *prg)
 	if (prg->mouse_delta < 0)
 	{
 		prg->i = 0;
-		return (rotate_player(prg, -1, -prg->mouse_delta)); //800 / 360 = 2.222222
+		return (rotate_player(prg, -1, -prg->mouse_delta));
 	}
 	else if (prg->mouse_delta > 0)
 	{

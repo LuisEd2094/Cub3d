@@ -6,7 +6,7 @@
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:11:44 by apodader          #+#    #+#             */
-/*   Updated: 2024/01/26 11:11:44 by apodader         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:41:31 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,15 @@
 
 void get_pixel_collision(t_prg *prg)
 {
-	if (prg->ray.side == 0) // If the ray hit a vertical wall
+	if (prg->ray.side == 0)
 	{
 		prg->ray.ray_end_y = ( PLAYER_Y(prg) + prg->ray.wall_dist * prg->ray.ray_dir_y);
-		prg->ray.ray_end_x = (prg->ray.map_x); // I think you need to check the dirction for this
-		//if (prg->ray.ray_dir_x < 0)
-		//prg->ray.ray_end_x += 1;
+		prg->ray.ray_end_x = (prg->ray.map_x);
 	}
-	else // If the ray hit a horizontal wall
+	else
 	{
 	prg->ray.ray_end_x = ((PLAYER_X(prg) + prg->ray.wall_dist * prg->ray.ray_dir_x));
 		prg->ray.ray_end_y = (prg->ray.map_y);
-		//if (prg->ray.ray_dir_y < 0)
-		//	prg->ray.ray_end_y += 1;
 	}
 }
 
@@ -50,6 +46,7 @@ void init_ray(t_prg *prg, int i)
 }
 
 #if BONUS_FLAG == 0
+
 void	raycaster(t_prg *prg)
 {
 	int i;
@@ -85,7 +82,6 @@ void	raycaster(t_prg *prg)
 			prg->ray.wall_dist = prg->ray.side_dist_y - prg->ray.delta_disy_y;
 		get_pixel_collision(prg);
 		ray_to_img(prg, i);
-		//draw_ray(prg);
 	}
 }
 #endif

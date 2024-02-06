@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dda.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/06 13:35:04 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/06 13:36:08 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
 void	init_dda(t_prg *prg)
@@ -5,27 +17,31 @@ void	init_dda(t_prg *prg)
 	if (prg->ray.ray_dir_x < 0)
 	{
 		prg->ray.step_x = -1;
-		prg->ray.side_dist_x = (PLAYER_X(prg) - prg->ray.map_x) * prg->ray.delta_dist_x;
+		prg->ray.side_dist_x = (PLAYER_X(prg) - prg->ray.map_x) * \
+								prg->ray.delta_dist_x;
 	}
 	else
 	{
 		prg->ray.step_x = 1;
-		prg->ray.side_dist_x = (prg->ray.map_x + 1.0 - PLAYER_X(prg)) * prg->ray.delta_dist_x;
+		prg->ray.side_dist_x = (prg->ray.map_x + 1.0 - PLAYER_X(prg)) * \
+							prg->ray.delta_dist_x;
 	}
 	if (prg->ray.ray_dir_y < 0)
 	{
 		prg->ray.step_y = -1;
-		prg->ray.side_dist_y = (PLAYER_Y(prg) - prg->ray.map_y) * prg->ray.delta_disy_y;
+		prg->ray.side_dist_y = (PLAYER_Y(prg) - prg->ray.map_y) * \
+							prg->ray.delta_disy_y;
 	}
 	else
 	{
 		prg->ray.step_y = 1;
-		prg->ray.side_dist_y = (prg->ray.map_y + 1.0 - PLAYER_Y(prg)) * prg->ray.delta_disy_y;
+		prg->ray.side_dist_y = (prg->ray.map_y + 1.0 - PLAYER_Y(prg)) * \
+							prg->ray.delta_disy_y;
 	}
 }
 
-
 #if BONUS_FLAG == 0
+
 void	perform_dda(t_prg *prg)
 {
 	while (prg->ray.hit == 0)
