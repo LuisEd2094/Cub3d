@@ -22,17 +22,17 @@ void get_pixel_collision(t_prg *prg)
 	}
 	else
 	{
-	prg->ray.ray_end_x = ((PLAYER_X(prg) + prg->ray.wall_dist * prg->ray.ray_dir_x));
+	prg->ray.ray_end_x = ((PLAYER_X + prg->ray.wall_dist * prg->ray.ray_dir_x));
 		prg->ray.ray_end_y = (prg->ray.map_y);
 	}
 }
 
 void init_ray(t_prg *prg, int i)
 {
-	prg->ray.camera = 2 * i / (double)w - 1;
+	prg->ray.camera = 2 * i / (double)W - 1;
 	prg->ray.ray_dir_x = prg->camara_x + prg->plane_x * prg->ray.camera;
 	prg->ray.ray_dir_y = prg->camara_y + prg->plane_y * prg->ray.camera;
-	prg->ray.map_x = (int)PLAYER_X(prg);
+	prg->ray.map_x = (int)PLAYER_X;
 	prg->ray.map_y = (int)PLAYER_Y(prg);
 	prg->ray.hit = 0;
 	if (prg->ray.ray_dir_x == 0)
@@ -52,7 +52,7 @@ void	raycaster(t_prg *prg)
 	int i;
 
 	i = -1;
-	while(++i < w)
+	while(++i < W)
 	{
 		init_ray(prg, i);
 		init_dda(prg);
@@ -71,7 +71,7 @@ void	raycaster(t_prg *prg)
 	int i;
 	
 	i = -1;
-	while (++i < w)
+	while (++i < W)
 	{
 		init_ray(prg, i);
 		init_dda(prg);

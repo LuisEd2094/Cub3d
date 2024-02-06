@@ -1,6 +1,5 @@
 //# PLAYER MACROS
-#define PLAYER(prg) (prg->player)
-#define PLAYER_X(prg) (prg->player.x)
+#define PLAYER_X prg->player.x
 #define PLAYER_Y(prg) (prg->player.y)
 #define PLAYER_DIR_X(prg) (prg->player.dir->x)
 #define PLAYER_DIR_Y(prg) (prg->player.dir->y)
@@ -10,9 +9,6 @@
 #define PLAYER_RIGHT_Y(prg) (prg->player.right_corner->y)
 
 #define PLAYER_ANGLE(prg) (prg->player.angle)
-#define HIT_BOX_CENTER(prg) (prg->player.hit_box_center)
-#define HIT_BOX_LEFT(prg)	(prg->player.hit_box_left)
-#define HIT_BOX_RIGHT(prg)	(prg->player.hit_box_right)
 #define HIT_BOX_ANGLE(prg) (prg->player.hit_box_angle)
 
 //RAY MACROS

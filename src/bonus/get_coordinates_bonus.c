@@ -24,23 +24,23 @@ void	get_x_values(t_prg *prg)
 	double	integer;
 
 	if (prg->mini_map.off_set_x && \
-			PLAYER_X(prg) > (MAX_NUM_TILES / 2))
+			PLAYER_X > (MAX_NUM_TILES / 2))
 	{
-		MAP_X(prg) = floor(PLAYER_X(prg)) - (MAX_NUM_TILES / 2);
+		MAP_X(prg) = floor(PLAYER_X) - (MAX_NUM_TILES / 2);
 		MAP_A_X(prg) = get_coordinate(prg, &cos, \
-				modf(PLAYER_X(prg), &integer), 0);
+				modf(PLAYER_X, &integer), 0);
 		MAP_B_X(prg) = get_coordinate(prg, &cos, \
-				modf(PLAYER_X(prg), &integer), 2.0);
+				modf(PLAYER_X, &integer), 2.0);
 		MAP_C_X(prg) = get_coordinate(prg, &cos, \
-				modf(PLAYER_X(prg), &integer), 4.0);
+				modf(PLAYER_X, &integer), 4.0);
 	}
 	else
 	{
-		MAP_A_X(prg) = ((PLAYER_X(prg) * TILE_SIZE)) + \
+		MAP_A_X(prg) = ((PLAYER_X * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * cos(prg->player.angle));
-		MAP_B_X(prg) = ((PLAYER_X(prg) * TILE_SIZE)) + \
+		MAP_B_X(prg) = ((PLAYER_X * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * cos(prg->player.angle + (2.0 * M_PI / 3.0)));
-		MAP_C_X(prg) = ((PLAYER_X(prg) * TILE_SIZE)) + \
+		MAP_C_X(prg) = ((PLAYER_X * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * cos(prg->player.angle + (4.0 * M_PI / 3.0)));
 		MAP_X(prg) = -1;
 	}

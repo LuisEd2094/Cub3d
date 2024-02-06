@@ -1,23 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   config.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/06 13:48:55 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/06 13:52:17 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONFIG_H
 # define CONFIG_H
 
-#define w 800
-#define h 600
+# define W 800
+# define H 600
 
 # define TILE_SIZE	24
 # define MAX_NUM_TILES 8
-# define MINI_MAP_SIZE TILE_SIZE * MAX_NUM_TILES
+# define MINI_MAP_SIZE 192
 
-
-#define RGB_GREY 0x808080
-#define RGB_DARK_RED 0x880000
-#define RGB_LIGHT_RED 0xA80000
-#define RGB_BLUE 0x6495ED
+# define RGB_GREY 0x808080
+# define RGB_DARK_RED 0x880000
+# define RGB_LIGHT_RED 0xA80000
+# define RGB_BLUE 0x6495ED
 
 # define MOVE_SPEED 0.125
 # define DOORS_PIXELS 0.3
-# define MOVE_PIXELS (TILE_SIZE * (MOVE_SPEED) +  (TILE_SIZE * (MOVE_SPEED / 2))) // I want to use ints since those operations are cheaper
-# define HIT_BOX    MOVE_SPEED * 2
 # define ROTATION_ANGLE 45
 
 #endif

@@ -17,13 +17,13 @@ void	init_dda(t_prg *prg)
 	if (prg->ray.ray_dir_x < 0)
 	{
 		prg->ray.step_x = -1;
-		prg->ray.side_dist_x = (PLAYER_X(prg) - prg->ray.map_x) * \
+		prg->ray.side_dist_x = (PLAYER_X - prg->ray.map_x) * \
 								prg->ray.delta_dist_x;
 	}
 	else
 	{
 		prg->ray.step_x = 1;
-		prg->ray.side_dist_x = (prg->ray.map_x + 1.0 - PLAYER_X(prg)) * \
+		prg->ray.side_dist_x = (prg->ray.map_x + 1.0 - PLAYER_X) * \
 							prg->ray.delta_dist_x;
 	}
 	if (prg->ray.ray_dir_y < 0)

@@ -12,7 +12,7 @@
 
 NAME        = cub3D
 NAME_BONUS	= $(NAME)_bonus
-CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/
@@ -72,7 +72,7 @@ endif
 
 LDFLAGS		= 	-L$(LIB_PATH) -lft -lm -L$(MLX_PATH) -lmlx $(FRAME)
 
-INCS        = -I./includes/ -I$(LIB_PATH)/includes
+INCS        = -I./includes/ -I$(LIB_PATH)/includes -I$(MLX_PATH)
 #Colors
 
 

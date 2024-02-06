@@ -28,15 +28,15 @@ int	make_move(t_prg *prg, int dir, int side)
 		dx = -prg->camara_y * MOVE_SPEED * dir;
 		dy = prg->camara_x * MOVE_SPEED * dir;
 	}
-	PLAYER_X(prg) += dx;
+	PLAYER_X += dx;
 	PLAYER_Y(prg) += dy;
-	if (prg->map[(int)(PLAYER_Y(prg) - dy)][(int)PLAYER_X(prg)] == '1'
-		|| prg->map[(int)(PLAYER_Y(prg) - dy)][(int)PLAYER_X(prg)] == '2')
+	if (prg->map[(int)(PLAYER_Y(prg) - dy)][(int)PLAYER_X] == '1'
+		|| prg->map[(int)(PLAYER_Y(prg) - dy)][(int)PLAYER_X] == '2')
 	{
-		PLAYER_X(prg) -= dx;
+		PLAYER_X -= dx;
 	}
-	if (prg->map[(int)PLAYER_Y(prg)][(int)(PLAYER_X(prg) - dx)] == '1'
-		|| prg->map[(int)PLAYER_Y(prg)][(int)(PLAYER_X(prg) - dx)] == '2')
+	if (prg->map[(int)PLAYER_Y(prg)][(int)(PLAYER_X - dx)] == '1'
+		|| prg->map[(int)PLAYER_Y(prg)][(int)(PLAYER_X - dx)] == '2')
 	{
 		PLAYER_Y(prg) -= dy;
 	}

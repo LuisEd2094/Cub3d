@@ -54,17 +54,17 @@ void	ray_to_img(t_prg *prg, int i)
 	t_img			*img;
 	unsigned int	color; 
 
-	line_h = (int)(h / prg->ray.wall_dist);
-	start = -line_h / 2 + h / 2;
+	line_h = (int)(H / prg->ray.wall_dist);
+	start = -line_h / 2 + H / 2;
 	if (start < 0)
 		start = 0;
-	end = line_h / 2 + h / 2;
-	if (end >= h)
-		end = h - 1;
+	end = line_h / 2 + H / 2;
+	if (end >= H)
+		end = H - 1;
 	img = get_img(prg);
 	float step = 1.0 * img->height / line_h;
-	float y =  (start - h / 2 + line_h / 2) * step;	
-	for (int j = 0; j < h; j++)
+	float y =  (start - H / 2 + line_h / 2) * step;	
+	for (int j = 0; j < H; j++)
 	{
 		pixel = (void *)prg->img.addr + (j * prg->img.line_length + i * (prg->img.bpp / 8));
 

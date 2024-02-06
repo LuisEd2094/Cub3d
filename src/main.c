@@ -23,8 +23,8 @@ int	main(int argc, char *argv[])
 	prg.mlx.ptr = mlx_init();
 	if (!prg.mlx.ptr)
 		exit_error(NULL, &prg);
-	prg.mlx.window = mlx_new_window(prg.mlx.ptr, w, h, "cub3d");
-	prg.img.img = mlx_new_image(prg.mlx.ptr, w, h);
+	prg.mlx.window = mlx_new_window(prg.mlx.ptr, W, H, "cub3d");
+	prg.img.img = mlx_new_image(prg.mlx.ptr, W, H);
 	if (!prg.mlx.window || !prg.img.img)
 		exit_error(NULL, &prg);
 	prg.img.addr = mlx_get_data_addr(prg.img.img, &prg.img.bpp,

@@ -32,6 +32,6 @@ void	update_window(t_prg *prg)
 	mlx_put_image_to_window(prg->mlx.ptr, prg->mlx.window, \
 			prg->mini_map.t_img.img, 0, 0);
 	mlx_put_image_to_window(prg->mlx.ptr, prg->mlx.window, \
-			prg->sprite[prg->i].img, w / 2 - 75, h - 193);
+			prg->sprite[prg->i].img, W / 2 - 75, H - 193);
 }
 #endif
