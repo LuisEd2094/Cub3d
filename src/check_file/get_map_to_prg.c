@@ -23,8 +23,8 @@ bool	init_map(t_parseer *p, t_prg *prg)
 
 void	set_player_pos_and_mini_map(t_prg *prg, int x, int y)
 {
-	PLAYER_X = x + 0.5;
-	PLAYER_Y(prg) = y + 0.5;
+	prg->player.x = x + 0.5;
+	prg->player.y = y + 0.5;
 }
 
 char	set_player_info(t_prg *prg, char c, int y, int x)

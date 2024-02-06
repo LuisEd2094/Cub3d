@@ -17,12 +17,12 @@ int	open_door(t_prg *prg)
 	double	map_x;
 	double	map_y;
 
-	HIT_BOX_ANGLE(prg) = atan2(CAMARA_Y(prg), CAMARA_X(prg));
-	map_x = (double)(PLAYER_X + (DOORS_PIXELS * \
-			cos(HIT_BOX_ANGLE(prg))));
-	map_y = (double)(PLAYER_Y(prg) + (DOORS_PIXELS * \
-			sin(HIT_BOX_ANGLE(prg))));
-	if ((int)map_y == (int)PLAYER_Y(prg) && (int)map_x == (int)PLAYER_X)
+	prg->player.hit_box_angle = atan2(CAMARA_Y(prg), CAMARA_X(prg));
+	map_x = (double)(prg->player.x + (DOORS_PIXELS * \
+			cos(prg->player.hit_box_angle)));
+	map_y = (double)(prg->player.y + (DOORS_PIXELS * \
+			sin(prg->player.hit_box_angle)));
+	if ((int)map_y == (int)prg->player.y && (int)map_x == (int)prg->player.x)
 		return (0);
 	if (MAP(prg)[(int)map_y][(int)map_x] == '2')
 		MAP(prg)[(int)map_y][(int)map_x] = '3';

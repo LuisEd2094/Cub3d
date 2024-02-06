@@ -1,27 +1,4 @@
 //# PLAYER MACROS
-#define PLAYER_X prg->player.x
-#define PLAYER_Y(prg) (prg->player.y)
-#define PLAYER_DIR_X(prg) (prg->player.dir->x)
-#define PLAYER_DIR_Y(prg) (prg->player.dir->y)
-#define PLAYER_LEFT_X(prg) (prg->player.left_corner->x)
-#define PLAYER_LEFT_Y(prg) (prg->player.left_corner->y)
-#define PLAYER_RIGHT_X(prg) (prg->player.right_corner->x)
-#define PLAYER_RIGHT_Y(prg) (prg->player.right_corner->y)
-
-#define PLAYER_ANGLE(prg) (prg->player.angle)
-#define HIT_BOX_ANGLE(prg) (prg->player.hit_box_angle)
-
-//RAY MACROS
-#define RAY_DIRECTION_X(prg) (prg->ray.dir_x)
-#define RAY_DIRECTION_Y(prg) (prg->ray.dir_y)
-#define RAY_DELTA_X(prg) (prg->ray.delta_dist_x)
-#define RAY_DELTA_Y(prg) (prg->ray.delta_dist_y)
-#define RAY_STEP_X(prg) (prg->ray.map_step_x)
-#define RAY_STEP_Y(prg) (prg->ray.map_step_y)
-#define RAY_DIST_X(prg) (prg->ray.side_dist_x)
-#define RAY_DIST_Y(prg) (prg->ray.side_dist_y)
-#define RAY_MAP_X(prg)	(prg->ray.map_x)
-#define RAY_MAP_Y(prg)	(prg->ray.map_y)
 
 // MLX MACROS
 #define MLX_PTR(prg) (prg->mlx->ptr)
