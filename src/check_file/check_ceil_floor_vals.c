@@ -6,7 +6,7 @@
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:25:07 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/01 10:02:12 by apodader         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:25:52 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	get_rgb_vals(char **rgb_array, t_prg *p)
 		if (array[i] < 0 || array[i] > 255)
 		{
 			p->error_msg = RGB_ERROR;
-			return (0) ;
+			return (0);
 		}
 		i++;
 	}
