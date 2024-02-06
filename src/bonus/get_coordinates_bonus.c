@@ -26,7 +26,7 @@ void	get_x_values(t_prg *prg)
 	if (prg->mini_map.off_set_x && \
 			prg->player.x > (MAX_NUM_TILES / 2))
 	{
-		MAP_X(prg) = floor(prg->player.x) - (MAX_NUM_TILES / 2);
+		prg->mini_map.x_pos = floor(prg->player.x) - (MAX_NUM_TILES / 2);
 		MAP_A_X(prg) = get_coordinate(prg, &cos, \
 				modf(prg->player.x, &integer), 0);
 		MAP_B_X(prg) = get_coordinate(prg, &cos, \
@@ -42,7 +42,7 @@ void	get_x_values(t_prg *prg)
 		((TILE_SIZE / 2) * cos(prg->player.angle + (2.0 * M_PI / 3.0)));
 		MAP_C_X(prg) = ((prg->player.x * TILE_SIZE)) + \
 		((TILE_SIZE / 2) * cos(prg->player.angle + (4.0 * M_PI / 3.0)));
-		MAP_X(prg) = -1;
+		prg->mini_map.x_pos = -1;
 	}
 }
 

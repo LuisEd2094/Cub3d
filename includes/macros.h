@@ -11,17 +11,14 @@
 
 // MAP MACROS
 #define MAP_IMG(prg) (prg->mini_map.t_img.img)
-#define MAP_ADDR(prg) (prg->mini_map.t_img.addr)
-#define MAP_BPP(prg) (prg->mini_map.t_img.bpp)
-#define MAP_LINE(prg) (prg->mini_map.t_img.line_length)
 #define MAP_ENDIAN(prg) (prg->mini_map.t_img.endian)
-#define MAP_GET_PIXEL(prg, x,y) (MAP_ADDR(prg) + (y * MAP_LINE(prg) + x * (MAP_BPP(prg) / 8)))
-#define MAP_W(prg) ((prg->map_w + 1) * TILE_SIZE)
-#define MAP_H(prg) ((prg->map_h) * TILE_SIZE)
-#define MAP_MAX_W(prg) (prg->mini_map.max_w)
-#define MAP_MAX_H(prg) (prg->mini_map.max_h)
-#define MAP_X(prg) (prg->mini_map.x_pos)
-#define MAP_Y(prg) (prg->mini_map.y_pos)
+//#define (prg->mini_map.t_img.addr) + (y * prg->mini_map.t_img.line_length + x * (prg->mini_map.t_img.bpp / 8)) ((prg->mini_map.t_img.addr) + (y * prg->mini_map.t_img.line_length + x * (prg->mini_map.t_img.bpp / 8)))
+/* #define (prg->map_w + 1) * TILE_SIZE ((prg->map_w + 1) * TILE_SIZE)
+#define (prg->map_h) * TILE_SIZE ((prg->map_h) * TILE_SIZE) */
+/* #define prg->mini_map.max_w (prg->mini_map.max_w)
+#define prg->mini_map.max_h (prg->mini_map.max_h)
+#define prg->mini_map.x_pos (prg->mini_map.x_pos)
+#define prg->mini_map.y_pos (prg->mini_map.y_poss) */
 #define MAP_DX(prg) (prg->mini_map.dx)
 #define MAP_DY(prg) (prg->mini_map.dy)
 #define MAP_SX(prg) (prg->mini_map.sx)

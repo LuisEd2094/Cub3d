@@ -23,9 +23,9 @@ bool	parse_file(int fd, t_prg *prg)
 	if (!parse_map(fd, prg, &parse) || errno)
 		return (false);
 	// if bonus need to get max value for map 
-	MAP_MAX_W(prg) = ft_min(MAP_W(prg), MINI_MAP_SIZE);
-	MAP_MAX_H(prg) = ft_min(MAP_H(prg), MINI_MAP_SIZE);
-	prg->mini_map.off_set_x = MAP_W(prg) > MINI_MAP_SIZE;
-	prg->mini_map.off_set_y = MAP_H(prg) > MINI_MAP_SIZE;
+	prg->mini_map.max_w = ft_min((prg->map_w + 1) * TILE_SIZE, MINI_MAP_SIZE);
+	prg->mini_map.max_h = ft_min((prg->map_h) * TILE_SIZE, MINI_MAP_SIZE);
+	prg->mini_map.off_set_x = (prg->map_w + 1) * TILE_SIZE > MINI_MAP_SIZE;
+	prg->mini_map.off_set_y = (prg->map_h) * TILE_SIZE > MINI_MAP_SIZE;
 	return (true);
 }
