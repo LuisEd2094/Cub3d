@@ -4,5 +4,6 @@
 void free_memory(t_prg *prg)
 {
 	destroy_img(prg);
-	free_mallocs(prg);
+	free_2d_array((void **)prg->map);
+	//free_mallocs(prg);
 }

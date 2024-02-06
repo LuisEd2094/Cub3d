@@ -29,8 +29,6 @@
 # include <config.h>
 # include <float.h>
 
-
-
 typedef struct s_point
 {
 	int x;
@@ -117,6 +115,11 @@ typedef struct s_prg
 	t_img	east_img; //3
 	t_img	door_img; //
 	t_img	sprite[3];//
+    t_mlx   mlx;
+	t_img	img;
+	t_map	mini_map;
+	t_pc	player;
+	t_ray	ray;
 	int		i;
 	int		floor_vals;
 	int		ceiling_vals;
@@ -130,11 +133,6 @@ typedef struct s_prg
 	char	*error_msg;
 	int		mouse_delta;
 	int		prev_mouse;
-    t_mlx   mlx;
-	t_img	img;
-	t_map	mini_map;
-	t_pc	player;
-	t_ray	ray;
 }	t_prg;
 
 
