@@ -4,20 +4,20 @@
 t_img *get_img(t_prg *prg)
 {
 	if (prg->map[(int)prg->ray->ray_end_y][(int)prg->ray->ray_end_x] == '2')
-		return (prg->door_img);
+		return (&(prg->door_img));
 	if (!prg->ray->side) //E or W
 	{
 		if (prg->ray->ray_dir_x < 0) // E
-			return (prg->east_img);
+			return (&(prg->east_img));
 		else
-			return (prg->west_img);
+			return (&(prg->west_img));
 	}
 	else 
 	{
 		if (prg->ray->ray_dir_y < 0) // E
-			return (prg->south_img);
+			return (&(prg->south_img));
 		else
-			return (prg->north_img);
+			return (&(prg->north_img));
 	}
 }
 
@@ -44,10 +44,6 @@ void	ray_to_img(t_prg *prg, int i)
 	unsigned int		color; 
 
 	line_h = (int)(h / prg->ray->wall_dist);
-	
-	float step= 1.0 * prg->north_img->height / line_h;
-
-
 	start = -line_h / 2 + h / 2;
 	if (start < 0)
 		start = 0;
@@ -55,13 +51,12 @@ void	ray_to_img(t_prg *prg, int i)
 	if (end >= h)
 		end = h - 1;
 	img = get_img(prg);
-
-	float y =  (start - h / 2 + line_h / 2) * step;
-
+	float step = 1.0 * img->height / line_h;
+	float y =  (start - h / 2 + line_h / 2) * step;	
 	for (int j = 0; j < h; j++)
 	{
 		pixel = (void *)prg->img.addr + (j * prg->img.line_length + i * (prg->img.bpp / 8));
-		step = 1.0 * img->height / line_h;
+
 		if (j < start)
 			*(unsigned int*)pixel = prg->ceiling_vals;
 		else if (j < floor(end - step))

@@ -117,12 +117,12 @@ typedef struct s_map
 
 typedef struct s_prg
 {
-	t_img	*north_img; //0
-	t_img	*south_img; // 1
-	t_img	*west_img; //2
-	t_img	*east_img; //3
-	t_img	*door_img; //
-	t_img	*sprite[3];//
+	t_img	north_img; //0
+	t_img	south_img; // 1
+	t_img	west_img; //2
+	t_img	east_img; //3
+	t_img	door_img; //
+	t_img	sprite[3];//
 	int		i;
 	int		floor_vals;
 	int		ceiling_vals;

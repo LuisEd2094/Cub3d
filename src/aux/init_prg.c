@@ -48,15 +48,15 @@ static t_img *init_img(void)
 static void	init_prg_structs(t_prg *prg)
 {	
 	prg->mlx.window = NULL;
-	prg->north_img = init_img();
-	prg->south_img = init_img();
-	prg->west_img = init_img();
-	prg->east_img = init_img();
+	//&(prg->north_img) = init_img();
+	// prg->south_img = init_img();
+	// prg->west_img = init_img();
+	// prg->east_img = init_img();
 	//prg->img = init_img();
-	prg->door_img = init_img();  //
-	prg->sprite[0] = init_img(); //
-	prg->sprite[1] = init_img(); // bonus
-	prg->sprite[2] = init_img(); //
+	// prg->door_img = init_img();  //
+	// prg->sprite[0] = init_img(); //
+	// prg->sprite[1] = init_img(); // bonus
+	// prg->sprite[2] = init_img(); //
 	prg->player = (t_pc *)malloc(sizeof(t_pc));
 	prg->ray = (t_ray *)malloc(sizeof(t_ray));
 	//prg->mini_map= (t_map *)malloc(sizeof(t_map));
@@ -82,8 +82,7 @@ static bool	check_correct_inits(t_prg *prg)
 void	init_prg(t_prg *prg)
 {
 	init_prg_structs(prg);
-	if (!prg->player || !prg->ray \
-		|| !prg->north_img || !prg->west_img || !prg->south_img || !prg->east_img)
+	if (!prg->player || !prg->ray )
 		exit_error(NULL, prg);
 	prg->mini_map.t_img.img  = NULL;
 	init_player(prg->player);

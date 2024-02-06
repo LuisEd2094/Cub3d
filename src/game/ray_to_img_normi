@@ -28,7 +28,7 @@ t_img	*get_img(t_prg *prg)
 		if (prg->ray->ray_dir_y < 0) // E
 			return (prg->south_img);
 		else
-			return (prg->north_img);
+			return (&(prg->north_img));
 	}
 }
 
