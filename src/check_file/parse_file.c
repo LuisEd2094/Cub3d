@@ -25,7 +25,7 @@ bool	parse_file(int fd, t_prg *prg)
 	// if bonus need to get max value for map 
 	MAP_MAX_W(prg) = ft_min(MAP_W(prg), MINI_MAP_SIZE);
 	MAP_MAX_H(prg) = ft_min(MAP_H(prg), MINI_MAP_SIZE);
-	prg->mini_map->off_set_x = MAP_W(prg) > MINI_MAP_SIZE;
-	prg->mini_map->off_set_y = MAP_H(prg) > MINI_MAP_SIZE;
+	prg->mini_map.off_set_x = MAP_W(prg) > MINI_MAP_SIZE;
+	prg->mini_map.off_set_y = MAP_H(prg) > MINI_MAP_SIZE;
 	return (true);
 }

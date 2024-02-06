@@ -32,7 +32,7 @@ int	get_pixel_color(t_prg *prg, int x, int y)
 			return (0x00FF00);
 		else if (prg->map[MAP_Y(prg)][MAP_X(prg)] == '3')
 			return (0x00008B);
-		else if (calculate_if_inside_player(prg->mini_map, x, y))
+		else if (calculate_if_inside_player(&(prg->mini_map), x, y))
 			return (0xFFFF00);
 		else
 			return (0xededed);

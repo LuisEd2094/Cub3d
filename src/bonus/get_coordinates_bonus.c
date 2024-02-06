@@ -23,7 +23,7 @@ void	get_x_values(t_prg *prg)
 {
 	double	integer;
 
-	if (prg->mini_map->off_set_x && \
+	if (prg->mini_map.off_set_x && \
 			PLAYER_X(prg) > (MAX_NUM_TILES / 2))
 	{
 		MAP_X(prg) = floor(PLAYER_X(prg)) - (MAX_NUM_TILES / 2);
@@ -49,12 +49,12 @@ void	get_x_values(t_prg *prg)
 
 int	get_map_y_position(t_prg *prg)
 {
-	if (prg->mini_map->off_set_y && \
+	if (prg->mini_map.off_set_y && \
 			PLAYER_Y(prg) > (MAX_NUM_TILES / 2))
 		return (floor(PLAYER_Y(prg)) - (MAX_NUM_TILES / 2));
 	return (-1);
 
-	// if (prg->mini_map->off_set_y && \
+	// if (prg->mini_map.off_set_y && \
 	// 		PLAYER_Y(prg) * TILE_SIZE + 1 > (MINI_MAP_SIZE / 2))
 	// 	return (((PLAYER_Y(prg) * TILE_SIZE + 1) - (MINI_MAP_SIZE / 2)) / TILE_SIZE);
 	// return (-1);
@@ -64,7 +64,7 @@ void	get_y_values(t_prg *prg)
 {
 	double	integer;
 
-	if (prg->mini_map->off_set_y && \
+	if (prg->mini_map.off_set_y && \
 			PLAYER_Y(prg) > (MAX_NUM_TILES / 2))
 	{
 		MAP_A_Y(prg) = get_coordinate(prg, \

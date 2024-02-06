@@ -27,9 +27,9 @@ bool	calculate_if_inside_player(t_map *map, int x, int y)
 
 	p3.x = x;
 	p3.y = y;
-	side_a_b = side_of_line(map->a, map->b, &p3);
-	side_b_c = side_of_line(map->b, map->c, &p3);
-	side_c_a = side_of_line(map->c, map->a, &p3);
+	side_a_b = side_of_line(&(map->a), &(map->b), &p3);
+	side_b_c = side_of_line(&(map->b), &(map->c), &p3);
+	side_c_a = side_of_line(&(map->c), &(map->a), &p3);
 	return ((side_a_b >= 0 && side_b_c >= 0 && side_c_a >= 0) || \
 			(side_a_b <= 0 && side_b_c <= 0 && side_c_a <= 0));
 }

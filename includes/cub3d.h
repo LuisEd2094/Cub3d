@@ -96,10 +96,10 @@ typedef struct	s_img
 
 typedef struct s_map
 {
-	t_img	*t_img;
-	t_point	*a;
-	t_point	*b;
-	t_point *c;
+	t_img	t_img;
+	t_point	a;
+	t_point	b;
+	t_point c;
 	int		max_w;
 	int		max_h;
 	bool	off_set_x;
@@ -137,8 +137,8 @@ typedef struct s_prg
 	int		mouse_delta;
 	int		prev_mouse;
     t_mlx   mlx;
-	t_img	*img;
-	t_map	*mini_map;
+	t_img	img;
+	t_map	mini_map;
 	t_pc	*player;
 	t_ray	*ray;
 }	t_prg;

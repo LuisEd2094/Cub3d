@@ -46,21 +46,21 @@ void free_img(t_img *img)
 		free(img);
 }
 
-void	free_mini_map(t_map *map)
-{
-	if (map)
-	{
-		if (map->t_img)
-			free(map->t_img);
-		if (map->a)
-			free(map->a);
-		if (map->b)
-			free(map->b);
-		if (map->c)
-			free(map->c);
-		free(map);
-	}
-}
+// void	free_mini_map(t_map *map)
+// {
+// 	if (map)
+// 	{
+// 		if (map->t_img)
+// 			free(map->t_img);
+// 		if (map->a)
+// 			free(map->a);
+// 		if (map->b)
+// 			free(map->b);
+// 		if (map->c)
+// 			free(map->c);
+// 		free(map);
+// 	}
+// }
 
 // void	free_mlx(t_prg *prg)
 // {
@@ -79,7 +79,7 @@ void	free_mallocs(t_prg *prg)
 	//free_mlx(prg);
 	//free_player(prg->player);
 	free_ray(prg->ray);
-	free_img(prg->img);
+	//free_img(prg->img);
 	free_img(prg->north_img);
 	free_img(prg->south_img);
 	free_img(prg->west_img);
@@ -89,5 +89,5 @@ void	free_mallocs(t_prg *prg)
 	free_img(prg->sprite[1]);
 	free_img(prg->sprite[2]);
 
-	free_mini_map(prg->mini_map);
+	//free_mini_map(prg->mini_map);
 }

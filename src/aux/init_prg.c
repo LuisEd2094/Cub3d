@@ -52,32 +52,29 @@ static void	init_prg_structs(t_prg *prg)
 	prg->south_img = init_img();
 	prg->west_img = init_img();
 	prg->east_img = init_img();
-	prg->img = init_img();
+	//prg->img = init_img();
 	prg->door_img = init_img();  //
 	prg->sprite[0] = init_img(); //
 	prg->sprite[1] = init_img(); // bonus
 	prg->sprite[2] = init_img(); //
 	prg->player = (t_pc *)malloc(sizeof(t_pc));
 	prg->ray = (t_ray *)malloc(sizeof(t_ray));
-	prg->mini_map= (t_map *)malloc(sizeof(t_map));
+	//prg->mini_map= (t_map *)malloc(sizeof(t_map));
 }
 
-static void	init_mini_map_vals(t_map *map)
-{
-	map->t_img = init_img();
-	map->a = (t_point *)malloc(sizeof(t_point));
-	map->b = (t_point *)malloc(sizeof(t_point));
-	map->c = (t_point *)malloc(sizeof(t_point));
-}
+// static void	init_mini_map_vals(t_map *map)
+// {
+// 	map->t_img = init_img();
+// 	map->a = (t_point *)malloc(sizeof(t_point));
+// 	map->b = (t_point *)malloc(sizeof(t_point));
+// 	map->c = (t_point *)malloc(sizeof(t_point));
+// }
 
 static bool	check_correct_inits(t_prg *prg)
 {
 	if (!prg->player->center || !prg->player->hit_box_center \
 		|| !prg->player->hit_box_left || !prg->player->hit_box_right \
-		|| !prg->ray->start || !prg->ray->end \
-		|| !prg->mini_map || !prg->mini_map->t_img \
-		|| !prg->mini_map->a || !prg->mini_map->b \
-		|| !prg->mini_map->c )
+		|| !prg->ray->start || !prg->ray->end)
 		return (0);
 	return (1);
 }
@@ -85,12 +82,13 @@ static bool	check_correct_inits(t_prg *prg)
 void	init_prg(t_prg *prg)
 {
 	init_prg_structs(prg);
-	if (!prg->player || !prg->ray || !prg->img || !prg->mini_map \
+	if (!prg->player || !prg->ray \
 		|| !prg->north_img || !prg->west_img || !prg->south_img || !prg->east_img)
 		exit_error(NULL, prg);
+	prg->mini_map.t_img.img  = NULL;
 	init_player(prg->player);
 	init_ray(prg->ray);
-	init_mini_map_vals(prg->mini_map);
+	//init_mini_map_vals(prg->mini_map);
 	if (!check_correct_inits(prg))
 		exit_error(NULL, prg);
 	prg->i = 1; // bonus

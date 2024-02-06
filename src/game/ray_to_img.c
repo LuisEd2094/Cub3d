@@ -60,7 +60,7 @@ void	ray_to_img(t_prg *prg, int i)
 
 	for (int j = 0; j < h; j++)
 	{
-		pixel = (void *)prg->img->addr + (j * prg->img->line_length + i * (prg->img->bpp / 8));
+		pixel = (void *)prg->img.addr + (j * prg->img.line_length + i * (prg->img.bpp / 8));
 		step = 1.0 * img->height / line_h;
 		if (j < start)
 			*(unsigned int*)pixel = prg->ceiling_vals;
