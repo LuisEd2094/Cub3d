@@ -12,7 +12,7 @@
 
 NAME        = cub3D
 NAME_BONUS	= $(NAME)_bonus
-CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
 RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/
@@ -149,7 +149,7 @@ OBJS_BONUS	=	$(addprefix $(OBJS_PATH), $(BONUS_FILE:.c=.o))
 all: check_files_bonus_flag make_mlx make_lib $(NAME)
 
 
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.c | $(MAKE_OBJ_DIR) $(DEPS_PATH)
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c Makefile| $(MAKE_OBJ_DIR) $(DEPS_PATH)
 		@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
 		@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
 		@mv $(basename $@).d $(DEPS_PATH)
@@ -162,7 +162,7 @@ $(NAME):  $(HIDDEN_BONUS_FILE) $(OBJS) $(LIB) $(L_MLX) Makefile
 bonus: check_files_bonus_flag make_mlx make_lib $(NAME_BONUS)
 
 
-$(MAKE_OBJ_DIR_BONUS)%.o: $(SRCS_PATH)$(BONUS_PATH)%.c | $(MAKE_OBJ_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH) 
+$(MAKE_OBJ_DIR_BONUS)%.o: $(SRCS_PATH)$(BONUS_PATH)%.c Makefile | $(MAKE_OBJ_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH) 
 	@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
 	@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
 	@mv $(basename $@).d $(DEPS_PATH)
