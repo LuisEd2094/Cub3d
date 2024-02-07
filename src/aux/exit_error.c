@@ -22,15 +22,15 @@ void	exit_error(char *error, t_prg *prg)
 	}
 	else
 	{
-		if (errno)
-		{
-			perror("Error");
-			exit(errno);
-		}
-		else
+		if (prg->error_msg)
 		{
 			ft_printf(STDERR_FILENO, prg->error_msg);
 			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			perror("Error");
+			exit(errno);
 		}
 	}
 }
