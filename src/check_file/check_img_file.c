@@ -36,9 +36,5 @@ void	check_img_file(char **elemts, t_prg *p)
 			open_img(&(p->mlx), &(p->west_img), elemts[1]);
 		else
 			open_img(&(p->mlx), &(p->east_img), elemts[1]);
-		open_img(&(p->mlx), &(p->door_img), "./imgs/door.xpm");//
-		open_img(&(p->mlx), &(p->sprite[0]), "./imgs/sprite1.xpm");
-		open_img(&(p->mlx), &(p->sprite[1]), "./imgs/sprite2.xpm");
-		open_img(&(p->mlx), &(p->sprite[2]), "./imgs/sprite3.xpm");
 	}
 }

@@ -87,6 +87,43 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_map
+{
+	t_img	*current_img;
+	t_point	a;
+	t_point	b;
+	t_point c;
+	int		current_max_size;
+	int		current_num_tiles;
+	int		pos_x;
+	int		pos_y;
+	int		max_w;
+	int		max_h;
+	bool	off_set_x;
+	bool	off_set_y;
+	int		dx;
+	int		dy;
+	int		sx;
+	int		sy;
+	int		err;
+	int		e2;
+	char	*pixel;
+	int		x_pos;
+	int		y_pos;
+}	t_map;
+
+typedef struct s_map_info
+{
+	t_img	map_img;
+	int		max_size;
+	int		num_tiles;
+	int		max_w;
+	int		max_h;
+	int		start_x;
+	int		start_y;
+	bool	off_set_x;
+	bool	off_set_y;
+}	t_map_info;
 
 typedef struct s_prg
 {
@@ -95,9 +132,16 @@ typedef struct s_prg
 	t_img		west_img; //2
 	t_img		east_img; //3
 	t_img		door_img; //
+	t_img		sprite[3];//
 	t_img		img;
 	t_img		*texture;
     t_mlx		mlx;
+	t_map		mini_map;
+	t_map_info	big_map_info;
+	t_map_info	mini_map_info;
+	bool		current_map;
+
+	
 	t_pc	player;
 	t_ray	ray;
 	int		i;
@@ -111,6 +155,8 @@ typedef struct s_prg
 	int		map_w;
 	char	**map;
 	char	*error_msg;
+	int		mouse_delta;
+	int		prev_mouse;
 	int		*pixel;
 	int		color;
 }	t_prg;
@@ -166,7 +212,9 @@ void	move_triangle(t_prg *prg, int dx, int dy);
 int		open_door(t_prg *prg);
 void	get_y_values(t_prg *prg);
 void	get_x_values(t_prg *prg);
+bool	calculate_if_inside_player(t_map *map, int x, int y);
 int		get_map_y_position(t_prg *prg);
+void	copy_info_to_mini_map(t_map *mini_map, t_map_info *mini_map_info);
 
 
 

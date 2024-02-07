@@ -16,6 +16,11 @@
 # define W 800
 # define H 600
 
+# define TILE_SIZE	24
+# define MAX_NUM_TILES 8
+# define MINI_MAP_SIZE 192
+# define BIG_NUM_TILES 16
+# define BIG_MAP_SIZE 384
 
 # define RGB_GREY 0x808080
 # define RGB_DARK_RED 0x880000
@@ -23,6 +28,7 @@
 # define RGB_BLUE 0x6495ED
 
 # define MOVE_SPEED 0.125
+# define DOORS_PIXELS 0.3
 # define ROTATION_ANGLE 45
 
 #endif
