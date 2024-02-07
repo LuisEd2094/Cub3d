@@ -94,7 +94,6 @@ typedef struct s_prg
 	t_img		south_img; // 1
 	t_img		west_img; //2
 	t_img		east_img; //3
-	t_img		door_img; //
 	t_img		img;
 	t_img		*texture;
     t_mlx		mlx;

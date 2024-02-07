@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_map_to_list.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:25:33 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:32:55 by lsoto-do         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "parse_file_bonus.h"
 
 bool	return_error_invalid_line(char *line, t_prg *prg, int fd, bool set_msg)

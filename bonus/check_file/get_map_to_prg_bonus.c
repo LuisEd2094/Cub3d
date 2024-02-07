@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_map_to_prg.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:25:43 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/06 13:31:31 by lsoto-do         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "parse_file_bonus.h"
 
@@ -64,27 +53,6 @@ char	set_player_info(t_prg *prg, char c, int y, int x)
 	return ('0');
 }
 
-#if BONUS_FLAG == 0
-
-char	*save_str_info_to_map(char *s, t_prg *prg, int y)
-{
-	int		x;
-	char	*res;
-
-	res = ft_strdup(s);
-	if (!res)
-		return (NULL);
-	x = -1;
-	while (res[++x])
-	{
-		if (res[x] != '0' && res[x] != '1' && res[x] != ' ')
-			res[x] = set_player_info(prg, res[x], y, x);
-		prg->map_w = ft_max(prg->map_w, x);
-	}
-	return (res);
-}
-
-#else 
 
 char	*save_str_info_to_map(char *s, t_prg *prg, int y)
 {
@@ -103,8 +71,6 @@ char	*save_str_info_to_map(char *s, t_prg *prg, int y)
 	}
 	return (res);
 }
-
-#endif
 
 bool	get_map_to_prg(t_prg *prg, t_parseer *parse)
 {

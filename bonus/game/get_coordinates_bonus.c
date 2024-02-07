@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 get_coordinates_bonus.c							:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: lsoto-do <lsoto-do@student.42barcel>		+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2024/02/05 12:20:35 by lsoto-do		   #+#	  #+#			  */
-/*	 Updated: 2024/02/05 12:22:08 by lsoto-do		  ###	########.fr		  */
-/*																			  */
-/* ************************************************************************** */
-
 #include <cub3d_bonus.h>
 
 int	get_coordinate(t_prg *prg, double (*f)(double), double rem, double value)

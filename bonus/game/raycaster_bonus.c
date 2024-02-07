@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 11:11:44 by apodader          #+#    #+#             */
-/*   Updated: 2024/02/06 13:41:31 by lsoto-do         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include <cub3d_bonus.h>
 
@@ -44,28 +33,6 @@ void init_ray(t_prg *prg, int i)
 	else
 		prg->ray.delta_disy_y = fabs(1 / prg->ray.ray_dir_y);
 }
-
-#if BONUS_FLAG == 0
-
-void	raycaster(t_prg *prg)
-{
-	int i;
-
-	i = -1;
-	while(++i < W)
-	{
-		init_ray(prg, i);
-		init_dda(prg);
-		perform_dda(prg);
-		if (prg->ray.side == 0)
-			prg->ray.wall_dist = prg->ray.side_dist_x - prg->ray.delta_dist_x;
-		else
-			prg->ray.wall_dist = prg->ray.side_dist_y - prg->ray.delta_disy_y;
-		get_pixel_collision(prg);
-		ray_to_img(prg, i);
-	}
-}
-#else
 void	raycaster(t_prg *prg)
 {
 	int i;
@@ -84,4 +51,3 @@ void	raycaster(t_prg *prg)
 		ray_to_img(prg, i);
 	}
 }
-#endif

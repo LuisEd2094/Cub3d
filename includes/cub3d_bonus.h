@@ -215,6 +215,8 @@ void	get_x_values(t_prg *prg);
 bool	calculate_if_inside_player(t_map *map, int x, int y);
 int		get_map_y_position(t_prg *prg);
 void	copy_info_to_mini_map(t_map *mini_map, t_map_info *mini_map_info);
+void	open_img(t_mlx *mlx, t_img *img, char *path);
+
 
 
 

@@ -12,7 +12,7 @@
 
 NAME        = cub3D
 NAME_BONUS	= $(NAME)_bonus
-CFLAGS      = -g  #-fsanitize=address #-Wall -Wextra  -Werror #
+CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror
 RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/
@@ -22,16 +22,8 @@ SRCS_PATH           = src/
 OBJS_PATH           = obj/
 BONUS_OBJS_PATH		= $(OBJS_PATH)$(BONUS_PATH)
 CC = cc
-BONUS_FLAG 	= 0
-HIDDEN_BONUS_FILE	= .bonus_checker
-MACRO_FLAG = $(shell cat $(HIDDEN_BONUS_FILE) 2>/dev/null)
-
-# Check if the target is 'bonus' and set BONUS_FLAG accordingly
 
 GOALS_CONTAIN_BONUS := $(if $(filter bonus,$(MAKECMDGOALS)),yes,no)
-ifeq ($(GOALS_CONTAIN_BONUS),yes)
-    BONUS_FLAG := 1
-endif
 ifeq ($(GOALS_CONTAIN_BONUS),yes)
     RE_RULE_TARGET := fclean bonus
 else
@@ -114,18 +106,6 @@ GAME		=	hooks.c  update_window.c \
 
 GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 
-
-## B_FLAG_FILES ARE FILES USED BY THE BONUS AND NORMAL GAME. They compile differenly depending on the Bonus flag passed, so we need to check and compile them directly
-#if we change from one program to the other
-
-## BONUS FILES are just the bonus files, they are not used by the normal program
-
-B_FLAG_FILE	=	$(SRCS_PATH)$(CK_FD_PATH)check_map_borders.c $(SRCS_PATH)$(CK_FD_PATH)init_parseer.c \
-				$(SRCS_PATH)$(CK_FD_PATH)get_map_to_prg.c $(SRCS_PATH)$(GAME_PATH)update_window.c \
-				$(SRCS_PATH)$(GAME_PATH)make_move.c $(SRCS_PATH)$(GAME_PATH)rotate_player.c \
-				$(SRCS_PATH)$(GAME_PATH)hooks.c $(SRCS_PATH)$(AUX_PATH)destoy_imgs.c \
-				$(SRCS_PATH)$(GAME_PATH)raycaster.c $(SRCS_PATH)$(GAME_PATH)dda.c
-
 BONUS		=	draw_map_bonus.c open_door_bonus.c \
 				check_if_inside_player_bonus.c get_coordinates_bonus.c
 				
@@ -136,7 +116,13 @@ DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \
 											$(CHECK:.c=.d)\
 											$(AUX:.c=.d) \
 											$(GAME:.c=.d) \
-											$(BONUS:.c=.d)) 
+											$(BONUS:.c=.d),\
+											$(CHECK:%.c=%_bonus.d)\
+											$(AUX:%.c=%_bonus.d) \
+											$(GAME:%.c=%_bonus.d) \
+											$(BONUS:%.c=%_bonus.d),\
+											$(SRC:%.c=%_bonus.d)\
+											) 
 										
 										
 
@@ -152,51 +138,32 @@ OBJS        =	$(addprefix $(OBJS_PATH), $(SRC:.c=.o))
 OBJS_BONUS	=	$(addprefix $(OBJS_PATH), $(SRC_BONUS:.c=.o))
 				
 
-all: check_files_bonus_flag make_mlx make_lib $(NAME)
+all:  make_mlx make_lib $(NAME)
 
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c Makefile| $(MAKE_OBJ_BASE_DIR) $(MAKE_OBJ_DIR) $(DEPS_PATH)
 		@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
-		@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
+		@$(CC) $(CFLAGS) $(INCS) $(KEYS) -MMD -MP -c $< -o  $@
 		@mv $(basename $@).d $(DEPS_PATH)
 
 
 $(NAME): $(OBJS) $(LIB) $(L_MLX) Makefile
-	@echo "$(SRC_BONUS)"
-	@echo $(OBJS_BONUS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LINEFLAGS) $(LIB) $(LDFLAGS) -o $(NAME)
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
 
-bonus: check_files_bonus_flag make_mlx make_lib $(NAME_BONUS)
+bonus: make_mlx make_lib $(NAME_BONUS)
 
 
-$(BONUS_OBJS_PATH)%.o: $(BONUS_PATH)%.c Makefile | $(MAKE_OBJ_BASE_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH) 
+$(BONUS_OBJS_PATH)%.o: $(BONUS_PATH)%.c Makefile | $(MAKE_OBJ_BASE_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH)
 	@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
-	@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
+	@$(CC) $(CFLAGS) $(INCS) $(KEYS) -MMD -MP -c $< -o  $@
 	@mv $(basename $@).d $(DEPS_PATH)
 
 # SHOULD HAVE A RULE TO MAKE SRS_BONUS
 
-$(NAME_BONUS): $(OBJS_BONUS) Makefile 
+$(NAME_BONUS): $(OBJS_BONUS) $(LIB) $(L_MLX) Makefile 
 	@$(CC) $(CFLAGS) $(INCS) $(OBJS_BONUS) $(LINEFLAGS) $(LIB)-o $(NAME_BONUS) $(LDFLAGS)
 	@echo "$(LIGHT_GREEN)Created $(NAME_BONUS) executable$(DEF_COLOR)"
-
-$(HIDDEN_BONUS_FILE):
-	@if [ ! -e $(HIDDEN_BONUS_FILE) ]; then \
-		echo $(BONUS_FLAG) > $(HIDDEN_BONUS_FILE); \
-	fi
-	
-check_files_bonus_flag:
-	@if ([ "$(strip $(MACRO_FLAG))" = "0" ] && [ $(BONUS_FLAG) -eq 1 ]) || ([ "$(strip $(MACRO_FLAG))" = "1" ] && [  $(BONUS_FLAG) -eq 0 ]) ; then \
-		echo "$(GREEN)Recompiling files with bonus flag $(DEF_COLOR)";\
-		for file in $(B_FLAG_FILE); do \
-			obj_file=obj/$${file#src/}; \
-			echo "$(CYAN)Compiling $$file $(DEF_COLOR)"; \
-			$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $$file -o $${obj_file%.c}.o; \
-			mv $${obj_file%.c}.d $(DEPS_PATH);\
-		done; \
-		echo $(BONUS_FLAG) > $(HIDDEN_BONUS_FILE);\
-	fi 
 
 make_lib:
 	@$(MAKE) -s -C $(LIB_PATH)
@@ -237,7 +204,6 @@ fclean_mlx:
 clean: clean_lib clean_objects
 
 fclean:  clean_objects fclean_lib fclean_mlx
-	@$(RM) $(HIDDEN_BONUS_FILE)
 	@$(RM) $(NAME)
 	@$(RM) $(NAME_BONUS)
 	@echo "$(GREEN)$(NAME) executable cleaned!$(DEF_COLOR)"
@@ -248,4 +214,4 @@ clean_objects:
 
 re: $(RE_RULE_TARGET)
 
-.PHONY: all fclean clean re bonus clean_objects clean_lib fclean_lib make_mlx make_lib check_files_bonus_flag
+.PHONY: all fclean clean re bonus clean_objects clean_lib fclean_lib make_mlx make_lib 

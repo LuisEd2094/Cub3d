@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:25:16 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:30:36 by lsoto-do         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <cub3d_bonus.h>
 
 void	validate_map(char *file_name, t_prg *prg)
@@ -28,5 +16,9 @@ void	validate_map(char *file_name, t_prg *prg)
 		close(fd);
 		exit_error(NULL, prg);
 	}
+	open_img(&(prg->mlx), &(prg->door_img), "./imgs/door.xpm");//
+	open_img(&(prg->mlx), &(prg->sprite[0]), "./imgs/sprite1.xpm");
+	open_img(&(prg->mlx), &(prg->sprite[1]), "./imgs/sprite2.xpm");
+	open_img(&(prg->mlx), &(prg->sprite[2]), "./imgs/sprite3.xpm");
 	close(fd);
 }

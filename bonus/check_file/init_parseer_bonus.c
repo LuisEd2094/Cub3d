@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_parseer.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:25:48 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:34:30 by lsoto-do         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "parse_file_bonus.h"
 
 void	set_valid_identifiers(t_parseer *p)
@@ -39,23 +27,6 @@ void	set_booleans(t_parseer *parse)
 	parse->found_map = 0;
 }
 
-#if BONUS_FLAG == 0
-
-void	set_valid_char_map(t_parseer *p)
-{
-	p->valid_map_chars[0] = 'W';
-	p->valid_map_chars[1] = 'S';
-	p->valid_map_chars[2] = 'E';
-	p->valid_map_chars[3] = 'N';
-	p->valid_map_chars[4] = ' ';
-	p->valid_map_chars[5] = '0';
-	p->valid_map_chars[6] = '1';
-	p->valid_map_chars[7] = '\0';
-	p->valid_map_chars[8] = '\0';
-}
-
-#else
-
 void	set_valid_char_map(t_parseer *p)
 {
 	p->valid_map_chars[0] = 'W';
@@ -68,8 +39,6 @@ void	set_valid_char_map(t_parseer *p)
 	p->valid_map_chars[7] = '2';
 	p->valid_map_chars[8] = '\0';
 }
-
-#endif
 
 void	init_parseer(t_parseer *parse)
 {
