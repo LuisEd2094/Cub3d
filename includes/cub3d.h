@@ -47,8 +47,8 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	float	ray_end_x;
-	float 	ray_end_y;
+	double	ray_end_x;
+	double 	ray_end_y;
 	int		map_x;
 	int		map_y;
 	double	camera;
@@ -66,6 +66,8 @@ typedef struct s_ray
 	int		line_h;
 	int		end_p;
 	int		start_p;
+	double	img_step;
+	double	y_img;
 } t_ray;
 
 
@@ -116,6 +118,7 @@ typedef struct s_prg
 	t_img	door_img; //
 	t_img	sprite[3];//
 	t_img	img;
+	t_img	*texture;
     t_mlx   mlx;
 	t_map	mini_map;
 	t_pc	player;
@@ -133,6 +136,8 @@ typedef struct s_prg
 	char	*error_msg;
 	int		mouse_delta;
 	int		prev_mouse;
+	int		*pixel;
+	int		color;
 }	t_prg;
 
 

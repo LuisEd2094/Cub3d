@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_to_img.c                                       :+:      :+:    :+:   */
+/*   ray_to_img_normi                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 13:39:42 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/06 13:40:42 by lsoto-do         ###   ########.fr       */
+/*   Created: 2024/02/05 16:38:56 by apodader          #+#    #+#             */
+/*   Updated: 2024/02/05 16:51:40 by apodader         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,41 +41,46 @@ int	get_color(t_ray *ray, t_img *img, int y)
 		x = ((int)(ray->ray_end_x * img->width) % img->width);
 	else
 		x = ((int)(ray->ray_end_y * img->width) % img->width);
-	wall_pixel = (void *)img->addr + (y * img->line_length + x * (img->bpp / 8));
+	wall_pixel = (void *)img->addr + \
+	(y * img->line_length + x * (img->bpp / 8));
 	return (*(unsigned int *)wall_pixel);
+}
+
+void	draw_texture(t_prg *prg, int i)
+{
+	int j;
+
+	j = -1;
+	while (++j  < H)
+	{
+		prg->pixel = (void *)prg->img.addr + \
+		(j * prg->img.line_length + i * (prg->img.bpp / 8));
+		if (j < prg->ray.start_p)
+			*(unsigned int*)prg->pixel = prg->ceiling_vals;
+		else if (j < floor(prg->ray.end_p - prg->ray.img_step))
+		{
+			prg->ray.y_img += prg->ray.img_step;
+			prg->color = get_color(&(prg->ray), prg->texture, prg->ray.y_img);
+			*(unsigned int*)prg->pixel = prg->color;
+		}
+		else
+			*(unsigned int*)prg->pixel = prg->floor_vals;
+
+	}
 }
 
 void	ray_to_img(t_prg *prg, int i)
 {
-	int				line_h;
-	int				start;
-	int				end;
-	unsigned int	*pixel;
-	t_img			*img;
-	unsigned int	color; 
-
-	line_h = (int)(H / prg->ray.wall_dist);
-	start = -line_h / 2 + H / 2;
-	if (start < 0)
-		start = 0;
-	end = line_h / 2 + H / 2;
-	if (end >= H)
-		end = H - 1;
-	img = get_img(prg);
-	float step = 1.0 * img->height / line_h;
-	float y =  (start - H / 2 + line_h / 2) * step;	
-	for (int j = 0; j < H; j++)
-	{
-		pixel = (void *)prg->img.addr + (j * prg->img.line_length + i * (prg->img.bpp / 8));
-		if (j < start)
-			*(unsigned int*)pixel = prg->ceiling_vals;
-		else if (j < floor(end - step))
-		{
-			y += step;
-			color = get_color(&(prg->ray), img, y);
-				*(unsigned int*)pixel = color;
-		}
-		else
-			*(unsigned int*)pixel = prg->floor_vals;
-	}
+	prg->ray.line_h = (int)(H / prg->ray.wall_dist);
+	prg->ray.start_p = -prg->ray.line_h / 2 + H / 2;
+	prg->ray.end_p = prg->ray.line_h / 2 + H / 2;
+	if (prg->ray.start_p  < 0)
+		prg->ray.start_p  = 0;
+	if (prg->ray.end_p >= H)
+		prg->ray.end_p = H - 1;
+	prg->texture = get_img(prg);
+	prg->ray.img_step = 1.0 * prg->texture->height / prg->ray.line_h;
+	prg->ray.y_img = (prg->ray.start_p - H / 2 + prg->ray.line_h / 2) \
+	* prg->ray.img_step;
+	draw_texture(prg, i);
 }
