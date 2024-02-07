@@ -23,7 +23,7 @@ void	init_mlx_variables(t_prg *prg)
 		&prg->img.line_length, &prg->img.endian);
 	if (!prg->img.addr)
 		exit_error(NULL, prg);
-	mlx_do_key_autorepeaton(prg->mlx.ptr); // ?
+	mlx_do_key_autorepeaton(prg->mlx.ptr);
 }
 
 
@@ -74,9 +74,10 @@ void	init_maps_values(t_prg *prg)
 	prg->big_map_info.max_h = ft_min((prg->map_h) * TILE_SIZE, BIG_MAP_SIZE);
 	prg->big_map_info.off_set_x = (prg->map_w + 1) * TILE_SIZE > BIG_MAP_SIZE;
 	prg->big_map_info.off_set_y = (prg->map_h) * TILE_SIZE > BIG_MAP_SIZE;
-	prg->mini_map_info.max_size = BIG_MAP_SIZE;
-	prg->mini_map_info.num_tiles = BIG_NUM_TILES;
+	prg->big_map_info.max_size = BIG_MAP_SIZE;
+	prg->big_map_info.num_tiles = BIG_NUM_TILES;
 
+	prg->current_map = 0;
 	copy_info_to_mini_map(&(prg->mini_map), &(prg->mini_map_info));
 
 }

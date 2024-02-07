@@ -14,7 +14,7 @@
 
 int	get_coordinate(t_prg *prg, double (*f)(double), double rem, double value)
 {
-	return (((rem * TILE_SIZE) + ((MINI_MAP_SIZE) / 2) - TILE_SIZE) \
+	return (((rem * TILE_SIZE) + ((prg->mini_map.current_max_size) / 2) - TILE_SIZE) \
 			+ ((TILE_SIZE / 2) \
 			* f(prg->player.angle + (value * M_PI / 3.0))));
 }
@@ -24,9 +24,9 @@ void	get_x_values(t_prg *prg)
 	double	integer;
 
 	if (prg->mini_map.off_set_x && \
-			prg->player.x > (MAX_NUM_TILES / 2))
+			prg->player.x > (prg->mini_map.current_num_tiles / 2))
 	{
-		prg->mini_map.x_pos = floor(prg->player.x) - (MAX_NUM_TILES / 2);
+		prg->mini_map.x_pos = floor(prg->player.x) - (prg->mini_map.current_num_tiles / 2);
 		prg->mini_map.a.x = get_coordinate(prg, &cos, \
 				modf(prg->player.x, &integer), 0);
 		prg->mini_map.b.x = get_coordinate(prg, &cos, \
@@ -49,8 +49,8 @@ void	get_x_values(t_prg *prg)
 int	get_map_y_position(t_prg *prg)
 {
 	if (prg->mini_map.off_set_y && \
-			prg->player.y > (MAX_NUM_TILES / 2))
-		return (floor(prg->player.y) - (MAX_NUM_TILES / 2));
+			prg->player.y > (prg->mini_map.current_num_tiles / 2))
+		return (floor(prg->player.y) - (prg->mini_map.current_num_tiles / 2));
 	return (-1);
 }
 
@@ -59,7 +59,7 @@ void	get_y_values(t_prg *prg)
 	double	integer;
 
 	if (prg->mini_map.off_set_y && \
-			prg->player.y > (MAX_NUM_TILES / 2))
+			prg->player.y > (prg->mini_map.current_num_tiles / 2))
 	{
 		prg->mini_map.a.y = get_coordinate(prg, \
 				&sin, modf(prg->player.y, &integer), 0);

@@ -18,6 +18,21 @@ int	close_game(t_prg *prg)
 	return (0);
 }
 
+int change_map(t_prg *prg)
+{
+	if (prg->current_map == 0)
+	{
+		copy_info_to_mini_map(&(prg->mini_map), &(prg->big_map_info));
+		prg->current_map = 1;
+	}
+	else
+	{
+		copy_info_to_mini_map(&(prg->mini_map), &(prg->mini_map_info));
+		prg->current_map = 0;
+	}
+	update_window(prg);
+}
+
 #if BONUS_FLAG == 0
 
 int	key_hook(int key, t_prg *prg)
@@ -51,10 +66,11 @@ void	get_hooks(t_prg *prg)
 
 int	key_hook(int key, t_prg *prg)
 {
-	printf("%i\n", key);
 	prg->i = 1;
 	if (key == KEY_ESC || key == KEY_Q)
 		close_game(prg);
+	else if (key == TAB)
+		return (change_map(prg));
 	else if (key == KEY_W || key == KEY_UP)
 		return (make_move(prg, 1, -1));
 	else if (key == KEY_S || key == KEY_DOWN)
