@@ -32,7 +32,7 @@ bool	parse_for_ids(int fd, t_prg *prg, t_parseer *parse)
 			line[ft_strlen(line) - 1] = '\0';
 		check_elements(parse, line, prg);
 		free(line);
-		if (prg->error_msg || errno)
+		if (prg->error_msg || errno && errno != 11)
 			return (get_next_line(fd, 1));
 		check_if_found_all(parse);
 	}

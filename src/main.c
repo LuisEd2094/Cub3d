@@ -19,14 +19,14 @@ int	main(int argc, char *argv[])
 	init_prg(&prg);
 
 	prg.mlx.ptr = mlx_init();
-	printf("%i\n", errno);
+/* 	printf("%i\n", errno);
 	if (!prg.mlx.ptr)
-		exit_error(NULL, &prg);
+		exit_error(NULL, &prg); */
 	if (argc != 2)
 		exit_error(INCORRECT_USE, &prg);
 	validate_map(argv[1], &prg); // peta al dar error en destroy_img
-	if (errno)
-		exit_error(NULL, &(prg));
+/* 	if (errno)
+		exit_error(NULL, &(prg)); */
 	prg.mlx.window = mlx_new_window(prg.mlx.ptr, W, H, "cub3d");
 	prg.img.img = mlx_new_image(prg.mlx.ptr, W, H);
 	if (!prg.mlx.window || !prg.img.img)

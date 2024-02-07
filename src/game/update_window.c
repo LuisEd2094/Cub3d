@@ -14,7 +14,7 @@
 
 #if BONUS_FLAG == 0
 
-void	update_window(t_prg *prg)
+int	update_window(t_prg *prg)
 {
 	mlx_clear_window(prg->mlx.ptr, prg->mlx.window);
 	raycaster(prg);
@@ -22,7 +22,7 @@ void	update_window(t_prg *prg)
 }
 #else
 
-void	update_window(t_prg *prg)
+int	update_window(t_prg *prg)
 {
 	mlx_clear_window(prg->mlx.ptr, prg->mlx.window);
 	draw_map(prg);

@@ -49,6 +49,7 @@ void	get_hooks(t_prg *prg)
 
 int	key_hook(int key, t_prg *prg)
 {
+	printf("%i\n", key);
 	prg->i = 1;
 	if (key == KEY_ESC || key == KEY_Q)
 		close_game(prg);
@@ -94,9 +95,12 @@ int	mouse_move(int x, int y, t_prg *prg)
 
 void	get_hooks(t_prg *prg)
 {
+	printf("i am here %i\n", KEY_ESC);
 	mlx_hook(prg->mlx.window, 17, 0, close_game, (void *)prg);
-	mlx_hook(prg->mlx.window, 6, 0, mouse_move, (void *)prg);
-	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg);
+/* 	mlx_hook(prg->mlx.window, 6, 0, mouse_move, (void *)prg);
+	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg); */
+	//mlx_mouse_hook(prg->mlx.window, mouse_move, (void *)prg);
+	mlx_key_hook(prg->mlx.window, key_hook, (void *)prg);
 }
 
 #endif
