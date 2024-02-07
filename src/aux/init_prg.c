@@ -12,20 +12,6 @@
 
 #include <cub3d.h>
 
-static void	init_str_array(char **array, int size)
-{
-	int	i;
-
-	i = -1;
-	while (++i <= size)
-		array[i] = NULL;
-}
-
-static void	init_prg_structs(t_prg *prg)
-{
-	prg->mlx.window = NULL;
-}
-
 static void	init_img_to_null(t_prg *prg)
 {
 	prg->img.img = NULL;
@@ -33,17 +19,11 @@ static void	init_img_to_null(t_prg *prg)
 	prg->south_img.img = NULL;
 	prg->west_img.img = NULL;
 	prg->east_img.img = NULL;
-	prg->door_img.img = NULL;
-	prg->sprite[0].img = NULL;
-	prg->sprite[1].img = NULL;
-	prg->sprite[2].img = NULL;
 }
 
 void	init_prg(t_prg *prg)
 {
-	init_prg_structs(prg);
 	init_img_to_null(prg);
-	prg->i = 1;
 	prg->floor_vals = 0;
 	prg->ceiling_vals = 0;
 	prg->camara_x = 0;
