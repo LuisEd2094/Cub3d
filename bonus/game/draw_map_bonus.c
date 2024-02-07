@@ -12,7 +12,7 @@ int	get_pixel_color(t_prg *prg, int x, int y)
 		return (0x000000);
 	else if (x % (TILE_SIZE) == 0 || y % (TILE_SIZE) == 0)
 		return (0xFFFFFF);
-	if (prg->mini_map.y_pos < prg->map_h && prg->mini_map.x_pos < ft_strlen(prg->map[prg->mini_map.y_pos]))
+	if (prg->mini_map.y_pos < prg->map_h && prg->mini_map.x_pos < (int)ft_strlen(prg->map[prg->mini_map.y_pos]))
 	{
 		if (prg->map[prg->mini_map.y_pos][prg->mini_map.x_pos] == '1')
 			return (0xFF0000);

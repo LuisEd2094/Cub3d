@@ -139,9 +139,9 @@ bool	parse_file(int fd, t_prg *prg);
 // GAME FUNCTIONS
 
 void	get_hooks(t_prg *prg);
-int		update_window(t_prg *prg);
+void	update_window(t_prg *prg);
 int		make_move(t_prg *prg, int dir, int side);
-int		rotate_player(t_prg *prg, int dir, int angle);
+int		rotate_player(t_prg *prg, int dir);
 void	perform_dda(t_prg *prg);
 void	init_dda(t_prg *prg);
 void	raycaster(t_prg *prg);			

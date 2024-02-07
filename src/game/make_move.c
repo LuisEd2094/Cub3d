@@ -16,7 +16,6 @@ int	make_move(t_prg *prg, int dir, int side)
 {
 	double	dx;
 	double	dy;
-	bool	can_move;
 
 	if (side == -1)
 	{

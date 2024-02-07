@@ -29,6 +29,6 @@
 
 # define MOVE_SPEED 0.125
 # define DOORS_PIXELS 0.3
-# define ROTATION_ANGLE 45
+# define ROTATION_ANGLE 15
 
 #endif

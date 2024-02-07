@@ -12,7 +12,7 @@
 
 NAME        = cub3D
 NAME_BONUS	= $(NAME)_bonus
-CFLAGS      = -g  -fsanitize=address #-Wall -Wextra  -Werror
+CFLAGS      = -g  -fsanitize=address -Wall -Wextra  -Werror
 RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/
@@ -107,7 +107,8 @@ GAME		=	hooks.c  update_window.c \
 GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 
 BONUS		=	draw_map_bonus.c open_door_bonus.c \
-				check_if_inside_player_bonus.c get_coordinates_bonus.c
+				check_if_inside_player_bonus.c get_coordinates_bonus.c \
+				init_main_mini_map_bonus.c
 				
 
 BONUS_FILE	=	$(addprefix $(BONUS_PATH)$(GAME_PATH), $(BONUS))

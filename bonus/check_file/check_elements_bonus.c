@@ -33,8 +33,6 @@ void	check_for_identifiers(t_parseer *parse, char **elements, t_prg *prg)
 
 bool	check_valid_line(char *line, t_prg *p)
 {
-	int	i;
-
 	if (!line[0])
 		return (0);
 	if (!ft_isalnum(line[ft_strlen(line) - 1]))

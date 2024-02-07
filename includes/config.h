@@ -22,6 +22,6 @@
 # define RGB_BLUE 0x6495ED
 
 # define MOVE_SPEED 0.125
-# define ROTATION_ANGLE 45
+# define ROTATION_ANGLE 15
 
 #endif

@@ -2,7 +2,7 @@
 
 #include <cub3d_bonus.h>
 
-int	update_window(t_prg *prg)
+void	update_window(t_prg *prg)
 {
 	mlx_clear_window(prg->mlx.ptr, prg->mlx.window);
 	draw_map(prg);

@@ -19,6 +19,7 @@ int change_map(t_prg *prg)
 		prg->current_map = 0;
 	}
 	update_window(prg);
+	return (1);
 }
 
 int	key_hook(int key, t_prg *prg)
@@ -51,7 +52,7 @@ int	key_hook(int key, t_prg *prg)
 	return (0);
 }
 
-int	mouse_move(int x, int y, t_prg *prg)
+int	mouse_move(int x, t_prg *prg)
 {
 	prg->mouse_delta = x - prg->prev_mouse;
 	prg->prev_mouse = x;

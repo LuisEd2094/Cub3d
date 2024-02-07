@@ -22,13 +22,13 @@ int	check_camara(int coordiante, int center)
 		return (-1);
 }
 
-int	rotate_player(t_prg *prg, int dir, int angle)
+int	rotate_player(t_prg *prg, int dir)
 {
 	double	cam_x;
 	double	plane_x;
 	double	rads;
 
-	rads = M_PI / 180.0 * 15 * dir;
+	rads = M_PI / 180.0 * ROTATION_ANGLE * dir;
 	cam_x = prg->camara_x;
 	plane_x = prg->plane_x;
 	prg->camara_x = cam_x * cos(rads) - prg->camara_y * sin(rads);

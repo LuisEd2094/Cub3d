@@ -32,9 +32,9 @@ int	key_hook(int key, t_prg *prg)
 	else if (key == KEY_D)
 		return (make_move(prg, 1, 1));
 	else if (key == KEY_LFT)
-		return (rotate_player(prg, -1, 15));
+		return (rotate_player(prg, -1));
 	else if (key == KEY_RGT)
-		return (rotate_player(prg, 1, 15));
+		return (rotate_player(prg, 1));
 	return (0);
 }
 

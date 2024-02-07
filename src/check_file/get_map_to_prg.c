@@ -88,7 +88,6 @@ bool	get_map_to_prg(t_prg *prg, t_parseer *parse)
 	int		i;
 	int		y;
 	t_list	*curr;
-	t_list	*next;
 
 	if (!init_map(parse, prg))
 		return (free_list(parse, false));

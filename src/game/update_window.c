@@ -12,7 +12,7 @@
 
 #include <cub3d.h>
 
-int	update_window(t_prg *prg)
+void	update_window(t_prg *prg)
 {
 	mlx_clear_window(prg->mlx.ptr, prg->mlx.window);
 	raycaster(prg);
