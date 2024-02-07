@@ -51,6 +51,7 @@ void	get_hooks(t_prg *prg)
 
 int	key_hook(int key, t_prg *prg)
 {
+	printf("%i\n", key);
 	prg->i = 1;
 	if (key == KEY_ESC || key == KEY_Q)
 		close_game(prg);
