@@ -48,8 +48,8 @@ typedef struct s_ray
 {
 	double	ray_end_x;
 	double 	ray_end_y;
-	int		map_x;
-	int		map_y;
+	double	img_step;
+	double	y_img;
 	double	camera;
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -58,6 +58,8 @@ typedef struct s_ray
 	double	delta_dist_x;
 	double	delta_disy_y;
 	double	wall_dist;
+	int		map_x;
+	int		map_y;
 	int		step_x;
 	int		step_y;
 	int		hit;
@@ -65,8 +67,7 @@ typedef struct s_ray
 	int		line_h;
 	int		end_p;
 	int		start_p;
-	double	img_step;
-	double	y_img;
+
 } t_ray;
 
 
@@ -79,9 +80,9 @@ typedef struct  t_s_mlx
 typedef struct	s_img
 {
 	void	*img;
+	char	*addr;
 	int		height;
 	int		width;
-	char	*addr;
 	int		bpp;
 	int		line_length;
 	int		endian;
@@ -90,39 +91,37 @@ typedef struct	s_img
 
 typedef struct s_prg
 {
-	t_img		north_img; //0
-	t_img		south_img; // 1
-	t_img		west_img; //2
-	t_img		east_img; //3
-	t_img		img;
-	t_img		*texture;
-    t_mlx		mlx;
+	t_img	north_img; //0
+	t_img	south_img; // 1
+	t_img	west_img; //2
+	t_img	east_img; //3
+	t_img	img;
+	t_img	*texture;
+    t_mlx	mlx;
 	t_pc	player;
 	t_ray	ray;
-	int		i;
-	int		floor_vals;
-	int		ceiling_vals;
 	double	camara_x;
 	double	camara_y;
 	double	plane_x;
 	double	plane_y;
+	int		*pixel;
+	int		i;
+	int		floor_vals;
+	int		ceiling_vals;
 	int		map_h;
 	int		map_w;
+	int		color;
 	char	**map;
 	char	*error_msg;
-	int		*pixel;
-	int		color;
 }	t_prg;
 
 
 
 // AUX FUNCTIONS 
-bool	print_error(char *error);
 void	init_int_array(int *array, int size);
 void	free_memory(t_prg *prg);
 void	exit_success(t_prg *p);
 void	exit_error(char *error, t_prg *prg);
-void	close_imgs_fd(t_prg *prg);
 int		check_if_invalid_ext(char *file_name, \
 		char *extension, int extension_len);
 bool	is_new_line(char *element);
@@ -135,7 +134,6 @@ void	destroy_img(t_prg *prg);
 void	validate_map(char *file_name, t_prg *prg);
 bool	parse_file(int fd, t_prg *prg);
 
-
 // GAME FUNCTIONS
 
 void	get_hooks(t_prg *prg);
@@ -146,12 +144,6 @@ void	perform_dda(t_prg *prg);
 void	init_dda(t_prg *prg);
 void	raycaster(t_prg *prg);			
 void	ray_to_img(t_prg *prg, int i);	
-
-
-void	draw_ray(t_prg *p);
-
-
-
 
 // INIT PRG
 

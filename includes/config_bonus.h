@@ -13,8 +13,8 @@
 #ifndef CONFIG_H
 # define CONFIG_H
 
-# define W 800
-# define H 600
+# define W 1280
+# define H 720
 
 # define TILE_SIZE	24
 # define MAX_NUM_TILES 8
@@ -27,7 +27,7 @@
 # define RGB_LIGHT_RED 0xA80000
 # define RGB_BLUE 0x6495ED
 
-# define MOVE_SPEED 0.125
+# define MOVE_SPEED 0.2
 # define DOORS_PIXELS 0.3
 # define ROTATION_ANGLE 15
 
