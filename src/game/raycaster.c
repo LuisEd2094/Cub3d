@@ -6,94 +6,60 @@
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:11:44 by apodader          #+#    #+#             */
-/*   Updated: 2024/01/26 11:11:44 by apodader         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:41:31 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+
+void get_pixel_collision(t_prg *prg)
+{
+	if (prg->ray.side == 0)
+	{
+		prg->ray.ray_end_y = ( prg->player.y + prg->ray.wall_dist * prg->ray.ray_dir_y);
+		prg->ray.ray_end_x = (prg->ray.map_x);
+	}
+	else
+	{
+	prg->ray.ray_end_x = ((prg->player.x + prg->ray.wall_dist * prg->ray.ray_dir_x));
+		prg->ray.ray_end_y = (prg->ray.map_y);
+	}
+}
+
+void init_ray(t_prg *prg, int i)
+{
+	prg->ray.camera = 2 * i / (double)W - 1;
+	prg->ray.ray_dir_x = prg->camara_x + prg->plane_x * prg->ray.camera;
+	prg->ray.ray_dir_y = prg->camara_y + prg->plane_y * prg->ray.camera;
+	prg->ray.map_x = (int)prg->player.x;
+	prg->ray.map_y = (int)prg->player.y;
+	prg->ray.hit = 0;
+	if (prg->ray.ray_dir_x == 0)
+		prg->ray.delta_dist_x = FLT_MAX;
+	else
+		prg->ray.delta_dist_x = fabs(1 / prg->ray.ray_dir_x);
+	if (prg->ray.ray_dir_y == 0)
+		prg->ray.delta_disy_y = FLT_MAX;
+	else
+		prg->ray.delta_disy_y = fabs(1 / prg->ray.ray_dir_y);
+}
+
 void	raycaster(t_prg *prg)
 {
-	double	posX = PLAYER_X(prg), posY = PLAYER_Y(prg);		//
-	double	dirX = prg->camara_x, dirY = prg->camara_y;		//	info del player
-	double	planeX = 0.66, planeY = 0;	//
+	int i;
 
-	int		mapX;		//
-	int		mapY;		//
-	double	camera;		//
-	double	rayDirX;	//
-	double	rayDirY;	//
-	double	sideDistX;	//
-	double	sideDistY;	//	info del rayo
-	double	deltaDistX;	//
-	double	deltaDistY;	//
-	double	wallDist;	//
-	int		stepX;		//
-	int		stepY;		//
-	int		hit;		//
-	int		side;		//
-
-	for (int i = 0; i < w; i++)
+	i = -1;
+	while(++i < W)
 	{
-		camera = 2 * i / (double)w - 1;
-		rayDirX = dirX + planeX * camera;
-		rayDirY = dirY + planeY * camera;
-		mapX = (int)posX;
-		mapY = (int)posY;
-		hit = 0;
-		if (rayDirX == 0)
-			deltaDistX = FLT_MAX;
+		init_ray(prg, i);
+		init_dda(prg);
+		perform_dda(prg);
+		if (prg->ray.side == 0)
+			prg->ray.wall_dist = prg->ray.side_dist_x - prg->ray.delta_dist_x;
 		else
-			deltaDistX = fabs(1 / rayDirX);
-		if (rayDirY == 0)
-			deltaDistY = FLT_MAX;
-		else
-			deltaDistY = fabs(1 / rayDirY);
-		//dda_init()
-		if (rayDirX < 0)
-		{
-			stepX = -1;
-			sideDistX = (posX - mapX) * deltaDistX;
-		}
-		else
-		{
-			stepX = 1;
-			sideDistX = (mapX + 1.0 - posX) * deltaDistX;
-		}
-		if (rayDirY < 0)
-		{
-			stepY = -1;
-			sideDistY = (posY - mapY) * deltaDistY;
-		}
-		else
-		{
-			stepY = 1;
-			sideDistY = (mapY + 1.0 - posY) * deltaDistY;
-		}
-		//dda()
-		while (hit == 0)
-		{
-			if (sideDistX < sideDistY)
-			{
-				sideDistX += deltaDistX;
-				mapX += stepX;
-				side = 0;
-			}
-			else
-			{
-				sideDistY += deltaDistY;
-				mapY += stepY;
-				side = 1;
-			}
-			if (prg->map[mapY][mapX] == '1')
-				hit = 1;
-		}
-		//
-		if (side == 0)
-			wallDist = sideDistX - deltaDistX;
-		else
-			wallDist = sideDistY - deltaDistY;
-		prg->ray->wallDist = wallDist;
+			prg->ray.wall_dist = prg->ray.side_dist_y - prg->ray.delta_disy_y;
+		get_pixel_collision(prg);
 		ray_to_img(prg, i);
 	}
 }

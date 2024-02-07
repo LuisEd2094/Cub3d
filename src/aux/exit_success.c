@@ -14,7 +14,6 @@
 
 void	exit_success(t_prg *p)
 {
-	close_imgs_fd(p);
-	free_mallocs(p);
+	free_memory(p);
 	exit(EXIT_SUCCESS);
 }

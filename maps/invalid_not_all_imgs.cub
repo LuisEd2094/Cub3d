@@ -1,6 +1,6 @@
-NO /home/luised94/Cub3d/imgs/a.xml
-SO /home/luised94/Cub3d/imgs/b.xml
-WE /home/luised94/Cub3d/imgs/c.xml
+NO /home/luised94/Cub3d/imgs/north.xpm
+SO /home/luised94/Cub3d/imgs/south.xpm
+WE /home/luised94/Cub3d/imgs/west.xpm
 F 220,100,0
 C 225,30,0
 

@@ -50,8 +50,4 @@ extension and permissions\n"
 #  define OPEN_MAP "Error\nCheck map! There is an open wall\n"
 # endif
 
-# ifndef DOOR_ERROR
-#  define DOOR_ERROR "Error\nCheck map! A door not in a valid position\n"
-# endif
-
 #endif

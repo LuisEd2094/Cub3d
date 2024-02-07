@@ -6,7 +6,7 @@ maps=("$maps_dir"/*)
 
 for map in "${maps[@]}"
 do 
-  leaks_output=$(leaks -at -- ./cub3D "$map" 2>&1)
+  leaks_output=$(leaks -at -- ./cub3D_bonus "$map" 2>&1)
   if [[ $leaks_output == *"0 leaks for"* ]]; then
     echo "No leaks found for $map"
   else

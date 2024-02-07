@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/06 13:54:03 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/06 13:54:28 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef KEYS_H
 # define KEYS_H
 # ifdef LINUX_KEYS
@@ -11,8 +23,6 @@
 #  define KEY_RGT 65363
 #  define KEY_UP 65362
 #  define KEY_DOWN 65364
-#  define KEY_E 101
-#  define KEY_SPACE 32  
 # else
 #  define KEY_ESC 53
 #  define KEY_Q 12
@@ -24,7 +34,7 @@
 #  define KEY_RGT 124
 #  define KEY_UP 126
 #  define KEY_DOWN 125
-# endif
 
+# endif
 
 #endif

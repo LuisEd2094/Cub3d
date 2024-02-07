@@ -1,8 +1,8 @@
 
-NO ./a.xml
-SO ./b.xml
-WE ./c.xml
-EA ./noaccess.xml
+NO ./north.xpm
+SO ./south.xpm
+WE ./west.xpm
+EA ./noaccess.xpm
 F 220,100,0
 C 225,30,0
 

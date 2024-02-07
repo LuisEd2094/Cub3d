@@ -1,12 +1,12 @@
-NO /home/luised94/Cub3d/imgs/a.xml
-SO /home/luised94/Cub3d/imgs/b.xml
-WE /home/luised94/Cub3d/imgs/c.xml
-EA /home/luised94/Cub3d/imgs/d.xml
-F 220,100,0
-C 225,30,0
+NO imgs/north.xpm
+SO imgs/south.xpm
+WE imgs/west.xpm
+EA imgs/east.xpm
+F 100, 125, 135
+C 109,164,170
 
-11111
-10001
-1N001
-10001
-11111
+11111111
+11011001
+10N00001
+11011001
+11111111

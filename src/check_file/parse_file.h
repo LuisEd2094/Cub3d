@@ -26,7 +26,7 @@ typedef struct s_parseer
 	bool	found_map;
 	bool	found_new_line_btwn_maps;
 	bool	found_player;
-	char	valid_map_chars[9];
+	char	valid_map_chars[8];
 	char	*valid_identifier[ID_ARRAY_SIZE];
 	char	*rgb_str[4];
 	int		prev_len;
@@ -48,4 +48,9 @@ bool	free_list(t_parseer *parse, bool return_val);
 bool	valid_map_line(char *line, t_parseer *p);
 bool	get_map_to_prg(t_prg *prg, t_parseer *parse);
 bool	check_map_borders(t_prg *prg, t_parseer *parse);
+bool	check_zero(t_prg *prg, int i, int j, t_parseer *parse);
+bool	set_open_map_error(t_prg *prg);
+void	prepare_parse_vals(t_prg *prg, t_parseer *parse, int i);
+bool	check_space(t_prg *prg, int i, int j, t_parseer *parse);
+
 #endif
