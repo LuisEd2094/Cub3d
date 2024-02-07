@@ -90,10 +90,14 @@ typedef struct	s_img
 
 typedef struct s_map
 {
-	t_img	t_img;
+	t_img	*current_img;
 	t_point	a;
 	t_point	b;
 	t_point c;
+	int		current_max_size;
+	int		current_num_tiles;
+	int		pos_x;
+	int		pos_y;
 	int		max_w;
 	int		max_h;
 	bool	off_set_x;
@@ -109,18 +113,35 @@ typedef struct s_map
 	int		y_pos;
 }	t_map;
 
+typedef struct s_map_info
+{
+	t_img	map_img;
+	int		max_size;
+	int		num_tiles;
+	int		max_w;
+	int		max_h;
+	int		start_x;
+	int		start_y;
+	bool	off_set_x;
+	bool	off_set_y;
+}	t_map_info;
+
 typedef struct s_prg
 {
-	t_img	north_img; //0
-	t_img	south_img; // 1
-	t_img	west_img; //2
-	t_img	east_img; //3
-	t_img	door_img; //
-	t_img	sprite[3];//
-	t_img	img;
-	t_img	*texture;
-    t_mlx   mlx;
-	t_map	mini_map;
+	t_img		north_img; //0
+	t_img		south_img; // 1
+	t_img		west_img; //2
+	t_img		east_img; //3
+	t_img		door_img; //
+	t_img		sprite[3];//
+	t_img		img;
+	t_img		*texture;
+    t_mlx		mlx;
+	t_map		mini_map;
+	t_map_info	big_map_info;
+	t_map_info	mini_map_info;
+
+	
 	t_pc	player;
 	t_ray	ray;
 	int		i;

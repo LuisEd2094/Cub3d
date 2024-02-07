@@ -42,7 +42,6 @@ static void	init_img_to_null(t_prg *prg)
 void	init_prg(t_prg *prg)
 {
 	init_prg_structs(prg);
-	prg->mini_map.t_img.img = NULL;
 	init_img_to_null(prg);
 	prg->i = 1;
 	prg->floor_vals = 0;

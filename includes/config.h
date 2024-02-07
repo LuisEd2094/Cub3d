@@ -19,6 +19,8 @@
 # define TILE_SIZE	24
 # define MAX_NUM_TILES 8
 # define MINI_MAP_SIZE 192
+# define BIG_NUM_TILES 16
+# define BIG_MAP_SIZE 384
 
 # define RGB_GREY 0x808080
 # define RGB_DARK_RED 0x880000

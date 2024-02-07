@@ -41,7 +41,9 @@ void	destroy_img(t_prg *prg)
 	run_mlx_destroy(&(prg->south_img), &(prg->mlx));
 	run_mlx_destroy(&(prg->west_img), &(prg->mlx));
 	run_mlx_destroy(&(prg->east_img), &(prg->mlx));
-	run_mlx_destroy(&(prg->mini_map.t_img), &(prg->mlx));
+	run_mlx_destroy(&(prg->big_map_info.map_img), &(prg->mlx));
+	run_mlx_destroy(&(prg->mini_map_info.map_img), &(prg->mlx)) ;
+
 }
 
 #endif
