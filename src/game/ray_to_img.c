@@ -14,8 +14,6 @@
 
 t_img	*get_img(t_prg *prg)
 {
-	if (prg->map[(int)prg->ray.ray_end_y][(int)prg->ray.ray_end_x] == '2')
-		return (&(prg->door_img));
 	if (!prg->ray.side)
 	{
 		if (prg->ray.ray_dir_x < 0)

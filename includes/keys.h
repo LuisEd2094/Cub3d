@@ -23,9 +23,6 @@
 #  define KEY_RGT 65363
 #  define KEY_UP 65362
 #  define KEY_DOWN 65364
-#  define KEY_E 101
-#  define KEY_SPACE 32
-#  define TAB 65289
 # else
 #  define KEY_ESC 53
 #  define KEY_Q 12
@@ -37,8 +34,6 @@
 #  define KEY_RGT 124
 #  define KEY_UP 126
 #  define KEY_DOWN 125
-#  define KEY_E 14
-#  define KEY_SPACE 49  
 
 # endif
 

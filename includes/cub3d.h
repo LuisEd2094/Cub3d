@@ -132,9 +132,6 @@ int		ft_min(int a, int b);
 void	destroy_img(t_prg *prg);
 
 
-int is_inside_map(int x, int y, t_prg *prg);
-
-
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);
 bool	parse_file(int fd, t_prg *prg);
@@ -145,28 +142,14 @@ bool	parse_file(int fd, t_prg *prg);
 void	get_hooks(t_prg *prg);
 int		update_window(t_prg *prg);
 int		make_move(t_prg *prg, int dir, int side);
-void	draw_map(t_prg *prg);
+int		rotate_player(t_prg *prg, int dir, int angle);
 void	perform_dda(t_prg *prg);
 void	init_dda(t_prg *prg);
 void	raycaster(t_prg *prg);			
 void	ray_to_img(t_prg *prg, int i);	
 
 
-
-// MINI MAP FUNCTIONS
-
 void	draw_ray(t_prg *p);
-
-//BONUS
-
-int		rotate_player(t_prg *prg, int dir, int angle);
-void	draw_map(t_prg *prg);
-void	rotate_point(t_point *point, t_point *center, double rads );
-void	move_triangle(t_prg *prg, int dx, int dy);
-int		open_door(t_prg *prg);
-void	get_y_values(t_prg *prg);
-void	get_x_values(t_prg *prg);
-int		get_map_y_position(t_prg *prg);
 
 
 

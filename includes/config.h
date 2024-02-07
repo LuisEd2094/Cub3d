@@ -16,7 +16,6 @@
 # define W 800
 # define H 600
 
-
 # define RGB_GREY 0x808080
 # define RGB_DARK_RED 0x880000
 # define RGB_LIGHT_RED 0xA80000

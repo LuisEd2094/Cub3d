@@ -30,13 +30,11 @@ int	make_move(t_prg *prg, int dir, int side)
 	}
 	prg->player.x += dx;
 	prg->player.y += dy;
-	if (prg->map[(int)(prg->player.y - dy)][(int)prg->player.x] == '1'
-		|| prg->map[(int)(prg->player.y - dy)][(int)prg->player.x] == '2')
+	if (prg->map[(int)(prg->player.y - dy)][(int)prg->player.x] == '1')
 	{
 		prg->player.x -= dx;
 	}
-	if (prg->map[(int)prg->player.y][(int)(prg->player.x - dx)] == '1'
-		|| prg->map[(int)prg->player.y][(int)(prg->player.x - dx)] == '2')
+	if (prg->map[(int)prg->player.y][(int)(prg->player.x - dx)] == '1')
 	{
 		prg->player.y -= dy;
 	}
