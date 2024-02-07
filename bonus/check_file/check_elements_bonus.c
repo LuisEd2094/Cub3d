@@ -1,16 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_elements.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:25:11 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:30:12 by lsoto-do         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "parse_file.h"
+#include "parse_file_bonus.h"
 
 void	save_elem_to_prg(t_parseer *parse, char **elemts, t_prg *prg, int i)
 {

@@ -20,6 +20,7 @@ AUX_PATH		= aux/
 BONUS_PATH		= bonus/
 SRCS_PATH           = src/
 OBJS_PATH           = obj/
+BONUS_OBJS_PATH		= $(OBJS_PATH)$(BONUS_PATH)
 CC = cc
 BONUS_FLAG 	= 0
 HIDDEN_BONUS_FILE	= .bonus_checker
@@ -46,14 +47,16 @@ LIB			=	$(LIB_PATH)/libft.a
 
 
 ## Add new path, just need name/
-MAKE_OBJ_DIR		= $(OBJS_PATH) $(addprefix $(OBJS_PATH), \
+MAKE_OBJ_BASE_DIR   = $(OBJS_PATH)
+MAKE_OBJ_DIR		=  $(addprefix $(OBJS_PATH), \
 									$(CK_FD_PATH), \
 									$(AUX_PATH), \
 									$(GAME_PATH), \
 									)
 
-MAKE_OBJ_DIR_BONUS	= $(addprefix $(OBJS_PATH),	$(BONUS_PATH))
-OBJS_BONUS_DIR = $(MAKE_OBJ_DIR_BONUS)
+MAKE_OBJ_DIR_BONUS	= $(addprefix $(BONUS_OBJS_PATH), $(CK_FD_PATH), \
+											$(AUX_PATH), \
+											$(GAME_PATH))
 										
 #Add new path to objects
 
@@ -89,7 +92,7 @@ LIGHT_GREEN = \033[1;92m
 
 ###
 
-SRC         =	main.c 
+SRC         =	main.c
 
 CHECK		=	check_file.c parse_file.c init_parseer.c parse_for_ids.c \
 				check_img_file.c check_ceil_floor_vals.c check_elements.c \
@@ -125,8 +128,9 @@ B_FLAG_FILE	=	$(SRCS_PATH)$(CK_FD_PATH)check_map_borders.c $(SRCS_PATH)$(CK_FD_P
 
 BONUS		=	draw_map_bonus.c open_door_bonus.c \
 				check_if_inside_player_bonus.c get_coordinates_bonus.c
+				
 
-BONUS_FILE	=	$(addprefix $(BONUS_PATH), $(BONUS))
+BONUS_FILE	=	$(addprefix $(BONUS_PATH)$(GAME_PATH), $(BONUS))
 
 DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \
 											$(CHECK:.c=.d)\
@@ -139,38 +143,42 @@ DEPS		= 	$(addprefix $(DEPS_PATH),	$(SRC:.c=.d) \
 #add .d files to deps
 
 SRC			+= $(CK_FILES) $(AUX_FILES) $(GAME_FILES)
+
+SRC_BONUS   =	$(addprefix $(BONUS_PATH), $(SRC:%.c=%_bonus.c)) $(BONUS_FILE)
 ## add to sercs
 
 OBJS        =	$(addprefix $(OBJS_PATH), $(SRC:.c=.o)) 
 
-OBJS_BONUS	=	$(addprefix $(OBJS_PATH), $(BONUS_FILE:.c=.o))
+OBJS_BONUS	=	$(addprefix $(OBJS_PATH), $(SRC_BONUS:.c=.o))
 				
 
 all: check_files_bonus_flag make_mlx make_lib $(NAME)
 
 
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.c Makefile| $(MAKE_OBJ_DIR) $(DEPS_PATH)
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c Makefile| $(MAKE_OBJ_BASE_DIR) $(MAKE_OBJ_DIR) $(DEPS_PATH)
 		@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
 		@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
 		@mv $(basename $@).d $(DEPS_PATH)
 
 
-$(NAME):  $(HIDDEN_BONUS_FILE) $(OBJS) $(LIB) $(L_MLX) Makefile
+$(NAME): $(OBJS) $(LIB) $(L_MLX) Makefile
+	@echo "$(SRC_BONUS)"
+	@echo $(OBJS_BONUS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LINEFLAGS) $(LIB) $(LDFLAGS) -o $(NAME)
 	@echo "$(LIGHT_GREEN)Created $(NAME) executable$(DEF_COLOR)"
 
 bonus: check_files_bonus_flag make_mlx make_lib $(NAME_BONUS)
 
 
-$(MAKE_OBJ_DIR_BONUS)%.o: $(SRCS_PATH)$(BONUS_PATH)%.c Makefile | $(MAKE_OBJ_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH) 
+$(BONUS_OBJS_PATH)%.o: $(BONUS_PATH)%.c Makefile | $(MAKE_OBJ_BASE_DIR) $(MAKE_OBJ_DIR_BONUS) $(DEPS_PATH) 
 	@echo "$(CYAN)Compiling $< $(DEF_COLOR)"
 	@$(CC) $(CFLAGS) $(INCS) $(KEYS) -DBONUS_FLAG=$(BONUS_FLAG) -MMD -MP -c $< -o  $@
 	@mv $(basename $@).d $(DEPS_PATH)
 
 # SHOULD HAVE A RULE TO MAKE SRS_BONUS
 
-$(NAME_BONUS):  $(HIDDEN_BONUS_FILE) $(OBJS) $(OBJS_BONUS) Makefile 
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) $(OBJS_BONUS) $(LINEFLAGS) $(LIB)-o $(NAME_BONUS) $(LDFLAGS)
+$(NAME_BONUS): $(OBJS_BONUS) Makefile 
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS_BONUS) $(LINEFLAGS) $(LIB)-o $(NAME_BONUS) $(LDFLAGS)
 	@echo "$(LIGHT_GREEN)Created $(NAME_BONUS) executable$(DEF_COLOR)"
 
 $(HIDDEN_BONUS_FILE):
@@ -197,6 +205,10 @@ make_lib:
 make_mlx:
 	@$(MAKE) -s -C $(MLX_PATH)
 	@echo "$(BLUE)Done checking MLX! $(DEF_COLOR)"
+
+$(MAKE_OBJ_BASE_DIR):
+	@echo "$(GREEN)Creating $(NAME) Obj Dir $(DEF_COLOR)"
+	@mkdir -p $(MAKE_OBJ_BASE_DIR)
 
 $(MAKE_OBJ_DIR_BONUS):
 	@echo "$(GREEN)Creating $(NAME_BONUS) Obj Dir $(DEF_COLOR)"

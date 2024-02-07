@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_file.h"
+#include "parse_file_bonus.h"
 
 #if BONUS_FLAG == 0
 

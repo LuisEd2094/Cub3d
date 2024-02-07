@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_file.h"
+#include "parse_file_bonus.h"
 
 bool	init_map(t_parseer *p, t_prg *prg)
 {

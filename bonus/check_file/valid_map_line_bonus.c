@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_file.h"
+#include "parse_file_bonus.h"
 
 bool	check_valid_char(char c, t_parseer *p)
 {

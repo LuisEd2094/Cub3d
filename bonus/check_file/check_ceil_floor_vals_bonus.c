@@ -1,16 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_ceil_floor_vals.c                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:25:07 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/06 13:25:52 by lsoto-do         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "parse_file.h"
+
+#include "parse_file_bonus.h"
 
 bool	validate_value(char **values, t_parseer *p, int *out_l)
 {

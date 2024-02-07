@@ -10,7 +10,7 @@
 /*																			  */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3d_bonus.h>
 
 int	side_of_line(t_point *p1, t_point *p2, t_point *p3)
 {

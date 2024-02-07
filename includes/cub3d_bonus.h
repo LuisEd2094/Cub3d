@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,10 +22,10 @@
 # include <get_next_line.h>
 # include <ft_printf.h>
 # include <libft.h>
-# include <error_messages.h>
-# include <keys.h>
+# include <error_messages_bonus.h>
+# include <keys_bonus.h>
 # include <mlx.h>
-# include <config.h>
+# include <config_bonus.h>
 # include <float.h>
 
 typedef struct s_point

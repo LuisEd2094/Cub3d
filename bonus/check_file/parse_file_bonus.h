@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file.h                                       :+:      :+:    :+:   */
+/*   parse_file_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #ifndef PARSE_FILE_H
 # define PARSE_FILE_H
 
-# include <cub3d.h>
+# include <cub3d_bonus.h>
 # ifndef ID_ARRAY_SIZE
 #  define ID_ARRAY_SIZE 7
 # endif

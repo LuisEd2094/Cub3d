@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
-#include "parse_file.h"
+#include <cub3d_bonus.h>
+#include "parse_file_bonus.h"
 
 void	prepare_parse_vals(t_prg *prg, t_parseer *parse, int i)
 {

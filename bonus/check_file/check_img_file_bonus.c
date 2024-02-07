@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_file.h"
+#include "parse_file_bonus.h"
 
 void	open_img(t_mlx *mlx, t_img *img, char *path)
 {

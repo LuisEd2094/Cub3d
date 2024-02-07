@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_file.h"
+#include "parse_file_bonus.h"
 
 void	check_if_found_all(t_parseer *p)
 {
