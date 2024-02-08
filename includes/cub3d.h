@@ -26,7 +26,10 @@
 # include <keys.h>
 # include <mlx.h>
 # include <config.h>
-# include <float.h>
+
+// Have to define FLT_MAX since we use it to avoid division by 0 but norm
+// doesn't like float.h
+# define FLT_MAX 340282346638528859811704183484516925440.000000
 
 typedef struct s_point
 {

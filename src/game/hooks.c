@@ -6,7 +6,7 @@
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:36:16 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/06 13:37:13 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:48:34 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,21 @@ int	key_hook(int key, t_prg *prg)
 	return (0);
 }
 
+#if LINUX_KEYS == 1
+
 void	get_hooks(t_prg *prg)
 {
 	mlx_hook(prg->mlx.window, 17, 0, close_game, (void *)prg);
-/* 	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg);
- */	mlx_key_hook(prg->mlx.window, key_hook, (void *)prg);
+	mlx_key_hook(prg->mlx.window, key_hook, (void *)prg);
 
 }
+
+#else
+
+void	get_hooks(t_prg *prg)
+{
+	mlx_hook(prg->mlx.window, 17, 0, close_game, (void *)prg);
+	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg);
+}
+
+#endif

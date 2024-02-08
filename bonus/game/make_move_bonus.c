@@ -12,8 +12,10 @@
 
 #include <cub3d_bonus.h>
 
-void	check_valid_move(t_prg *prg, int dx, int dy)
+void	check_valid_move(t_prg *prg, double dx, double dy)
 {
+	prg->player.x += dx;
+	prg->player.y += dy;
 	if (prg->map[(int)(prg->player.y - dy)][(int)prg->player.x] == '1'
 		|| prg->map[(int)(prg->player.y - dy)][(int)prg->player.x] == '2')
 	{
@@ -41,8 +43,6 @@ int	make_move(t_prg *prg, int dir, int side)
 		dx = -prg->camara_y * MOVE_SPEED * dir;
 		dy = prg->camara_x * MOVE_SPEED * dir;
 	}
-	prg->player.x += dx;
-	prg->player.y += dy;
 	check_valid_move(prg, dx, dy);
 	update_window(prg);
 	return (1);

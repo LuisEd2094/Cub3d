@@ -31,9 +31,9 @@ int	main(int argc, char *argv[])
 {
 	t_prg	prg;
 
+	init_prg(&prg);
 	if (argc != 2)
 		exit_error(INCORRECT_USE, &prg);
-	init_prg(&prg);
 	prg.mlx.ptr = mlx_init();
 	if (!prg.mlx.ptr)
 		exit_error(NULL, &prg);

@@ -81,11 +81,23 @@ int	mouse_move(int x, t_prg *prg)
 	return (0);
 }
 
+/*We need key hook for linux and hook for mac, specialy if we want to the keys to be repeatable*/
+
+#if LINUX_KEYS == 1
 void	get_hooks(t_prg *prg)
 {
 	mlx_hook(prg->mlx.window, 17, 0, close_game, (void *)prg);
-	//mlx_hook(prg->mlx.window, 6, 0, mouse_move, (void *)prg);
+	mlx_key_hook(prg->mlx.window, key_hook, (void *)prg);
+
+}
+#else
+void	get_hooks(t_prg *prg)
+{
+	mlx_hook(prg->mlx.window, 17, 0, close_game, (void *)prg);
+	mlx_hook(prg->mlx.window, 6, 0, mouse_move, (void *)prg);
 	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg);
 	//mlx_mouse_hook(prg->mlx.window, mouse_move, (void *)prg);
 //	mlx_key_hook(prg->mlx.window, key_hook, (void *)prg);
 }
+
+#endif

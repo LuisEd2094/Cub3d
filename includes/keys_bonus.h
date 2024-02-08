@@ -12,7 +12,7 @@
 
 #ifndef KEYS_BONUS_H
 # define KEYS_BONUS_H
-# ifdef LINUX_KEYS
+# if LINUX_KEYS == 1
 #  define KEY_ESC 65307
 #  define KEY_Q 113
 #  define KEY_W 119

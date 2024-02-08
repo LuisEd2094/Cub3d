@@ -60,7 +60,7 @@ KEYS = -D LINUX_KEYS=1
 else
 MLX_PATH = ./minilibx_opengl_20191021/
 FRAME = -framework OpenGL -framework AppKit
-KEYS = 
+KEYS = -D LINUX_KEYS=0
 endif
 
 
