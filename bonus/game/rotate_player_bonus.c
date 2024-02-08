@@ -6,7 +6,7 @@
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:21 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/08 09:43:21 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:35:57 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	check_camara(int coordiante, int center)
 	else
 		return (-1);
 }
+
 int	rotate_player(t_prg *prg, int dir, int angle)
 {
 	double	cam_x;
