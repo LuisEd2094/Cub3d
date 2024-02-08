@@ -6,7 +6,7 @@
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:25:43 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/06 13:31:31 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:58:22 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char	*save_str_info_to_map(char *s, t_prg *prg, int y)
 	}
 	return (res);
 }
-
 
 bool	get_map_to_prg(t_prg *prg, t_parseer *parse)
 {

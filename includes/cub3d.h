@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d_bonus.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:05:54 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/08 10:00:23 by lsoto-do         ###   ########.fr       */
-/*                                                                            */
+/*																			  */
+/*														  :::	   ::::::::   */
+/*	 cub3d.h											:+:		 :+:	:+:   */
+/*													  +:+ +:+		  +:+	  */
+/*	 By: lsoto-do <lsoto-do@student.42barcel>		+#+  +:+	   +#+		  */
+/*												  +#+#+#+#+#+	+#+			  */
+/*	 Created: 2024/02/08 11:27:38 by lsoto-do		   #+#	  #+#			  */
+/*	 Updated: 2024/02/08 11:27:39 by lsoto-do		  ###	########.fr		  */
+/*																			  */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
@@ -33,10 +33,9 @@
 
 typedef struct s_point
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_point;
-
 
 typedef struct s_player
 {
@@ -44,13 +43,12 @@ typedef struct s_player
 	double	y;
 	double	angle;
 	double	hit_box_angle;
-
 }	t_pc;
 
 typedef struct s_ray
 {
 	double	ray_end_x;
-	double 	ray_end_y;
+	double	ray_end_y;
 	double	img_step;
 	double	y_img;
 	double	camera;
@@ -70,17 +68,15 @@ typedef struct s_ray
 	int		line_h;
 	int		end_p;
 	int		start_p;
+}	t_ray;
 
-} t_ray;
-
-
-typedef struct  t_s_mlx
+typedef struct t_s_mlx
 {
-    void    *ptr;
-    void    *window;
-}   t_mlx;
+	void	*ptr;
+	void	*window;
+}	t_mlx;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
@@ -91,16 +87,15 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
-
 typedef struct s_prg
 {
-	t_img	north_img; //0
-	t_img	south_img; // 1
-	t_img	west_img; //2
-	t_img	east_img; //3
+	t_img	north_img;
+	t_img	south_img;
+	t_img	west_img;
+	t_img	east_img;
 	t_img	img;
 	t_img	*texture;
-    t_mlx	mlx;
+	t_mlx	mlx;
 	t_pc	player;
 	t_ray	ray;
 	double	camara_x;
@@ -118,8 +113,6 @@ typedef struct s_prg
 	char	*error_msg;
 }	t_prg;
 
-
-
 // AUX FUNCTIONS 
 void	init_int_array(int *array, int size);
 void	free_memory(t_prg *prg);
@@ -131,7 +124,6 @@ bool	is_new_line(char *element);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 void	destroy_img(t_prg *prg);
-
 
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);
