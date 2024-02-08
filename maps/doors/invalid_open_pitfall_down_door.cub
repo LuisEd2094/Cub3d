@@ -1,0 +1,12 @@
+NO /Users/lsoto-do/core04/Cub3d/imgs/north.xpm
+SO /Users/lsoto-do/core04/Cub3d/imgs/south.xpm
+WE /Users/lsoto-do/core04/Cub3d/imgs/west.xpm
+EA /Users/lsoto-do/core04/Cub3d/imgs/east.xpm
+F 220,100,0
+C 225,30,0
+
+111111
+10N001
+1012101
+101 101
+111 111
