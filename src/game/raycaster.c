@@ -6,28 +6,29 @@
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:11:44 by apodader          #+#    #+#             */
-/*   Updated: 2024/02/06 13:41:31 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/08 11:26:21 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-
-void get_pixel_collision(t_prg *prg)
+void	get_pixel_collision(t_prg *prg)
 {
 	if (prg->ray.side == 0)
 	{
-		prg->ray.ray_end_y = ( prg->player.y + prg->ray.wall_dist * prg->ray.ray_dir_y);
+		prg->ray.ray_end_y = (prg->player.y + prg->ray.wall_dist \
+			* prg->ray.ray_dir_y);
 		prg->ray.ray_end_x = (prg->ray.map_x);
 	}
 	else
 	{
-	prg->ray.ray_end_x = ((prg->player.x + prg->ray.wall_dist * prg->ray.ray_dir_x));
+		prg->ray.ray_end_x = ((prg->player.x + prg->ray.wall_dist \
+			* prg->ray.ray_dir_x));
 		prg->ray.ray_end_y = (prg->ray.map_y);
 	}
 }
 
-void init_ray(t_prg *prg, int i)
+void	init_ray(t_prg *prg, int i)
 {
 	prg->ray.camera = 2 * i / (double)W - 1;
 	prg->ray.ray_dir_x = prg->camara_x + prg->plane_x * prg->ray.camera;
@@ -47,10 +48,10 @@ void init_ray(t_prg *prg, int i)
 
 void	raycaster(t_prg *prg)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(++i < W)
+	while (++i < W)
 	{
 		init_ray(prg, i);
 		init_dda(prg);

@@ -12,16 +12,6 @@
 
 #include <cub3d.h>
 
-int	check_camara(int coordiante, int center)
-{
-	if (coordiante == center)
-		return (0);
-	else if (coordiante > center)
-		return (1);
-	else
-		return (-1);
-}
-
 int	rotate_player(t_prg *prg, int dir)
 {
 	double	cam_x;

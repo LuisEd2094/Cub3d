@@ -6,7 +6,7 @@
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:25:48 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:34:30 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:58:34 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	set_booleans(t_parseer *parse)
 	parse->list_size = 0;
 	parse->found_map = 0;
 }
-
 
 void	set_valid_char_map(t_parseer *p)
 {

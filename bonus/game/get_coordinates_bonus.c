@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_coordinates_bonus.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 09:42:11 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 10:29:40 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d_bonus.h>
 
 int	get_coordinate(t_prg *prg, double (*f)(double), double rem, double value)
 {
-	return (((rem * TILE_SIZE) + ((prg->mini_map.current_max_size) / 2) - TILE_SIZE) \
+	return (((rem * TILE_SIZE) + \
+			((prg->mini_map.current_max_size) / 2) - TILE_SIZE) \
 			+ ((TILE_SIZE / 2) \
 			* f(prg->player.angle + (value * M_PI / 3.0))));
 }
@@ -14,7 +27,8 @@ void	get_x_values(t_prg *prg)
 	if (prg->mini_map.off_set_x && \
 			prg->player.x > (prg->mini_map.current_num_tiles / 2))
 	{
-		prg->mini_map.x_pos = floor(prg->player.x) - (prg->mini_map.current_num_tiles / 2);
+		prg->mini_map.x_pos = floor(prg->player.x) - \
+				(prg->mini_map.current_num_tiles / 2);
 		prg->mini_map.a.x = get_coordinate(prg, &cos, \
 				modf(prg->player.x, &integer), 0);
 		prg->mini_map.b.x = get_coordinate(prg, &cos, \
@@ -38,7 +52,8 @@ int	get_map_y_position(t_prg *prg)
 {
 	if (prg->mini_map.off_set_y && \
 			prg->player.y > (prg->mini_map.current_num_tiles / 2))
-		return (floor(prg->player.y) - (prg->mini_map.current_num_tiles / 2));
+		return (floor(prg->player.y) - \
+				(prg->mini_map.current_num_tiles / 2));
 	return (-1);
 }
 

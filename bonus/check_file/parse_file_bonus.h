@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file_bonus.h                                       :+:      :+:    :+:   */
+/*   parse_file_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:35:03 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:35:18 by lsoto-do         ###   ########.fr       */
+/*   Created: 2024/02/08 09:47:01 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 09:47:06 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_FILE_H
-# define PARSE_FILE_H
+#ifndef PARSE_FILE_BONUS_H
+# define PARSE_FILE_BONUS_H
 
 # include <cub3d_bonus.h>
 # ifndef ID_ARRAY_SIZE

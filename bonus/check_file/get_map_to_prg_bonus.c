@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_map_to_prg_bonus.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 09:40:41 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 10:25:42 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "parse_file_bonus.h"
 
@@ -9,50 +20,6 @@ bool	init_map(t_parseer *p, t_prg *prg)
 		return (false);
 	return (true);
 }
-
-void	set_player_pos_and_mini_map(t_prg *prg, int x, int y)
-{
-	prg->player.x = x + 0.5;
-	prg->player.y = y + 0.5;
-}
-
-char	set_player_info(t_prg *prg, char c, int y, int x)
-{
-	if (c == 'N' || c == 'S')
-	{
-		prg->camara_x = 0;
-		prg->plane_y = 0;
-		if (c == 'N')
-		{
-			prg->camara_y = -1;
-			prg->plane_x = 0.66;
-		}
-		else
-		{
-			prg->camara_y = 1;
-			prg->plane_x = -0.66;
-		}
-	}
-	else if (c == 'E' || c == 'W')
-	{
-		prg->camara_y = 0;
-		prg->plane_x = 0;
-		if (c == 'E')
-		{
-			prg->camara_x = 1;
-			prg->plane_y = 0.66;
-		}
-		else
-		{
-			prg->camara_x = -1;
-			prg->plane_y = -0.66;
-		}
-	}
-	prg->player.angle = atan2(prg->camara_y, prg->camara_x);
-	set_player_pos_and_mini_map(prg, x, y);
-	return ('0');
-}
-
 
 char	*save_str_info_to_map(char *s, t_prg *prg, int y)
 {

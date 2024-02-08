@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate_player_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 09:43:21 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 10:35:57 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d_bonus.h>
 
-int	check_camara(int coordiante, int center)
+void	change_sprite(t_prg *prg, int dir)
 {
-	if (coordiante == center)
-		return (0);
-	else if (coordiante > center)
-		return (1);
+	if (dir == -1)
+		prg->i = 0;
 	else
-		return (-1);
+		prg->i = 2;
 }
+
 int	rotate_player(t_prg *prg, int dir, int angle)
 {
 	double	cam_x;
 	double	plane_x;
 	double	rads;
 
+	change_sprite(prg, dir);
 	rads = M_PI / 180.0 * angle * dir;
 	cam_x = prg->camara_x;
 	plane_x = prg->plane_x;

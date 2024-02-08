@@ -1,17 +1,17 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d_bonus.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:05:54 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/05 17:01:39 by apodader         ###   ########.fr       */
-/*                                                                            */
+/*																			  */
+/*														  :::	   ::::::::   */
+/*	 cub3d_bonus.h										:+:		 :+:	:+:   */
+/*													  +:+ +:+		  +:+	  */
+/*	 By: lsoto-do <lsoto-do@student.42barcel>		+#+  +:+	   +#+		  */
+/*												  +#+#+#+#+#+	+#+			  */
+/*	 Created: 2024/02/08 11:29:26 by lsoto-do		   #+#	  #+#			  */
+/*	 Updated: 2024/02/08 11:29:41 by lsoto-do		  ###	########.fr		  */
+/*																			  */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <math.h>
 # include <fcntl.h>
@@ -26,14 +26,17 @@
 # include <keys_bonus.h>
 # include <mlx.h>
 # include <config_bonus.h>
-# include <float.h>
+
+// Have to define FLT_MAX since we use it to avoid division by 0 but norm
+// doesn't like float.h
+
+# define FLT_MAX 340282346638528859811704183484516925440.000000
 
 typedef struct s_point
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_point;
-
 
 typedef struct s_player
 {
@@ -46,7 +49,7 @@ typedef struct s_player
 typedef struct s_ray
 {
 	double	ray_end_x;
-	double 	ray_end_y;
+	double	ray_end_y;
 	double	img_step;
 	double	y_img;
 	double	camera;
@@ -66,16 +69,15 @@ typedef struct s_ray
 	int		line_h;
 	int		end_p;
 	int		start_p;
-} t_ray;
+}	t_ray;
 
-
-typedef struct  t_s_mlx
+typedef struct t_s_mlx
 {
-    void    *ptr;
-    void    *window;
-}   t_mlx;
+	void	*ptr;
+	void	*window;
+}	t_mlx;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
@@ -91,7 +93,7 @@ typedef struct s_map
 	t_img	*current_img;
 	t_point	a;
 	t_point	b;
-	t_point c;
+	t_point	c;
 	char	*pixel;
 	bool	off_set_x;
 	bool	off_set_y;
@@ -136,7 +138,7 @@ typedef struct s_prg
 	t_img		sprite[3];
 	t_img		img;
 	t_img		*texture;
-    t_mlx		mlx;
+	t_mlx		mlx;
 	t_map		mini_map;
 	t_pc		player;
 	t_ray		ray;
@@ -144,21 +146,19 @@ typedef struct s_prg
 	double		camara_y;
 	double		plane_x;
 	double		plane_y;
-	char	**map;
-	char	*error_msg;
+	char		**map;
+	char		*error_msg;
 	bool		current_map;
-	int		i;
-	int		floor_vals;
-	int		ceiling_vals;
-	int		map_h;
-	int		map_w;
-	int		mouse_delta;
-	int		prev_mouse;
-	int		*pixel;
-	int		color;
+	int			i;
+	int			floor_vals;
+	int			ceiling_vals;
+	int			map_h;
+	int			map_w;
+	int			mouse_delta;
+	int			prev_mouse;
+	int			*pixel;
+	int			color;
 }	t_prg;
-
-
 
 // AUX FUNCTIONS 
 void	init_int_array(int *array, int size);
@@ -172,11 +172,10 @@ int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 void	destroy_img(t_prg *prg);
 
-
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);
 bool	parse_file(int fd, t_prg *prg);
-
+char	set_player_info(t_prg *prg, char c, int y, int x);
 
 // GAME FUNCTIONS
 
@@ -201,6 +200,7 @@ bool	calculate_if_inside_player(t_map *map, int x, int y);
 int		get_map_y_position(t_prg *prg);
 void	copy_info_to_mini_map(t_map *mini_map, t_map_info *mini_map_info);
 int		is_inside_map(int x, int y, t_prg *prg);
+int		change_map(t_prg *prg);
 
 // INIT PRG
 

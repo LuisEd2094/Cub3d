@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_messages.h                                   :+:      :+:    :+:   */
+/*   error_messages_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 10:06:03 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/01/11 10:08:26 by lsoto-do         ###   ########.fr       */
+/*   Created: 2024/02/08 10:10:16 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 10:10:18 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_MESSAGES_H
-# define ERROR_MESSAGES_H
+#ifndef ERROR_MESSAGES_BONUS_H
+# define ERROR_MESSAGES_BONUS_H
 
 # ifndef INCORRECT_USE
 #  define INCORRECT_USE "Incorrect use, please run ./cub3D <map_file.cub>\n"
