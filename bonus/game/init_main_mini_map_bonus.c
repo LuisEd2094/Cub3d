@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_main_mini_map_bonus.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 09:42:31 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 09:42:31 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d_bonus.h>
 
 void	copy_info_to_mini_map(t_map *mini_map, t_map_info *mini_map_info)
@@ -12,9 +24,9 @@ void	copy_info_to_mini_map(t_map *mini_map, t_map_info *mini_map_info)
 };
 
 
-void    init_maps_img(t_prg *p, t_map_info *map, int size, int tiles)
+void	init_maps_img(t_prg *p, t_map_info *map, int size, int tiles)
 {
-    map->map_img.img = mlx_new_image(p->mlx.ptr, \
+	map->map_img.img = mlx_new_image(p->mlx.ptr, \
 	ft_min(((p->map_w + 1) * TILE_SIZE), size), \
 	ft_min((p->map_h) * TILE_SIZE, size));
 	map->map_img.addr = mlx_get_data_addr(map->map_img.img, \
@@ -32,10 +44,10 @@ void    init_maps_img(t_prg *p, t_map_info *map, int size, int tiles)
 
 void	init_maps_values(t_prg *p)
 {
-    init_maps_img(p, &(p->mini_map_info), \
-                MINI_MAP_SIZE, MAX_NUM_TILES);
-    init_maps_img(p, &(p->big_map_info), \
-                BIG_MAP_SIZE, BIG_NUM_TILES);
+	init_maps_img(p, &(p->mini_map_info), \
+				MINI_MAP_SIZE, MAX_NUM_TILES);
+	init_maps_img(p, &(p->big_map_info), \
+				BIG_MAP_SIZE, BIG_NUM_TILES);
 	p->current_map = 0;
 	copy_info_to_mini_map(&(p->mini_map), &(p->mini_map_info));
 

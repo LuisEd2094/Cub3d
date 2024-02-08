@@ -176,6 +176,7 @@ void	destroy_img(t_prg *prg);
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);
 bool	parse_file(int fd, t_prg *prg);
+char	set_player_info(t_prg *prg, char c, int y, int x);
 
 
 // GAME FUNCTIONS

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.h                                             :+:      :+:    :+:   */
+/*   keys_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 13:54:03 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/06 13:54:28 by lsoto-do         ###   ########.fr       */
+/*   Created: 2024/02/08 10:10:32 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 10:10:34 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#ifndef KEYS_BONUS_H
+# define KEYS_BONUS_H
 # ifdef LINUX_KEYS
 #  define KEY_ESC 65307
 #  define KEY_Q 113
@@ -38,7 +38,8 @@
 #  define KEY_UP 126
 #  define KEY_DOWN 125
 #  define KEY_E 14
-#  define KEY_SPACE 49  
+#  define KEY_SPACE 49
+#  define TAB 48  
 
 # endif
 

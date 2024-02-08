@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map_borders_bonus.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 09:40:10 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 10:15:43 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "parse_file_bonus.h"
 
@@ -37,6 +48,26 @@ bool	check_door(t_prg *prg, int i, int j, t_parseer *parse)
 	return (true);
 }
 
+bool	check_vals(t_prg *prg, t_parseer *parse, int i, int j)
+{
+	if (prg->map[i][j] == '0')
+	{
+		if (!check_zero(prg, i, j, parse))
+			return (false);
+	}
+	else if (prg->map[i][j] == ' ')
+	{
+		if (!check_space(prg, i, j, parse))
+			return (false);
+	}
+	else if (prg->map[i][j] == '2')
+	{
+		if (!check_door(prg, i, j, parse))
+			return (false);
+	}
+	return (true);
+}
+
 bool	check_map_borders(t_prg *prg, t_parseer *parse)
 {
 	int	i;
@@ -49,21 +80,8 @@ bool	check_map_borders(t_prg *prg, t_parseer *parse)
 		prepare_parse_vals(prg, parse, i);
 		while (prg->map[i][++j])
 		{
-			if (prg->map[i][j] == '0')
-			{
-				if (!check_zero(prg, i, j, parse))
-					return (false);
-			}
-			else if (prg->map[i][j] == ' ')
-			{
-				if (!check_space(prg, i, j, parse))
-					return (false);
-			}
-			else if (prg->map[i][j] == '2')
-			{
-				if (!check_door(prg, i, j, parse))
-					return (false);
-			}
+			if (!check_vals(prg, parse, i, j))
+				return (false);
 		}
 	}
 	return (true);

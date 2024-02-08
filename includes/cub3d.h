@@ -6,7 +6,7 @@
 /*   By: apodader <apodader@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:05:54 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/05 17:01:39 by apodader         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:00:23 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	destroy_img(t_prg *prg);
 // CHECK FILE FUNCTIONS
 void	validate_map(char *file_name, t_prg *prg);
 bool	parse_file(int fd, t_prg *prg);
+char	set_player_info(t_prg *prg, char c, int y, int x);
 
 // GAME FUNCTIONS
 

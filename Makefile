@@ -12,7 +12,7 @@
 
 NAME        = cub3D
 NAME_BONUS	= $(NAME)_bonus
-CFLAGS      = -g  -fsanitize=address -Wall -Wextra  -Werror
+CFLAGS      = -O3 -g  -fsanitize=address -Wall -Wextra  -Werror
 RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/
@@ -89,7 +89,7 @@ SRC         =	main.c
 CHECK		=	check_file.c parse_file.c init_parseer.c parse_for_ids.c \
 				check_img_file.c check_ceil_floor_vals.c check_elements.c \
 				parse_map.c get_map_to_list.c free_list.c valid_map_line.c \
-				get_map_to_prg.c check_map_borders.c helpers_border.c
+				get_map_to_prg.c check_map_borders.c helpers_border.c  set_player_info.c
 				
 CK_FILES	=	$(addprefix $(CK_FD_PATH), $(CHECK))
 
@@ -108,7 +108,7 @@ GAME_FILES	=	$(addprefix $(GAME_PATH), $(GAME))
 
 BONUS		=	draw_map_bonus.c open_door_bonus.c \
 				check_if_inside_player_bonus.c get_coordinates_bonus.c \
-				init_main_mini_map_bonus.c
+				init_main_mini_map_bonus.c 
 				
 
 BONUS_FILE	=	$(addprefix $(BONUS_PATH)$(GAME_PATH), $(BONUS))

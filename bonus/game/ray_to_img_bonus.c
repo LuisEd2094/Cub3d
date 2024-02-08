@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_to_img_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 09:43:01 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 09:43:01 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include <cub3d_bonus.h>
 
@@ -40,7 +52,7 @@ void	draw_texture(t_prg *prg, int i)
 	int j;
 
 	j = -1;
-	while (++j  < H)
+	while (++j	< H)
 	{
 		prg->pixel = (void *)prg->img.addr + \
 		(j * prg->img.line_length + i * (prg->img.bpp / 8));

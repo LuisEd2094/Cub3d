@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   config_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 13:48:55 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/06 13:52:17 by lsoto-do         ###   ########.fr       */
+/*   Created: 2024/02/08 10:09:46 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 10:09:54 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#ifndef CONFIG_BONUS_H
+# define CONFIG_BONUS_H
 
 # define W 1280
 # define H 720

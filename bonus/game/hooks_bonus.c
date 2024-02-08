@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 09:42:21 by lsoto-do          #+#    #+#             */
+/*   Updated: 2024/02/08 09:42:21 by lsoto-do         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d_bonus.h>
 
 int	close_game(t_prg *prg)
@@ -72,8 +84,8 @@ int	mouse_move(int x, t_prg *prg)
 void	get_hooks(t_prg *prg)
 {
 	mlx_hook(prg->mlx.window, 17, 0, close_game, (void *)prg);
-/* 	mlx_hook(prg->mlx.window, 6, 0, mouse_move, (void *)prg);
-	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg); */
+	//mlx_hook(prg->mlx.window, 6, 0, mouse_move, (void *)prg);
+	mlx_hook(prg->mlx.window, 2, 0, key_hook, (void *)prg);
 	//mlx_mouse_hook(prg->mlx.window, mouse_move, (void *)prg);
-	mlx_key_hook(prg->mlx.window, key_hook, (void *)prg);
+//	mlx_key_hook(prg->mlx.window, key_hook, (void *)prg);
 }
