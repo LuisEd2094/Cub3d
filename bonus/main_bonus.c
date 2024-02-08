@@ -29,7 +29,6 @@ int	main(int argc, char *argv[])
 {
 	t_prg	prg;
 
-	printf("%f\n", FLT_MAX);
 	init_prg(&prg);
 	if (argc != 2)
 		exit_error(INCORRECT_USE, &prg);

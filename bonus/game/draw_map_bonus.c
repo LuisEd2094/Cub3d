@@ -6,11 +6,27 @@
 /*   By: lsoto-do <lsoto-do@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:42:01 by lsoto-do          #+#    #+#             */
-/*   Updated: 2024/02/08 10:28:59 by lsoto-do         ###   ########.fr       */
+/*   Updated: 2024/02/08 12:40:50 by lsoto-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d_bonus.h>
+
+int	change_map(t_prg *prg)
+{
+	if (prg->current_map == 0)
+	{
+		copy_info_to_mini_map(&(prg->mini_map), &(prg->big_map_info));
+		prg->current_map = 1;
+	}
+	else
+	{
+		copy_info_to_mini_map(&(prg->mini_map), &(prg->mini_map_info));
+		prg->current_map = 0;
+	}
+	update_window(prg);
+	return (1);
+}
 
 void	set_mini_map_vals(t_prg *prg)
 {

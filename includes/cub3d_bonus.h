@@ -200,6 +200,7 @@ bool	calculate_if_inside_player(t_map *map, int x, int y);
 int		get_map_y_position(t_prg *prg);
 void	copy_info_to_mini_map(t_map *mini_map, t_map_info *mini_map_info);
 int		is_inside_map(int x, int y, t_prg *prg);
+int		change_map(t_prg *prg);
 
 // INIT PRG
 

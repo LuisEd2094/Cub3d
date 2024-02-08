@@ -12,7 +12,7 @@
 
 NAME        = cub3D
 NAME_BONUS	= $(NAME)_bonus
-CFLAGS      = -O3 -g  -fsanitize=address -Wall -Wextra  -Werror
+CFLAGS      = -O3 -g -Wall -Wextra  -Werror #-fsanitize=address
 RM          = rm -f
 CK_FD_PATH		= check_file/
 GAME_PATH		= game/

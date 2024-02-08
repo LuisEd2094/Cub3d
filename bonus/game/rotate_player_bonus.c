@@ -12,12 +12,21 @@
 
 #include <cub3d_bonus.h>
 
+void	change_sprite(t_prg *prg, int dir)
+{
+	if (dir == -1)
+		prg->i = 0;
+	else
+		prg->i = 2;
+}
+
 int	rotate_player(t_prg *prg, int dir, int angle)
 {
 	double	cam_x;
 	double	plane_x;
 	double	rads;
 
+	change_sprite(prg, dir);
 	rads = M_PI / 180.0 * angle * dir;
 	cam_x = prg->camara_x;
 	plane_x = prg->plane_x;
